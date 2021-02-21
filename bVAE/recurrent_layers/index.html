@@ -1,0 +1,1106 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Recurrent layers - indl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#custom-recurrent-layers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="indl" class="md-header-nav__button md-logo" aria-label="indl">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            indl
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Recurrent layers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="indl" class="md-nav__button md-logo" aria-label="indl">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    indl
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Intracranial Neurophysiology and Deep Learning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/data/" class="md-nav__link">
+        data
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/fileio/" class="md-nav__link">
+        fileio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/lfads/" class="md-nav__link">
+        lfads
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/metrics/" class="md-nav__link">
+        metrics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/regularizers/" class="md-nav__link">
+        regularizers
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/junk_model_inspect/" class="md-nav__link">
+        Junk model inspect
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/kernels/" class="md-nav__link">
+        Kernels
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/sigfuncs/" class="md-nav__link">
+        Sigfuncs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        bVAE
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="bVAE" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          bVAE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LFADS_Complex_Cell/" class="md-nav__link">
+        LFADS Complex Cell
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LFADS_utils/" class="md-nav__link">
+        LFADS utils
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../beta_vae/" class="md-nav__link">
+        Beta vae
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Recurrent layers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Recurrent layers
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#test-generativernn" class="md-nav__link">
+    Test GenerativeRNN
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tfp_utils/" class="md-nav__link">
+        Tfp utils
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#test-generativernn" class="md-nav__link">
+    Test GenerativeRNN
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SachsLab/indl/edit/master/docs/bVAE/recurrent_layers.ipynb" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="custom-recurrent-layers">Custom Recurrent Layers</h1>
+<p>A bit of a mess. Also check out tfp_utils, lfads_utils, and lfads_complex_cell.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="test-generativernn">Test GenerativeRNN</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="err">N_IN = 8</span>
+<span class="err">N_UNITS = 24</span>
+<span class="err">N_OUT_TIMESTEPS = 115</span>
+<span class="err">cell = tfkl.GRUCell  # LSTMCell or GRUCell</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="err">#  Test regular RNN with zeros input</span>
+<span class="err">reg_rnn_layer = tfkl.RNN(cell(N_UNITS), return_state=True, return_sequences=True)</span>
+<span class="err">in_ = tf.zeros((1, 115, 16))</span>
+<span class="err">x_ = reg_rnn_layer(in_)</span>
+<span class="err">print(K.any(x_[0]))  # Just to remind myself that input zeros and state zeros will yield output zeros.</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>tf.Tensor(False, shape=(), dtype=bool)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="err"># Test placeholder tensor with no timesteps</span>
+<span class="err">K.clear_session()</span>
+<span class="err">gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,</span>
+<span class="err">                              timesteps=N_OUT_TIMESTEPS)</span>
+<span class="err">in_ = tfkl.Input(shape=(N_IN,))</span>
+<span class="err">x_, cell_state_ = gen_rnn_layer(in_)</span>
+<span class="err">print(&quot;Test placeholder tensor&quot;)</span>
+<span class="err">model = tf.keras.Model(inputs=in_, outputs=x_)</span>
+<span class="err">model.summary()</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Test placeholder tensor
+Model: &#34;model&#34;
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 8)]          0                                            
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice (Tens [(None, 1, 8)]       0           input_1[0][0]                    
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_1 (Te [(None, 8)]          0           tf_op_layer_strided_slice[0][0]  
+__________________________________________________________________________________________________
+tf_op_layer_ZerosLike (TensorFl [(None, 8)]          0           tf_op_layer_strided_slice_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_2 (Te [(None, 1, 8)]       0           tf_op_layer_ZerosLike[0][0]      
+__________________________________________________________________________________________________
+tf_op_layer_AddV2 (TensorFlowOp [(None, 114, 8)]     0           tf_op_layer_strided_slice_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat (TensorFlowO [(None, 115, 8)]     0           tf_op_layer_strided_slice[0][0]  
+                                                                 tf_op_layer_AddV2[0][0]          
+__________________________________________________________________________________________________
+generative_rnn (GenerativeRNN)  [(None, 115, 24), (N 2448        tf_op_layer_concat[0][0]         
+==================================================================================================
+Total params: 2,448
+Trainable params: 2,448
+Non-trainable params: 0
+__________________________________________________________________________________________________
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="err"># Test placeholder tensor with no timesteps as initial state</span>
+<span class="err">K.clear_session()</span>
+<span class="err">gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,</span>
+<span class="err">                              timesteps=N_OUT_TIMESTEPS)</span>
+<span class="err">in_ = tfkl.Input(shape=(N_UNITS,))</span>
+<span class="err">x_, cell_state_ = gen_rnn_layer(None, initial_state=in_)</span>
+<span class="err">print(&quot;Test placeholder tensor&quot;)</span>
+<span class="err">model = tf.keras.Model(inputs=in_, outputs=x_)</span>
+<span class="err">model.summary()</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Test placeholder tensor
+Model: &#34;model&#34;
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 24)]         0                                            
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice (Tens [(None,)]            0           input_1[0][0]                    
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_1 (Te [(None, 1)]          0           tf_op_layer_strided_slice[0][0]  
+__________________________________________________________________________________________________
+tf_op_layer_ZerosLike (TensorFl [(None, 1)]          0           tf_op_layer_strided_slice_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_2 (Te [(None, 1, 1)]       0           tf_op_layer_ZerosLike[0][0]      
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_3 (Te [(None, 1)]          0           tf_op_layer_strided_slice_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ZerosLike_1 (Tensor [(None, 1)]          0           tf_op_layer_strided_slice_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_4 (Te [(None, 1, 1)]       0           tf_op_layer_ZerosLike_1[0][0]    
+__________________________________________________________________________________________________
+tf_op_layer_AddV2 (TensorFlowOp [(None, 114, 1)]     0           tf_op_layer_strided_slice_4[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat (TensorFlowO [(None, 115, 1)]     0           tf_op_layer_strided_slice_2[0][0]
+                                                                 tf_op_layer_AddV2[0][0]          
+__________________________________________________________________________________________________
+generative_rnn (GenerativeRNN)  [(None, 115, 24), (N 1944        tf_op_layer_concat[0][0]         
+                                                                 input_1[0][0]                    
+==================================================================================================
+Total params: 1,944
+Trainable params: 1,944
+Non-trainable params: 0
+__________________________________________________________________________________________________
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># Test None input --&gt; uses zeros</span>
+<span class="nf">K.clear_session</span><span class="p">()</span>
+<span class="n">gen_rnn_layer</span> <span class="o">=</span> <span class="nf">GenerativeRNN</span><span class="p">(</span><span class="nf">cell</span><span class="p">(</span><span class="n">N_UNITS</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">return_state</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
+                              <span class="n">timesteps</span><span class="o">=</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Test None input&quot;</span><span class="p">)</span>
+<span class="n">x_</span><span class="p">,</span> <span class="n">cell_state_</span> <span class="o">=</span> <span class="nf">gen_rnn_layer</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">x_.shape</span><span class="p">,</span> <span class="n">cell_state_.shape</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">K.any</span><span class="p">(</span><span class="n">x_</span><span class="p">),</span> <span class="nf">K.any</span><span class="p">(</span><span class="n">cell_state_</span><span class="p">))</span>  <span class="c1"># &lt;- any non-zero values?</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Test None input
+(1, 115, 24) (1, 24)
+tf.Tensor(False, shape=(), dtype=bool) tf.Tensor(False, shape=(), dtype=bool)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># Test random input</span>
+<span class="nf">K.clear_session</span><span class="p">()</span>
+<span class="n">gen_rnn_layer</span> <span class="o">=</span> <span class="nf">GenerativeRNN</span><span class="p">(</span><span class="nf">cell</span><span class="p">(</span><span class="n">N_UNITS</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">return_state</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
+                              <span class="n">timesteps</span><span class="o">=</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">)</span>
+<span class="n">in_</span> <span class="o">=</span> <span class="nf">tf.random.uniform</span><span class="p">((</span><span class="m">1</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="n">N_UNITS</span><span class="p">),</span> <span class="n">minval</span><span class="o">=</span><span class="m">-1.0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="m">1.0</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Test zeros input&quot;</span><span class="p">)</span>
+<span class="n">x_</span><span class="p">,</span> <span class="n">cell_state_</span> <span class="o">=</span> <span class="nf">gen_rnn_layer</span><span class="p">(</span><span class="n">in_</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">x_.shape</span><span class="p">,</span> <span class="n">cell_state_.shape</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">K.any</span><span class="p">(</span><span class="n">x_</span><span class="p">),</span> <span class="nf">K.any</span><span class="p">(</span><span class="n">cell_state_</span><span class="p">))</span>  <span class="c1"># &lt;- any non-zero values?</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Test zeros input
+(1, 115, 24) (1, 24)
+tf.Tensor(True, shape=(), dtype=bool) tf.Tensor(True, shape=(), dtype=bool)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># Test random states</span>
+<span class="nf">K.clear_session</span><span class="p">()</span>
+<span class="n">gen_rnn_layer</span> <span class="o">=</span> <span class="nf">GenerativeRNN</span><span class="p">(</span><span class="nf">cell</span><span class="p">(</span><span class="n">N_UNITS</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">return_state</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
+                              <span class="n">timesteps</span><span class="o">=</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">gen_rnn_layer.compute_output_shape</span><span class="p">())</span>
+<span class="n">init_states</span> <span class="o">=</span> <span class="p">[</span><span class="nf">tf.random.uniform</span><span class="p">((</span><span class="m">1</span><span class="p">,</span> <span class="n">N_UNITS</span><span class="p">),</span> <span class="n">minval</span><span class="o">=</span><span class="m">-1.0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="m">1.0</span><span class="p">)</span> <span class="n">for</span> _ <span class="n">in</span> <span class="nf">range</span><span class="p">(</span><span class="m">1</span><span class="p">)]</span>
+<span class="n">x_</span><span class="p">,</span> <span class="n">cell_states_</span> <span class="o">=</span> <span class="nf">gen_rnn_layer</span><span class="p">(</span><span class="n">initial_state</span><span class="o">=</span><span class="n">init_states</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">x_.shape</span><span class="p">,</span> <span class="n">cell_state_.shape</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">K.any</span><span class="p">(</span><span class="n">x_</span><span class="p">),</span> <span class="nf">K.any</span><span class="p">(</span><span class="n">cell_state_</span><span class="p">))</span>  <span class="c1"># &lt;- any non-zero values?</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>[TensorShape([None, 115, 24]), TensorShape([None, 24])]
+(1, 115, 24) (1, 24)
+tf.Tensor(True, shape=(), dtype=bool) tf.Tensor(True, shape=(), dtype=bool)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># Test masking</span>
+<span class="nf">K.clear_session</span><span class="p">()</span>
+
+<span class="n">tmp</span> <span class="o">=</span> <span class="nf">tf.range</span><span class="p">(</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">)[</span><span class="n">tf.newaxis</span><span class="p">,</span> <span class="o">:</span><span class="p">,</span> <span class="n">tf.newaxis</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="nf">tf.math.logical_or</span><span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="m">5</span><span class="p">,</span> <span class="n">tmp</span> <span class="o">&gt;</span> <span class="m">100</span><span class="p">)</span>
+<span class="n">gen_rnn_layer</span> <span class="o">=</span> <span class="nf">GenerativeRNN</span><span class="p">(</span><span class="nf">cell</span><span class="p">(</span><span class="n">N_UNITS</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">return_state</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
+                              <span class="n">timesteps</span><span class="o">=</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">,</span> <span class="n">tile_input</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+<span class="n">in_</span> <span class="o">=</span> <span class="nf">tf.random.uniform</span><span class="p">((</span><span class="m">5</span><span class="p">,</span> <span class="n">N_OUT_TIMESTEPS</span><span class="p">,</span> <span class="n">N_UNITS</span><span class="p">),</span> <span class="n">minval</span><span class="o">=</span><span class="m">-1.0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="m">1.0</span><span class="p">)</span>
+<span class="n">x_</span><span class="p">,</span> <span class="n">cell_state_</span> <span class="o">=</span> <span class="nf">gen_rnn_layer</span><span class="p">(</span><span class="n">in_</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">x_.shape</span><span class="p">,</span> <span class="n">cell_state_.shape</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">K.any</span><span class="p">(</span><span class="n">x_</span><span class="p">),</span> <span class="nf">K.any</span><span class="p">(</span><span class="n">cell_state_</span><span class="p">))</span>  <span class="c1"># &lt;- any non-zero values?</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>(5, 115, 24) (5, 24)
+tf.Tensor(True, shape=(), dtype=bool) tf.Tensor(True, shape=(), dtype=bool)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="s s-Atom">#</span> <span class="nv">Garbage</span> <span class="s s-Atom">code</span> <span class="nv">I</span> <span class="s s-Atom">don&#39;t want to throw out yet.</span>
+<span class="s s-Atom">if False:</span>
+<span class="s s-Atom">    def call(self, inputs, mask=None, training=None, initial_state=None, constants=None):</span>
+<span class="s s-Atom">        assert(mask is None), &quot;mask not supported.&quot;</span>
+<span class="s s-Atom">        # First part copied from super call()</span>
+
+<span class="s s-Atom">        # The input should be dense, padded with zeros. If a ragged input is fed</span>
+<span class="s s-Atom">        # into the layer, it is padded and the row lengths are used for masking.</span>
+<span class="s s-Atom">        inputs, row_lengths = K.convert_inputs_if_ragged(inputs)</span>
+<span class="s s-Atom">        is_ragged_input = (row_lengths is not None)</span>
+<span class="s s-Atom">        self._validate_args_if_ragged(is_ragged_input, mask)</span>
+
+<span class="s s-Atom">        # Get initial_state. Merge provided initial_state and preserved if self.stateful,</span>
+<span class="s s-Atom">        # otherwise use provided or zeros if provided is None.</span>
+<span class="s s-Atom">        inputs, initial_state, constants = self._process_inputs(</span>
+<span class="s s-Atom">            inputs, initial_state, constants)</span>
+
+<span class="s s-Atom">        self._maybe_reset_cell_dropout_mask(self.cell)</span>
+<span class="s s-Atom">        if isinstance(self.cell, tfkl.StackedRNNCells):</span>
+<span class="s s-Atom">            for cell in self.cell.cells:</span>
+<span class="s s-Atom">                self._maybe_reset_cell_dropout_mask(cell)</span>
+
+<span class="s s-Atom">        kwargs = {}</span>
+<span class="s s-Atom">        if generic_utils.has_arg(self.cell.call, &#39;training&#39;):</span>
+<span class="s s-Atom">            kwargs[&#39;training&#39;] = training</span>
+
+<span class="s s-Atom">        # TF RNN cells expect single tensor as state instead of list wrapped tensor.</span>
+<span class="s s-Atom">        is_tf_rnn_cell = getattr(self.cell, &#39;</span><span class="k">_</span><span class="s s-Atom">is_tf_rnn_cell&#39;, None) is not None</span>
+<span class="s s-Atom">        if constants:</span>
+<span class="s s-Atom">            if not generic_utils.has_arg(self.cell.call, &#39;constants&#39;):</span>
+<span class="s s-Atom">                raise ValueError(&#39;</span><span class="nv">RNN</span> <span class="s s-Atom">cell</span> <span class="s s-Atom">does</span> <span class="o">not</span> <span class="s s-Atom">support</span> <span class="s s-Atom">constants&#39;)</span>
+
+<span class="s s-Atom">            def step(inputs, states):</span>
+<span class="s s-Atom">                constants = states[-self._num_constants:]  # pylint: disable=invalid-unary-operand-type</span>
+<span class="s s-Atom">                states = states[:-self._num_constants]  # pylint: disable=invalid-unary-operand-type</span>
+
+<span class="s s-Atom">                states = states[0] if len(states) == 1 and is_tf_rnn_cell else states</span>
+<span class="s s-Atom">                output, new_states = self.cell.call(</span>
+<span class="s s-Atom">                    inputs, states, constants=constants, **kwargs)</span>
+<span class="s s-Atom">                if not nest.is_sequence(new_states):</span>
+<span class="s s-Atom">                    new_states = [new_states]</span>
+<span class="s s-Atom">                return output, new_states</span>
+<span class="s s-Atom">        else:</span>
+
+<span class="s s-Atom">            def step(inputs, states):</span>
+<span class="s s-Atom">                states = states[0] if len(states) == 1 and is_tf_rnn_cell else states</span>
+<span class="s s-Atom">                output, new_states = self.cell.call(inputs, states, **kwargs)</span>
+<span class="s s-Atom">                if not nest.is_sequence(new_states):</span>
+<span class="s s-Atom">                    new_states = [new_states]</span>
+<span class="s s-Atom">                return output, new_states</span>
+
+<span class="s s-Atom">        # Begin deviation from super call() #</span>
+<span class="s s-Atom">        #####################################</span>
+<span class="s s-Atom">        # We do not do K.rnn because it does not support feeding the output back as the input to the next step.</span>
+<span class="s s-Atom">        def _process_single_input_t(input_t):</span>
+<span class="s s-Atom">            input_t = tf.unstack(input_t, axis=-2)  # unstack for time_step dim</span>
+<span class="s s-Atom">            if self.go_backwards:</span>
+<span class="s s-Atom">                input_t.reverse()</span>
+<span class="s s-Atom">            return input_t</span>
+
+<span class="s s-Atom">        if nest.is_sequence(inputs):</span>
+<span class="s s-Atom">            processed_input = nest.map_structure(_process_single_input_t, inputs)</span>
+<span class="s s-Atom">        else:</span>
+<span class="s s-Atom">            processed_input = (_process_single_input_t(inputs),)</span>
+<span class="s s-Atom">        cell_input = nest.pack_sequence_as(inputs, [_[0] for _ in processed_input])</span>
+
+<span class="s s-Atom">        cell_state = tuple(initial_state)</span>
+
+<span class="s s-Atom">        out_states = []</span>
+<span class="s s-Atom">        out_inputs = []</span>
+<span class="s s-Atom">        for step_ix in range(self.timesteps):</span>
+<span class="s s-Atom">            cell_input, new_states = step(cell_input, cell_state)</span>
+<span class="s s-Atom">            flat_new_states = nest.flatten(new_states)</span>
+<span class="s s-Atom">            cell_state = nest.pack_sequence_as(cell_state, flat_new_states)</span>
+<span class="s s-Atom">            out_states.append(cell_state)</span>
+<span class="s s-Atom">            out_inputs.append(cell_input)</span>
+
+<span class="s s-Atom">        out_inputs = tf.stack(out_inputs, axis=-2)</span>
+<span class="s s-Atom">        # if cell outputs a distribution, then we might do the following, but base class</span>
+<span class="s s-Atom">        # would have to change.</span>
+<span class="s s-Atom">        if False:</span>
+<span class="s s-Atom">            if hasattr(out_inputs[0], &#39;parameters&#39;) and &#39;distribution&#39; in out_inputs[0].parameters:</span>
+<span class="s s-Atom">                dist0_parms = out_inputs[0].parameters[&#39;distribution&#39;].parameters</span>
+<span class="s s-Atom">                coll_parms = {}</span>
+<span class="s s-Atom">                for p_name, p_val in dist0_parms.items():</span>
+<span class="s s-Atom">                    if K.tensor_util.is_tensor(p_val):</span>
+<span class="s s-Atom">                        coll_parms[p_name] = []</span>
+<span class="s s-Atom">                for dist in out_inputs:</span>
+<span class="s s-Atom">                    for p_name in coll_parms.keys():</span>
+<span class="s s-Atom">                        coll_parms[p_name].append(dist.parameters[&#39;distribution&#39;].parameters[p_name])</span>
+<span class="s s-Atom">                for p_name in coll_parms.keys():</span>
+<span class="s s-Atom">                    coll_parms[p_name] = tf.stack(coll_parms[p_name], axis=-2)</span>
+<span class="s s-Atom">                dist_class = out_inputs[0].parameters[&#39;distribution&#39;].__class__</span>
+<span class="s s-Atom">                out_inputs = dist_class(**coll_parms)</span>
+<span class="s s-Atom">                # Warning! time dimension lost in batch with None</span>
+<span class="s s-Atom">                out_inputs = tfp.distributions.Independent(out_inputs, reinterpreted_batch_ndims=1)</span>
+
+<span class="s s-Atom">        out_states = tf.stack(out_states, axis=-2)</span>
+<span class="s s-Atom">        out_states = tf.unstack(out_states, axis=0)</span>
+<span class="s s-Atom">        if not hasattr(self.cell.state_size, &#39;</span><span class="k">__</span><span class="s s-Atom">len__</span><span class="err">&#39;</span><span class="p">)</span><span class="s s-Atom">:</span>
+            <span class="s s-Atom">out_states</span> <span class="o">=</span> <span class="s s-Atom">out_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="s s-Atom">if</span> <span class="o">not</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">return_sequences:</span>
+            <span class="s s-Atom">out_inputs</span> <span class="o">=</span> <span class="s s-Atom">out_inputs</span><span class="p">[...,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">:</span><span class="p">]</span>
+            <span class="s s-Atom">out_states</span> <span class="o">=</span> <span class="p">[</span><span class="k">_</span><span class="p">[...,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">:</span><span class="p">]</span> <span class="s s-Atom">for</span> <span class="k">_</span> <span class="s s-Atom">in</span> <span class="s s-Atom">out_states</span><span class="p">]</span> <span class="s s-Atom">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="s s-Atom">out_states</span><span class="p">,</span> <span class="s s-Atom">list</span><span class="p">)</span> <span class="s s-Atom">else</span> <span class="s s-Atom">out_states</span><span class="p">[...,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">:</span><span class="p">]</span>
+        <span class="s s-Atom">if</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">return_state:</span>
+            <span class="s s-Atom">return</span> <span class="s s-Atom">out_inputs</span><span class="p">,</span> <span class="s s-Atom">out_states</span>
+        <span class="s s-Atom">return</span> <span class="s s-Atom">out_inputs</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../beta_vae/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Beta vae
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../tfp_utils/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Tfp utils
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

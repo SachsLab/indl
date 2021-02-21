@@ -1,0 +1,2480 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Tfp utils - indl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tensorflow-probability-utilities" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="indl" class="md-header-nav__button md-logo" aria-label="indl">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            indl
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Tfp utils
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="indl" class="md-nav__button md-logo" aria-label="indl">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    indl
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Intracranial Neurophysiology and Deep Learning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/data/" class="md-nav__link">
+        data
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/fileio/" class="md-nav__link">
+        fileio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/lfads/" class="md-nav__link">
+        lfads
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/metrics/" class="md-nav__link">
+        metrics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/regularizers/" class="md-nav__link">
+        regularizers
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/junk_model_inspect/" class="md-nav__link">
+        Junk model inspect
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/kernels/" class="md-nav__link">
+        Kernels
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/sigfuncs/" class="md-nav__link">
+        Sigfuncs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        bVAE
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="bVAE" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          bVAE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LFADS_Complex_Cell/" class="md-nav__link">
+        LFADS Complex Cell
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LFADS_utils/" class="md-nav__link">
+        LFADS utils
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../beta_vae/" class="md-nav__link">
+        Beta vae
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recurrent_layers/" class="md-nav__link">
+        Recurrent layers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Tfp utils
+      </a>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SachsLab/indl/edit/master/docs/bVAE/tfp_utils.ipynb" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="tensorflow-probability-utilities">Tensorflow Probability Utilities</h1>
+<p>This notebook is a bit of a mess after the refactor.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/disentangled_vae.py</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">K</span><span class="o">.</span><span class="n">set_floatx</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">test_make_mvn_prior</span><span class="p">(</span><span class="n">latent_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">init_std</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">trainable_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trainable_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prior_offdiag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">prior</span> <span class="o">=</span> <span class="n">make_mvn_prior</span><span class="p">(</span><span class="n">latent_size</span><span class="p">,</span> <span class="n">init_std</span><span class="o">=</span><span class="n">init_std</span><span class="p">,</span>
+                           <span class="n">trainable_mean</span><span class="o">=</span><span class="n">trainable_mean</span><span class="p">,</span> <span class="n">trainable_var</span><span class="o">=</span><span class="n">trainable_var</span><span class="p">,</span>
+                           <span class="n">offdiag</span><span class="o">=</span><span class="n">prior_offdiag</span><span class="p">)</span>
+    <span class="k">assert</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">prior</span><span class="o">.</span><span class="n">loc</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">)</span> <span class="o">==</span> <span class="n">trainable_mean</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">prior_offdiag</span><span class="p">:</span>
+        <span class="k">assert</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">prior</span><span class="o">.</span><span class="n">scale_tril</span><span class="p">,</span> <span class="s1">&#39;trainable_variables&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">trainable_var</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">prior</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">trainable_var</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">prior</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">prior</span><span class="o">.</span><span class="n">stddev</span><span class="p">())</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">trainable_mean</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">trainable_var</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">prior_offdiag</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+            <span class="n">test_make_mvn_prior</span><span class="p">(</span><span class="n">trainable_mean</span><span class="o">=</span><span class="n">trainable_mean</span><span class="p">,</span> <span class="n">trainable_var</span><span class="o">=</span><span class="n">trainable_var</span><span class="p">,</span> <span class="n">prior_offdiag</span><span class="o">=</span><span class="n">prior_offdiag</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>tf.Tensor([-0.08141219 -0.0387085  -0.05836845 -0.00457149], shape=(4,), dtype=float32) tf.Tensor([0.13052301 0.23032661 0.31772745 0.2098567 ], shape=(4,), dtype=float32)
+tf.Tensor([-0.07178359 -0.07984201  0.07635907 -0.09406286], shape=(4,), dtype=float32) tf.Tensor([0.10905064 0.103502   0.09993087 0.10073646], shape=(4,), dtype=float32)
+tf.Tensor([-0.1242888   0.05545203 -0.18831097 -0.02664005], shape=(4,), dtype=float32) tf.Tensor([0.1 0.1 0.1 0.1], shape=(4,), dtype=float32)
+tf.Tensor([0.18107729 0.14778917 0.1890041  0.20096827], shape=(4,), dtype=float32) tf.Tensor([0.1 0.1 0.1 0.1], shape=(4,), dtype=float32)
+tf.Tensor([0. 0. 0. 0.], shape=(4,), dtype=float32) tf.Tensor([0.10471911 0.23243366 0.32148966 0.18541414], shape=(4,), dtype=float32)
+tf.Tensor([0. 0. 0. 0.], shape=(4,), dtype=float32) tf.Tensor([0.11602824 0.11143655 0.09993648 0.09902043], shape=(4,), dtype=float32)
+tf.Tensor([0. 0. 0. 0.], shape=(4,), dtype=float32) tf.Tensor([0.1 0.1 0.1 0.1], shape=(4,), dtype=float32)
+tf.Tensor([0. 0. 0. 0.], shape=(4,), dtype=float32) tf.Tensor([0.1 0.1 0.1 0.1], shape=(4,), dtype=float32)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">test_make_mvn_dist_fn</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>q_dist:  tfp.distributions.MultivariateNormalDiag(&#34;model_distribution_lambda_MultivariateNormalDiag&#34;, batch_shape=[6], event_shape=[4], dtype=float32)
+q_dist stddev:  tf.Tensor(
+[[0.12080275 0.16515851 0.13489766 0.06180337]
+ [0.0738408  0.12705617 0.09915603 0.06687246]
+ [0.10365839 0.16512334 0.09549066 0.15812276]
+ [0.09845882 0.1333666  0.1458401  0.08260284]
+ [0.10875075 0.14236958 0.21499178 0.09950284]
+ [0.15298602 0.13276467 0.1905963  0.18955594]], shape=(6, 4), dtype=float32)
+q_dist sample:  tf.Tensor(
+[[ 1.2572958  -1.079319    0.05739563  0.27565804]
+ [ 0.9092588  -0.37485668  0.31609604  0.25275287]
+ [ 0.19276637 -0.7746772  -0.3904564   0.34959695]
+ [ 0.48656625 -0.78282547 -0.2158188   0.271042  ]
+ [ 1.3095855  -0.9227902   0.38678312  0.59275925]
+ [ 0.83026767 -0.9097708   0.10051005  0.40007213]], shape=(6, 4), dtype=float32)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">test_make_variational</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">InvalidArgumentError</span>                      Traceback (most recent call last)
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/ops.py</span> in <span class="ansi-cyan-fg">_create_c_op</span><span class="ansi-blue-fg">(graph, node_def, inputs, control_inputs, op_def)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1653</span>   <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1654</span><span class="ansi-red-fg">     </span>c_op <span class="ansi-blue-fg">=</span> pywrap_tf_session<span class="ansi-blue-fg">.</span>TF_FinishOperation<span class="ansi-blue-fg">(</span>op_desc<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1655</span>   <span class="ansi-green-fg">except</span> errors<span class="ansi-blue-fg">.</span>InvalidArgumentError <span class="ansi-green-fg">as</span> e<span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">InvalidArgumentError</span>: Duplicate node name in graph: &#39;concat/values_0&#39;
+
+During handling of the above exception, another exception occurred:
+
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/op_def_library.py</span> in <span class="ansi-cyan-fg">_apply_op_helper</span><span class="ansi-blue-fg">(op_type_name, name, **keywords)</span>
+<span class="ansi-green-intense-fg ansi-bold">    408</span>             dtype <span class="ansi-blue-fg">=</span> dtypes<span class="ansi-blue-fg">.</span>as_dtype<span class="ansi-blue-fg">(</span>dtype<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>base_dtype
+<span class="ansi-green-fg">--&gt; 409</span><span class="ansi-red-fg">           values = ops.internal_convert_n_to_tensor(
+</span><span class="ansi-green-intense-fg ansi-bold">    410</span>               values<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/ops.py</span> in <span class="ansi-cyan-fg">internal_convert_n_to_tensor</span><span class="ansi-blue-fg">(values, dtype, name, as_ref, preferred_dtype, ctx)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1402</span>     ret.append(
+<span class="ansi-green-fg">-&gt; 1403</span><span class="ansi-red-fg">         convert_to_tensor(
+</span><span class="ansi-green-intense-fg ansi-bold">   1404</span>             value<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/ops.py</span> in <span class="ansi-cyan-fg">convert_to_tensor</span><span class="ansi-blue-fg">(value, dtype, name, as_ref, preferred_dtype, dtype_hint, ctx, accepted_result_types)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1340</span>     <span class="ansi-green-fg">if</span> ret <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1341</span><span class="ansi-red-fg">       </span>ret <span class="ansi-blue-fg">=</span> conversion_func<span class="ansi-blue-fg">(</span>value<span class="ansi-blue-fg">,</span> dtype<span class="ansi-blue-fg">=</span>dtype<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">=</span>name<span class="ansi-blue-fg">,</span> as_ref<span class="ansi-blue-fg">=</span>as_ref<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1342</span> 
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/ops/array_ops.py</span> in <span class="ansi-cyan-fg">_autopacking_conversion_function</span><span class="ansi-blue-fg">(v, dtype, name, as_ref)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1454</span>     v <span class="ansi-blue-fg">=</span> nest<span class="ansi-blue-fg">.</span>map_structure<span class="ansi-blue-fg">(</span>_cast_nested_seqs_to_dtype<span class="ansi-blue-fg">(</span>dtype<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> v<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 1455</span><span class="ansi-red-fg">   </span><span class="ansi-green-fg">return</span> _autopacking_helper<span class="ansi-blue-fg">(</span>v<span class="ansi-blue-fg">,</span> dtype<span class="ansi-blue-fg">,</span> name <span class="ansi-green-fg">or</span> <span class="ansi-blue-fg">&#34;packed&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1456</span> 
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/ops/array_ops.py</span> in <span class="ansi-cyan-fg">_autopacking_helper</span><span class="ansi-blue-fg">(list_or_tuple, dtype, name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1390</span>               constant_op.constant(elem, dtype=dtype, name=str(i)))
+<span class="ansi-green-fg">-&gt; 1391</span><span class="ansi-red-fg">       </span><span class="ansi-green-fg">return</span> gen_array_ops<span class="ansi-blue-fg">.</span>pack<span class="ansi-blue-fg">(</span>elems_as_tensors<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">=</span>scope<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1392</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/ops/gen_array_ops.py</span> in <span class="ansi-cyan-fg">pack</span><span class="ansi-blue-fg">(values, axis, name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   6346</span>   axis <span class="ansi-blue-fg">=</span> _execute<span class="ansi-blue-fg">.</span>make_int<span class="ansi-blue-fg">(</span>axis<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;axis&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 6347</span><span class="ansi-red-fg">   _, _, _op, _outputs = _op_def_library._apply_op_helper(
+</span><span class="ansi-green-intense-fg ansi-bold">   6348</span>         &#34;Pack&#34;, values=values, axis=axis, name=name)
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/op_def_library.py</span> in <span class="ansi-cyan-fg">_apply_op_helper</span><span class="ansi-blue-fg">(op_type_name, name, **keywords)</span>
+<span class="ansi-green-intense-fg ansi-bold">    741</span>       <span class="ansi-red-fg"># pylint: disable=protected-access</span>
+<span class="ansi-green-fg">--&gt; 742</span><span class="ansi-red-fg">       op = g._create_op_internal(op_type_name, inputs, dtypes=None,
+</span><span class="ansi-green-intense-fg ansi-bold">    743</span>                                  name<span class="ansi-blue-fg">=</span>scope<span class="ansi-blue-fg">,</span> input_types<span class="ansi-blue-fg">=</span>input_types<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/func_graph.py</span> in <span class="ansi-cyan-fg">_create_op_internal</span><span class="ansi-blue-fg">(self, op_type, inputs, dtypes, input_types, name, attrs, op_def, compute_device)</span>
+<span class="ansi-green-intense-fg ansi-bold">    592</span>       inputs<span class="ansi-blue-fg">[</span>i<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> inp
+<span class="ansi-green-fg">--&gt; 593</span><span class="ansi-red-fg">     return super(FuncGraph, self)._create_op_internal(  # pylint: disable=protected-access
+</span><span class="ansi-green-intense-fg ansi-bold">    594</span>         op_type<span class="ansi-blue-fg">,</span> inputs<span class="ansi-blue-fg">,</span> dtypes<span class="ansi-blue-fg">,</span> input_types<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> attrs<span class="ansi-blue-fg">,</span> op_def<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/ops.py</span> in <span class="ansi-cyan-fg">_create_op_internal</span><span class="ansi-blue-fg">(self, op_type, inputs, dtypes, input_types, name, attrs, op_def, compute_device)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3318</span>     <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_mutation_lock<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 3319</span><span class="ansi-red-fg">       ret = Operation(
+</span><span class="ansi-green-intense-fg ansi-bold">   3320</span>           node_def<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/ops.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, node_def, g, inputs, output_types, control_inputs, input_types, original_op, op_def)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1815</span>         op_def <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_graph<span class="ansi-blue-fg">.</span>_get_op_def<span class="ansi-blue-fg">(</span>node_def<span class="ansi-blue-fg">.</span>op<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 1816</span><span class="ansi-red-fg">       self._c_op = _create_c_op(self._graph, node_def, inputs,
+</span><span class="ansi-green-intense-fg ansi-bold">   1817</span>                                 control_input_ops, op_def)
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/ops.py</span> in <span class="ansi-cyan-fg">_create_c_op</span><span class="ansi-blue-fg">(graph, node_def, inputs, control_inputs, op_def)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1656</span>     <span class="ansi-red-fg"># Convert to ValueError for backwards compatibility.</span>
+<span class="ansi-green-fg">-&gt; 1657</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span>str<span class="ansi-blue-fg">(</span>e<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1658</span> 
+
+<span class="ansi-red-fg">ValueError</span>: Duplicate node name in graph: &#39;concat/values_0&#39;
+
+During handling of the above exception, another exception occurred:
+
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-60-f531da3a8495&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> K<span class="ansi-blue-fg">.</span>clear_session<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>test_make_variational<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-59-7ba46b6f4e26&gt;</span> in <span class="ansi-cyan-fg">test_make_variational</span><span class="ansi-blue-fg">(input_dim, dist_dim, batch_size)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     inputs <span class="ansi-blue-fg">=</span> tfkl<span class="ansi-blue-fg">.</span>Input<span class="ansi-blue-fg">(</span>shape<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span>input_dim<span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     q_dist <span class="ansi-blue-fg">=</span> make_variational<span class="ansi-blue-fg">(</span>inputs<span class="ansi-blue-fg">,</span> dist_dim<span class="ansi-blue-fg">,</span> init_std<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.1</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg">     </span>print<span class="ansi-blue-fg">(</span>q_dist<span class="ansi-blue-fg">,</span> q_dist<span class="ansi-blue-fg">.</span>sample<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> 
+<span class="ansi-green-intense-fg ansi-bold">      7</span>     <span class="ansi-red-fg">#model = tf.keras.Model(inputs=inputs, outputs=q_dist)</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow_probability/python/distributions/distribution.py</span> in <span class="ansi-cyan-fg">sample</span><span class="ansi-blue-fg">(self, sample_shape, seed, name, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    935</span>       samples<span class="ansi-blue-fg">:</span> a<span class="ansi-red-fg"> </span><span class="ansi-red-fg">`</span>Tensor<span class="ansi-red-fg">`</span> <span class="ansi-green-fg">with</span> prepended dimensions<span class="ansi-red-fg"> </span><span class="ansi-red-fg">`</span>sample_shape<span class="ansi-red-fg">`</span><span class="ansi-blue-fg">.</span>
+<span class="ansi-green-intense-fg ansi-bold">    936</span>     &#34;&#34;&#34;
+<span class="ansi-green-fg">--&gt; 937</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_call_sample_n<span class="ansi-blue-fg">(</span>sample_shape<span class="ansi-blue-fg">,</span> seed<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    938</span> 
+<span class="ansi-green-intense-fg ansi-bold">    939</span>   <span class="ansi-green-fg">def</span> _call_log_prob<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow_probability/python/distributions/transformed_distribution.py</span> in <span class="ansi-cyan-fg">_call_sample_n</span><span class="ansi-blue-fg">(self, sample_shape, seed, name, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    464</span>       <span class="ansi-red-fg"># event that we need to reinterpret the samples as part of the</span>
+<span class="ansi-green-intense-fg ansi-bold">    465</span>       <span class="ansi-red-fg"># event_shape.</span>
+<span class="ansi-green-fg">--&gt; 466</span><span class="ansi-red-fg">       </span>x <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_sample_n<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">,</span> seed<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>distribution_kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    467</span> 
+<span class="ansi-green-intense-fg ansi-bold">    468</span>       <span class="ansi-red-fg"># Next, we reshape `x` into its final form. We do this prior to the call</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow_probability/python/distributions/transformed_distribution.py</span> in <span class="ansi-cyan-fg">_sample_n</span><span class="ansi-blue-fg">(self, n, seed, **distribution_kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    442</span>         distribution_util<span class="ansi-blue-fg">.</span>pick_vector<span class="ansi-blue-fg">(</span>needs_rotation<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">[</span>n<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_empty<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    443</span>     ], axis=0)
+<span class="ansi-green-fg">--&gt; 444</span><span class="ansi-red-fg">     x = self.distribution.sample(sample_shape=sample_shape, seed=seed,
+</span><span class="ansi-green-intense-fg ansi-bold">    445</span>                                  **distribution_kwargs)
+<span class="ansi-green-intense-fg ansi-bold">    446</span>     x = self._maybe_rotate_dims(
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow_probability/python/distributions/distribution.py</span> in <span class="ansi-cyan-fg">sample</span><span class="ansi-blue-fg">(self, sample_shape, seed, name, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    935</span>       samples<span class="ansi-blue-fg">:</span> a<span class="ansi-red-fg"> </span><span class="ansi-red-fg">`</span>Tensor<span class="ansi-red-fg">`</span> <span class="ansi-green-fg">with</span> prepended dimensions<span class="ansi-red-fg"> </span><span class="ansi-red-fg">`</span>sample_shape<span class="ansi-red-fg">`</span><span class="ansi-blue-fg">.</span>
+<span class="ansi-green-intense-fg ansi-bold">    936</span>     &#34;&#34;&#34;
+<span class="ansi-green-fg">--&gt; 937</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_call_sample_n<span class="ansi-blue-fg">(</span>sample_shape<span class="ansi-blue-fg">,</span> seed<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    938</span> 
+<span class="ansi-green-intense-fg ansi-bold">    939</span>   <span class="ansi-green-fg">def</span> _call_log_prob<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow_probability/python/distributions/distribution.py</span> in <span class="ansi-cyan-fg">_call_sample_n</span><span class="ansi-blue-fg">(self, sample_shape, seed, name, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    912</span>       sample_shape, n = self._expand_sample_shape_to_vector(
+<span class="ansi-green-intense-fg ansi-bold">    913</span>           sample_shape, &#39;sample_shape&#39;)
+<span class="ansi-green-fg">--&gt; 914</span><span class="ansi-red-fg">       samples = self._sample_n(
+</span><span class="ansi-green-intense-fg ansi-bold">    915</span>           n, seed=seed() if callable(seed) else seed, **kwargs)
+<span class="ansi-green-intense-fg ansi-bold">    916</span>       batch_event_shape <span class="ansi-blue-fg">=</span> tf<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">(</span>samples<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">]</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow_probability/python/distributions/normal.py</span> in <span class="ansi-cyan-fg">_sample_n</span><span class="ansi-blue-fg">(self, n, seed)</span>
+<span class="ansi-green-intense-fg ansi-bold">    184</span>     loc <span class="ansi-blue-fg">=</span> tf<span class="ansi-blue-fg">.</span>convert_to_tensor<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>loc<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>     scale <span class="ansi-blue-fg">=</span> tf<span class="ansi-blue-fg">.</span>convert_to_tensor<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>scale<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 186</span><span class="ansi-red-fg">     shape = tf.concat([[n], self._batch_shape_tensor(loc=loc, scale=scale)],
+</span><span class="ansi-green-intense-fg ansi-bold">    187</span>                       axis=0)
+<span class="ansi-green-intense-fg ansi-bold">    188</span>     sampled = tf.random.normal(
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/util/dispatch.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    178</span>     <span class="ansi-blue-fg">&#34;&#34;&#34;Call target, and fall back on dispatchers if there is a TypeError.&#34;&#34;&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    179</span>     <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 180</span><span class="ansi-red-fg">       </span><span class="ansi-green-fg">return</span> target<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    181</span>     <span class="ansi-green-fg">except</span> <span class="ansi-blue-fg">(</span>TypeError<span class="ansi-blue-fg">,</span> ValueError<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    182</span>       <span class="ansi-red-fg"># Note: convert_to_eager_tensor currently raises a ValueError, not a</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/ops/array_ops.py</span> in <span class="ansi-cyan-fg">concat</span><span class="ansi-blue-fg">(values, axis, name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1604</span>           dtype=dtypes.int32).get_shape().assert_has_rank(0)
+<span class="ansi-green-intense-fg ansi-bold">   1605</span>       <span class="ansi-green-fg">return</span> identity<span class="ansi-blue-fg">(</span>values<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">=</span>name<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 1606</span><span class="ansi-red-fg">   </span><span class="ansi-green-fg">return</span> gen_array_ops<span class="ansi-blue-fg">.</span>concat_v2<span class="ansi-blue-fg">(</span>values<span class="ansi-blue-fg">=</span>values<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">=</span>axis<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">=</span>name<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1607</span> 
+<span class="ansi-green-intense-fg ansi-bold">   1608</span> 
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/ops/gen_array_ops.py</span> in <span class="ansi-cyan-fg">concat_v2</span><span class="ansi-blue-fg">(values, axis, name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1186</span>         &#34;&#39;concat_v2&#39; Op, not %r.&#34; % values)
+<span class="ansi-green-intense-fg ansi-bold">   1187</span>   _attr_N <span class="ansi-blue-fg">=</span> len<span class="ansi-blue-fg">(</span>values<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 1188</span><span class="ansi-red-fg">   _, _, _op, _outputs = _op_def_library._apply_op_helper(
+</span><span class="ansi-green-intense-fg ansi-bold">   1189</span>         &#34;ConcatV2&#34;, values=values, axis=axis, name=name)
+<span class="ansi-green-intense-fg ansi-bold">   1190</span>   _result <span class="ansi-blue-fg">=</span> _outputs<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">]</span>
+
+<span class="ansi-green-fg">~/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/framework/op_def_library.py</span> in <span class="ansi-cyan-fg">_apply_op_helper</span><span class="ansi-blue-fg">(op_type_name, name, **keywords)</span>
+<span class="ansi-green-intense-fg ansi-bold">    440</span>                               (prefix, dtype.name))
+<span class="ansi-green-intense-fg ansi-bold">    441</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 442</span><span class="ansi-red-fg">               </span><span class="ansi-green-fg">raise</span> TypeError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;%s that don&#39;t all match.&#34;</span> <span class="ansi-blue-fg">%</span> prefix<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    443</span>           <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    444</span>             raise TypeError(
+
+<span class="ansi-red-fg">TypeError</span>: Tensors in list passed to &#39;values&#39; of &#39;ConcatV2&#39; Op have types [int32, int32] that don&#39;t all match.</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># An example of how this would work in a variational autoencoder.</span>
+<span class="n">N_TIMES</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">N_SENSORS</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">N_SAMPLES</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">N_HIDDEN</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">KL_WEIGHT</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="n">t_vec</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">N_TIMES</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="n">N_TIMES</span>
+<span class="n">sig_vec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="o">*</span><span class="p">(</span><span class="n">t_vec</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">make_model</span><span class="p">(</span><span class="n">prior</span><span class="p">):</span>
+    <span class="n">input_</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">LATENT_SIZE</span><span class="p">,))</span>
+
+    <span class="c1"># Encoder</span>
+    <span class="n">make_latent_dist_fn</span><span class="p">,</span> <span class="n">latent_params</span> <span class="o">=</span> <span class="n">make_mvn_dist_fn</span><span class="p">(</span>
+        <span class="n">input_</span><span class="p">,</span> <span class="n">LATENT_SIZE</span><span class="p">,</span> <span class="n">offdiag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">loc_name</span><span class="o">=</span><span class="s2">&quot;latent_loc&quot;</span><span class="p">)</span>
+    <span class="n">q_latent</span> <span class="o">=</span> <span class="n">tfpl</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;q_latent&quot;</span><span class="p">,</span>
+        <span class="n">make_distribution_fn</span><span class="o">=</span><span class="n">make_latent_dist_fn</span><span class="p">,</span>
+        <span class="n">convert_to_tensor_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">N_SAMPLES</span><span class="p">),</span>
+        <span class="n">activity_regularizer</span><span class="o">=</span><span class="n">tfpl</span><span class="o">.</span><span class="n">KLDivergenceRegularizer</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span>
+                                                          <span class="n">use_exact_kl</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                          <span class="n">weight</span><span class="o">=</span><span class="n">KL_WEIGHT</span><span class="p">)</span>
+    <span class="p">)(</span><span class="n">latent_params</span><span class="p">)</span>
+
+    <span class="c1"># Decoder</span>
+    <span class="n">y_</span> <span class="o">=</span> <span class="n">q_latent</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/</span> <span class="n">sig_vec</span><span class="p">[:,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+    <span class="c1"># broadcast-add zeros to restore timesteps</span>
+    <span class="c1">#y_ = q_latent[..., tf.newaxis, :] + tf.zeros([N_TIMES, 1])</span>
+    <span class="c1">#y_ = tf.reshape(y_, [-1, N_TIMES, LATENT_SIZE])</span>
+    <span class="c1">#y_ = tfkl.LSTM(N_HIDDEN, return_sequences=True)(y_)</span>
+    <span class="c1">#y_ = tf.reshape(y_, [N_SAMPLES, -1, N_TIMES, N_HIDDEN])</span>
+    <span class="n">make_out_dist_fn</span><span class="p">,</span> <span class="n">out_dist_params</span> <span class="o">=</span> <span class="n">make_mvn_dist_fn</span><span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="n">N_SENSORS</span><span class="p">,</span> <span class="n">loc_name</span><span class="o">=</span><span class="s2">&quot;out_loc&quot;</span><span class="p">)</span>
+    <span class="n">p_out</span> <span class="o">=</span> <span class="n">tfpl</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span>
+        <span class="n">make_distribution_fn</span><span class="o">=</span><span class="n">make_out_dist_fn</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;p_out&quot;</span><span class="p">)(</span><span class="n">out_dist_params</span><span class="p">)</span>
+    <span class="c1"># no prior on the output.</span>
+
+    <span class="c1"># Model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">input_</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">q_latent</span><span class="p">,</span> <span class="n">p_out</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">model</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># Create a fake dataset to train the model.</span>
+<span class="n">LATENT_SIZE</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="c1"># The latents are sampled from a distribution with known parameters.</span>
+<span class="n">true_dist</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span>
+    <span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],</span>  <span class="c1"># must have length == LATENT_SIZE</span>
+    <span class="n">scale_diag</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># They parameterize sigmoid end points,</span>
+<span class="kn">from</span> <span class="nn">indl.misc.sigfuncs</span> <span class="kn">import</span> <span class="n">sigmoid</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="n">t_vec</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N_TIMES</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="n">N_TIMES</span><span class="p">)[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">f_sig</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">,</span> <span class="n">t_vec</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">x_offset</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1"># which are then mixed with a known mixing matrix</span>
+<span class="n">mix_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-.</span><span class="mi">28</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.48</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.34</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.41</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.28</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">,</span> <span class="mf">0.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="c1">#mix_mat = tf.convert_to_tensor(mix_mat)</span>
+
+
+<span class="k">def</span> <span class="nf">gen_ds</span><span class="p">(</span><span class="n">n_iters</span><span class="o">=</span><span class="mf">1e2</span><span class="p">,</span> <span class="n">latent_size</span><span class="o">=</span><span class="n">LATENT_SIZE</span><span class="p">):</span>
+    <span class="n">iter_ix</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">iter_ix</span> <span class="o">&lt;</span> <span class="n">n_iters</span><span class="p">:</span>
+        <span class="n">_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">latent_size</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">latent</span> <span class="o">=</span> <span class="n">true_dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">latent</span><span class="p">,</span> <span class="p">[</span><span class="n">latent_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">_y</span> <span class="o">=</span> <span class="n">f_sig</span><span class="p">(</span><span class="n">K</span><span class="o">=</span><span class="n">_y</span><span class="p">)</span>
+        <span class="n">_y</span> <span class="o">=</span> <span class="n">mix_mat</span> <span class="o">@</span> <span class="n">_y</span>
+        <span class="n">_y</span> <span class="o">=</span> <span class="n">_y</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">yield</span> <span class="n">_input</span><span class="p">,</span> <span class="n">_y</span>
+        <span class="n">iter_ix</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_generator</span><span class="p">(</span><span class="n">gen_ds</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="mf">1e2</span><span class="p">],</span> <span class="n">output_types</span><span class="o">=</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+                                    <span class="n">output_shapes</span><span class="o">=</span><span class="p">((</span><span class="n">LATENT_SIZE</span><span class="p">,),</span> <span class="p">(</span><span class="n">N_TIMES</span><span class="p">,</span> <span class="n">N_SENSORS</span><span class="p">)))</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">y</span><span class="p">)))</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># Train the model.</span>
+<span class="c1"># Try playing around with the 2nd loss_weights (below) and KL_WEIGHT (above).</span>
+<span class="n">N_EPOCHS</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">make_mvn_prior</span><span class="p">(</span><span class="n">LATENT_SIZE</span><span class="p">,</span> <span class="n">trainable_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trainable_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">offdiag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">model_</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="n">prior</span><span class="p">)</span>
+
+<span class="n">model_</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+               <span class="n">loss</span><span class="o">=</span><span class="p">[</span><span class="k">lambda</span> <span class="n">_</span><span class="p">,</span> <span class="n">model_latent</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">kl_divergence</span><span class="p">(</span><span class="n">model_latent</span><span class="p">,</span> <span class="n">prior</span><span class="p">),</span>
+                     <span class="k">lambda</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">model_out</span><span class="p">:</span> <span class="o">-</span><span class="n">model_out</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">y_true</span><span class="p">)],</span>
+               <span class="n">loss_weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">model_</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">N_EPOCHS</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Epoch 1/100
+17/17 - 0s - loss: 91.9389 - q_latent_loss: 4.6523 - p_out_loss: 90.5613
+Epoch 2/100
+17/17 - 0s - loss: 11531.2471 - q_latent_loss: 4.3536 - p_out_loss: 11529.9590
+Epoch 3/100
+17/17 - 0s - loss: 743.5315 - q_latent_loss: 4.1376 - p_out_loss: 742.3065
+Epoch 4/100
+17/17 - 0s - loss: 137048.2969 - q_latent_loss: 3.9767 - p_out_loss: 137047.1250
+Epoch 5/100
+17/17 - 0s - loss: 113.2025 - q_latent_loss: 3.8272 - p_out_loss: 112.0695
+Epoch 6/100
+17/17 - 0s - loss: 74.9116 - q_latent_loss: 3.7352 - p_out_loss: 73.8058
+Epoch 7/100
+17/17 - 0s - loss: 79.9207 - q_latent_loss: 3.6573 - p_out_loss: 78.8380
+Epoch 8/100
+17/17 - 0s - loss: 372.0323 - q_latent_loss: 3.5850 - p_out_loss: 370.9711
+Epoch 9/100
+17/17 - 0s - loss: 60.3690 - q_latent_loss: 3.5167 - p_out_loss: 59.3279
+Epoch 10/100
+17/17 - 0s - loss: 7418.3252 - q_latent_loss: 3.4512 - p_out_loss: 7417.3027
+Epoch 11/100
+17/17 - 0s - loss: 3513.5659 - q_latent_loss: 3.3824 - p_out_loss: 3512.5649
+Epoch 12/100
+17/17 - 0s - loss: 53.7796 - q_latent_loss: 3.3220 - p_out_loss: 52.7962
+Epoch 13/100
+17/17 - 0s - loss: 20.4849 - q_latent_loss: 3.2672 - p_out_loss: 19.5177
+Epoch 14/100
+17/17 - 0s - loss: 1562.3738 - q_latent_loss: 3.2157 - p_out_loss: 1561.4218
+Epoch 15/100
+17/17 - 0s - loss: 963.6710 - q_latent_loss: 3.1652 - p_out_loss: 962.7339
+Epoch 16/100
+17/17 - 0s - loss: 2838.6292 - q_latent_loss: 3.1165 - p_out_loss: 2837.7068
+Epoch 17/100
+17/17 - 0s - loss: 35.5000 - q_latent_loss: 3.0708 - p_out_loss: 34.5910
+Epoch 18/100
+17/17 - 0s - loss: 706.3328 - q_latent_loss: 3.0287 - p_out_loss: 705.4363
+Epoch 19/100
+17/17 - 0s - loss: 52.2510 - q_latent_loss: 2.9887 - p_out_loss: 51.3663
+Epoch 20/100
+17/17 - 0s - loss: 7950.6792 - q_latent_loss: 2.9512 - p_out_loss: 7949.8062
+Epoch 21/100
+17/17 - 0s - loss: 190.5290 - q_latent_loss: 2.9112 - p_out_loss: 189.6672
+Epoch 22/100
+17/17 - 0s - loss: 27.1404 - q_latent_loss: 2.8756 - p_out_loss: 26.2891
+Epoch 23/100
+17/17 - 0s - loss: 222.1122 - q_latent_loss: 2.8434 - p_out_loss: 221.2705
+Epoch 24/100
+17/17 - 0s - loss: 26.6817 - q_latent_loss: 2.8132 - p_out_loss: 25.8489
+Epoch 25/100
+17/17 - 0s - loss: 301.0465 - q_latent_loss: 2.7844 - p_out_loss: 300.2223
+Epoch 26/100
+17/17 - 0s - loss: 17.3472 - q_latent_loss: 2.7568 - p_out_loss: 16.5312
+Epoch 27/100
+17/17 - 0s - loss: 47.1069 - q_latent_loss: 2.7306 - p_out_loss: 46.2986
+Epoch 28/100
+17/17 - 0s - loss: 34.0318 - q_latent_loss: 2.7057 - p_out_loss: 33.2309
+Epoch 29/100
+17/17 - 0s - loss: 25.4790 - q_latent_loss: 2.6819 - p_out_loss: 24.6851
+Epoch 30/100
+17/17 - 0s - loss: 35.2237 - q_latent_loss: 2.6592 - p_out_loss: 34.4365
+Epoch 31/100
+17/17 - 0s - loss: 17.7497 - q_latent_loss: 2.6375 - p_out_loss: 16.9690
+Epoch 32/100
+17/17 - 0s - loss: 19.0096 - q_latent_loss: 2.6168 - p_out_loss: 18.2350
+Epoch 33/100
+17/17 - 0s - loss: 17.3889 - q_latent_loss: 2.5969 - p_out_loss: 16.6202
+Epoch 34/100
+17/17 - 0s - loss: 3164.2163 - q_latent_loss: 2.5783 - p_out_loss: 3163.4539
+Epoch 35/100
+17/17 - 0s - loss: 318.1325 - q_latent_loss: 2.5614 - p_out_loss: 317.3743
+Epoch 36/100
+17/17 - 0s - loss: 496.7764 - q_latent_loss: 2.5442 - p_out_loss: 496.0233
+Epoch 37/100
+17/17 - 0s - loss: 43.8554 - q_latent_loss: 2.5274 - p_out_loss: 43.1073
+Epoch 38/100
+17/17 - 0s - loss: 127.4449 - q_latent_loss: 2.5114 - p_out_loss: 126.7015
+Epoch 39/100
+17/17 - 0s - loss: 34.3881 - q_latent_loss: 2.4962 - p_out_loss: 33.6492
+Epoch 40/100
+17/17 - 0s - loss: 92.4194 - q_latent_loss: 2.4816 - p_out_loss: 91.6848
+Epoch 41/100
+17/17 - 0s - loss: 2711.8994 - q_latent_loss: 2.4669 - p_out_loss: 2711.1697
+Epoch 42/100
+17/17 - 0s - loss: 32.7170 - q_latent_loss: 2.4484 - p_out_loss: 31.9922
+Epoch 43/100
+17/17 - 0s - loss: 368.3795 - q_latent_loss: 2.4338 - p_out_loss: 367.6590
+Epoch 44/100
+17/17 - 0s - loss: 185.1732 - q_latent_loss: 2.4207 - p_out_loss: 184.4566
+Epoch 45/100
+17/17 - 0s - loss: 1496.3325 - q_latent_loss: 2.4090 - p_out_loss: 1495.6195
+Epoch 46/100
+17/17 - 0s - loss: 40.2950 - q_latent_loss: 2.3979 - p_out_loss: 39.5852
+Epoch 47/100
+17/17 - 0s - loss: 3341.2693 - q_latent_loss: 2.3869 - p_out_loss: 3340.5627
+Epoch 48/100
+17/17 - 0s - loss: 317.7818 - q_latent_loss: 2.3705 - p_out_loss: 317.0801
+Epoch 49/100
+17/17 - 0s - loss: 129.0085 - q_latent_loss: 2.3577 - p_out_loss: 128.3107
+Epoch 50/100
+17/17 - 0s - loss: 677.0181 - q_latent_loss: 2.3475 - p_out_loss: 676.3232
+Epoch 51/100
+17/17 - 0s - loss: 44.6301 - q_latent_loss: 2.3379 - p_out_loss: 43.9381
+Epoch 52/100
+17/17 - 0s - loss: 13.6527 - q_latent_loss: 2.3290 - p_out_loss: 12.9633
+Epoch 53/100
+17/17 - 0s - loss: 2174.0337 - q_latent_loss: 2.3206 - p_out_loss: 2173.3469
+Epoch 54/100
+17/17 - 0s - loss: 85.2265 - q_latent_loss: 2.3118 - p_out_loss: 84.5422
+Epoch 55/100
+17/17 - 0s - loss: 13.3743 - q_latent_loss: 2.3037 - p_out_loss: 12.6924
+Epoch 56/100
+17/17 - 0s - loss: 46996.4805 - q_latent_loss: 2.2929 - p_out_loss: 46995.8008
+Epoch 57/100
+17/17 - 0s - loss: 23.0730 - q_latent_loss: 2.2527 - p_out_loss: 22.4061
+Epoch 58/100
+17/17 - 0s - loss: 11.3692 - q_latent_loss: 2.2361 - p_out_loss: 10.7074
+Epoch 59/100
+17/17 - 0s - loss: 25.0329 - q_latent_loss: 2.2285 - p_out_loss: 24.3733
+Epoch 60/100
+17/17 - 0s - loss: 17.7706 - q_latent_loss: 2.2227 - p_out_loss: 17.1126
+Epoch 61/100
+17/17 - 0s - loss: 10.4981 - q_latent_loss: 2.2176 - p_out_loss: 9.8417
+Epoch 62/100
+17/17 - 0s - loss: 32.7279 - q_latent_loss: 2.2127 - p_out_loss: 32.0729
+Epoch 63/100
+17/17 - 0s - loss: 30.3548 - q_latent_loss: 2.2081 - p_out_loss: 29.7012
+Epoch 64/100
+17/17 - 0s - loss: 30.8280 - q_latent_loss: 2.2037 - p_out_loss: 30.1757
+Epoch 65/100
+17/17 - 0s - loss: 41.9700 - q_latent_loss: 2.1996 - p_out_loss: 41.3189
+Epoch 66/100
+17/17 - 0s - loss: 54.7435 - q_latent_loss: 2.1956 - p_out_loss: 54.0936
+Epoch 67/100
+17/17 - 0s - loss: 43.0750 - q_latent_loss: 2.1918 - p_out_loss: 42.4262
+Epoch 68/100
+17/17 - 0s - loss: 243.1561 - q_latent_loss: 2.1882 - p_out_loss: 242.5083
+Epoch 69/100
+17/17 - 0s - loss: 22.0350 - q_latent_loss: 2.1842 - p_out_loss: 21.3885
+Epoch 70/100
+17/17 - 0s - loss: 99.8952 - q_latent_loss: 2.1805 - p_out_loss: 99.2498
+Epoch 71/100
+17/17 - 0s - loss: 31.7489 - q_latent_loss: 2.1772 - p_out_loss: 31.1044
+Epoch 72/100
+17/17 - 0s - loss: 10.3156 - q_latent_loss: 2.1741 - p_out_loss: 9.6721
+Epoch 73/100
+17/17 - 0s - loss: 10.8083 - q_latent_loss: 2.1710 - p_out_loss: 10.1656
+Epoch 74/100
+17/17 - 0s - loss: 149.1215 - q_latent_loss: 2.1682 - p_out_loss: 148.4797
+Epoch 75/100
+17/17 - 0s - loss: 11.4474 - q_latent_loss: 2.1655 - p_out_loss: 10.8064
+Epoch 76/100
+17/17 - 0s - loss: 11.3532 - q_latent_loss: 2.1629 - p_out_loss: 10.7130
+Epoch 77/100
+17/17 - 0s - loss: 9.8263 - q_latent_loss: 2.1603 - p_out_loss: 9.1868
+Epoch 78/100
+17/17 - 0s - loss: 12.8481 - q_latent_loss: 2.1578 - p_out_loss: 12.2094
+Epoch 79/100
+17/17 - 0s - loss: 10.0819 - q_latent_loss: 2.1554 - p_out_loss: 9.4439
+Epoch 80/100
+17/17 - 0s - loss: 9.9589 - q_latent_loss: 2.1531 - p_out_loss: 9.3216
+Epoch 81/100
+17/17 - 0s - loss: 148.1879 - q_latent_loss: 2.1508 - p_out_loss: 147.5513
+Epoch 82/100
+17/17 - 0s - loss: 13.6919 - q_latent_loss: 2.1483 - p_out_loss: 13.0560
+Epoch 83/100
+17/17 - 0s - loss: 11.4130 - q_latent_loss: 2.1462 - p_out_loss: 10.7777
+Epoch 84/100
+17/17 - 0s - loss: 62.1876 - q_latent_loss: 2.1442 - p_out_loss: 61.5529
+Epoch 85/100
+17/17 - 0s - loss: 37.1363 - q_latent_loss: 2.1424 - p_out_loss: 36.5021
+Epoch 86/100
+17/17 - 0s - loss: 9.0239 - q_latent_loss: 2.1406 - p_out_loss: 8.3903
+Epoch 87/100
+17/17 - 0s - loss: 9.6573 - q_latent_loss: 2.1389 - p_out_loss: 9.0242
+Epoch 88/100
+17/17 - 0s - loss: 16.5087 - q_latent_loss: 2.1371 - p_out_loss: 15.8761
+Epoch 89/100
+17/17 - 0s - loss: 9.0933 - q_latent_loss: 2.1355 - p_out_loss: 8.4612
+Epoch 90/100
+17/17 - 0s - loss: 11.1045 - q_latent_loss: 2.1339 - p_out_loss: 10.4729
+Epoch 91/100
+17/17 - 0s - loss: 14.6627 - q_latent_loss: 2.1323 - p_out_loss: 14.0315
+Epoch 92/100
+17/17 - 0s - loss: 12.7246 - q_latent_loss: 2.1308 - p_out_loss: 12.0939
+Epoch 93/100
+17/17 - 0s - loss: 18.2482 - q_latent_loss: 2.1294 - p_out_loss: 17.6179
+Epoch 94/100
+17/17 - 0s - loss: 12.0889 - q_latent_loss: 2.1280 - p_out_loss: 11.4590
+Epoch 95/100
+17/17 - 0s - loss: 35.7015 - q_latent_loss: 2.1267 - p_out_loss: 35.0720
+Epoch 96/100
+17/17 - 0s - loss: 156.0881 - q_latent_loss: 2.1253 - p_out_loss: 155.4590
+Epoch 97/100
+17/17 - 0s - loss: 8.8568 - q_latent_loss: 2.1240 - p_out_loss: 8.2280
+Epoch 98/100
+17/17 - 0s - loss: 10.9563 - q_latent_loss: 2.1228 - p_out_loss: 10.3279
+Epoch 99/100
+17/17 - 0s - loss: 10.1586 - q_latent_loss: 2.1217 - p_out_loss: 9.5306
+Epoch 100/100
+17/17 - 0s - loss: 14.0194 - q_latent_loss: 2.1206 - p_out_loss: 13.3917
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">lat_wts</span> <span class="o">=</span> <span class="n">model_</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;latent_loc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">weights</span>
+<span class="n">lat_locs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">LATENT_SIZE</span><span class="p">))</span> <span class="o">@</span> <span class="n">lat_wts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="n">lat_wts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">mix_wts</span> <span class="o">=</span> <span class="n">model_</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;out_loc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">weights</span>
+<span class="n">model_out</span> <span class="o">=</span> <span class="n">lat_locs</span> <span class="o">@</span> <span class="n">mix_wts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="n">mix_wts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">true_out</span> <span class="o">=</span> <span class="n">mix_mat</span> <span class="o">@</span> <span class="n">true_dist</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model est lat: </span><span class="si">{</span><span class="n">lat_locs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model est out: </span><span class="si">{</span><span class="n">model_out</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;prior mean: </span><span class="si">{</span><span class="n">prior</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;true lat: </span><span class="si">{</span><span class="n">true_dist</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;true out: </span><span class="si">{</span><span class="n">true_out</span><span class="o">.</span><span class="n">T</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Model est lat: [[ 0.51195845 -1.02728739  0.67845761 -0.11073773]]
+Model est out: [[ 0.10048061  1.36010552  0.30864524 -0.09840383  1.17217551 -0.67099368
+   0.95406085  0.03414997]]
+prior mean: [ 0.5117957  -0.8991166   0.66152537 -0.11197621]
+true lat: [-1.  1.  5. -5.]
+true out: [ 0.12000006  2.4699998  -2.76       -2.5         1.53       -1.3
+  1.31        0.05999994]
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># test LearnableMultivariateNormalDiag</span>
+<span class="n">prior_factory</span> <span class="o">=</span> <span class="n">LearnableMultivariateNormalDiag</span><span class="p">(</span><span class="n">LATENT_SIZE</span><span class="p">)</span>
+<span class="n">learnable_prior</span> <span class="o">=</span> <span class="n">prior_factory</span><span class="p">()</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">learnable_prior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">learnable_prior</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>(100, 64, 4)
+(&lt;tf.Variable &#39;learnable_multivariate_normal_diag_2/mean:0&#39; shape=(4,) dtype=float32, numpy=array([ 0.16748714, -0.1799583 ,  0.0387747 ,  0.11378615], dtype=float32)&gt;, &lt;tf.Variable &#39;learnable_multivariate_normal_diag_2/transformed_scale:0&#39; shape=(4,) dtype=float32, numpy=array([-0.11407143,  0.06062925,  0.02439827, -0.01735771], dtype=float32)&gt;)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">model_</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="n">learnable_prior</span><span class="p">)</span>
+
+<span class="n">model_</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+               <span class="n">loss</span><span class="o">=</span><span class="p">[</span><span class="k">lambda</span> <span class="n">_</span><span class="p">,</span> <span class="n">model_latent</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">kl_divergence</span><span class="p">(</span><span class="n">model_latent</span><span class="p">,</span> <span class="n">learnable_prior</span><span class="p">),</span>
+                     <span class="k">lambda</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">model_out</span><span class="p">:</span> <span class="o">-</span><span class="n">model_out</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">y_true</span><span class="p">)],</span>
+               <span class="n">loss_weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">learnable_prior</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">_</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">model_</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">])</span>
+
+<span class="n">hist</span> <span class="o">=</span> <span class="n">model_</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">N_EPOCHS</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">lat_wts</span> <span class="o">=</span> <span class="n">model_</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;latent_loc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">weights</span>
+<span class="n">lat_locs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">LATENT_SIZE</span><span class="p">))</span> <span class="o">@</span> <span class="n">lat_wts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="n">lat_wts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">mix_wts</span> <span class="o">=</span> <span class="n">model_</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;out_loc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">weights</span>
+<span class="n">model_out</span> <span class="o">=</span> <span class="n">lat_locs</span> <span class="o">@</span> <span class="n">mix_wts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="n">mix_wts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">true_out</span> <span class="o">=</span> <span class="n">mix_mat</span> <span class="o">@</span> <span class="n">true_dist</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model est lat: </span><span class="si">{</span><span class="n">lat_locs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model est out: </span><span class="si">{</span><span class="n">model_out</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;prior mean: </span><span class="si">{</span><span class="n">learnable_prior</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;true lat: </span><span class="si">{</span><span class="n">true_dist</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;true out: </span><span class="si">{</span><span class="n">true_out</span><span class="o">.</span><span class="n">T</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>(&lt;tf.Variable &#39;learnable_multivariate_normal_diag_2/mean:0&#39; shape=(4,) dtype=float32, numpy=array([ 0.16748714, -0.1799583 ,  0.0387747 ,  0.11378615], dtype=float32)&gt;, &lt;tf.Variable &#39;learnable_multivariate_normal_diag_2/transformed_scale:0&#39; shape=(4,) dtype=float32, numpy=array([-0.11407143,  0.06062925,  0.02439827, -0.01735771], dtype=float32)&gt;)
+[&#39;dense/kernel:0&#39;, &#39;dense/bias:0&#39;, &#39;latent_loc/kernel:0&#39;, &#39;latent_loc/bias:0&#39;, &#39;dense_1/kernel:0&#39;, &#39;dense_1/bias:0&#39;, &#39;out_loc/kernel:0&#39;, &#39;out_loc/bias:0&#39;, &#39;learnable_multivariate_normal_diag_2/mean:0&#39;, &#39;learnable_multivariate_normal_diag_2/transformed_scale:0&#39;]
+Epoch 1/100
+17/17 - 0s - loss: 266.6295 - q_latent_loss: 6.5640 - p_out_loss: 264.6859
+Epoch 2/100
+17/17 - 0s - loss: 2032.0966 - q_latent_loss: 6.2853 - p_out_loss: 2030.2358
+Epoch 3/100
+17/17 - 0s - loss: 83.5799 - q_latent_loss: 6.0718 - p_out_loss: 81.7824
+Epoch 4/100
+17/17 - 0s - loss: 82.7522 - q_latent_loss: 5.8942 - p_out_loss: 81.0072
+Epoch 5/100
+17/17 - 0s - loss: 59.2224 - q_latent_loss: 5.7269 - p_out_loss: 57.5269
+Epoch 6/100
+17/17 - 0s - loss: 38.8948 - q_latent_loss: 5.5706 - p_out_loss: 37.2456
+Epoch 7/100
+17/17 - 0s - loss: 47.8537 - q_latent_loss: 5.4227 - p_out_loss: 46.2483
+Epoch 8/100
+17/17 - 0s - loss: 60.9186 - q_latent_loss: 5.2828 - p_out_loss: 59.3546
+Epoch 9/100
+17/17 - 0s - loss: 80.7008 - q_latent_loss: 5.1479 - p_out_loss: 79.1768
+Epoch 10/100
+17/17 - 0s - loss: 29.5548 - q_latent_loss: 5.0204 - p_out_loss: 28.0686
+Epoch 11/100
+17/17 - 0s - loss: 100.5337 - q_latent_loss: 4.9013 - p_out_loss: 99.0827
+Epoch 12/100
+17/17 - 0s - loss: 208.5356 - q_latent_loss: 4.7856 - p_out_loss: 207.1189
+Epoch 13/100
+17/17 - 0s - loss: 47.4895 - q_latent_loss: 4.6692 - p_out_loss: 46.1072
+Epoch 14/100
+17/17 - 0s - loss: 51.8070 - q_latent_loss: 4.5624 - p_out_loss: 50.4563
+Epoch 15/100
+17/17 - 0s - loss: 49.2825 - q_latent_loss: 4.4640 - p_out_loss: 47.9610
+Epoch 16/100
+17/17 - 0s - loss: 63.7341 - q_latent_loss: 4.3716 - p_out_loss: 62.4399
+Epoch 17/100
+17/17 - 0s - loss: 35.2299 - q_latent_loss: 4.2837 - p_out_loss: 33.9617
+Epoch 18/100
+17/17 - 0s - loss: 45.8432 - q_latent_loss: 4.2006 - p_out_loss: 44.5997
+Epoch 19/100
+17/17 - 0s - loss: 25.7876 - q_latent_loss: 4.1215 - p_out_loss: 24.5675
+Epoch 20/100
+17/17 - 0s - loss: 268.8558 - q_latent_loss: 4.0396 - p_out_loss: 267.6599
+Epoch 21/100
+17/17 - 0s - loss: 45.2869 - q_latent_loss: 3.9513 - p_out_loss: 44.1171
+Epoch 22/100
+17/17 - 0s - loss: 30.1766 - q_latent_loss: 3.8787 - p_out_loss: 29.0284
+Epoch 23/100
+17/17 - 0s - loss: 32.2969 - q_latent_loss: 3.8108 - p_out_loss: 31.1688
+Epoch 24/100
+17/17 - 0s - loss: 64.0437 - q_latent_loss: 3.7457 - p_out_loss: 62.9348
+Epoch 25/100
+17/17 - 0s - loss: 39.9464 - q_latent_loss: 3.6825 - p_out_loss: 38.8562
+Epoch 26/100
+17/17 - 0s - loss: 33.5094 - q_latent_loss: 3.6220 - p_out_loss: 32.4372
+Epoch 27/100
+17/17 - 0s - loss: 31.4306 - q_latent_loss: 3.5643 - p_out_loss: 30.3755
+Epoch 28/100
+17/17 - 0s - loss: 27.8061 - q_latent_loss: 3.5087 - p_out_loss: 26.7674
+Epoch 29/100
+17/17 - 0s - loss: 65.8272 - q_latent_loss: 3.4540 - p_out_loss: 64.8047
+Epoch 30/100
+17/17 - 0s - loss: 25.9475 - q_latent_loss: 3.4009 - p_out_loss: 24.9408
+Epoch 31/100
+17/17 - 0s - loss: 30.2780 - q_latent_loss: 3.3515 - p_out_loss: 29.2859
+Epoch 32/100
+17/17 - 0s - loss: 21.8850 - q_latent_loss: 3.3044 - p_out_loss: 20.9068
+Epoch 33/100
+17/17 - 0s - loss: 36.6851 - q_latent_loss: 3.2587 - p_out_loss: 35.7204
+Epoch 34/100
+17/17 - 0s - loss: 25.5569 - q_latent_loss: 3.2120 - p_out_loss: 24.6061
+Epoch 35/100
+17/17 - 0s - loss: 24.6902 - q_latent_loss: 3.1682 - p_out_loss: 23.7523
+Epoch 36/100
+17/17 - 0s - loss: 116.0450 - q_latent_loss: 3.1269 - p_out_loss: 115.1194
+Epoch 37/100
+17/17 - 0s - loss: 20.0418 - q_latent_loss: 3.0908 - p_out_loss: 19.1268
+Epoch 38/100
+17/17 - 0s - loss: 56.1398 - q_latent_loss: 3.0497 - p_out_loss: 55.2370
+Epoch 39/100
+17/17 - 0s - loss: 27.5171 - q_latent_loss: 3.0067 - p_out_loss: 26.6270
+Epoch 40/100
+17/17 - 0s - loss: 20.7006 - q_latent_loss: 2.9684 - p_out_loss: 19.8219
+Epoch 41/100
+17/17 - 0s - loss: 26.9046 - q_latent_loss: 2.9328 - p_out_loss: 26.0364
+Epoch 42/100
+17/17 - 0s - loss: 18.7693 - q_latent_loss: 2.8996 - p_out_loss: 17.9110
+Epoch 43/100
+17/17 - 0s - loss: 22.3650 - q_latent_loss: 2.8670 - p_out_loss: 21.5163
+Epoch 44/100
+17/17 - 0s - loss: 32.9155 - q_latent_loss: 2.8352 - p_out_loss: 32.0763
+Epoch 45/100
+17/17 - 0s - loss: 19.9130 - q_latent_loss: 2.8037 - p_out_loss: 19.0830
+Epoch 46/100
+17/17 - 0s - loss: 19.9001 - q_latent_loss: 2.7740 - p_out_loss: 19.0789
+Epoch 47/100
+17/17 - 0s - loss: 25.4838 - q_latent_loss: 2.7436 - p_out_loss: 24.6716
+Epoch 48/100
+17/17 - 0s - loss: 23.9622 - q_latent_loss: 2.7135 - p_out_loss: 23.1589
+Epoch 49/100
+17/17 - 0s - loss: 20.7703 - q_latent_loss: 2.6849 - p_out_loss: 19.9756
+Epoch 50/100
+17/17 - 0s - loss: 19.6302 - q_latent_loss: 2.6576 - p_out_loss: 18.8435
+Epoch 51/100
+17/17 - 0s - loss: 18.7125 - q_latent_loss: 2.6321 - p_out_loss: 17.9334
+Epoch 52/100
+17/17 - 0s - loss: 21.4065 - q_latent_loss: 2.6073 - p_out_loss: 20.6347
+Epoch 53/100
+17/17 - 0s - loss: 37.3685 - q_latent_loss: 2.5831 - p_out_loss: 36.6039
+Epoch 54/100
+17/17 - 0s - loss: 15.8975 - q_latent_loss: 2.5606 - p_out_loss: 15.1395
+Epoch 55/100
+17/17 - 0s - loss: 15.6574 - q_latent_loss: 2.5387 - p_out_loss: 14.9059
+Epoch 56/100
+17/17 - 0s - loss: 28.7901 - q_latent_loss: 2.5174 - p_out_loss: 28.0449
+Epoch 57/100
+17/17 - 0s - loss: 99.3240 - q_latent_loss: 2.4972 - p_out_loss: 98.5848
+Epoch 58/100
+17/17 - 0s - loss: 19.6783 - q_latent_loss: 2.4761 - p_out_loss: 18.9453
+Epoch 59/100
+17/17 - 0s - loss: 18.9958 - q_latent_loss: 2.4563 - p_out_loss: 18.2688
+Epoch 60/100
+17/17 - 0s - loss: 21.3663 - q_latent_loss: 2.4364 - p_out_loss: 20.6451
+Epoch 61/100
+17/17 - 0s - loss: 26.8008 - q_latent_loss: 2.4179 - p_out_loss: 26.0850
+Epoch 62/100
+17/17 - 0s - loss: 13.9355 - q_latent_loss: 2.3984 - p_out_loss: 13.2256
+Epoch 63/100
+17/17 - 0s - loss: 14.0786 - q_latent_loss: 2.3803 - p_out_loss: 13.3740
+Epoch 64/100
+17/17 - 0s - loss: 20.6991 - q_latent_loss: 2.3634 - p_out_loss: 19.9995
+Epoch 65/100
+17/17 - 0s - loss: 33.9438 - q_latent_loss: 2.3476 - p_out_loss: 33.2488
+Epoch 66/100
+17/17 - 0s - loss: 19.5023 - q_latent_loss: 2.3325 - p_out_loss: 18.8118
+Epoch 67/100
+17/17 - 0s - loss: 16.1214 - q_latent_loss: 2.3179 - p_out_loss: 15.4353
+Epoch 68/100
+17/17 - 0s - loss: 33.3983 - q_latent_loss: 2.3044 - p_out_loss: 32.7162
+Epoch 69/100
+17/17 - 0s - loss: 14.1833 - q_latent_loss: 2.2933 - p_out_loss: 13.5045
+Epoch 70/100
+17/17 - 0s - loss: 33.0913 - q_latent_loss: 2.2802 - p_out_loss: 32.4163
+Epoch 71/100
+17/17 - 0s - loss: 15.5565 - q_latent_loss: 2.2661 - p_out_loss: 14.8857
+Epoch 72/100
+17/17 - 0s - loss: 23.7552 - q_latent_loss: 2.2522 - p_out_loss: 23.0885
+Epoch 73/100
+17/17 - 0s - loss: 15.8186 - q_latent_loss: 2.2402 - p_out_loss: 15.1554
+Epoch 74/100
+17/17 - 0s - loss: 15.8109 - q_latent_loss: 2.2277 - p_out_loss: 15.1514
+Epoch 75/100
+17/17 - 0s - loss: 23.2216 - q_latent_loss: 2.2153 - p_out_loss: 22.5659
+Epoch 76/100
+17/17 - 0s - loss: 17.1244 - q_latent_loss: 2.2021 - p_out_loss: 16.4725
+Epoch 77/100
+17/17 - 0s - loss: 20.2818 - q_latent_loss: 2.1875 - p_out_loss: 19.6343
+Epoch 78/100
+17/17 - 0s - loss: 20.1146 - q_latent_loss: 2.1751 - p_out_loss: 19.4708
+Epoch 79/100
+17/17 - 0s - loss: 12.0626 - q_latent_loss: 2.1647 - p_out_loss: 11.4218
+Epoch 80/100
+17/17 - 0s - loss: 17.5959 - q_latent_loss: 2.1547 - p_out_loss: 16.9580
+Epoch 81/100
+17/17 - 0s - loss: 46.9798 - q_latent_loss: 2.1428 - p_out_loss: 46.3454
+Epoch 82/100
+17/17 - 0s - loss: 20.0080 - q_latent_loss: 2.1244 - p_out_loss: 19.3792
+Epoch 83/100
+17/17 - 0s - loss: 11.8902 - q_latent_loss: 2.1120 - p_out_loss: 11.2651
+Epoch 84/100
+17/17 - 0s - loss: 17.5359 - q_latent_loss: 2.1015 - p_out_loss: 16.9139
+Epoch 85/100
+17/17 - 0s - loss: 14.8084 - q_latent_loss: 2.0917 - p_out_loss: 14.1892
+Epoch 86/100
+17/17 - 0s - loss: 9.6016 - q_latent_loss: 2.0823 - p_out_loss: 8.9852
+Epoch 87/100
+17/17 - 0s - loss: 13.4432 - q_latent_loss: 2.0736 - p_out_loss: 12.8294
+Epoch 88/100
+17/17 - 0s - loss: 16.5978 - q_latent_loss: 2.0652 - p_out_loss: 15.9865
+Epoch 89/100
+17/17 - 0s - loss: 21.3484 - q_latent_loss: 2.0557 - p_out_loss: 20.7399
+Epoch 90/100
+17/17 - 0s - loss: 11.3400 - q_latent_loss: 2.0439 - p_out_loss: 10.7350
+Epoch 91/100
+17/17 - 0s - loss: 14.2551 - q_latent_loss: 2.0345 - p_out_loss: 13.6529
+Epoch 92/100
+17/17 - 0s - loss: 14.2384 - q_latent_loss: 2.0268 - p_out_loss: 13.6385
+Epoch 93/100
+17/17 - 0s - loss: 16.3489 - q_latent_loss: 2.0194 - p_out_loss: 15.7511
+Epoch 94/100
+17/17 - 0s - loss: 14.2265 - q_latent_loss: 2.0118 - p_out_loss: 13.6310
+Epoch 95/100
+17/17 - 0s - loss: 11.5992 - q_latent_loss: 2.0041 - p_out_loss: 11.0060
+Epoch 96/100
+17/17 - 0s - loss: 11.7333 - q_latent_loss: 1.9971 - p_out_loss: 11.1421
+Epoch 97/100
+17/17 - 0s - loss: 12.1329 - q_latent_loss: 1.9904 - p_out_loss: 11.5438
+Epoch 98/100
+17/17 - 0s - loss: 13.7211 - q_latent_loss: 1.9832 - p_out_loss: 13.1341
+Epoch 99/100
+17/17 - 0s - loss: 37.2112 - q_latent_loss: 1.9745 - p_out_loss: 36.6267
+Epoch 100/100
+17/17 - 0s - loss: 9.3972 - q_latent_loss: 1.9630 - p_out_loss: 8.8161
+Model est lat: [[ 2.51292503 -1.26424221 -1.11180196 -0.02588509]]
+Model est out: [[-0.27425705  2.39304429 -2.49596335  0.29950965  1.37276651 -0.43098222
+  -0.45473986  0.07839915]]
+prior mean: [ 1.3514248  -1.2266612  -0.8751619  -0.03475915]
+true lat: [-1.  1.  5. -5.]
+true out: [ 0.12000006  2.4699998  -2.76       -2.5         1.53       -1.3
+  1.31        0.05999994]
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="latent-dynamic-factor">Latent Dynamic Factor</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># Return 3 outputs, the first 2 are null</span>
+<span class="c1">#ds_dyn = ds.map(lambda x, y: (x, (y[0], y[0], y[1])))</span>
+<span class="n">ds_dyn</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">KL_WEIGHT</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">LATENT_SIZE_DYNAMIC</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Integer dimensionality of each dynamic, time-variant latent variable `z_t`.</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">VariationalLSTMCell</span><span class="p">(</span><span class="n">tfkl</span><span class="o">.</span><span class="n">LSTMCell</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span>
+                 <span class="n">make_dist_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">make_dist_model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VariationalLSTMCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_dist_fn</span> <span class="o">=</span> <span class="n">make_dist_fn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_dist_model</span> <span class="o">=</span> <span class="n">make_dist_model</span>
+
+        <span class="c1"># For some reason the below code doesn&#39;t work during build.</span>
+        <span class="c1"># So I don&#39;t know how to use the outer VariationalRNN to set this cell&#39;s output_size</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_dist_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">make_dist_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale_diag</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_dist_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fake_cell_output</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Input</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,))</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;VarLSTMCell_loc&quot;</span><span class="p">)(</span><span class="n">fake_cell_output</span><span class="p">)</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;VarLSTMCell_scale&quot;</span><span class="p">)(</span><span class="n">fake_cell_output</span><span class="p">)</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softplus</span><span class="p">(</span><span class="n">scale</span> <span class="o">+</span> <span class="n">scale_shift</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-5</span>
+            <span class="n">dist_layer</span> <span class="o">=</span> <span class="n">tfpl</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span>
+                <span class="n">make_distribution_fn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">make_dist_fn</span><span class="p">,</span>
+                <span class="c1"># TODO: convert_to_tensor_fn=lambda s: s.sample(N_SAMPLES)</span>
+            <span class="p">)([</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">make_dist_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">fake_cell_output</span><span class="p">,</span> <span class="n">dist_layer</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VariationalLSTMCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+        <span class="c1"># It would be good to defer making self.make_dist_model until here,</span>
+        <span class="c1"># but it doesn&#39;t work for some reason.</span>
+
+    <span class="c1">#def input_zero(self, inputs_):</span>
+    <span class="c1">#    input0 = inputs_[..., -1, :]</span>
+    <span class="c1">#    input0 = tf.matmul(input0, tf.zeros((input0.shape[-1], self.units)))</span>
+    <span class="c1">#    dist0 = self.make_dist_model(input0)</span>
+    <span class="c1">#    return dist0</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">output</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">VariationalLSTMCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_dist_model</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">state</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">LearnableMultivariateNormalDiagCell</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1">#tmp.build((None, 10, 5))</span>
+<span class="c1">#tmp.summary()</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">DynamicEncoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dynamic_encoder&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DynamicEncoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dynamic_prior_cell</span> <span class="o">=</span> <span class="n">LearnableMultivariateNormalDiagCell</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_times</span> <span class="o">=</span> <span class="n">n_times</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">output_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;loc&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unxf_scale</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">output_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;scale&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_z_layer</span> <span class="o">=</span> <span class="n">tfpl</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span>
+            <span class="n">make_distribution_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale_diag</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;q_z&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="c1"># Assume inputs doesn&#39;t have time-axis. Broadcast-add zeros to add time axis.</span>
+        <span class="n">inputs_</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">n_times</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">inputs_</span><span class="p">)</span>
+        <span class="n">unxf_scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unxf_scale</span><span class="p">(</span><span class="n">inputs_</span><span class="p">)</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">softplus</span><span class="p">(</span><span class="n">unxf_scale</span> <span class="o">+</span> <span class="n">scale_shift</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-5</span>
+        <span class="n">q_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_z_layer</span><span class="p">([</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="p">])</span>
+        <span class="c1"># _, dynamic_prior = self.sample_dynamic_prior(self.n_times)</span>
+        <span class="c1">#kld = tfd.kl_divergence(q_z, dynamic_prior)</span>
+        <span class="c1">#kld = tf.reduce_sum(kld, axis=-1)</span>
+        <span class="c1">#kld = tf.reduce_mean(kld)</span>
+        <span class="c1">#self.add_loss(KL_WEIGHT * kld)</span>
+        <span class="k">return</span> <span class="n">q_z</span>
+
+    <span class="k">def</span> <span class="nf">sample_dynamic_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">batches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Samples LSTM cell-&gt;MVNDiag for each steps</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">          steps: Number of timesteps to sample for each sequence.</span>
+<span class="sd">          samples: Number of samples to draw from the latent distribution.</span>
+<span class="sd">          batch_size: Number of sequences to sample.</span>
+<span class="sd">          fixed: Boolean for whether or not to share the same random</span>
+<span class="sd">            sample across all sequences.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          A tuple of a sample tensor of shape [samples, batch_size, steps,</span>
+<span class="sd">          latent_size], and a MultivariateNormalDiag distribution from which</span>
+<span class="sd">          the tensor was sampled, with event shape [latent_size], and batch</span>
+<span class="sd">          shape [samples, 1, length] if fixed or [samples, batch_size,</span>
+<span class="sd">          length] otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">fixed</span><span class="p">:</span>
+            <span class="n">sample_batch_size</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sample_batch_size</span> <span class="o">=</span> <span class="n">batches</span>
+
+        <span class="n">sample</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dynamic_prior_cell</span><span class="o">.</span><span class="n">zero_state</span><span class="p">([</span><span class="n">samples</span><span class="p">,</span> <span class="n">sample_batch_size</span><span class="p">])</span>
+        <span class="n">locs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">scale_diags</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">sample_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+            <span class="n">dist</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dynamic_prior_cell</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+            <span class="n">locs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;loc&quot;</span><span class="p">])</span>
+            <span class="n">scale_diags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;scale_diag&quot;</span><span class="p">])</span>
+            <span class="n">sample_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">sample_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">locs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">scale_diag</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">scale_diags</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">fixed</span><span class="p">:</span>  <span class="c1"># tile along the batch axis</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">batches</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">sample</span><span class="p">,</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale_diag</span><span class="o">=</span><span class="n">scale_diag</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># test DynamicEncoder and LearnableMultivariateNormalDiagCell</span>
+<span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">dynamic_encoder</span> <span class="o">=</span> <span class="n">DynamicEncoder</span><span class="p">(</span><span class="n">N_HIDDEN</span><span class="p">,</span> <span class="n">N_TIMES</span><span class="p">,</span> <span class="n">LATENT_SIZE_DYNAMIC</span><span class="p">)</span>
+<span class="n">sample</span><span class="p">,</span> <span class="n">dynamic_prior</span> <span class="o">=</span> <span class="n">dynamic_encoder</span><span class="o">.</span><span class="n">sample_dynamic_prior</span><span class="p">(</span>
+    <span class="n">N_TIMES</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="n">N_SAMPLES</span><span class="p">,</span> <span class="n">batches</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">dynamic_prior</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stddev:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">dynamic_prior</span><span class="o">.</span><span class="n">stddev</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">_</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">dynamic_encoder</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">])</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>(2, 1, 10, 1)
+mean: [[ 0.          0.42388976  0.45631832  0.365768    0.20130846  0.37873474
+   0.31262326  0.26073667  0.15399611  0.14049806]
+ [ 0.          0.08804662  0.0361465  -0.03267653 -0.08733355  0.19941618
+   0.30335566  0.3730844   0.2744042   0.17948757]]
+stddev: [[1.00001    0.929902   0.9554563  0.99371654 1.0142238  0.97018814
+  1.0006421  1.0033575  1.0105829  1.0065393 ]
+ [1.00001    0.9952911  1.0008274  1.0000954  0.99874425 0.98230976
+  0.9771384  0.9683764  1.000174   1.0049998 ]]
+[&#39;learnable_multivariate_normal_diag_cell/mvndiagcell_lstm/kernel:0&#39;, &#39;learnable_multivariate_normal_diag_cell/mvndiagcell_lstm/recurrent_kernel:0&#39;, &#39;learnable_multivariate_normal_diag_cell/mvndiagcell_lstm/bias:0&#39;, &#39;learnable_multivariate_normal_diag_cell/mvndiagcell_loc/kernel:0&#39;, &#39;learnable_multivariate_normal_diag_cell/mvndiagcell_loc/bias:0&#39;, &#39;learnable_multivariate_normal_diag_cell/mvndiagcell_scale/kernel:0&#39;, &#39;learnable_multivariate_normal_diag_cell/mvndiagcell_scale/bias:0&#39;]
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">StaticEncoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latent_size</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;static_encoder&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">StaticEncoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">static_prior_factory</span> <span class="o">=</span> <span class="n">LearnableMultivariateNormalDiag</span><span class="p">(</span><span class="n">latent_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">latent_size</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;loc&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unxf_scale</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+            <span class="n">tfpl</span><span class="o">.</span><span class="n">MultivariateNormalTriL</span><span class="o">.</span><span class="n">params_size</span><span class="p">(</span><span class="n">latent_size</span><span class="p">)</span> <span class="o">-</span> <span class="n">latent_size</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;scale&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_bijector</span> <span class="o">=</span> <span class="n">tfp</span><span class="o">.</span><span class="n">bijectors</span><span class="o">.</span><span class="n">FillScaleTriL</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_f_layer</span> <span class="o">=</span> <span class="n">tfpl</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span>
+            <span class="n">make_distribution_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalTriL</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale_tril</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;q_f&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">unxf_scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unxf_scale</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_bijector</span><span class="p">(</span><span class="n">unxf_scale</span><span class="p">)</span>
+        <span class="n">q_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_f_layer</span><span class="p">([</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="p">])</span>
+        <span class="c1">#static_prior = self.static_prior_factory()</span>
+        <span class="c1">#kld = tfd.kl_divergence(q_f, static_prior)</span>
+        <span class="c1">#kld = tf.reduce_mean(kld)</span>
+        <span class="c1">#self.add_loss(KL_WEIGHT * kld)</span>
+        <span class="k">return</span> <span class="n">q_f</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Decoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;decoder&#39;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FactorizedDecoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_times</span> <span class="o">=</span> <span class="n">n_times</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concat</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Concatenate</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">out_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;loc&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unxf_scale</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">out_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;scale&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_z_layer</span> <span class="o">=</span> <span class="n">tfpl</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span>
+            <span class="n">make_distribution_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale_diag</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;p_out&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">f_sample</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">n_times</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">z_sample</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">z_sample</span><span class="p">,</span> <span class="n">f_sample</span><span class="p">])</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">unxf_scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unxf_scale</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">softplus</span><span class="p">(</span><span class="n">unxf_scale</span> <span class="o">+</span> <span class="n">scale_shift</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-5</span>
+        <span class="n">p_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_z_layer</span><span class="p">([</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">p_out</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">FactorizedAutoEncoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">latent_size_static</span><span class="p">,</span> <span class="n">latent_size_dynamic</span><span class="p">,</span> <span class="n">n_out_dim</span><span class="p">,</span>
+                 <span class="n">name</span><span class="o">=</span><span class="s1">&#39;autoencoder&#39;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FactorizedAutoEncoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">static_encoder</span> <span class="o">=</span> <span class="n">StaticEncoder</span><span class="p">(</span><span class="n">latent_size_static</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">dynamic_encoder</span> <span class="o">=</span> <span class="n">DynamicEncoder</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">latent_size_dynamic</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">Decoder</span><span class="p">(</span><span class="n">n_times</span><span class="p">,</span> <span class="n">n_out_dim</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">q_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_encoder</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">q_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dynamic_encoder</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">p_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">([</span><span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">q_f</span><span class="p">),</span>
+                              <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">q_z</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="n">p_out</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">f_model</span> <span class="o">=</span> <span class="n">FactorizedAutoEncoder</span><span class="p">(</span><span class="n">N_HIDDEN</span><span class="p">,</span> <span class="n">N_TIMES</span><span class="p">,</span> <span class="n">LATENT_SIZE</span><span class="p">,</span> <span class="n">LATENT_SIZE_DYNAMIC</span><span class="p">,</span> <span class="n">N_SENSORS</span><span class="p">)</span>
+<span class="c1"># Most of the trainable variables don&#39;t present themselves until the model pieces are called.</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">_</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">f_model</span><span class="o">.</span><span class="n">static_encoder</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">_</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">f_model</span><span class="o">.</span><span class="n">dynamic_encoder</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">_</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">f_model</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">])</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>[]
+[&#39;learnable_multivariate_normal_diag/mean:0&#39;, &#39;learnable_multivariate_normal_diag/untransformed_stddev:0&#39;]
+[]
+[]
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">N_EPOCHS</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="n">f_model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+                    <span class="n">loss</span><span class="o">=</span><span class="k">lambda</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">model_out</span><span class="p">:</span> <span class="o">-</span><span class="n">model_out</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">y_true</span><span class="p">))</span>
+    <span class="n">hist</span> <span class="o">=</span> <span class="n">f_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">ds_dyn</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">N_EPOCHS</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">preds</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+            <span class="n">q_f</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">static_encoder</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="n">q_z</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">dynamic_encoder</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="n">p_full</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">decoder</span><span class="p">([</span><span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">q_f</span><span class="p">),</span>
+                                    <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">q_z</span><span class="p">)])</span>
+
+            <span class="c1"># Reconstruction log-likelihood: p(output|input)</span>
+            <span class="n">recon_post_log_prob</span> <span class="o">=</span> <span class="n">p_full</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
+            <span class="n">recon_post_log_prob</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">recon_post_log_prob</span><span class="p">,</span>
+                                                <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Sum over time axis</span>
+            <span class="n">recon_post_log_prob</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">recon_post_log_prob</span><span class="p">)</span>
+
+            <span class="c1"># KL Divergence - analytical</span>
+            <span class="c1"># Static</span>
+            <span class="n">static_prior</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">static_encoder</span><span class="o">.</span><span class="n">static_prior_factory</span><span class="p">()</span>
+            <span class="n">stat_kl</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">kl_divergence</span><span class="p">(</span><span class="n">q_f</span><span class="p">,</span> <span class="n">static_prior</span><span class="p">)</span>
+            <span class="n">stat_kl</span> <span class="o">=</span> <span class="n">KL_WEIGHT</span> <span class="o">*</span> <span class="n">stat_kl</span>
+            <span class="n">stat_kl</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">stat_kl</span><span class="p">)</span>
+
+            <span class="c1"># Dynamic</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">dynamic_prior</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">dynamic_encoder</span><span class="o">.</span><span class="n">sample_dynamic_prior</span><span class="p">(</span>
+                <span class="n">N_TIMES</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">batches</span><span class="o">=</span><span class="mi">1</span>
+            <span class="p">)</span>
+            <span class="n">dyn_kl</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">kl_divergence</span><span class="p">(</span><span class="n">q_z</span><span class="p">,</span> <span class="n">dynamic_prior</span><span class="p">)</span>
+            <span class="n">dyn_kl</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">dyn_kl</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">dyn_kl</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">dyn_kl</span><span class="p">)</span>
+            <span class="n">dyn_kl</span> <span class="o">=</span> <span class="n">KL_WEIGHT</span> <span class="o">*</span> <span class="n">dyn_kl</span>
+            <span class="n">dyn_kl</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">dyn_kl</span><span class="p">)</span>
+
+            <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">recon_post_log_prob</span> <span class="o">+</span> <span class="n">stat_kl</span> <span class="o">+</span> <span class="n">dyn_kl</span>
+
+        <span class="n">grads</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span><span class="p">,</span> <span class="n">grads</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">recon_post_log_prob</span><span class="p">,</span> <span class="n">stat_kl</span><span class="p">,</span> <span class="n">dyn_kl</span><span class="p">)</span>
+
+    <span class="n">optim</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">epoch_ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_EPOCHS</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">step_ix</span><span class="p">,</span> <span class="n">batch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ds_dyn</span><span class="p">):</span>
+            <span class="n">inputs</span><span class="p">,</span> <span class="n">preds</span> <span class="o">=</span> <span class="n">batch</span>
+            <span class="n">loss</span><span class="p">,</span> <span class="n">grads</span><span class="p">,</span> <span class="n">loss_comps</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">f_model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
+            <span class="n">optim</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">f_model</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">))</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">step_ix</span> <span class="o">%</span> <span class="mi">200</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch_ix</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">N_EPOCHS</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="s2">loss=</span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">; &quot;</span>
+              <span class="sa">f</span><span class="s2">&quot;Losses: </span><span class="si">{</span><span class="p">[</span><span class="n">_</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">loss_comps</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>.
+Epoch 0/200:    loss=3777.438; Losses: [3777.3972, 0.0028260916, 0.03819199]
+.
+Epoch 1/200:    loss=908.620; Losses: [908.5834, 0.002681077, 0.034407526]
+.
+Epoch 2/200:    loss=682.733; Losses: [682.7001, 0.0025911012, 0.030505255]
+.
+Epoch 3/200:    loss=317.985; Losses: [317.9555, 0.0024803109, 0.027142774]
+.
+Epoch 4/200:    loss=737.753; Losses: [737.7305, 0.0024128703, 0.019867169]
+.
+Epoch 5/200:    loss=293.983; Losses: [293.9585, 0.0023704215, 0.022514882]
+.
+Epoch 6/200:    loss=412.075; Losses: [412.0592, 0.002335041, 0.013460781]
+.
+Epoch 7/200:    loss=306.618; Losses: [306.60327, 0.002284743, 0.012861049]
+.
+Epoch 8/200:    loss=215.916; Losses: [215.9029, 0.0022479186, 0.0111077]
+.
+Epoch 9/200:    loss=223.136; Losses: [223.12366, 0.0022122823, 0.010420884]
+.
+Epoch 10/200:   loss=300.156; Losses: [300.14383, 0.0021807426, 0.009667382]
+.
+Epoch 11/200:   loss=179.766; Losses: [179.75607, 0.0021481065, 0.007676568]
+.
+Epoch 12/200:   loss=215.981; Losses: [215.97124, 0.0021149626, 0.008112778]
+.
+Epoch 13/200:   loss=208.054; Losses: [208.04565, 0.0020882282, 0.006530414]
+.
+Epoch 14/200:   loss=207.146; Losses: [207.13806, 0.0020594192, 0.0063194335]
+.
+Epoch 15/200:   loss=261.805; Losses: [261.7982, 0.0020306753, 0.0045144106]
+.
+Epoch 16/200:   loss=178.393; Losses: [178.38637, 0.0020005947, 0.0045015276]
+.
+Epoch 17/200:   loss=284.872; Losses: [284.86642, 0.0019730518, 0.003997615]
+.
+Epoch 18/200:   loss=212.054; Losses: [212.04866, 0.0019469936, 0.0034680453]
+.
+Epoch 19/200:   loss=145.862; Losses: [145.85641, 0.001922644, 0.004011639]
+.
+Epoch 20/200:   loss=182.153; Losses: [182.14563, 0.0018981744, 0.0059485184]
+.
+Epoch 21/200:   loss=154.575; Losses: [154.56941, 0.0018728755, 0.0038126395]
+.
+Epoch 22/200:   loss=214.752; Losses: [214.74734, 0.0018469194, 0.003135754]
+.
+Epoch 23/200:   loss=179.347; Losses: [179.34248, 0.001825613, 0.0029100403]
+.
+Epoch 24/200:   loss=354.274; Losses: [354.26898, 0.0018005224, 0.0028155171]
+.
+Epoch 25/200:   loss=181.006; Losses: [181.0021, 0.0017763268, 0.0022955306]
+.
+Epoch 26/200:   loss=142.006; Losses: [142.00166, 0.0017520584, 0.0022001117]
+.
+Epoch 27/200:   loss=158.932; Losses: [158.92723, 0.0017273662, 0.0026816982]
+.
+Epoch 28/200:   loss=175.159; Losses: [175.15494, 0.0017028436, 0.0019087334]
+.
+Epoch 29/200:   loss=167.915; Losses: [167.91084, 0.0016797789, 0.002798946]
+.
+Epoch 30/200:   loss=152.785; Losses: [152.78006, 0.001658167, 0.0029456303]
+.
+Epoch 31/200:   loss=158.407; Losses: [158.40344, 0.0016350556, 0.0018697139]
+.
+Epoch 32/200:   loss=151.065; Losses: [151.06094, 0.0016126116, 0.00282249]
+.
+Epoch 33/200:   loss=181.075; Losses: [181.07072, 0.0015892526, 0.0025259533]
+.
+Epoch 34/200:   loss=157.210; Losses: [157.20605, 0.0015682159, 0.0026225548]
+.
+Epoch 35/200:   loss=151.200; Losses: [151.19623, 0.0015464819, 0.0017979483]
+.
+Epoch 36/200:   loss=157.111; Losses: [157.10796, 0.0015237778, 0.0016808716]
+.
+Epoch 37/200:   loss=160.398; Losses: [160.39449, 0.0015015532, 0.0018031715]
+.
+Epoch 38/200:   loss=133.418; Losses: [133.41472, 0.0014805306, 0.0017712188]
+.
+Epoch 39/200:   loss=161.662; Losses: [161.65845, 0.0014592485, 0.0018676165]
+.
+Epoch 40/200:   loss=181.789; Losses: [181.78532, 0.0014379938, 0.0023018767]
+.
+Epoch 41/200:   loss=183.568; Losses: [183.56451, 0.00142015, 0.001671126]
+.
+Epoch 42/200:   loss=211.679; Losses: [211.67618, 0.0014024411, 0.001817507]
+.
+Epoch 43/200:   loss=235.384; Losses: [235.38095, 0.0013794828, 0.0018946148]
+.
+Epoch 44/200:   loss=139.088; Losses: [139.08447, 0.0013571468, 0.0019089653]
+.
+Epoch 45/200:   loss=160.254; Losses: [160.25092, 0.0013359843, 0.0013933791]
+.
+Epoch 46/200:   loss=142.206; Losses: [142.20291, 0.0013167453, 0.0014015753]
+.
+Epoch 47/200:   loss=138.814; Losses: [138.8115, 0.0012925405, 0.0014298331]
+.
+Epoch 48/200:   loss=130.677; Losses: [130.67343, 0.0012679367, 0.0021604125]
+.
+Epoch 49/200:   loss=145.296; Losses: [145.29306, 0.0012432866, 0.0013332999]
+.
+Epoch 50/200:   loss=133.338; Losses: [133.33516, 0.0012180805, 0.0012685797]
+.
+Epoch 51/200:   loss=138.212; Losses: [138.20908, 0.0011976506, 0.0017989981]
+.
+Epoch 52/200:   loss=136.139; Losses: [136.13644, 0.0011768966, 0.001470595]
+.
+Epoch 53/200:   loss=141.839; Losses: [141.83646, 0.0011539405, 0.0017275128]
+.
+Epoch 54/200:   loss=159.297; Losses: [159.29402, 0.0011311076, 0.0017414299]
+.
+Epoch 55/200:   loss=125.919; Losses: [125.91669, 0.0011091225, 0.0013509693]
+.
+Epoch 56/200:   loss=135.710; Losses: [135.7079, 0.0010871431, 0.0010571101]
+.
+Epoch 57/200:   loss=124.548; Losses: [124.545654, 0.0010660599, 0.0011921946]
+.
+Epoch 58/200:   loss=128.607; Losses: [128.60472, 0.0010461143, 0.0010578154]
+.
+Epoch 59/200:   loss=200.879; Losses: [200.87674, 0.0010245068, 0.0014237395]
+.
+Epoch 60/200:   loss=181.939; Losses: [181.93698, 0.0010024481, 0.0010916217]
+.
+Epoch 61/200:   loss=161.069; Losses: [161.06737, 0.0009815091, 0.0009930782]
+.
+Epoch 62/200:   loss=129.661; Losses: [129.65881, 0.0009596758, 0.001090972]
+.
+Epoch 63/200:   loss=342.733; Losses: [342.73068, 0.000939325, 0.001181667]
+.
+Epoch 64/200:   loss=160.802; Losses: [160.8003, 0.00091621274, 0.0012079075]
+.
+Epoch 65/200:   loss=123.200; Losses: [123.19836, 0.00089694076, 0.0009983401]
+.
+Epoch 66/200:   loss=134.465; Losses: [134.46295, 0.00087896077, 0.0009002821]
+.
+Epoch 67/200:   loss=205.839; Losses: [205.83714, 0.0008604548, 0.001061962]
+.
+Epoch 68/200:   loss=144.191; Losses: [144.18906, 0.0008421927, 0.0011492949]
+.
+Epoch 69/200:   loss=164.397; Losses: [164.39539, 0.0008238552, 0.0010998722]
+.
+Epoch 70/200:   loss=131.024; Losses: [131.02272, 0.00080561615, 0.000867295]
+.
+Epoch 71/200:   loss=130.408; Losses: [130.40652, 0.0007878286, 0.0009589862]
+.
+Epoch 72/200:   loss=120.511; Losses: [120.509705, 0.0007217523, 0.0008722847]
+.
+Epoch 73/200:   loss=122.388; Losses: [122.38655, 0.00069110864, 0.00080618635]
+.
+Epoch 74/200:   loss=123.200; Losses: [123.198654, 0.0006731994, 0.0008244566]
+.
+Epoch 75/200:   loss=117.884; Losses: [117.88217, 0.00065816526, 0.00086460914]
+.
+Epoch 76/200:   loss=123.508; Losses: [123.50694, 0.0006448629, 0.0008477152]
+.
+Epoch 77/200:   loss=121.749; Losses: [121.74744, 0.0006321136, 0.0008150753]
+.
+Epoch 78/200:   loss=145.549; Losses: [145.5473, 0.00061951997, 0.00082959904]
+.
+Epoch 79/200:   loss=135.341; Losses: [135.33992, 0.00060778105, 0.0007312283]
+.
+Epoch 80/200:   loss=131.476; Losses: [131.47452, 0.0005965105, 0.0008391714]
+.
+Epoch 81/200:   loss=123.978; Losses: [123.976944, 0.00058624754, 0.0008059401]
+.
+Epoch 82/200:   loss=136.084; Losses: [136.08298, 0.0005766748, 0.0007252015]
+.
+Epoch 83/200:   loss=137.815; Losses: [137.81375, 0.00056776253, 0.0009108439]
+.
+Epoch 84/200:   loss=116.955; Losses: [116.95401, 0.0005592232, 0.0008040637]
+.
+Epoch 85/200:   loss=131.525; Losses: [131.52376, 0.00055153086, 0.0007604256]
+.
+Epoch 86/200:   loss=135.716; Losses: [135.71432, 0.00054452394, 0.0006871256]
+.
+Epoch 87/200:   loss=191.940; Losses: [191.93927, 0.0005378095, 0.0006448448]
+.
+Epoch 88/200:   loss=170.746; Losses: [170.74509, 0.00053181086, 0.0006591724]
+.
+Epoch 89/200:   loss=121.373; Losses: [121.37161, 0.00052640436, 0.00079500565]
+.
+Epoch 90/200:   loss=126.909; Losses: [126.90761, 0.0005213883, 0.0006021685]
+.
+Epoch 91/200:   loss=122.121; Losses: [122.120255, 0.0005157513, 0.0006873938]
+.
+Epoch 92/200:   loss=129.156; Losses: [129.15442, 0.0005111307, 0.00064897194]
+.
+Epoch 93/200:   loss=113.183; Losses: [113.18219, 0.0005073488, 0.000602577]
+.
+Epoch 94/200:   loss=146.389; Losses: [146.38794, 0.00050397916, 0.0005585851]
+.
+Epoch 95/200:   loss=130.446; Losses: [130.44531, 0.0005009744, 0.00056175387]
+.
+Epoch 96/200:   loss=118.884; Losses: [118.88327, 0.0004950377, 0.0005437781]
+.
+Epoch 97/200:   loss=114.319; Losses: [114.3183, 0.0004938163, 0.0006134198]
+.
+Epoch 98/200:   loss=134.747; Losses: [134.74594, 0.0004912615, 0.0005468172]
+.
+Epoch 99/200:   loss=127.224; Losses: [127.22336, 0.0004886875, 0.00050384714]
+.
+Epoch 100/200:  loss=123.007; Losses: [123.00618, 0.0004862357, 0.00056520273]
+.
+Epoch 101/200:  loss=130.374; Losses: [130.3726, 0.0004841056, 0.0005738659]
+.
+Epoch 102/200:  loss=120.120; Losses: [120.11898, 0.00048118114, 0.00054365897]
+.
+Epoch 103/200:  loss=107.167; Losses: [107.16606, 0.00047940924, 0.0004886348]
+.
+Epoch 104/200:  loss=112.270; Losses: [112.268585, 0.00047771176, 0.0004745159]
+.
+Epoch 105/200:  loss=125.537; Losses: [125.53565, 0.0004758754, 0.00047247266]
+.
+Epoch 106/200:  loss=109.324; Losses: [109.32308, 0.00047426036, 0.00046340926]
+.
+Epoch 107/200:  loss=113.328; Losses: [113.327286, 0.0004729222, 0.00046490182]
+.
+Epoch 108/200:  loss=117.106; Losses: [117.10452, 0.000471713, 0.00062898267]
+.
+Epoch 109/200:  loss=122.371; Losses: [122.37039, 0.0004705812, 0.00051386596]
+.
+Epoch 110/200:  loss=119.422; Losses: [119.42122, 0.0004696009, 0.0005573735]
+.
+Epoch 111/200:  loss=131.784; Losses: [131.78348, 0.000468354, 0.00041559048]
+.
+Epoch 112/200:  loss=124.476; Losses: [124.475006, 0.00046699354, 0.00041292777]
+.
+Epoch 113/200:  loss=104.487; Losses: [104.486534, 0.00046530017, 0.00042556314]
+.
+Epoch 114/200:  loss=119.418; Losses: [119.41684, 0.0004641684, 0.00039730535]
+.
+Epoch 115/200:  loss=117.776; Losses: [117.77547, 0.00046339296, 0.00056288636]
+.
+Epoch 116/200:  loss=112.189; Losses: [112.18817, 0.0004628609, 0.00045002214]
+.
+Epoch 117/200:  loss=116.317; Losses: [116.31613, 0.0004616853, 0.00036934114]
+.
+Epoch 118/200:  loss=159.105; Losses: [159.10422, 0.00046110825, 0.0003716088]
+.
+Epoch 119/200:  loss=116.958; Losses: [116.95712, 0.00045984008, 0.0003543413]
+.
+Epoch 120/200:  loss=108.100; Losses: [108.09944, 0.00045923653, 0.00045118056]
+.
+Epoch 121/200:  loss=107.565; Losses: [107.56447, 0.00045848632, 0.00033903003]
+.
+Epoch 122/200:  loss=117.631; Losses: [117.62992, 0.0004574218, 0.00033954927]
+.
+Epoch 123/200:  loss=116.075; Losses: [116.07385, 0.0004564249, 0.00036835673]
+.
+Epoch 124/200:  loss=106.798; Losses: [106.79701, 0.0004566427, 0.00032678706]
+.
+Epoch 125/200:  loss=113.363; Losses: [113.36252, 0.0004562596, 0.00042438688]
+.
+Epoch 126/200:  loss=118.104; Losses: [118.10279, 0.00045581322, 0.00032525152]
+.
+Epoch 127/200:  loss=113.516; Losses: [113.51486, 0.00045547614, 0.0005056638]
+.
+Epoch 128/200:  loss=117.624; Losses: [117.62353, 0.00045549794, 0.00034517745]
+.
+Epoch 129/200:  loss=112.273; Losses: [112.272316, 0.00045538746, 0.00029629772]
+.
+Epoch 130/200:  loss=113.328; Losses: [113.32768, 0.0004549961, 0.0003071945]
+.
+Epoch 131/200:  loss=111.756; Losses: [111.75513, 0.00045427072, 0.00032724047]
+.
+Epoch 132/200:  loss=107.796; Losses: [107.795494, 0.00045377907, 0.00027464304]
+.
+Epoch 133/200:  loss=150.595; Losses: [150.59428, 0.00045307074, 0.0003010978]
+.
+Epoch 134/200:  loss=120.134; Losses: [120.13356, 0.00045292114, 0.00029552256]
+.
+Epoch 135/200:  loss=120.130; Losses: [120.12947, 0.00045320712, 0.0002585037]
+.
+Epoch 136/200:  loss=117.070; Losses: [117.06926, 0.0004533619, 0.00026611943]
+.
+Epoch 137/200:  loss=111.006; Losses: [111.00518, 0.00045333267, 0.0002824646]
+.
+Epoch 138/200:  loss=115.901; Losses: [115.90064, 0.00045347284, 0.00030576388]
+.
+Epoch 139/200:  loss=111.147; Losses: [111.146286, 0.000453111, 0.0002558468]
+.
+Epoch 140/200:  loss=103.128; Losses: [103.12687, 0.0004522237, 0.00038727812]
+.
+Epoch 141/200:  loss=115.025; Losses: [115.024475, 0.00045187408, 0.0002339398]
+.
+Epoch 142/200:  loss=117.170; Losses: [117.16969, 0.0004520767, 0.00023050333]
+.
+Epoch 143/200:  loss=105.315; Losses: [105.31448, 0.0004517807, 0.00026579303]
+.
+Epoch 144/200:  loss=114.114; Losses: [114.113625, 0.00045176974, 0.0002442702]
+.
+Epoch 145/200:  loss=108.179; Losses: [108.178154, 0.00045183185, 0.00022483827]
+.
+Epoch 146/200:  loss=119.408; Losses: [119.407074, 0.0004509559, 0.00021656642]
+.
+Epoch 147/200:  loss=116.504; Losses: [116.50336, 0.000450821, 0.00021879328]
+.
+Epoch 148/200:  loss=108.465; Losses: [108.464005, 0.0004506137, 0.00031175395]
+.
+Epoch 149/200:  loss=99.284; Losses: [99.28293, 0.00045024417, 0.00022024836]
+.
+Epoch 150/200:  loss=105.143; Losses: [105.14198, 0.00044986696, 0.00024956765]
+.
+Epoch 151/200:  loss=107.015; Losses: [107.01389, 0.0004503439, 0.00019209863]
+.
+Epoch 152/200:  loss=109.961; Losses: [109.96058, 0.00045052002, 0.00036505712]
+.
+Epoch 153/200:  loss=110.943; Losses: [110.94235, 0.00045058262, 0.00019362733]
+.
+Epoch 154/200:  loss=105.146; Losses: [105.14586, 0.0004505078, 0.00018350873]
+.
+Epoch 155/200:  loss=153.239; Losses: [153.23862, 0.00045094165, 0.00018688777]
+.
+Epoch 156/200:  loss=97.193; Losses: [97.192276, 0.0004497521, 0.0002643012]
+.
+Epoch 157/200:  loss=116.076; Losses: [116.075356, 0.00044927179, 0.00018770616]
+.
+Epoch 158/200:  loss=99.644; Losses: [99.64349, 0.00044897772, 0.00019957994]
+.
+Epoch 159/200:  loss=101.686; Losses: [101.68573, 0.00044913022, 0.0001649716]
+.
+Epoch 160/200:  loss=114.998; Losses: [114.99737, 0.00044872603, 0.0001598363]
+.
+Epoch 161/200:  loss=126.449; Losses: [126.44795, 0.00044798924, 0.00017636445]
+.
+Epoch 162/200:  loss=99.323; Losses: [99.32204, 0.00044971833, 0.0001718228]
+.
+Epoch 163/200:  loss=118.403; Losses: [118.402115, 0.0004499098, 0.00016231032]
+.
+Epoch 164/200:  loss=101.217; Losses: [101.21654, 0.00044922353, 0.00015090306]
+.
+Epoch 165/200:  loss=132.002; Losses: [132.0016, 0.0004491811, 0.00018679435]
+.
+Epoch 166/200:  loss=103.262; Losses: [103.26103, 0.00044870118, 0.00014671378]
+.
+Epoch 167/200:  loss=98.593; Losses: [98.592026, 0.0004482735, 0.00017167021]
+.
+Epoch 168/200:  loss=102.641; Losses: [102.64062, 0.00044823167, 0.0001966377]
+.
+Epoch 169/200:  loss=110.199; Losses: [110.19867, 0.00044768318, 0.00014072815]
+.
+Epoch 170/200:  loss=98.456; Losses: [98.45533, 0.00044640992, 0.00013351238]
+.
+Epoch 171/200:  loss=107.700; Losses: [107.698944, 0.00044608887, 0.000128763]
+.
+Epoch 172/200:  loss=110.314; Losses: [110.31317, 0.0004454155, 0.00015472547]
+.
+Epoch 173/200:  loss=101.824; Losses: [101.82384, 0.00044520054, 0.00012376827]
+.
+Epoch 174/200:  loss=100.615; Losses: [100.61448, 0.00044518447, 0.00012106997]
+.
+Epoch 175/200:  loss=99.010; Losses: [99.00989, 0.00044499052, 0.0001265088]
+.
+Epoch 176/200:  loss=104.999; Losses: [104.99841, 0.0004448745, 0.00017745573]
+.
+Epoch 177/200:  loss=98.012; Losses: [98.0118, 0.0004448767, 0.00016406355]
+.
+Epoch 178/200:  loss=99.610; Losses: [99.60982, 0.0004446858, 0.00011498472]
+.
+Epoch 179/200:  loss=108.899; Losses: [108.89821, 0.00044491427, 0.00010847509]
+.
+Epoch 180/200:  loss=118.136; Losses: [118.13521, 0.00044519745, 0.00010489453]
+.
+Epoch 181/200:  loss=98.810; Losses: [98.80894, 0.000445671, 0.00012609128]
+.
+Epoch 182/200:  loss=96.406; Losses: [96.40544, 0.0004462903, 0.00010188887]
+.
+Epoch 183/200:  loss=98.501; Losses: [98.50068, 0.00044781342, 9.952572e-05]
+.
+Epoch 184/200:  loss=97.149; Losses: [97.14829, 0.00044934792, 0.00010874969]
+.
+Epoch 185/200:  loss=100.637; Losses: [100.63678, 0.00044996737, 9.560937e-05]
+.
+Epoch 186/200:  loss=97.202; Losses: [97.201294, 0.00045056257, 9.1939364e-05]
+.
+Epoch 187/200:  loss=99.839; Losses: [99.83876, 0.0004511009, 8.99044e-05]
+.
+Epoch 188/200:  loss=118.457; Losses: [118.45691, 0.00045174357, 9.007633e-05]
+.
+Epoch 189/200:  loss=102.419; Losses: [102.41877, 0.00045339097, 9.094182e-05]
+.
+Epoch 190/200:  loss=110.813; Losses: [110.812386, 0.00045527803, 8.5699685e-05]
+.
+Epoch 191/200:  loss=99.384; Losses: [99.38332, 0.000456504, 8.375079e-05]
+.
+Epoch 192/200:  loss=103.581; Losses: [103.58075, 0.0004564843, 9.893996e-05]
+.
+Epoch 193/200:  loss=97.621; Losses: [97.62078, 0.00045904273, 8.179152e-05]
+.
+Epoch 194/200:  loss=94.909; Losses: [94.90842, 0.00046064917, 7.898855e-05]
+.
+Epoch 195/200:  loss=100.840; Losses: [100.83898, 0.0004623049, 8.4420986e-05]
+.
+Epoch 196/200:  loss=98.157; Losses: [98.15616, 0.00046370056, 8.1935854e-05]
+.
+Epoch 197/200:  loss=95.283; Losses: [95.28199, 0.00046543585, 7.4171934e-05]
+.
+Epoch 198/200:  loss=98.005; Losses: [98.00419, 0.0004669357, 7.385877e-05]
+.
+Epoch 199/200:  loss=103.609; Losses: [103.608406, 0.00046879202, 7.1431816e-05]
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">_</span><span class="p">,</span> <span class="n">dyn_prior</span> <span class="o">=</span> <span class="n">f_model</span><span class="o">.</span><span class="n">dynamic_encoder</span><span class="o">.</span><span class="n">sample_dynamic_prior</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">dyn_prior</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([-1.6796231, -2.5568666, -2.4644861, -2.4013069, -2.3772488,
+       -2.3707619, -2.377105 , -2.332031 , -2.3327737, -2.360692 ],
+      dtype=float32)</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">RNNMultivariateNormalDiag</span><span class="p">(</span><span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cell</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;rnn_mvn_diag&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cell</span> <span class="o">=</span> <span class="n">cell</span>
+        <span class="k">if</span> <span class="n">output_dim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="p">,</span> <span class="s1">&#39;output_dim&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="n">output_dim</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="p">,</span> <span class="s1">&#39;output_dim&#39;</span><span class="p">):</span>
+            <span class="n">output_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">output_dim</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output_dim</span> <span class="o">=</span> <span class="n">output_dim</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">units</span>
+
+        <span class="n">h0</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">units</span><span class="p">])</span>
+        <span class="n">c0</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">units</span><span class="p">])</span>
+        <span class="n">input0</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="s1">&#39;reset_dropout_mask&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">reset_dropout_mask</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">reset_recurrent_dropout_mask</span><span class="p">()</span>
+
+        <span class="n">input_</span> <span class="o">=</span> <span class="n">input0</span>
+        <span class="n">states_</span> <span class="o">=</span> <span class="p">(</span><span class="n">h0</span><span class="p">,</span> <span class="n">c0</span><span class="p">)</span>
+        <span class="n">successive_outputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_timesteps</span><span class="p">):</span>
+            <span class="n">input_</span><span class="p">,</span> <span class="n">states_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">states_</span><span class="p">)</span>
+            <span class="n">successive_outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">_</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;distribution&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;loc&quot;</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">successive_outputs</span><span class="p">],</span>
+                        <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">scale_diag</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">_</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;distribution&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;scale_diag&quot;</span><span class="p">]</span>
+                               <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">successive_outputs</span><span class="p">],</span>
+                               <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">RNNMultivariateNormalDiag</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale_diag</span><span class="o">=</span><span class="n">scale_diag</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">dynamic_prior</span> <span class="o">=</span> <span class="n">RNNMultivariateNormalDiag</span><span class="p">(</span><span class="n">VariationalLSTMCell</span><span class="p">(</span><span class="n">N_HIDDEN</span><span class="p">,</span>
+                                                              <span class="n">output_dim</span><span class="o">=</span><span class="n">LATENT_SIZE_DYNAMIC</span><span class="p">),</span>
+                                          <span class="n">n_timesteps</span><span class="o">=</span><span class="n">N_TIMES</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="n">LATENT_SIZE_DYNAMIC</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">dynamic_prior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="n">N_SAMPLES</span><span class="p">,</span> <span class="n">BATCH_SIZE</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dynamic_prior</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>(2, 6, 10, 1)
+tf.Tensor(
+[[ 0.        ]
+ [ 0.04328619]
+ [ 0.08498121]
+ [-0.17377347]
+ [-0.09743058]
+ [-0.30255282]
+ [-0.22110605]
+ [-0.36379734]
+ [-0.30933833]
+ [-0.13590682]], shape=(10, 1), dtype=float32)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../recurrent_layers/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Recurrent layers
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
