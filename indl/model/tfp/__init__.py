@@ -1,8 +1,4 @@
-__all__ = ['make_mvn_prior', 'make_mvn_dist_fn', 'test_make_mvn_dist_fn',
-           'make_variational', 'test_make_variational', 'LearnableMultivariateNormalDiag',
-           'LearnableMultivariateNormalDiagCell', 'main']
-
-
+from typing import Union
 import numpy as np
 import tensorflow as tf
 import tensorflow.keras.layers as tfkl
@@ -14,7 +10,8 @@ tfb = tfp.bijectors
 scale_shift = np.log(np.exp(1) - 1).astype(np.float32)
 
 
-def make_mvn_prior(ndim, init_std=1.0, trainable_mean=True, trainable_var=True, offdiag=False):
+def make_mvn_prior(ndim: int, init_std: float = 1.0, trainable_mean: bool = True, trainable_var: bool = True,
+                   offdiag: bool = False) -> Union[tfd.MultivariateNormalDiag, tfd.MultivariateNormalTriL]:
     """
     Creates a tensorflow probability distribution:
         MultivariateNormalTriL if offdiag else MultivariateNormalDiag
@@ -32,9 +29,20 @@ def make_mvn_prior(ndim, init_std=1.0, trainable_mean=True, trainable_var=True, 
     Unlike the LFADS' LearnableDiagonalGaussian, here we don't support multi-dimensional, just a vector.
 
     See also LearnableMultivariateNormalDiag for a tf.keras.Model version of this.
+
+    Args:
+        ndim: latent dimension of distribution. Currently only supports 1 d (I think )
+        init_std: initial standard deviation of the gaussian. If trainable_var then the initial standard deviation
+            will be drawn from a random.normal distribution with mean init_std and stddev 1/10th of that.
+        trainable_mean: If the mean should be a tf.Variable
+        trainable_var: If the variance/stddev/scale (whatever you call it) should be a tf.Variable
+        offdiag: If the variance-covariance matrix is allowed non-zero off-diagonal elements.
+
+    Returns:
+        A tensorflow-probability distribution (either MultivariateNormalTriL or MultivariateNormalDiag).
     """
     if trainable_mean:
-        loc = tf.Variable(tf.random.normal([ndim], stddev=0.1, dtype=tf.float32), name="prior_loc")
+        loc = tf.Variable(tf.random.normal([ndim], stddev=0.1, dtype=tf.float32))
     else:
         loc = tf.zeros(ndim)
     # Initialize the variance (scale), trainable or not, offdiag or not.
@@ -81,6 +89,18 @@ def make_mvn_dist_fn(_x_, ndim, shift_std=1.0, offdiag=False, loc_name=None, sca
     This doesn't return the distribution, but the function to make the distribution and its arguments.
     make_dist_fn, [loc, scale]
     You can supply it to tfpl.DistributionLambda
+
+    Args:
+        _x_:
+        ndim:
+        shift_std:
+        offdiag:
+        loc_name:
+        scale_name:
+        use_mvn_diag:
+
+    Returns:
+
     """
 
     _scale_shift = np.log(np.exp(shift_std) - 1).astype(np.float32)
@@ -101,20 +121,6 @@ def make_mvn_dist_fn(_x_, ndim, shift_std=1.0, offdiag=False, loc_name=None, sca
     return make_dist_fn, [_loc, _scale]
 
 
-def test_make_mvn_dist_fn(input_dim=5, dist_dim=4, batch_size=6):
-    inputs = tfkl.Input(shape=(input_dim,))
-    make_dist_fn, dist_params = make_mvn_dist_fn(inputs, dist_dim, shift_std=0.1)
-    q_dist = tfpl.DistributionLambda(make_distribution_fn=make_dist_fn,
-                                     #convert_to_tensor_fn=lambda s: s.sample(n_samples),
-                                     )(dist_params)
-    model = tf.keras.Model(inputs=inputs, outputs=q_dist)
-    dummy_inputs = tf.random.uniform((batch_size, input_dim))
-    dummy_q = model(dummy_inputs)
-    print("q_dist: ", dummy_q)
-    print("q_dist stddev: ", dummy_q.stddev())
-    print("q_dist sample: ", dummy_q.sample())
-
-
 def make_variational(_x, dist_dim,
                      init_std=1.0, offdiag=False,
                      loc_name="loc", scale_name="scale",
@@ -127,18 +133,6 @@ def make_variational(_x, dist_dim,
                                      #convert_to_tensor_fn=lambda s: s.sample(n_samples),
                                      )(dist_params)
     return q_dist
-
-
-def test_make_variational(input_dim=5, dist_dim=4, batch_size=12):
-    # Test vector -> variational
-    inputs = tfkl.Input(shape=(input_dim,))
-    q_dist = make_variational(inputs, dist_dim, init_std=0.1)
-    print(q_dist, q_dist.sample().shape)
-
-    # model = tf.keras.Model(inputs=inputs, outputs=q_dist)
-    # dummy_inputs = tf.random.uniform((batch_size, input_dim))
-    # dummy_q = model(dummy_inputs)
-    # print(type(dummy_q), dummy_q.shape)
 
 
 class LearnableMultivariateNormalDiag(tf.keras.Model):
@@ -291,14 +285,3 @@ class LearnableMultivariateNormalDiagCell(tf.keras.Model):
         scale_diag = tf.nn.softplus(scale_diag + scale_shift) + 1e-5
         scale_diag = tf.reshape(scale_diag, parms_shape)
         return tfd.MultivariateNormalDiag(loc=loc, scale_diag=scale_diag), state
-
-
-def main():
-    K.clear_session()
-    test_make_mvn_dist_fn()
-    K.clear_session()
-    test_make_variational()
-
-
-if __name__ == "__main__":
-    main()
