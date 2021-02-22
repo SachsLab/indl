@@ -201,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        `indl`
+        Introduction
       </a>
     </li>
   
@@ -331,6 +331,76 @@
   
     <nav class="md-nav" aria-label="kernels">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Alpha" class="md-nav__link">
+    Alpha()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Boxcar" class="md-nav__link">
+    Boxcar()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Cauchy" class="md-nav__link">
+    Cauchy()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Exponential" class="md-nav__link">
+    Exponential()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.fftkernel" class="md-nav__link">
+    fftkernel()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.fftkernelWin" class="md-nav__link">
+    fftkernelWin()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Gauss" class="md-nav__link">
+    Gauss()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.ilogexp" class="md-nav__link">
+    ilogexp()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Laplace" class="md-nav__link">
+    Laplace()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.logexp" class="md-nav__link">
+    logexp()
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#indl.misc.kernels.sshist" class="md-nav__link">
@@ -723,6 +793,76 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Alpha" class="md-nav__link">
+    Alpha()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Boxcar" class="md-nav__link">
+    Boxcar()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Cauchy" class="md-nav__link">
+    Cauchy()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Exponential" class="md-nav__link">
+    Exponential()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.fftkernel" class="md-nav__link">
+    fftkernel()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.fftkernelWin" class="md-nav__link">
+    fftkernelWin()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Gauss" class="md-nav__link">
+    Gauss()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.ilogexp" class="md-nav__link">
+    ilogexp()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.Laplace" class="md-nav__link">
+    Laplace()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.misc.kernels.logexp" class="md-nav__link">
+    logexp()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#indl.misc.kernels.sshist" class="md-nav__link">
     sshist()
   </a>
@@ -911,6 +1051,829 @@
 <div class="doc doc-contents ">
 <div class="doc doc-children">
 <div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.Alpha">
+
+<code class="highlight language-python"><span class="n">Alpha</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>sigma</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>reverse</code></td>
+<td><code>bool</code></td>
+<td>
+<p>Reverse the direction of the kernel.</p>
+</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td>
+<div class="highlight">
+<pre><span></span><code>(x &gt;= 0) * 2. * (x / sigma ** 2) * np.exp(-x * np.sqrt(2.) / sigma)
+</code></pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">Alpha</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x:</span>
+<span class="sd">        sigma:</span>
+<span class="sd">        reverse: Reverse the direction of the kernel.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ```math</span>
+<span class="sd">        (x &gt;= 0) * 2. * (x / sigma ** 2) * np.exp(-x * np.sqrt(2.) / sigma)</span>
+<span class="sd">        ```</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">reverse</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.Boxcar">
+
+<code class="highlight language-python"><span class="n">Boxcar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>sigma</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>reverse</code></td>
+<td><code>Optional[bool]</code></td>
+<td>
+<p>unused</p>
+</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td>
+<div class="highlight">
+<pre><span></span><code>(0.5 / (np.sqrt(3.0) * sigma)) * (np.abs(x) &lt; (np.sqrt(3.0) * sigma))
+</code></pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">Boxcar</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.ndarray):</span>
+<span class="sd">        sigma:</span>
+<span class="sd">        reverse: unused</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ```math</span>
+<span class="sd">        (0.5 / (np.sqrt(3.0) * sigma)) * (np.abs(x) &lt; (np.sqrt(3.0) * sigma))</span>
+<span class="sd">        ```</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">))</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.Cauchy">
+
+<code class="highlight language-python"><span class="n">Cauchy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>reverse</code></td>
+<td><code>Optional[bool]</code></td>
+<td>
+<p>unused</p>
+</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td>
+<div class="highlight">
+<pre><span></span><code>1 / (np.pi * w * (1 + (x / w)**2))
+</code></pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">Cauchy</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.ndarray):</span>
+<span class="sd">        w:</span>
+<span class="sd">        reverse: unused</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ```math</span>
+<span class="sd">        1 / (np.pi * w * (1 + (x / w)**2))</span>
+<span class="sd">        ```</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">w</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.Exponential">
+
+<code class="highlight language-python"><span class="n">Exponential</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>sigma</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>reverse</code></td>
+<td><code>bool</code></td>
+<td></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td>
+<div class="highlight">
+<pre><span></span><code>(x &gt;= 0) * (1. / sigma) * np.exp(-x / sigma)
+</code></pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">Exponential</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x:</span>
+<span class="sd">        sigma:</span>
+<span class="sd">        reverse:</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ```math</span>
+<span class="sd">        (x &gt;= 0) * (1. / sigma) * np.exp(-x / sigma)</span>
+<span class="sd">        ```</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">reverse</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.fftkernel">
+
+<code class="highlight language-python"><span class="n">fftkernel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">fftkernel</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x:</span>
+<span class="sd">        w:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    """</span>
+    <span class="c1"># forward padded transform</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">Lmax</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">w</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">Lmax</span><span class="p">)))</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># generate kernel domain</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span>
+                        <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="c1"># evaluate kernel</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># convolve and transform back from frequency domain</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">K</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">L</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">y</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.fftkernelWin">
+
+<code class="highlight language-python"><span class="n">fftkernelWin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">WinFunc</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td>
+<p>data</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td><code>float</code></td>
+<td>
+<p>kernel parameter</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>WinFunc</code></td>
+<td><code>str</code></td>
+<td>
+<p>'Boxcar', 'Laplace', 'Cauchy', 'Gauss' (default)</p>
+</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">fftkernelWin</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">WinFunc</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x: data</span>
+<span class="sd">        w: kernel parameter</span>
+<span class="sd">        WinFunc: 'Boxcar', 'Laplace', 'Cauchy', 'Gauss' (default)</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    """</span>
+    <span class="c1"># forward padded transform</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">Lmax</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">w</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">Lmax</span><span class="p">))</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">))</span>
+
+    <span class="c1"># generate kernel domain</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span>
+                        <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span>
+
+    <span class="c1"># determine window function - evaluate kernel</span>
+    <span class="k">if</span> <span class="n">WinFunc</span> <span class="o">==</span> <span class="s1">'Boxcar'</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+        <span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">WinFunc</span> <span class="o">==</span> <span class="s1">'Laplace'</span><span class="p">:</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">WinFunc</span> <span class="o">==</span> <span class="s1">'Cauchy'</span><span class="p">:</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># WinFunc == 'Gauss'</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># convolve and transform back from frequency domain</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">K</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">L</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">y</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.Gauss">
+
+<code class="highlight language-python"><span class="n">Gauss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>sigma</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>reverse</code></td>
+<td><code>Optional[bool]</code></td>
+<td>
+<p>unused</p>
+</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td>
+<div class="highlight">
+<pre><span></span><code>(1.0 / (np.sqrt(2.0 * np.pi) * sigma)) * np.exp(-0.5 * (x / sigma) ** 2)
+</code></pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">Gauss</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x:</span>
+<span class="sd">        sigma:</span>
+<span class="sd">        reverse: unused</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ```math</span>
+<span class="sd">        (1.0 / (np.sqrt(2.0 * np.pi) * sigma)) * np.exp(-0.5 * (x / sigma) ** 2)</span>
+<span class="sd">        ```</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.ilogexp">
+
+<code class="highlight language-python"><span class="n">ilogexp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">ilogexp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    """</span>
+    <span class="c1"># TODO: Check dtype and convert x scalars to numpy array</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">1e2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">1e2</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">1e2</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">1e2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">y</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.Laplace">
+
+<code class="highlight language-python"><span class="n">Laplace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>reverse</code></td>
+<td><code>Optional[bool]</code></td>
+<td>
+<p>unused</p>
+</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td>
+<div class="highlight">
+<pre><span></span><code>1 / 2**0.5 / w * np.exp(-(2**0.5) / w / np.abs(x))
+</code></pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">Laplace</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.ndarray):</span>
+<span class="sd">        w:</span>
+<span class="sd">        reverse: unused</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ```math</span>
+<span class="sd">        1 / 2**0.5 / w * np.exp(-(2**0.5) / w / np.abs(x))</span>
+<span class="sd">        ```</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">w</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.misc.kernels.logexp">
+
+<code class="highlight language-python"><span class="n">logexp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/misc/kernels.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">logexp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    """</span>
+    <span class="c1"># TODO: Check dtype and convert x scalars to numpy array</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">1e2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">1e2</span><span class="p">]))</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">1e2</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">1e2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">y</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
 <h3 class="doc doc-heading" id="indl.misc.kernels.sshist">
 
 <code class="highlight language-python"><span class="n">sshist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">501</span><span class="p">),</span> <span class="n">SN</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
@@ -952,7 +1915,7 @@ C : array_like
 <details class="quote">
           <summary>Source code in <code>indl/misc/kernels.py</code></summary>
           <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">sshist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">501</span><span class="p">),</span> <span class="n">SN</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<pre><span></span><code><span class="k">def</span> <span class="nf">sshist</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">501</span><span class="p">),</span> <span class="n">SN</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">"""</span>
 <span class="sd">    Returns the optimal number of bins in a histogram used for density</span>
 <span class="sd">    estimation.</span>
@@ -1096,7 +2059,8 @@ yb : array_like
 <details class="quote">
           <summary>Source code in <code>indl/misc/kernels.py</code></summary>
           <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">sskernel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nbs</span><span class="o">=</span><span class="mf">1e3</span><span class="p">):</span>
+<pre><span></span><code><span class="k">def</span> <span class="nf">sskernel</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">tin</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">W</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">nbs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e3</span>
+             <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">"""</span>
 <span class="sd">    Generates a kernel density estimate with globally-optimized bandwidth.</span>
 
@@ -1335,7 +2299,8 @@ yb : array_like
 <details class="quote">
           <summary>Source code in <code>indl/misc/kernels.py</code></summary>
           <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">ssvkernel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">nbs</span><span class="o">=</span><span class="mf">1e2</span><span class="p">,</span> <span class="n">WinFunc</span><span class="o">=</span><span class="s1">'Boxcar'</span><span class="p">):</span>
+<pre><span></span><code><span class="k">def</span> <span class="nf">ssvkernel</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">tin</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">nbs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mf">1e2</span><span class="p">,</span> <span class="n">WinFunc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'Boxcar'</span>
+              <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">"""</span>
 <span class="sd">    Generates a locally adaptive kernel-density estimate for one-dimensional</span>
 <span class="sd">    data.</span>
@@ -1594,23 +2559,99 @@ yb : array_like
 A minimum jerk trajectory is considered "smooth" and to be a feature of natural limb movements.
 https://storage.googleapis.com/wzukusers/user-31382847/documents/5a7253343814f4Iv6Hnt/minimumjerk.pdf</p>
 <p>A minimum-jerk trajectory is defined by:
-    trajectory = a0 + (af - a0) * (10<em>(dx.^3) - 15</em>(dx.^4) + 6*(dx.^5));
+<div class="highlight">
+<pre><span></span><code>trajectory = a0 + (af - a0) * (10(dx^3) - 15(dx^4) + 6(dx^5))
+</code></pre>
+</div>
 where a0 is the resting position, and af is the finishing position.</p>
 <p>duration is assumed to be the extent of x but it may be overidden.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>a0</code></td>
+<td><code></code></td>
+<td></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>af</code></td>
+<td><code></code></td>
+<td></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>degree</code></td>
+<td><code></code></td>
+<td></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>float</code></td>
+<td>
+<p>Total duration of x in seconds. If None (default), calculated duration from x.</p>
+</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndarray</code></td>
+<td>
+<p>a0 + (af - a0) * (10<em>(dx.^3) - 15</em>(dx.^4) + 6*(dx.^5))</p>
+</td>
+</tr>
+</tbody>
+</table>
 <details class="quote">
           <summary>Source code in <code>indl/misc/sigfuncs.py</code></summary>
           <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">minimum_jerk</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">af</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<pre><span></span><code><span class="k">def</span> <span class="nf">minimum_jerk</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">af</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    A 1-D trajectory that minimizes jerk (3rd time-derivative of position).</span>
 <span class="sd">    A minimum jerk trajectory is considered "smooth" and to be a feature of natural limb movements.</span>
 <span class="sd">    https://storage.googleapis.com/wzukusers/user-31382847/documents/5a7253343814f4Iv6Hnt/minimumjerk.pdf</span>
 
 <span class="sd">    A minimum-jerk trajectory is defined by:</span>
-<span class="sd">        trajectory = a0 + (af - a0) * (10*(dx.^3) - 15*(dx.^4) + 6*(dx.^5));</span>
+<span class="sd">    ```math</span>
+<span class="sd">    trajectory = a0 + (af - a0) * (10(dx^3) - 15(dx^4) + 6(dx^5))</span>
+<span class="sd">    ```</span>
 <span class="sd">    where a0 is the resting position, and af is the finishing position.</span>
 
 <span class="sd">    duration is assumed to be the extent of x but it may be overidden.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x:</span>
+<span class="sd">        a0:</span>
+<span class="sd">        af:</span>
+<span class="sd">        degree:</span>
+<span class="sd">        duration (float): Total duration of x in seconds. If None (default), calculated duration from x.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        a0 + (af - a0) * (10*(dx.^3) - 15*(dx.^4) + 6*(dx.^5))</span>
 <span class="sd">    """</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
     <span class="k">assert</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="sa">f</span><span class="s2">"x must be 1D trajectory, found </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span>
@@ -1663,6 +2704,84 @@ where a0 is the resting position, and af is the finishing position.</p>
 This is a generalized logistic function.
 The default arguments reduce this to a simple sigmoid:
     f(x) = 1 / (1 + np.exp(-x))</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>np.ndarray</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>A</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>K</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>Q</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>v</code></td>
+<td><code>float</code></td>
+<td></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>x_offset</code></td>
+<td><code></code></td>
+<td></td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>np.ndarray</code></td>
+<td>
+<p>A + (K - A) / ((C + Q * np.exp(-B<em>(x - x_offset)))</em>*(1/v))</p>
+</td>
+</tr>
+</tbody>
+</table>
 <details class="quote">
           <summary>Source code in <code>indl/misc/sigfuncs.py</code></summary>
           <div class="highlight">
@@ -1672,6 +2791,18 @@ The default arguments reduce this to a simple sigmoid:
 <span class="sd">    This is a generalized logistic function.</span>
 <span class="sd">    The default arguments reduce this to a simple sigmoid:</span>
 <span class="sd">        f(x) = 1 / (1 + np.exp(-x))</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.ndarray):</span>
+<span class="sd">        A (float):</span>
+<span class="sd">        K (float):</span>
+<span class="sd">        C (float):</span>
+<span class="sd">        Q (float):</span>
+<span class="sd">        B (float):</span>
+<span class="sd">        v (float):</span>
+<span class="sd">        x_offset:</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: A + (K - A) / ((C + Q * np.exp(-B*(x - x_offset)))**(1/v))</span>
 <span class="sd">    """</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="p">(</span><span class="n">K</span> <span class="o">-</span> <span class="n">A</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">C</span> <span class="o">+</span> <span class="n">Q</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">B</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_offset</span><span class="p">)))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">v</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">y</span>

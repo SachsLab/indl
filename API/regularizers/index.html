@@ -201,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        `indl`
+        Introduction
       </a>
     </li>
   
@@ -343,6 +343,13 @@
   
     <nav class="md-nav" aria-label="KernelLengthRegularizer">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.regularizers.KernelLengthRegularizer.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#indl.regularizers.KernelLengthRegularizer.get_config" class="md-nav__link">
@@ -580,6 +587,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#indl.regularizers.KernelLengthRegularizer.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#indl.regularizers.KernelLengthRegularizer.get_config" class="md-nav__link">
     get_config()
   </a>
@@ -623,7 +637,100 @@
 
       </h2>
 <div class="doc doc-contents ">
+<p>Regularize a kernel by its length. Added loss is a int mask of 1s where abs(weight) is above threshold,
+and 0s otherwise, multiplied by a window. The window is typically shaped to penalize the presence of
+non-zero weights further away from the middle of the kernel. Use this regularizer if you want to
+try to find a minimal-length kernel. (after training, kernel can be shortened for faster inference).</p>
 <div class="doc doc-children">
+<div class="doc doc-object doc-method">
+<h3 class="doc doc-heading" id="indl.regularizers.KernelLengthRegularizer.__init__">
+
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">window_scale</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">window_func</span><span class="o">=</span><span class="s1">'poly'</span><span class="p">,</span> <span class="n">poly_exp</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1e-07</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+      </h3>
+<div class="doc doc-contents ">
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kernel_size</code></td>
+<td><code>Iterable[int]</code></td>
+<td>
+<p>length(s) of kernel(s)</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>window_scale</code></td>
+<td><code>float</code></td>
+<td>
+<p>scale factor to apply to window</p>
+</td>
+<td><code>0.01</code></td>
+</tr>
+<tr>
+<td><code>window_func</code></td>
+<td><code>str</code></td>
+<td>
+<p>'hann', 'hamming', 'poly' (default)</p>
+</td>
+<td><code>'poly'</code></td>
+</tr>
+<tr>
+<td><code>poly_exp</code></td>
+<td><code>int</code></td>
+<td>
+<p>exponent used when window_func=='poly'</p>
+</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>threshold</code></td>
+<td><code>float</code></td>
+<td>
+<p>weight threshold, below which weights will not be penalized.</p>
+</td>
+<td><code>1e-07</code></td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/regularizers.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">window_scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="n">window_func</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'poly'</span><span class="p">,</span>
+             <span class="n">poly_exp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">epsilon</span><span class="p">()):</span>
+    <span class="sd">"""</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        kernel_size: length(s) of kernel(s)</span>
+<span class="sd">        window_scale: scale factor to apply to window</span>
+<span class="sd">        window_func: 'hann', 'hamming', 'poly' (default)</span>
+<span class="sd">        poly_exp: exponent used when window_func=='poly'</span>
+<span class="sd">        threshold: weight threshold, below which weights will not be penalized.</span>
+<span class="sd">    """</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">kernel_size</span> <span class="o">=</span> <span class="n">kernel_size</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">window_scale</span> <span class="o">=</span> <span class="n">window_scale</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">window_func</span> <span class="o">=</span> <span class="n">window_func</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">poly_exp</span> <span class="o">=</span> <span class="n">poly_exp</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rebuild_window</span><span class="p">()</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="indl.regularizers.KernelLengthRegularizer.get_config">
 
@@ -652,7 +759,7 @@ utilities, and exporting models to and from JSON.</p>
 </thead>
 <tbody>
 <tr>
-<td><code></code></td>
+<td><code>dict</code></td>
 <td>
 <p>Python dictionary.</p>
 </td>
@@ -662,7 +769,7 @@ utilities, and exporting models to and from JSON.</p>
 <details class="quote">
           <summary>Source code in <code>indl/regularizers.py</code></summary>
           <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<pre><span></span><code><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">'kernel_size'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_size</span><span class="p">,</span>
             <span class="s1">'window_scale'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_scale</span><span class="p">,</span>
             <span class="s1">'window_func'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_func</span><span class="p">,</span>

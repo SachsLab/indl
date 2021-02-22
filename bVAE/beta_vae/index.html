@@ -201,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        `indl`
+        Introduction
       </a>
     </li>
   
@@ -708,13 +708,13 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="beta-variational-autoencoders-to-disentangle-multi-channel-spiking-data">$\beta$ Variational Autoencoders to Disentangle Multi-channel Spiking Data</h1>
-<p>I already have quite a few general notes on $\beta$ Variational Autoencoders with Tensorflow Probability in the IntracranialNeurophysDL repository <a href="https://github.com/SachsLab/IntracranialNeurophysDL/blob/master/notebooks/05_04_betaVAE_TFP.ipynb">here</a>. This notebook provides $\beta$-VAE component implementations that are more useful with our macaque PFC data.</p>
+<h1 id="beta-variational-autoencoders-to-disentangle-multi-channel-spiking-data"><span class="arithmatex">\(\beta\)</span> Variational Autoencoders to Disentangle Multi-channel Spiking Data</h1>
+<p>I already have quite a few general notes on <span class="arithmatex">\(\beta\)</span> Variational Autoencoders with Tensorflow Probability in the IntracranialNeurophysDL repository <a href="https://github.com/SachsLab/IntracranialNeurophysDL/blob/master/notebooks/05_04_betaVAE_TFP.ipynb">here</a>. This notebook provides <span class="arithmatex">\(\beta\)</span>-VAE component implementations that are more useful with our macaque PFC data.</p>
 <p>Here we define a series of model-builder functions. Each function takes <code>params</code>, a dictionary of hyperparameters, and <code>inputs</code> containing one or more Keras tensors, and each returns the model outputs and other intermediate variables that need to be tracked.</p>
 <p>We have generic functions to create the graphs for f- and z-encoders; we have a function to create the first part of the decoder graph; and a function to complete the decoder graph.</p>
 <p>We also provide an end-to-end model to show how to use it.</p>
 <p>These components are exported to our indl library. Our separate data analysis notebooks import this module, and possibly others (e.g., LFADS) to build models for analyzing our data. We don't do significant data analysis here.</p>
-<p>As much as possible, we try to make the functions generic enough that we can use parameters to switch between different $\beta$-VAE implementations.</p>
+<p>As much as possible, we try to make the functions generic enough that we can use parameters to switch between different <span class="arithmatex">\(\beta\)</span>-VAE implementations.</p>
 <p>We identify 4 different VAE models for consideration:
 * <a href="https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/disentangled_vae.py">disentangled sequential autoencoders (DSAE)</a> (<a href="https://arxiv.org/pdf/1803.02991.pdf">Li and Mandt, ICML 2018</a>) - "Full" model.
 * Same as above - "Factorized' model
@@ -741,10 +741,10 @@
 </tr>
 <tr>
 <td align="left">f prior</td>
-<td align="left">$\mathcal{N}(0,\kappa I)$</td>
-<td align="left">$\mathcal{N}(\mu_z,\sigma_z I)$</td>
+<td align="left"><span class="arithmatex">\(\mathcal{N}(0,\kappa I)\)</span></td>
+<td align="left"><span class="arithmatex">\(\mathcal{N}(\mu_z,\sigma_z I)\)</span></td>
 <td align="left">--</td>
-<td align="left">$\mathcal{N}(\mu_2,0.5^2I)$</td>
+<td align="left"><span class="arithmatex">\(\mathcal{N}(\mu_2,0.5^2I)\)</span></td>
 </tr>
 <tr>
 <td align="left">z RNN</td>
@@ -757,7 +757,7 @@
 <td align="left">z RNN input</td>
 <td align="left">A: x; B: (A(x), fac)</td>
 <td align="left">concat(x, tile(f))</td>
-<td align="left">$x_t$</td>
+<td align="left"><span class="arithmatex">\(x_t\)</span></td>
 <td align="left">concat(input, tile(f))</td>
 </tr>
 <tr>
@@ -765,7 +765,7 @@
 <td align="left">LearnableAutoRegressive1Prior</td>
 <td align="left">LSTM(0)</td>
 <td align="left">--</td>
-<td align="left">$\mathcal{N}(0,I)$</td>
+<td align="left"><span class="arithmatex">\(\mathcal{N}(0,I)\)</span></td>
 </tr>
 <tr>
 <td align="left">Decoder RNN</td>
@@ -876,7 +876,7 @@ ________________________________________________________________________________
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="f-encoder"><em>f</em>-Encoder</h2>
 <p>Transform full sequence of "features" (<code>inputs</code> or <code>ReadIn(inputs)</code>) through (1) RNN then (2) affine to yield parameters of latent posterior distribution:
-$$q(f | x_{1:T})$$
+<span class="arithmatex">\(<span class="arithmatex">\(q(f | x_{1:T})\)</span>\)</span>
 This distribution is a multivariate normal, optionally with off-diagonal elements allowed.</p>
 </div>
 </div>
@@ -943,11 +943,11 @@ tf.Tensor(
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="z-encoder"><em>z</em>-Encoder</h2>
-<p>$q(z_t | x_{1:T})$</p>
+<p><span class="arithmatex">\(q(z_t | x_{1:T})\)</span></p>
 <p>I have also seen this called the "Dynamic Encoder", or in LFADS the "Controller Input" encoder.</p>
-<p>The <em>z</em>-Encoder varies quite a bit between the different Disentangling/$\beta$ Variational Autoencoder implementations. Indeed, in some formulations it isn't used at all, such as the LFADS model without inferred controller input.</p>
+<p>The <em>z</em>-Encoder varies quite a bit between the different Disentangling/<span class="arithmatex">\(\beta\)</span> Variational Autoencoder implementations. Indeed, in some formulations it isn't used at all, such as the LFADS model without inferred controller input.</p>
 <ul>
-<li>The inputs are the original data sequences ($x_t$).</li>
+<li>The inputs are the original data sequences (<span class="arithmatex">\(x_t\)</span>).</li>
 <li>Unlike the <em>f</em>-encoder, here we output full sequences.</li>
 <li>The output sequences parameterize a multivariate normal distribution <strong>at each timestep</strong></li>
 <li>The encoder itself has as its first layer<ul>
@@ -959,7 +959,7 @@ tf.Tensor(
 </ul>
 <h3 id="extra-details-dhsae-full">Extra Details - DHSAE Full</h3>
 <ul>
-<li>The inputs are concatenated with a tiled sample from $q(f)$.</li>
+<li>The inputs are concatenated with a tiled sample from <span class="arithmatex">\(q(f)\)</span>.</li>
 <li>We've added the option to instead concatenate on the inputs into the second RNN.</li>
 </ul>
 <h3 id="extra-details-lfads">Extra Details - LFADS</h3>
@@ -967,7 +967,7 @@ tf.Tensor(
 <li>Like its f-Encoder, the RNN cells are a GRU with clipping.</li>
 <li>The secondary RNN input is the output from the primary RNN concatenated with the <strong>decoder RNN's previous step + transformed through the factor Dense layer</strong>.</li>
 </ul>
-<p>Because the LFADS secondary RNN is so complicated, it is integrated into the decoder RNN itself in a "complex cell". The complex cell includes the z2-cell, making the z2 outputs variational in $q(z_t)$, sampling $q(z_t)$ for the inputs to the generative RNN cell, passing the output of the generative RNN step through a Dense to-factors layer, and finally using that output as one of the inputs to the z2 cell. If <code>params['gen_cell_type']</code> is <code>"Complex"</code>, then we assume that LFADS is being used and we thus skip the second RNN in <code>create_z_encoder</code> and we skip making the latents variational in <code>make_z_variational</code>.</p>
+<p>Because the LFADS secondary RNN is so complicated, it is integrated into the decoder RNN itself in a "complex cell". The complex cell includes the z2-cell, making the z2 outputs variational in <span class="arithmatex">\(q(z_t)\)</span>, sampling <span class="arithmatex">\(q(z_t)\)</span> for the inputs to the generative RNN cell, passing the output of the generative RNN step through a Dense to-factors layer, and finally using that output as one of the inputs to the z2 cell. If <code>params['gen_cell_type']</code> is <code>"Complex"</code>, then we assume that LFADS is being used and we thus skip the second RNN in <code>create_z_encoder</code> and we skip making the latents variational in <code>make_z_variational</code>.</p>
 </div>
 </div>
 </div>
@@ -1080,8 +1080,8 @@ _________________________________________________________________
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="generator-decoder-part-1">Generator (Decoder part 1)</h2>
-<p>$p(x_t | z_t, f)$</p>
-<p>The generator is an RNN that outputs full sequences from the encoded latents which comprise a single-timestep latent vector (<em>f</em>) and optionally a low-dimensional sequence ($z_t$). Note that these latents are distributions, and therefore must be sampled from to get the initial state and/or the inputs to the generative RNN.</p>
+<p><span class="arithmatex">\(p(x_t | z_t, f)\)</span></p>
+<p>The generator is an RNN that outputs full sequences from the encoded latents which comprise a single-timestep latent vector (<em>f</em>) and optionally a low-dimensional sequence (<span class="arithmatex">\(z_t\)</span>). Note that these latents are distributions, and therefore must be sampled from to get the initial state and/or the inputs to the generative RNN.</p>
 <p>The generative RNN outputs a sequence. This sequence is typically transformed through a Dense layer to yield the "factors". However, in LFADS the factors are fedback to the z2_encoder step-by-step, and this cannot be accomplished in a normal sequential layer connection. Instead, LFADS includes the dense layer inside a "ComplexCell". To be consistent with the LFADS implementation we need to include the to-dense layer in other <code>create_generator_</code> functions.</p>
 </div>
 </div>

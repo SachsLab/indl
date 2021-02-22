@@ -201,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        `indl`
+        Introduction
       </a>
     </li>
   
@@ -315,6 +315,13 @@
         <li class="md-nav__item">
   <a href="#indl.metrics.dprime" class="md-nav__link">
     dprime()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.metrics.quickplot_history" class="md-nav__link">
+    quickplot_history()
   </a>
   
 </li>
@@ -565,6 +572,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#indl.metrics.quickplot_history" class="md-nav__link">
+    quickplot_history()
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -614,25 +628,29 @@ Highest possible is 6.93, but effectively 4.65 for 99%</p>
 <tbody>
 <tr>
 <td><code>y_true</code></td>
-<td><code></code></td>
-<td></td>
+<td><code>array-like</code></td>
+<td>
+<p>True labels.</p>
+</td>
 <td><em>required</em></td>
 </tr>
 <tr>
 <td><code>y_pred</code></td>
-<td><code></code></td>
-<td></td>
+<td><code>array-like</code></td>
+<td>
+<p>Predicted labels.</p>
+</td>
 <td><em>required</em></td>
 </tr>
 <tr>
 <td><code>pmarg</code></td>
-<td><code></code></td>
+<td><code>float</code></td>
 <td></td>
 <td><code>0.01</code></td>
 </tr>
 <tr>
 <td><code>outputs</code></td>
-<td><code></code></td>
+<td><code>List[str]</code></td>
 <td>
 <p>list of outputs among 'dprime', 'bias', 'accuracy'</p>
 </td>
@@ -650,7 +668,7 @@ Highest possible is 6.93, but effectively 4.65 for 99%</p>
 </thead>
 <tbody>
 <tr>
-<td><code></code></td>
+<td><code>tuple</code></td>
 <td>
 <p>Calculated d-prime value.</p>
 </td>
@@ -660,7 +678,7 @@ Highest possible is 6.93, but effectively 4.65 for 99%</p>
 <details class="quote">
           <summary>Source code in <code>indl/metrics.py</code></summary>
           <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">dprime</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">pmarg</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s1">'dprime'</span><span class="p">,</span> <span class="s1">'bias'</span><span class="p">,</span> <span class="s1">'accuracy'</span><span class="p">]):</span>
+<pre><span></span><code><span class="k">def</span> <span class="nf">dprime</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">pmarg</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'dprime'</span><span class="p">,</span> <span class="s1">'bias'</span><span class="p">,</span> <span class="s1">'accuracy'</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
     <span class="sd">"""</span>
 <span class="sd">    Calculate D-Prime for binary data.</span>
 <span class="sd">    70% for both classes is d=1.0488.</span>
@@ -671,8 +689,8 @@ Highest possible is 6.93, but effectively 4.65 for 99%</p>
 <span class="sd">    This function is not designed to behave as a valid 'Tensorflow metric'.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        y_true:</span>
-<span class="sd">        y_pred:</span>
+<span class="sd">        y_true (array-like): True labels.</span>
+<span class="sd">        y_pred (array-like): Predicted labels.</span>
 <span class="sd">        pmarg:</span>
 <span class="sd">        outputs: list of outputs among 'dprime', 'bias', 'accuracy'</span>
 
@@ -723,6 +741,62 @@ Highest possible is 6.93, but effectively 4.65 for 99%</p>
             <span class="n">output</span> <span class="o">+=</span> <span class="p">(</span><span class="n">accuracy</span><span class="p">,)</span>
 
     <span class="k">return</span> <span class="n">output</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="indl.metrics.quickplot_history">
+
+<code class="highlight language-python"><span class="n">quickplot_history</span><span class="p">(</span><span class="n">history</span><span class="p">)</span></code>
+
+
+      </h2>
+<div class="doc doc-contents ">
+<p>A little helper function to do a quick plot of model fit results.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>history</code></td>
+<td><code>tf.keras History</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/metrics.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">quickplot_history</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    A little helper function to do a quick plot of model fit results.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        history (tf.keras History):</span>
+<span class="sd">    """</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="s1">'history'</span><span class="p">):</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span>
+    <span class="n">hist_metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'val_'</span><span class="p">)]</span>
+
+    <span class="k">for</span> <span class="n">m_ix</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist_metrics</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hist_metrics</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m_ix</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Train'</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">'val_'</span> <span class="o">+</span> <span class="n">m</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Valid.'</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Epoch'</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre>
 </div>
 </details>

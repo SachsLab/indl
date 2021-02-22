@@ -201,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        `indl`
+        Introduction
       </a>
     </li>
   
@@ -283,6 +283,20 @@
   
     <nav class="md-nav" aria-label="augmentations">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.data.augmentations.add_depth_dim" class="md-nav__link">
+    add_depth_dim()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.data.augmentations.cast_type" class="md-nav__link">
+    cast_type()
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#indl.data.augmentations.random_slice" class="md-nav__link">
@@ -600,6 +614,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#indl.data.augmentations.add_depth_dim" class="md-nav__link">
+    add_depth_dim()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.data.augmentations.cast_type" class="md-nav__link">
+    cast_type()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#indl.data.augmentations.random_slice" class="md-nav__link">
     random_slice()
   </a>
@@ -665,6 +693,174 @@
 <div class="doc doc-contents ">
 <div class="doc doc-children">
 <div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.data.augmentations.add_depth_dim">
+
+<code class="highlight language-python"><span class="n">add_depth_dim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p>Add extra dimension at tail for x only. This is trivial to do in-line.
+This is slightly more convenient than writing a labmda.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X</code></td>
+<td><code>tf.tensor</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>tf.tensor</code></td>
+<td></td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf.tensor, tf.tensor</code></td>
+<td>
+<p>X, y tuple, with X having a new trailing dimension.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/data/augmentations.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">add_depth_dim</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Add extra dimension at tail for x only. This is trivial to do in-line.</span>
+<span class="sd">    This is slightly more convenient than writing a labmda.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        X (tf.tensor):</span>
+<span class="sd">        y (tf.tensor):</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tf.tensor, tf.tensor: X, y tuple, with X having a new trailing dimension.</span>
+
+<span class="sd">    """</span>
+    <span class="n">x_dat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Prepare as an image, with only 1 colour-depth channel.</span>
+    <span class="k">return</span> <span class="n">x_dat</span><span class="p">,</span> <span class="n">y</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="indl.data.augmentations.cast_type">
+
+<code class="highlight language-python"><span class="n">cast_type</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_type</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">y_type</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span></code>
+
+
+      </h3>
+<div class="doc doc-contents ">
+<p>Cast input pair to new dtypes.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X</code></td>
+<td><code>tf.tensor</code></td>
+<td>
+<p>Input tensor</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>tf.tensor</code></td>
+<td>
+<p>Input labels</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>x_type</code></td>
+<td><code>tf.dtypes</code></td>
+<td>
+<p>tf data type</p>
+</td>
+<td><code>tf.float32</code></td>
+</tr>
+<tr>
+<td><code>y_type</code></td>
+<td><code>tf.dtypes</code></td>
+<td>
+<p>tf data type</p>
+</td>
+<td><code>tf.uint8</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf.tensor, tf.tensor</code></td>
+<td>
+<p>X, y tuple, each cast to its new type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+          <summary>Source code in <code>indl/data/augmentations.py</code></summary>
+          <div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">cast_type</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_type</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">y_type</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">uint8</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Cast input pair to new dtypes.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        X (tf.tensor): Input tensor</span>
+<span class="sd">        y (tf.tensor): Input labels</span>
+<span class="sd">        x_type (tf.dtypes): tf data type</span>
+<span class="sd">        y_type (tf.dtypes): tf data type</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tf.tensor, tf.tensor: X, y tuple, each cast to its new type.</span>
+<span class="sd">    """</span>
+    <span class="n">x_dat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">x_type</span><span class="p">)</span>
+    <span class="n">y_dat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_type</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_dat</span><span class="p">,</span> <span class="n">y_dat</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
 <h3 class="doc doc-heading" id="indl.data.augmentations.random_slice">
 
 <code class="highlight language-python"><span class="n">random_slice</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
@@ -675,6 +871,76 @@
 <p>Slice a tensor X along axis, beginning at a random offset up to max_offset,
 taking (X.shape[axis] - max_offset) samples.
 If training==False, this will take the last N-max_offset samples.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X</code></td>
+<td><code>tf.tensor</code></td>
+<td>
+<p>input tensor</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>tf.tensor</code></td>
+<td>
+<p>input labels</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>training</code></td>
+<td><code>bool</code></td>
+<td>
+<p>if the model is run in training state</p>
+</td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>max_offset</code></td>
+<td><code>int</code></td>
+<td>
+<p>number of samples</p>
+</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td><code>int</code></td>
+<td>
+<p>axis along which to slice</p>
+</td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf.tensor, tf.tensor</code></td>
+<td>
+<p>X, y tuple randomly sliced.</p>
+</td>
+</tr>
+</tbody>
+</table>
 <details class="quote">
           <summary>Source code in <code>indl/data/augmentations.py</code></summary>
           <div class="highlight">
@@ -683,7 +949,17 @@ If training==False, this will take the last N-max_offset samples.</p>
 <span class="sd">    Slice a tensor X along axis, beginning at a random offset up to max_offset,</span>
 <span class="sd">    taking (X.shape[axis] - max_offset) samples.</span>
 <span class="sd">    If training==False, this will take the last N-max_offset samples.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        X (tf.tensor): input tensor</span>
+<span class="sd">        y (tf.tensor): input labels</span>
+<span class="sd">        training (bool): if the model is run in training state</span>
+<span class="sd">        max_offset (int): number of samples</span>
+<span class="sd">        axis (int): axis along which to slice</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tf.tensor, tf.tensor: X, y tuple randomly sliced.</span>
 <span class="sd">    """</span>
+
     <span class="k">if</span> <span class="n">training</span><span class="p">:</span>
         <span class="n">offset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[],</span> <span class="n">minval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="n">max_offset</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -724,17 +1000,122 @@ If training==False, this will take the last N-max_offset samples.</p>
 
       </h3>
 <div class="doc doc-contents ">
+<p>Convert a pair of tf tensors into a tf.data.Dataset with some augmentations.
+The added augmentations are:</p>
+<ul>
+<li><code>add_depth_dim</code> (with default params)</li>
+<li><code>cast_type</code> (with default params)</li>
+<li><code>random_slice</code></li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X</code></td>
+<td><code>tf.tensor</code></td>
+<td>
+<p>X data - must be compatible with above augmentations.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>Y</code></td>
+<td><code>tf.tensor</code></td>
+<td>
+<p>Y data - must be compatible with above augmentations.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>training</code></td>
+<td><code>bool or tuple</code></td>
+<td>
+<p>passed to <code>random_slice</code>, or if a tuple
+(e.g. from sklearn.model_selection.train_test_split) then this function returns training and test sets.</p>
+</td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>batch_size</code></td>
+<td><code>int</code></td>
+<td>
+<p>Unused I think.</p>
+</td>
+<td><code>8</code></td>
+</tr>
+<tr>
+<td><code>max_offset</code></td>
+<td><code>int</code></td>
+<td>
+<p>Passed to <code>random_slice</code></p>
+</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>slice_ax</code></td>
+<td><code>int</code></td>
+<td>
+<p>Passed to <code>random_slice</code></p>
+</td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf.data.Dataset(, tf.Dataset)</code></td>
+<td>
+<p>A tensorflow dataset with extra augmentations. If training is a tuple
+ then two datasets are returning: training set and test set.</p>
+</td>
+</tr>
+</tbody>
+</table>
 <details class="quote">
           <summary>Source code in <code>indl/data/helper.py</code></summary>
           <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">get_tf_dataset</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slice_ax</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="sd">"""</span>
+<span class="sd">    Convert a pair of tf tensors into a tf.data.Dataset with some augmentations.</span>
+<span class="sd">    The added augmentations are:</span>
+
+<span class="sd">    - `add_depth_dim` (with default params)</span>
+<span class="sd">    - `cast_type` (with default params)</span>
+<span class="sd">    - `random_slice`</span>
+<span class="sd">    Args:</span>
+<span class="sd">        X (tf.tensor): X data - must be compatible with above augmentations.</span>
+<span class="sd">        Y (tf.tensor): Y data - must be compatible with above augmentations.</span>
+<span class="sd">        training (bool or tuple): passed to `random_slice`, or if a tuple</span>
+<span class="sd">            (e.g. from sklearn.model_selection.train_test_split) then this function returns training and test sets.</span>
+<span class="sd">        batch_size (int): Unused I think.</span>
+<span class="sd">        max_offset (int): Passed to `random_slice`</span>
+<span class="sd">        slice_ax (int): Passed to `random_slice`</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tf.data.Dataset(, tf.Dataset): A tensorflow dataset with extra augmentations. If training is a tuple</span>
+<span class="sd">         then two datasets are returning: training set and test set.</span>
 <span class="sd">    """</span>
     <span class="c1"># TODO: trn_test as arg</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-        <span class="n">ds_train</span> <span class="o">=</span> <span class="n">get_tf_dataset</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">trn_test</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">Y</span><span class="p">[</span><span class="n">trn_test</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
-        <span class="n">ds_test</span> <span class="o">=</span> <span class="n">get_tf_dataset</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">trn_test</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">Y</span><span class="p">[</span><span class="n">trn_test</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">ds_train</span> <span class="o">=</span> <span class="n">get_tf_dataset</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">training</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">Y</span><span class="p">[</span><span class="n">training</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">ds_test</span> <span class="o">=</span> <span class="n">get_tf_dataset</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">training</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">Y</span><span class="p">[</span><span class="n">training</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ds_train</span><span class="p">,</span> <span class="n">ds_test</span>
 
     <span class="n">_ds</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
@@ -790,7 +1171,7 @@ If training==False, this will take the last N-max_offset samples.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                `indl`
+                Introduction
               </div>
             </div>
           </a>
