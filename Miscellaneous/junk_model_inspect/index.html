@@ -38,8 +38,6 @@
     
       <link rel="stylesheet" href="../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../css/jupyter-cells.css">
-    
       <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
     
@@ -198,7 +196,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Intracranial Neurophysiology and Deep Learning
+        `indl`
       </a>
     </li>
   
@@ -542,58 +540,55 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="highlight"><pre><span></span><code>if False:
+    # Temporarily disable this test until I can recreate the model
+    from pathlib import Path
+    import os
+    from tensorflow.keras.models import load_model
 
-<div class="codehilite"><pre><span></span><code><span class="k">if</span> <span class="bp">False</span><span class="p">:</span>
-    <span class="c1"># Temporarily disable this test until I can recreate the model</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-    <span class="kn">import</span> <span class="nn">os</span>
-    <span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
+    if Path.cwd().stem == &#39;indl&#39;:
+        os.chdir(Path.cwd().parent)
 
-    <span class="k">if</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">stem</span> <span class="o">==</span> <span class="s1">&#39;indl&#39;</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+    layer_idx = 20  # [2, 6, 10, 14]
+    n_steps = 100
+    max_n_filters = 25
 
-    <span class="n">layer_idx</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># [2, 6, 10, 14]</span>
-    <span class="n">n_steps</span> <span class="o">=</span> <span class="mi">100</span>
-    <span class="n">max_n_filters</span> <span class="o">=</span> <span class="mi">25</span>
+    model_file = Path.cwd() / &#39;data&#39; / &#39;kjm_ecog&#39; / &#39;converted&#39; / &#39;faces_basic&#39; / &#39;mv_model_full.h5&#39;
+    model = load_model(str(model_file))
 
-    <span class="n">model_file</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;kjm_ecog&#39;</span> <span class="o">/</span> <span class="s1">&#39;converted&#39;</span> <span class="o">/</span> <span class="s1">&#39;faces_basic&#39;</span> <span class="o">/</span> <span class="s1">&#39;mv_model_full.h5&#39;</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">model_file</span><span class="p">))</span>
+    # When processing softmax classification layer,
+    # second last dense layer should be converted from relu to linear.
+    if (layer_idx == len(model.layers) - 1) and (model.layers[-2].activation != tf.keras.activations.linear):
+        model.layers[-2].activation = tf.keras.activations.linear
+        import tempfile
+        # Save and load the model to actually apply the change.
+        tmp_path = Path(tempfile.gettempdir()) / (next(tempfile._get_candidate_names()) + &#39;.h5&#39;)
+        try:
+            model.save(str(tmp_path))
+            model = load_model(str(tmp_path))
+        finally:
+            tmp_path.unlink()
+    model.summary()
 
-    <span class="c1"># When processing softmax classification layer,</span>
-    <span class="c1"># second last dense layer should be converted from relu to linear.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">layer_idx</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">activation</span> <span class="o">!=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">activations</span><span class="o">.</span><span class="n">linear</span><span class="p">):</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">activations</span><span class="o">.</span><span class="n">linear</span>
-        <span class="kn">import</span> <span class="nn">tempfile</span>
-        <span class="c1"># Save and load the model to actually apply the change.</span>
-        <span class="n">tmp_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">_get_candidate_names</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;.h5&#39;</span><span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">))</span>
-            <span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">))</span>
-        <span class="k">finally</span><span class="p">:</span>
-            <span class="n">tmp_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+    maximizing_activations = visualize_layer(model, layer_idx, epochs=n_steps, loss_as_exclusive=True,
+                                             upsampling_steps=1, upsampling_factor=1,
+                                             filter_range=(0, max_n_filters),
+                                             output_dim=(701, model.get_input_shape_at(0)[-1]))
 
-    <span class="n">maximizing_activations</span> <span class="o">=</span> <span class="n">visualize_layer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">layer_idx</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">loss_as_exclusive</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                                             <span class="n">upsampling_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">upsampling_factor</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                             <span class="n">filter_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_n_filters</span><span class="p">),</span>
-                                             <span class="n">output_dim</span><span class="o">=</span><span class="p">(</span><span class="mi">701</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">get_input_shape_at</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    # Stitch timeseries together into one mega timeseries with NaN gaps.
+    stitched_data = _stitch_filters(maximizing_activations, n=2, sort_by_activation=False)
 
-    <span class="c1"># Stitch timeseries together into one mega timeseries with NaN gaps.</span>
-    <span class="n">stitched_data</span> <span class="o">=</span> <span class="n">_stitch_filters</span><span class="p">(</span><span class="n">maximizing_activations</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sort_by_activation</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    import matplotlib.pyplot as plt
 
-    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+    # Create a colour code cycler e.g. &#39;C0&#39;, &#39;C1&#39;, etc.
+    from itertools import cycle
+    colour_codes = map(&#39;C{}&#39;.format, cycle(range(10)))
 
-    <span class="c1"># Create a colour code cycler e.g. &#39;C0&#39;, &#39;C1&#39;, etc.</span>
-    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
-    <span class="n">colour_codes</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="s1">&#39;C{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">cycle</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">chan_ix</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">]:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stitched_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">chan_ix</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="n">colour_codes</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    plt.figure()
+    for chan_ix in [15, 9, 8]:
+        plt.plot(stitched_data[:, :, chan_ix], color=next(colour_codes))
+    plt.show()
 </code></pre></div>
-
-
 
 </div>
 </div>

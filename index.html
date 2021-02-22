@@ -38,8 +38,6 @@
     
       <link rel="stylesheet" href="css/ansi-colours.css">
     
-      <link rel="stylesheet" href="css/jupyter-cells.css">
-    
       <link rel="stylesheet" href="css/pandas-dataframe.css">
     
     
@@ -64,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#intracranial-neurophysiology-and-deep-learning" class="md-skip">
+        <a href="#indl" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +94,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Intracranial Neurophysiology and Deep Learning
+              `indl`
             
           </span>
         </div>
@@ -211,12 +209,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Intracranial Neurophysiology and Deep Learning
+          `indl`
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
-        Intracranial Neurophysiology and Deep Learning
+        `indl`
       </a>
       
         
@@ -237,6 +235,19 @@
     Install
   </a>
   
+    <nav class="md-nav" aria-label="Install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    Dependencies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -250,6 +261,46 @@
   <a href="#maintenance-notes" class="md-nav__link">
     Maintenance Notes
   </a>
+  
+    <nav class="md-nav" aria-label="Maintenance Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-organization" class="md-nav__link">
+    Repository Organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintaining-the-documentation" class="md-nav__link">
+    Maintaining the Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining the Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-the-documentation-locally" class="md-nav__link">
+    Testing the documentation locally
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-unit-tests" class="md-nav__link">
+    Running the unit tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -563,6 +614,19 @@
     Install
   </a>
   
+    <nav class="md-nav" aria-label="Install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    Dependencies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -576,6 +640,46 @@
   <a href="#maintenance-notes" class="md-nav__link">
     Maintenance Notes
   </a>
+  
+    <nav class="md-nav" aria-label="Maintenance Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-organization" class="md-nav__link">
+    Repository Organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintaining-the-documentation" class="md-nav__link">
+    Maintaining the Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining the Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-the-documentation-locally" class="md-nav__link">
+    Testing the documentation locally
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-unit-tests" class="md-nav__link">
+    Running the unit tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -596,24 +700,47 @@
                   </a>
                 
                 
-                <h1 id="intracranial-neurophysiology-and-deep-learning">Intracranial Neurophysiology and Deep Learning</h1>
-<blockquote>
-<p>This Python package contains tools to assist with deep-learning analysis of neurophysiology data, with an emphasis on intracranial neurophysiology.</p>
-</blockquote>
-<p>This is intended to be a companion to the SachsLab workshop found at https://github.com/SachsLab/IntracranialNeurophysDL .
-There is still a lot of work remaining to move the helper code from that repository to here.</p>
+                <h1 id="indl"><code>indl</code></h1>
+<p><code>indl</code> (Intracranial Neurophys and Deep Learning) is a Python package providing some tools to assist with deep-learning analysis of neurophysiology data, with an emphasis on intracranial neurophysiology. It is intended to be a companion to the SachsLab tutorial found at https://github.com/SachsLab/IntracranialNeurophysDL . The SachsLab also uses this library in some of their research.</p>
 <h2 id="install">Install</h2>
 <p><code>pip install git+https://github.com/SachsLab/indl.git</code></p>
+<h3 id="dependencies">Dependencies</h3>
+<p>I haven't added all the requirements to settings.ini yet so they won't be installed automatically. Chances are that if you are using this Python package then you already have the required dependencies installed in your environment. Some of the dependencies are:</p>
+<ul>
+<li>numpy</li>
+<li>scipy</li>
+<li>tensorflow</li>
+<li>tensorflow-probability</li>
+<li>h5py (only required for importing our custom monkey neurophys files)</li>
+<li>pandas (only required for importing our custom monkey neurophys files)</li>
+</ul>
 <h2 id="documentation">Documentation</h2>
+<p>The documentation is under construction but can be found at https://SachsLab.github.io/indl/</p>
 <h2 id="maintenance-notes">Maintenance Notes</h2>
 <p>Some notes for ongoing maintaining of this repository.</p>
+<h3 id="repository-organization">Repository Organization</h3>
 <ul>
 <li>Library code in the /indl folder</li>
-<li>Documentation is in the /docs folder.</li>
-<li>The /docs/API folder has stubs to tell the <a href="https://github.com/mkdocstrings/mkdocstrings"><code>mkdocstrings</code></a> plugin to build the API documentation from the library code.</li>
-<li>The /docs/{top-level-section} folders contain a mix of .md and .ipynb documentation. The latter are converted to .md when building by the <a href="https://github.com/greenape/mknotebooks/projects"><code>mknotebooks</code></a> plugin.</li>
-<li></li>
+<li>Unit tests in the /tests folder. Note this uses the <code>pytest</code> framework and conventions.</li>
+<li>I'm still building out the unit tests.</li>
+<li>Documentation in the /docs folder</li>
+<li>If you build the docs locally then you'll also get the /site directory, but this should be git ignored.</li>
 </ul>
+<h3 id="maintaining-the-documentation">Maintaining the Documentation</h3>
+<p>You will need to install several Python packages to maintain the documentation.</p>
+<ul>
+<li><code>pip install mkdocs mkdocstrings mknotebooks mkdocs-material Pygments</code></li>
+</ul>
+<p>The /docs/API folder has stubs to tell the <a href="https://github.com/mkdocstrings/mkdocstrings"><code>mkdocstrings</code></a> plugin to build the API documentation from the docstrings in the library code itself.</p>
+<p>The /docs/{top-level-section} folders contain a mix of .md and .ipynb documentation. The latter are converted to .md by the <a href="https://github.com/greenape/mknotebooks/projects"><code>mknotebooks</code></a> plugin during building.</p>
+<p>Run <code>mkdocs gh-deploy</code> to build the documentation, commit to the <code>gh-deploy</code> branch, and push to GitHub. This will make the documentation available at https://SachsLab.github.io/indl/</p>
+<h4 id="testing-the-documentation-locally">Testing the documentation locally</h4>
+<ul>
+<li><code>mkdocs build</code></li>
+<li><code>mkdocs serve</code></li>
+</ul>
+<h3 id="running-the-unit-tests">Running the unit tests</h3>
+<p>There aren't that many tests yet, I'm still building them out.</p>
                 
               
               

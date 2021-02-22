@@ -38,8 +38,6 @@
     
       <link rel="stylesheet" href="../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../css/jupyter-cells.css">
-    
       <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
     
@@ -203,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Intracranial Neurophysiology and Deep Learning
+        `indl`
       </a>
     </li>
   
@@ -564,8 +562,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">if</span> <span class="n">use_ar_prior</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">use_ar_prior</span><span class="p">:</span>
     <span class="n">autocorrelation_taus</span> <span class="o">=</span> <span class="p">[</span><span class="n">hps</span><span class="o">.</span><span class="n">prior_ar_atau</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hps</span><span class="o">.</span><span class="n">co_dim</span><span class="p">)]</span>
     <span class="n">noise_variances</span> <span class="o">=</span> <span class="p">[</span><span class="n">hps</span><span class="o">.</span><span class="n">prior_ar_nvar</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hps</span><span class="o">.</span><span class="n">co_dim</span><span class="p">)]</span>
     <span class="n">cos_prior</span> <span class="o">=</span> <span class="n">LearnableAutoRegressive1Prior</span><span class="p">(</span><span class="n">graph_batch_size</span><span class="p">,</span> <span class="n">hps</span><span class="o">.</span><span class="n">co_dim</span><span class="p">,</span>
@@ -584,8 +581,6 @@
     <span class="n">kl_cost_co_b_t</span> <span class="o">=</span> <span class="n">KLCost_GaussianGaussian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cos_posterior</span><span class="p">,</span>
                                                   <span class="bp">self</span><span class="o">.</span><span class="n">cos_prior</span><span class="p">)</span><span class="o">.</span><span class="n">kl_cost_b</span>
 </code></pre></div>
-
-
 
 </div>
 </div>

@@ -38,8 +38,6 @@
     
       <link rel="stylesheet" href="../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../css/jupyter-cells.css">
-    
       <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
     
@@ -203,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Intracranial Neurophysiology and Deep Learning
+        `indl`
       </a>
     </li>
   
@@ -564,8 +562,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">gen_ics_prior</span> <span class="o">=</span> <span class="n">LearnableDiagonalGaussian</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">gen_ics_prior</span> <span class="o">=</span> <span class="n">LearnableDiagonalGaussian</span><span class="p">(</span>
             <span class="n">batch_size</span><span class="o">=</span><span class="n">graph_batch_size</span><span class="p">,</span>
             <span class="n">z_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">hps</span><span class="p">[</span><span class="s1">&#39;ic_dim&#39;</span><span class="p">]],</span>
             <span class="n">name</span><span class="o">=</span><span class="s1">&#39;gen_ics_prior&#39;</span><span class="p">,</span>
@@ -575,18 +572,13 @@
 <span class="n">kl_cost_g0_b</span> <span class="o">=</span> <span class="n">KLCost_GaussianGaussian</span><span class="p">(</span><span class="n">gen_ics_posterior</span><span class="p">,</span> <span class="n">gen_ics_prior</span><span class="p">)</span><span class="o">.</span><span class="n">kl_cost_b</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">test_GRUClipCell</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">test_GRUClipCell</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -630,11 +622,8 @@ tf.Tensor(
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">test_GRUClipLayer</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">test_GRUClipLayer</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -678,11 +667,8 @@ tf.Tensor(
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">test_GRUClipLayer_in_Bidirectional</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">test_GRUClipLayer_in_Bidirectional</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">

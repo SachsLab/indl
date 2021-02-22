@@ -38,8 +38,6 @@
     
       <link rel="stylesheet" href="../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../css/jupyter-cells.css">
-    
       <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
     
@@ -203,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Intracranial Neurophysiology and Deep Learning
+        `indl`
       </a>
     </li>
   
@@ -564,47 +562,41 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="highlight"><pre><span></span><code>import numpy as np
+import scipy.signal
+import matplotlib.pyplot as plt
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.signal</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-
-<span class="n">srate</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">spk_rate</span> <span class="o">=</span> <span class="mf">13.0</span>  <span class="c1"># Avg 30 spikes per second</span>
-<span class="n">tvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">arange</span><span class="p">(</span><span class="n">srate</span><span class="p">)</span> <span class="o">/</span> <span class="n">srate</span>
-<span class="n">spikeevents</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">srate</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">spk_rate</span> <span class="o">/</span> <span class="n">srate</span><span class="p">))</span><span class="o">.</span><span class="kp">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="n">spiketimes</span> <span class="o">=</span> <span class="n">tvec</span><span class="p">[</span><span class="n">spikeevents</span><span class="o">.</span><span class="kp">nonzero</span><span class="p">()]</span>
+srate = 1000
+spk_rate = 13.0  # Avg 30 spikes per second
+tvec = np.arange(srate) / srate
+spikeevents = (np.random.rand(srate) &lt; (spk_rate / srate)).astype(np.float32)
+spiketimes = tvec[spikeevents.nonzero()]
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="highlight"><pre><span></span><code>from indl.misc.kernels import sskernel, Gauss
 
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.misc.kernels</span> <span class="kn">import</span> <span class="n">sskernel</span><span class="p">,</span> <span class="n">Gauss</span>
+# Shimazaki et al. auto-kernel-width
+kernel_width = sskernel(spiketimes - spiketimes[0], nbs=0)[2]
+kernel_param = 1 / (2.0 * 2.7) * kernel_width
+span_fac = 3.0
+t_kern = np.arange(-span_fac * kernel_param, span_fac * kernel_param + (1 / srate), 1 / srate)
+kernel = Gauss(t_kern, kernel_param)
+spikerates = scipy.signal.convolve(spikeevents, kernel, &#39;same&#39;)
 
-<span class="c1"># Shimazaki et al. auto-kernel-width</span>
-<span class="n">kernel_width</span> <span class="o">=</span> <span class="n">sskernel</span><span class="p">(</span><span class="n">spiketimes</span> <span class="o">-</span> <span class="n">spiketimes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nbs</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">kernel_param</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="mf">2.7</span><span class="p">)</span> <span class="o">*</span> <span class="n">kernel_width</span>
-<span class="n">span_fac</span> <span class="o">=</span> <span class="mf">3.0</span>
-<span class="n">t_kern</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span><span class="p">,</span> <span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">),</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">)</span>
-<span class="n">kernel</span> <span class="o">=</span> <span class="n">Gauss</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel_param</span><span class="p">)</span>
-<span class="n">spikerates</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">spikeevents</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikeevents</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikerates</span><span class="p">)</span>
+plt.subplot(3, 1, 1)
+plt.plot(tvec, spikeevents)
+plt.subplot(3, 1, 2)
+plt.plot(t_kern, kernel)
+plt.xlim([-0.5, 0.5])
+plt.subplot(3, 1, 3)
+plt.plot(tvec, spikerates)
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -629,24 +621,21 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="highlight"><pre><span></span><code>kernel_param = 0.050  # msec stdev
+span_fac = 3.0  # How many stdevs wide the kernel should be. Too short will truncate kernel.
 
-<div class="codehilite"><pre><span></span><code><span class="n">kernel_param</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">050</span>  <span class="o">#</span> <span class="n">msec</span> <span class="n">stdev</span>
-<span class="n">span_fac</span> <span class="o">=</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span>  <span class="o">#</span> <span class="n">How</span> <span class="n">many</span> <span class="n">stdevs</span> <span class="n">wide</span> <span class="n">the</span> <span class="n">kernel</span> <span class="n">should</span> <span class="n">be</span><span class="p">.</span> <span class="n">Too</span> <span class="n">short</span> <span class="n">will</span> <span class="k">truncate</span> <span class="n">kernel</span><span class="p">.</span>
+t_kern = np.arange(-span_fac * kernel_param, span_fac * kernel_param + (1 / srate), 1 / srate)
+kernel = Gauss(t_kern, kernel_param)
+spikerates = scipy.signal.convolve(spikeevents, kernel, &#39;same&#39;)
 
-<span class="n">t_kern</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span><span class="p">,</span> <span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">),</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">)</span>
-<span class="n">kernel</span> <span class="o">=</span> <span class="n">Gauss</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel_param</span><span class="p">)</span>
-<span class="n">spikerates</span> <span class="o">=</span> <span class="n">scipy</span><span class="p">.</span><span class="n">signal</span><span class="p">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">spikeevents</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikeevents</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">])</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikerates</span><span class="p">)</span>
+plt.subplot(3, 1, 1)
+plt.plot(tvec, spikeevents)
+plt.subplot(3, 1, 2)
+plt.plot(t_kern, kernel)
+plt.xlim([-0.5, 0.5])
+plt.subplot(3, 1, 3)
+plt.plot(tvec, spikerates)
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -671,27 +660,24 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="highlight"><pre><span></span><code>from indl.misc.kernels import Boxcar
 
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.misc.kernels</span> <span class="kn">import</span> <span class="n">Boxcar</span>
+kernel_param = 0.05  # The width of the rectangle in seconds
+span_fac = np.sqrt(3.0)
+kernel_param /= (2*np.sqrt(3.0))
 
-<span class="n">kernel_param</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># The width of the rectangle in seconds</span>
-<span class="n">span_fac</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
-<span class="n">kernel_param</span> <span class="o">/=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.0</span><span class="p">))</span>
+t_kern = np.arange(-span_fac * kernel_param, span_fac * kernel_param + (1 / srate), 1 / srate)
+kernel = Boxcar(t_kern, kernel_param)
+spikerates = scipy.signal.convolve(spikeevents, kernel, &#39;same&#39;)
 
-<span class="n">t_kern</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span><span class="p">,</span> <span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">),</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">)</span>
-<span class="n">kernel</span> <span class="o">=</span> <span class="n">Boxcar</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel_param</span><span class="p">)</span>
-<span class="n">spikerates</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">spikeevents</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikeevents</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikerates</span><span class="p">)</span>
+plt.subplot(3, 1, 1)
+plt.plot(tvec, spikeevents)
+plt.subplot(3, 1, 2)
+plt.xlim([-0.5, 0.5])
+plt.plot(t_kern, kernel)
+plt.subplot(3, 1, 3)
+plt.plot(tvec, spikerates)
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -716,27 +702,24 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="highlight"><pre><span></span><code>from indl.misc.kernels import Alpha
+kernel_param = 0.03  # tau
+kernel_param *= np.sqrt(2)
+span_fac = 6.0
 
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.misc.kernels</span> <span class="kn">import</span> <span class="n">Alpha</span>
-<span class="n">kernel_param</span> <span class="o">=</span> <span class="mf">0.03</span>  <span class="c1"># tau</span>
-<span class="n">kernel_param</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">span_fac</span> <span class="o">=</span> <span class="mf">6.0</span>
+t_kern = np.arange(-span_fac * kernel_param, span_fac * kernel_param + (1 / srate), 1 / srate)
+kernel = Alpha(t_kern, kernel_param)
+spikerates = scipy.signal.convolve(spikeevents, kernel, &#39;same&#39;)
+print(np.sum(spikeevents), np.mean(spikerates))
 
-<span class="n">t_kern</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span><span class="p">,</span> <span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">),</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">)</span>
-<span class="n">kernel</span> <span class="o">=</span> <span class="n">Alpha</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel_param</span><span class="p">)</span>
-<span class="n">spikerates</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">spikeevents</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spikeevents</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spikerates</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikeevents</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikerates</span><span class="p">)</span>
+plt.subplot(3, 1, 1)
+plt.plot(tvec, spikeevents)
+plt.subplot(3, 1, 2)
+plt.xlim([-0.5, 0.5])
+plt.plot(t_kern, kernel)
+plt.subplot(3, 1, 3)
+plt.plot(tvec, spikerates)
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -769,25 +752,22 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="highlight"><pre><span></span><code>from indl.misc.kernels import Exponential
+kernel_param = 0.05  # the time constant tau when the kernel reaches 1/e the maximum.
+span_fac = 6.0
 
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.misc.kernels</span> <span class="kn">import</span> <span class="n">Exponential</span>
-<span class="n">kernel_param</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># the time constant tau when the kernel reaches 1/e the maximum.</span>
-<span class="n">span_fac</span> <span class="o">=</span> <span class="mf">6.0</span>
+t_kern = np.arange(-span_fac * kernel_param, span_fac * kernel_param + (1 / srate), 1 / srate)
+kernel = Exponential(t_kern, kernel_param)
+spikerates = scipy.signal.convolve(spikeevents, kernel, &#39;same&#39;)
 
-<span class="n">t_kern</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span><span class="p">,</span> <span class="n">span_fac</span> <span class="o">*</span> <span class="n">kernel_param</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">),</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">srate</span><span class="p">)</span>
-<span class="n">kernel</span> <span class="o">=</span> <span class="n">Exponential</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel_param</span><span class="p">)</span>
-<span class="n">spikerates</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">spikeevents</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikeevents</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_kern</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">spikerates</span><span class="p">)</span>
+plt.subplot(3, 1, 1)
+plt.plot(tvec, spikeevents)
+plt.subplot(3, 1, 2)
+plt.xlim([-0.5, 0.5])
+plt.plot(t_kern, kernel)
+plt.subplot(3, 1, 3)
+plt.plot(tvec, spikerates)
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">

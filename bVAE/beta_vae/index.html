@@ -38,8 +38,6 @@
     
       <link rel="stylesheet" href="../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../css/jupyter-cells.css">
-    
       <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
     
@@ -203,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Intracranial Neurophysiology and Deep Learning
+        `indl`
       </a>
     </li>
   
@@ -835,11 +833,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">test_prepare_inputs</span><span class="p">(</span><span class="n">n_times</span><span class="o">=</span><span class="mi">246</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">test_prepare_inputs</span><span class="p">(</span><span class="n">n_times</span><span class="o">=</span><span class="mi">246</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -896,11 +891,8 @@ This distribution is a multivariate normal, optionally with off-diagonal element
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">test_create_f_encoder</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">test_create_f_encoder</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -982,8 +974,7 @@ tf.Tensor(
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># TODO: Rework this</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># TODO: Rework this</span>
 <span class="c1"># TODO: Compare to LFADS&#39; prior on enc_z.</span>
 <span class="k">def</span> <span class="nf">sample_dynamic_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timesteps</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">batches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1033,18 +1024,13 @@ tf.Tensor(
     <span class="c1"># TODO: Move 1 of the batch dims into event dims</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">test_create_z_encoder</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">test_create_z_encoder</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1075,8 +1061,7 @@ _________________________________________________________________
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">dynamic_prior_cell</span> <span class="o">=</span> <span class="n">LearnableMultivariateNormalDiagCell</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">cell_type</span><span class="o">=</span><span class="s1">&#39;gru&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">dynamic_prior_cell</span> <span class="o">=</span> <span class="n">LearnableMultivariateNormalDiagCell</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">cell_type</span><span class="o">=</span><span class="s1">&#39;gru&#39;</span><span class="p">)</span>
 <span class="n">sample</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">dynamic_prior_cell</span><span class="o">.</span><span class="n">zero_state</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">locs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">scale_diags</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1088,8 +1073,6 @@ _________________________________________________________________
     <span class="n">scale_diags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;scale_diag&quot;</span><span class="p">])</span>
     <span class="n">sample_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -1106,8 +1089,7 @@ _________________________________________________________________
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.model.lfads.complex_cell</span> <span class="kn">import</span> <span class="n">ComplexCell</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.model.lfads.complex_cell</span> <span class="kn">import</span> <span class="n">ComplexCell</span>
 
 
 <span class="k">def</span> <span class="nf">create_generator_LFADS</span><span class="p">():</span>
@@ -1144,8 +1126,6 @@ _________________________________________________________________
     <span class="n">factors</span> <span class="o">=</span> <span class="n">gen_output</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">factors</span>
 </code></pre></div>
-
-
 
 </div>
 </div>

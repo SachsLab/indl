@@ -38,8 +38,6 @@
     
       <link rel="stylesheet" href="../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../css/jupyter-cells.css">
-    
       <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
     
@@ -203,7 +201,7 @@
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Intracranial Neurophysiology and Deep Learning
+        `indl`
       </a>
     </li>
   
@@ -615,29 +613,23 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="err">N_IN = 8</span>
-<span class="err">N_UNITS = 24</span>
-<span class="err">N_OUT_TIMESTEPS = 115</span>
-<span class="err">cell = tfkl.GRUCell  # LSTMCell or GRUCell</span>
+<div class="highlight"><pre><span></span><code>N_IN = 8
+N_UNITS = 24
+N_OUT_TIMESTEPS = 115
+cell = tfkl.GRUCell  # LSTMCell or GRUCell
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="err">#  Test regular RNN with zeros input</span>
-<span class="err">reg_rnn_layer = tfkl.RNN(cell(N_UNITS), return_state=True, return_sequences=True)</span>
-<span class="err">in_ = tf.zeros((1, 115, 16))</span>
-<span class="err">x_ = reg_rnn_layer(in_)</span>
-<span class="err">print(K.any(x_[0]))  # Just to remind myself that input zeros and state zeros will yield output zeros.</span>
+<div class="highlight"><pre><span></span><code>#  Test regular RNN with zeros input
+reg_rnn_layer = tfkl.RNN(cell(N_UNITS), return_state=True, return_sequences=True)
+in_ = tf.zeros((1, 115, 16))
+x_ = reg_rnn_layer(in_)
+print(K.any(x_[0]))  # Just to remind myself that input zeros and state zeros will yield output zeros.
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -656,19 +648,16 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="err"># Test placeholder tensor with no timesteps</span>
-<span class="err">K.clear_session()</span>
-<span class="err">gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,</span>
-<span class="err">                              timesteps=N_OUT_TIMESTEPS)</span>
-<span class="err">in_ = tfkl.Input(shape=(N_IN,))</span>
-<span class="err">x_, cell_state_ = gen_rnn_layer(in_)</span>
-<span class="err">print(&quot;Test placeholder tensor&quot;)</span>
-<span class="err">model = tf.keras.Model(inputs=in_, outputs=x_)</span>
-<span class="err">model.summary()</span>
+<div class="highlight"><pre><span></span><code># Test placeholder tensor with no timesteps
+K.clear_session()
+gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,
+                              timesteps=N_OUT_TIMESTEPS)
+in_ = tfkl.Input(shape=(N_IN,))
+x_, cell_state_ = gen_rnn_layer(in_)
+print(&quot;Test placeholder tensor&quot;)
+model = tf.keras.Model(inputs=in_, outputs=x_)
+model.summary()
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -712,19 +701,16 @@ ________________________________________________________________________________
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="err"># Test placeholder tensor with no timesteps as initial state</span>
-<span class="err">K.clear_session()</span>
-<span class="err">gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,</span>
-<span class="err">                              timesteps=N_OUT_TIMESTEPS)</span>
-<span class="err">in_ = tfkl.Input(shape=(N_UNITS,))</span>
-<span class="err">x_, cell_state_ = gen_rnn_layer(None, initial_state=in_)</span>
-<span class="err">print(&quot;Test placeholder tensor&quot;)</span>
-<span class="err">model = tf.keras.Model(inputs=in_, outputs=x_)</span>
-<span class="err">model.summary()</span>
+<div class="highlight"><pre><span></span><code># Test placeholder tensor with no timesteps as initial state
+K.clear_session()
+gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,
+                              timesteps=N_OUT_TIMESTEPS)
+in_ = tfkl.Input(shape=(N_UNITS,))
+x_, cell_state_ = gen_rnn_layer(None, initial_state=in_)
+print(&quot;Test placeholder tensor&quot;)
+model = tf.keras.Model(inputs=in_, outputs=x_)
+model.summary()
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -775,18 +761,15 @@ ________________________________________________________________________________
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># Test None input --&gt; uses zeros</span>
-<span class="nf">K.clear_session</span><span class="p">()</span>
-<span class="n">gen_rnn_layer</span> <span class="o">=</span> <span class="nf">GenerativeRNN</span><span class="p">(</span><span class="nf">cell</span><span class="p">(</span><span class="n">N_UNITS</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">return_state</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
-                              <span class="n">timesteps</span><span class="o">=</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Test None input&quot;</span><span class="p">)</span>
-<span class="n">x_</span><span class="p">,</span> <span class="n">cell_state_</span> <span class="o">=</span> <span class="nf">gen_rnn_layer</span><span class="p">()</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">x_.shape</span><span class="p">,</span> <span class="n">cell_state_.shape</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">K.any</span><span class="p">(</span><span class="n">x_</span><span class="p">),</span> <span class="nf">K.any</span><span class="p">(</span><span class="n">cell_state_</span><span class="p">))</span>  <span class="c1"># &lt;- any non-zero values?</span>
+<div class="highlight"><pre><span></span><code># Test None input --&gt; uses zeros
+K.clear_session()
+gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,
+                              timesteps=N_OUT_TIMESTEPS)
+print(&quot;Test None input&quot;)
+x_, cell_state_ = gen_rnn_layer()
+print(x_.shape, cell_state_.shape)
+print(K.any(x_), K.any(cell_state_))  # &lt;- any non-zero values?
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -807,19 +790,16 @@ tf.Tensor(False, shape=(), dtype=bool) tf.Tensor(False, shape=(), dtype=bool)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># Test random input</span>
-<span class="nf">K.clear_session</span><span class="p">()</span>
-<span class="n">gen_rnn_layer</span> <span class="o">=</span> <span class="nf">GenerativeRNN</span><span class="p">(</span><span class="nf">cell</span><span class="p">(</span><span class="n">N_UNITS</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">return_state</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
-                              <span class="n">timesteps</span><span class="o">=</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">)</span>
-<span class="n">in_</span> <span class="o">=</span> <span class="nf">tf.random.uniform</span><span class="p">((</span><span class="m">1</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="n">N_UNITS</span><span class="p">),</span> <span class="n">minval</span><span class="o">=</span><span class="m">-1.0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="m">1.0</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Test zeros input&quot;</span><span class="p">)</span>
-<span class="n">x_</span><span class="p">,</span> <span class="n">cell_state_</span> <span class="o">=</span> <span class="nf">gen_rnn_layer</span><span class="p">(</span><span class="n">in_</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">x_.shape</span><span class="p">,</span> <span class="n">cell_state_.shape</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">K.any</span><span class="p">(</span><span class="n">x_</span><span class="p">),</span> <span class="nf">K.any</span><span class="p">(</span><span class="n">cell_state_</span><span class="p">))</span>  <span class="c1"># &lt;- any non-zero values?</span>
+<div class="highlight"><pre><span></span><code># Test random input
+K.clear_session()
+gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,
+                              timesteps=N_OUT_TIMESTEPS)
+in_ = tf.random.uniform((1, 8, N_UNITS), minval=-1.0, maxval=1.0)
+print(&quot;Test zeros input&quot;)
+x_, cell_state_ = gen_rnn_layer(in_)
+print(x_.shape, cell_state_.shape)
+print(K.any(x_), K.any(cell_state_))  # &lt;- any non-zero values?
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -840,19 +820,16 @@ tf.Tensor(True, shape=(), dtype=bool) tf.Tensor(True, shape=(), dtype=bool)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># Test random states</span>
-<span class="nf">K.clear_session</span><span class="p">()</span>
-<span class="n">gen_rnn_layer</span> <span class="o">=</span> <span class="nf">GenerativeRNN</span><span class="p">(</span><span class="nf">cell</span><span class="p">(</span><span class="n">N_UNITS</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">return_state</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
-                              <span class="n">timesteps</span><span class="o">=</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">gen_rnn_layer.compute_output_shape</span><span class="p">())</span>
-<span class="n">init_states</span> <span class="o">=</span> <span class="p">[</span><span class="nf">tf.random.uniform</span><span class="p">((</span><span class="m">1</span><span class="p">,</span> <span class="n">N_UNITS</span><span class="p">),</span> <span class="n">minval</span><span class="o">=</span><span class="m">-1.0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="m">1.0</span><span class="p">)</span> <span class="n">for</span> _ <span class="n">in</span> <span class="nf">range</span><span class="p">(</span><span class="m">1</span><span class="p">)]</span>
-<span class="n">x_</span><span class="p">,</span> <span class="n">cell_states_</span> <span class="o">=</span> <span class="nf">gen_rnn_layer</span><span class="p">(</span><span class="n">initial_state</span><span class="o">=</span><span class="n">init_states</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">x_.shape</span><span class="p">,</span> <span class="n">cell_state_.shape</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">K.any</span><span class="p">(</span><span class="n">x_</span><span class="p">),</span> <span class="nf">K.any</span><span class="p">(</span><span class="n">cell_state_</span><span class="p">))</span>  <span class="c1"># &lt;- any non-zero values?</span>
+<div class="highlight"><pre><span></span><code># Test random states
+K.clear_session()
+gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,
+                              timesteps=N_OUT_TIMESTEPS)
+print(gen_rnn_layer.compute_output_shape())
+init_states = [tf.random.uniform((1, N_UNITS), minval=-1.0, maxval=1.0) for _ in range(1)]
+x_, cell_states_ = gen_rnn_layer(initial_state=init_states)
+print(x_.shape, cell_state_.shape)
+print(K.any(x_), K.any(cell_state_))  # &lt;- any non-zero values?
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -873,21 +850,18 @@ tf.Tensor(True, shape=(), dtype=bool) tf.Tensor(True, shape=(), dtype=bool)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="highlight"><pre><span></span><code># Test masking
+K.clear_session()
 
-<div class="codehilite"><pre><span></span><code><span class="c1"># Test masking</span>
-<span class="nf">K.clear_session</span><span class="p">()</span>
-
-<span class="n">tmp</span> <span class="o">=</span> <span class="nf">tf.range</span><span class="p">(</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">)[</span><span class="n">tf.newaxis</span><span class="p">,</span> <span class="o">:</span><span class="p">,</span> <span class="n">tf.newaxis</span><span class="p">]</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="nf">tf.math.logical_or</span><span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="m">5</span><span class="p">,</span> <span class="n">tmp</span> <span class="o">&gt;</span> <span class="m">100</span><span class="p">)</span>
-<span class="n">gen_rnn_layer</span> <span class="o">=</span> <span class="nf">GenerativeRNN</span><span class="p">(</span><span class="nf">cell</span><span class="p">(</span><span class="n">N_UNITS</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">return_state</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
-                              <span class="n">timesteps</span><span class="o">=</span><span class="n">N_OUT_TIMESTEPS</span><span class="p">,</span> <span class="n">tile_input</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
-<span class="n">in_</span> <span class="o">=</span> <span class="nf">tf.random.uniform</span><span class="p">((</span><span class="m">5</span><span class="p">,</span> <span class="n">N_OUT_TIMESTEPS</span><span class="p">,</span> <span class="n">N_UNITS</span><span class="p">),</span> <span class="n">minval</span><span class="o">=</span><span class="m">-1.0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="m">1.0</span><span class="p">)</span>
-<span class="n">x_</span><span class="p">,</span> <span class="n">cell_state_</span> <span class="o">=</span> <span class="nf">gen_rnn_layer</span><span class="p">(</span><span class="n">in_</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">x_.shape</span><span class="p">,</span> <span class="n">cell_state_.shape</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">K.any</span><span class="p">(</span><span class="n">x_</span><span class="p">),</span> <span class="nf">K.any</span><span class="p">(</span><span class="n">cell_state_</span><span class="p">))</span>  <span class="c1"># &lt;- any non-zero values?</span>
+tmp = tf.range(N_OUT_TIMESTEPS)[tf.newaxis, :, tf.newaxis]
+mask = tf.math.logical_or(tmp &lt; 5, tmp &gt; 100)
+gen_rnn_layer = GenerativeRNN(cell(N_UNITS), return_sequences=True, return_state=True,
+                              timesteps=N_OUT_TIMESTEPS, tile_input=True)
+in_ = tf.random.uniform((5, N_OUT_TIMESTEPS, N_UNITS), minval=-1.0, maxval=1.0)
+x_, cell_state_ = gen_rnn_layer(in_, mask=mask)
+print(x_.shape, cell_state_.shape)
+print(K.any(x_), K.any(cell_state_))  # &lt;- any non-zero values?
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -907,118 +881,115 @@ tf.Tensor(True, shape=(), dtype=bool) tf.Tensor(True, shape=(), dtype=bool)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="highlight"><pre><span></span><code># Garbage code I don&#39;t want to throw out yet.
+if False:
+    def call(self, inputs, mask=None, training=None, initial_state=None, constants=None):
+        assert(mask is None), &quot;mask not supported.&quot;
+        # First part copied from super call()
 
-<div class="codehilite"><pre><span></span><code><span class="s s-Atom">#</span> <span class="nv">Garbage</span> <span class="s s-Atom">code</span> <span class="nv">I</span> <span class="s s-Atom">don&#39;t want to throw out yet.</span>
-<span class="s s-Atom">if False:</span>
-<span class="s s-Atom">    def call(self, inputs, mask=None, training=None, initial_state=None, constants=None):</span>
-<span class="s s-Atom">        assert(mask is None), &quot;mask not supported.&quot;</span>
-<span class="s s-Atom">        # First part copied from super call()</span>
+        # The input should be dense, padded with zeros. If a ragged input is fed
+        # into the layer, it is padded and the row lengths are used for masking.
+        inputs, row_lengths = K.convert_inputs_if_ragged(inputs)
+        is_ragged_input = (row_lengths is not None)
+        self._validate_args_if_ragged(is_ragged_input, mask)
 
-<span class="s s-Atom">        # The input should be dense, padded with zeros. If a ragged input is fed</span>
-<span class="s s-Atom">        # into the layer, it is padded and the row lengths are used for masking.</span>
-<span class="s s-Atom">        inputs, row_lengths = K.convert_inputs_if_ragged(inputs)</span>
-<span class="s s-Atom">        is_ragged_input = (row_lengths is not None)</span>
-<span class="s s-Atom">        self._validate_args_if_ragged(is_ragged_input, mask)</span>
+        # Get initial_state. Merge provided initial_state and preserved if self.stateful,
+        # otherwise use provided or zeros if provided is None.
+        inputs, initial_state, constants = self._process_inputs(
+            inputs, initial_state, constants)
 
-<span class="s s-Atom">        # Get initial_state. Merge provided initial_state and preserved if self.stateful,</span>
-<span class="s s-Atom">        # otherwise use provided or zeros if provided is None.</span>
-<span class="s s-Atom">        inputs, initial_state, constants = self._process_inputs(</span>
-<span class="s s-Atom">            inputs, initial_state, constants)</span>
+        self._maybe_reset_cell_dropout_mask(self.cell)
+        if isinstance(self.cell, tfkl.StackedRNNCells):
+            for cell in self.cell.cells:
+                self._maybe_reset_cell_dropout_mask(cell)
 
-<span class="s s-Atom">        self._maybe_reset_cell_dropout_mask(self.cell)</span>
-<span class="s s-Atom">        if isinstance(self.cell, tfkl.StackedRNNCells):</span>
-<span class="s s-Atom">            for cell in self.cell.cells:</span>
-<span class="s s-Atom">                self._maybe_reset_cell_dropout_mask(cell)</span>
+        kwargs = {}
+        if generic_utils.has_arg(self.cell.call, &#39;training&#39;):
+            kwargs[&#39;training&#39;] = training
 
-<span class="s s-Atom">        kwargs = {}</span>
-<span class="s s-Atom">        if generic_utils.has_arg(self.cell.call, &#39;training&#39;):</span>
-<span class="s s-Atom">            kwargs[&#39;training&#39;] = training</span>
+        # TF RNN cells expect single tensor as state instead of list wrapped tensor.
+        is_tf_rnn_cell = getattr(self.cell, &#39;_is_tf_rnn_cell&#39;, None) is not None
+        if constants:
+            if not generic_utils.has_arg(self.cell.call, &#39;constants&#39;):
+                raise ValueError(&#39;RNN cell does not support constants&#39;)
 
-<span class="s s-Atom">        # TF RNN cells expect single tensor as state instead of list wrapped tensor.</span>
-<span class="s s-Atom">        is_tf_rnn_cell = getattr(self.cell, &#39;</span><span class="k">_</span><span class="s s-Atom">is_tf_rnn_cell&#39;, None) is not None</span>
-<span class="s s-Atom">        if constants:</span>
-<span class="s s-Atom">            if not generic_utils.has_arg(self.cell.call, &#39;constants&#39;):</span>
-<span class="s s-Atom">                raise ValueError(&#39;</span><span class="nv">RNN</span> <span class="s s-Atom">cell</span> <span class="s s-Atom">does</span> <span class="o">not</span> <span class="s s-Atom">support</span> <span class="s s-Atom">constants&#39;)</span>
+            def step(inputs, states):
+                constants = states[-self._num_constants:]  # pylint: disable=invalid-unary-operand-type
+                states = states[:-self._num_constants]  # pylint: disable=invalid-unary-operand-type
 
-<span class="s s-Atom">            def step(inputs, states):</span>
-<span class="s s-Atom">                constants = states[-self._num_constants:]  # pylint: disable=invalid-unary-operand-type</span>
-<span class="s s-Atom">                states = states[:-self._num_constants]  # pylint: disable=invalid-unary-operand-type</span>
+                states = states[0] if len(states) == 1 and is_tf_rnn_cell else states
+                output, new_states = self.cell.call(
+                    inputs, states, constants=constants, **kwargs)
+                if not nest.is_sequence(new_states):
+                    new_states = [new_states]
+                return output, new_states
+        else:
 
-<span class="s s-Atom">                states = states[0] if len(states) == 1 and is_tf_rnn_cell else states</span>
-<span class="s s-Atom">                output, new_states = self.cell.call(</span>
-<span class="s s-Atom">                    inputs, states, constants=constants, **kwargs)</span>
-<span class="s s-Atom">                if not nest.is_sequence(new_states):</span>
-<span class="s s-Atom">                    new_states = [new_states]</span>
-<span class="s s-Atom">                return output, new_states</span>
-<span class="s s-Atom">        else:</span>
+            def step(inputs, states):
+                states = states[0] if len(states) == 1 and is_tf_rnn_cell else states
+                output, new_states = self.cell.call(inputs, states, **kwargs)
+                if not nest.is_sequence(new_states):
+                    new_states = [new_states]
+                return output, new_states
 
-<span class="s s-Atom">            def step(inputs, states):</span>
-<span class="s s-Atom">                states = states[0] if len(states) == 1 and is_tf_rnn_cell else states</span>
-<span class="s s-Atom">                output, new_states = self.cell.call(inputs, states, **kwargs)</span>
-<span class="s s-Atom">                if not nest.is_sequence(new_states):</span>
-<span class="s s-Atom">                    new_states = [new_states]</span>
-<span class="s s-Atom">                return output, new_states</span>
+        # Begin deviation from super call() #
+        #####################################
+        # We do not do K.rnn because it does not support feeding the output back as the input to the next step.
+        def _process_single_input_t(input_t):
+            input_t = tf.unstack(input_t, axis=-2)  # unstack for time_step dim
+            if self.go_backwards:
+                input_t.reverse()
+            return input_t
 
-<span class="s s-Atom">        # Begin deviation from super call() #</span>
-<span class="s s-Atom">        #####################################</span>
-<span class="s s-Atom">        # We do not do K.rnn because it does not support feeding the output back as the input to the next step.</span>
-<span class="s s-Atom">        def _process_single_input_t(input_t):</span>
-<span class="s s-Atom">            input_t = tf.unstack(input_t, axis=-2)  # unstack for time_step dim</span>
-<span class="s s-Atom">            if self.go_backwards:</span>
-<span class="s s-Atom">                input_t.reverse()</span>
-<span class="s s-Atom">            return input_t</span>
+        if nest.is_sequence(inputs):
+            processed_input = nest.map_structure(_process_single_input_t, inputs)
+        else:
+            processed_input = (_process_single_input_t(inputs),)
+        cell_input = nest.pack_sequence_as(inputs, [_[0] for _ in processed_input])
 
-<span class="s s-Atom">        if nest.is_sequence(inputs):</span>
-<span class="s s-Atom">            processed_input = nest.map_structure(_process_single_input_t, inputs)</span>
-<span class="s s-Atom">        else:</span>
-<span class="s s-Atom">            processed_input = (_process_single_input_t(inputs),)</span>
-<span class="s s-Atom">        cell_input = nest.pack_sequence_as(inputs, [_[0] for _ in processed_input])</span>
+        cell_state = tuple(initial_state)
 
-<span class="s s-Atom">        cell_state = tuple(initial_state)</span>
+        out_states = []
+        out_inputs = []
+        for step_ix in range(self.timesteps):
+            cell_input, new_states = step(cell_input, cell_state)
+            flat_new_states = nest.flatten(new_states)
+            cell_state = nest.pack_sequence_as(cell_state, flat_new_states)
+            out_states.append(cell_state)
+            out_inputs.append(cell_input)
 
-<span class="s s-Atom">        out_states = []</span>
-<span class="s s-Atom">        out_inputs = []</span>
-<span class="s s-Atom">        for step_ix in range(self.timesteps):</span>
-<span class="s s-Atom">            cell_input, new_states = step(cell_input, cell_state)</span>
-<span class="s s-Atom">            flat_new_states = nest.flatten(new_states)</span>
-<span class="s s-Atom">            cell_state = nest.pack_sequence_as(cell_state, flat_new_states)</span>
-<span class="s s-Atom">            out_states.append(cell_state)</span>
-<span class="s s-Atom">            out_inputs.append(cell_input)</span>
+        out_inputs = tf.stack(out_inputs, axis=-2)
+        # if cell outputs a distribution, then we might do the following, but base class
+        # would have to change.
+        if False:
+            if hasattr(out_inputs[0], &#39;parameters&#39;) and &#39;distribution&#39; in out_inputs[0].parameters:
+                dist0_parms = out_inputs[0].parameters[&#39;distribution&#39;].parameters
+                coll_parms = {}
+                for p_name, p_val in dist0_parms.items():
+                    if K.tensor_util.is_tensor(p_val):
+                        coll_parms[p_name] = []
+                for dist in out_inputs:
+                    for p_name in coll_parms.keys():
+                        coll_parms[p_name].append(dist.parameters[&#39;distribution&#39;].parameters[p_name])
+                for p_name in coll_parms.keys():
+                    coll_parms[p_name] = tf.stack(coll_parms[p_name], axis=-2)
+                dist_class = out_inputs[0].parameters[&#39;distribution&#39;].__class__
+                out_inputs = dist_class(**coll_parms)
+                # Warning! time dimension lost in batch with None
+                out_inputs = tfp.distributions.Independent(out_inputs, reinterpreted_batch_ndims=1)
 
-<span class="s s-Atom">        out_inputs = tf.stack(out_inputs, axis=-2)</span>
-<span class="s s-Atom">        # if cell outputs a distribution, then we might do the following, but base class</span>
-<span class="s s-Atom">        # would have to change.</span>
-<span class="s s-Atom">        if False:</span>
-<span class="s s-Atom">            if hasattr(out_inputs[0], &#39;parameters&#39;) and &#39;distribution&#39; in out_inputs[0].parameters:</span>
-<span class="s s-Atom">                dist0_parms = out_inputs[0].parameters[&#39;distribution&#39;].parameters</span>
-<span class="s s-Atom">                coll_parms = {}</span>
-<span class="s s-Atom">                for p_name, p_val in dist0_parms.items():</span>
-<span class="s s-Atom">                    if K.tensor_util.is_tensor(p_val):</span>
-<span class="s s-Atom">                        coll_parms[p_name] = []</span>
-<span class="s s-Atom">                for dist in out_inputs:</span>
-<span class="s s-Atom">                    for p_name in coll_parms.keys():</span>
-<span class="s s-Atom">                        coll_parms[p_name].append(dist.parameters[&#39;distribution&#39;].parameters[p_name])</span>
-<span class="s s-Atom">                for p_name in coll_parms.keys():</span>
-<span class="s s-Atom">                    coll_parms[p_name] = tf.stack(coll_parms[p_name], axis=-2)</span>
-<span class="s s-Atom">                dist_class = out_inputs[0].parameters[&#39;distribution&#39;].__class__</span>
-<span class="s s-Atom">                out_inputs = dist_class(**coll_parms)</span>
-<span class="s s-Atom">                # Warning! time dimension lost in batch with None</span>
-<span class="s s-Atom">                out_inputs = tfp.distributions.Independent(out_inputs, reinterpreted_batch_ndims=1)</span>
+        out_states = tf.stack(out_states, axis=-2)
+        out_states = tf.unstack(out_states, axis=0)
+        if not hasattr(self.cell.state_size, &#39;__len__&#39;):
+            out_states = out_states[0]
 
-<span class="s s-Atom">        out_states = tf.stack(out_states, axis=-2)</span>
-<span class="s s-Atom">        out_states = tf.unstack(out_states, axis=0)</span>
-<span class="s s-Atom">        if not hasattr(self.cell.state_size, &#39;</span><span class="k">__</span><span class="s s-Atom">len__</span><span class="err">&#39;</span><span class="p">)</span><span class="s s-Atom">:</span>
-            <span class="s s-Atom">out_states</span> <span class="o">=</span> <span class="s s-Atom">out_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-        <span class="s s-Atom">if</span> <span class="o">not</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">return_sequences:</span>
-            <span class="s s-Atom">out_inputs</span> <span class="o">=</span> <span class="s s-Atom">out_inputs</span><span class="p">[...,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">:</span><span class="p">]</span>
-            <span class="s s-Atom">out_states</span> <span class="o">=</span> <span class="p">[</span><span class="k">_</span><span class="p">[...,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">:</span><span class="p">]</span> <span class="s s-Atom">for</span> <span class="k">_</span> <span class="s s-Atom">in</span> <span class="s s-Atom">out_states</span><span class="p">]</span> <span class="s s-Atom">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="s s-Atom">out_states</span><span class="p">,</span> <span class="s s-Atom">list</span><span class="p">)</span> <span class="s s-Atom">else</span> <span class="s s-Atom">out_states</span><span class="p">[...,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">:</span><span class="p">]</span>
-        <span class="s s-Atom">if</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">return_state:</span>
-            <span class="s s-Atom">return</span> <span class="s s-Atom">out_inputs</span><span class="p">,</span> <span class="s s-Atom">out_states</span>
-        <span class="s s-Atom">return</span> <span class="s s-Atom">out_inputs</span>
+        if not self.return_sequences:
+            out_inputs = out_inputs[..., -1, :]
+            out_states = [_[..., -1, :] for _ in out_states] if isinstance(out_states, list) else out_states[..., -1, :]
+        if self.return_state:
+            return out_inputs, out_states
+        return out_inputs
 </code></pre></div>
-
-
 
 </div>
 </div>
