@@ -1,0 +1,14 @@
+site_name: indl
+repo_url: https://github.com/SachsLab/indl/
+theme:
+  name: "material"
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+plugins:
+  - search
+  - mkdocstrings
+  - mknotebooks:
+      execute: false
+      enable_default_jupyter_cell_styling: false
+#      preamble: "mkdocs_preamble.py"
