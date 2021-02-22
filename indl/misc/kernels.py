@@ -2,6 +2,7 @@ __all__ = ['sshist', 'sskernel', 'ssvkernel', 'fftkernel', 'fftkernelWin', 'loge
            'Cauchy', 'Boxcar', 'Alpha', 'Exponential']
 
 
+from typing import Tuple, Optional
 import numpy as np
 
 
@@ -43,7 +44,7 @@ import numpy as np
 # including fast-fourier transforms and histogram generation.
 
 
-def sshist(x, N=range(2, 501), SN=30):
+def sshist(x: np.ndarray, N=range(2, 501), SN: int=30) -> Tuple[int, float, np.ndarray]:
     """
     Returns the optimal number of bins in a histogram used for density
     estimation.
@@ -133,7 +134,8 @@ def sshist(x, N=range(2, 501), SN=30):
     return optN, optD, edges, C, N
 
 
-def sskernel(x, tin=None, W=None, nbs=1e3):
+def sskernel(x: np.ndarray, tin: Optional[np.ndarray] = None, W: Optional[np.ndarray] = None, nbs: Optional[int] = 1e3
+             ) -> Tuple[np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
     Generates a kernel density estimate with globally-optimized bandwidth.
 
@@ -303,7 +305,8 @@ def sskernel(x, tin=None, W=None, nbs=1e3):
     return y, t, optw, W, C, confb95, yb
 
 
-def ssvkernel(x, tin=None, M=80, nbs=1e2, WinFunc='Boxcar'):
+def ssvkernel(x: np.ndarray, tin: Optional[np.ndarray] = None, M: int = 80, nbs: int = 1e2, WinFunc: str = 'Boxcar'
+              ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
     Generates a locally adaptive kernel-density estimate for one-dimensional
     data.
@@ -534,7 +537,16 @@ def ssvkernel(x, tin=None, M=80, nbs=1e2, WinFunc='Boxcar'):
     return y, t, optw, gs, C, confb95, yb
 
 
-def fftkernel(x, w):
+def fftkernel(x: np.ndarray, w: float) -> np.ndarray:
+    """
+
+    Args:
+        x:
+        w:
+
+    Returns:
+
+    """
     # forward padded transform
     L = x.size
     Lmax = L + 3 * w
@@ -556,7 +568,17 @@ def fftkernel(x, w):
     return y
 
 
-def fftkernelWin(x, w, WinFunc):
+def fftkernelWin(x: np.ndarray, w: float, WinFunc: str) -> np.ndarray:
+    """
+
+    Args:
+        x: data
+        w: kernel parameter
+        WinFunc: 'Boxcar', 'Laplace', 'Cauchy', 'Gauss' (default)
+
+    Returns:
+
+    """
     # forward padded transform
     L = x.size
     Lmax = L + 3 * w
@@ -588,7 +610,15 @@ def fftkernelWin(x, w, WinFunc):
     return y
 
 
-def logexp(x):
+def logexp(x: np.ndarray) -> np.ndarray:
+    """
+
+    Args:
+        x:
+
+    Returns:
+
+    """
     # TODO: Check dtype and convert x scalars to numpy array
     y = np.zeros(x.shape)
     y[x < 1e2] = np.log(1+np.exp(x[x < 1e2]))
@@ -596,7 +626,15 @@ def logexp(x):
     return y
 
 
-def ilogexp(x):
+def ilogexp(x: np.ndarray) -> np.ndarray:
+    """
+
+    Args:
+        x:
+
+    Returns:
+
+    """
     # TODO: Check dtype and convert x scalars to numpy array
     y = np.zeros(x.shape)
     y[x < 1e2] = np.log(np.exp(x[x < 1e2]) - 1)
@@ -604,30 +642,102 @@ def ilogexp(x):
     return y
 
 
-def Gauss(x, sigma, reverse=None):
+def Gauss(x: np.ndarray, sigma: float, reverse: Optional[bool] = None) -> np.ndarray:
+    """
+
+    Args:
+        x:
+        sigma:
+        reverse: unused
+
+    Returns:
+        ```math
+        (1.0 / (np.sqrt(2.0 * np.pi) * sigma)) * np.exp(-0.5 * (x / sigma) ** 2)
+        ```
+    """
     return (1.0 / (np.sqrt(2.0 * np.pi) * sigma)) * np.exp(-0.5 * (x / sigma) ** 2)
 
 
-def Laplace(x, w, reverse=None):
+def Laplace(x: np.ndarray, w: float, reverse: Optional[bool] = None) -> np.ndarray:
+    """
+
+    Args:
+        x (np.ndarray):
+        w:
+        reverse: unused
+
+    Returns:
+        ```math
+        1 / 2**0.5 / w * np.exp(-(2**0.5) / w / np.abs(x))
+        ```
+    """
     return 1 / 2**0.5 / w * np.exp(-(2**0.5) / w / np.abs(x))
 
 
-def Cauchy(x, w, reverse=None):
+def Cauchy(x: np.ndarray, w: float, reverse: Optional[bool] = None) -> np.ndarray:
+    """
+
+    Args:
+        x (np.ndarray):
+        w:
+        reverse: unused
+
+    Returns:
+        ```math
+        1 / (np.pi * w * (1 + (x / w)**2))
+        ```
+    """
     return 1 / (np.pi * w * (1 + (x / w)**2))
 
 
-def Boxcar(x, sigma, reverse=None):
+def Boxcar(x: np.ndarray, sigma: float, reverse: Optional[bool] = None) -> np.ndarray:
+    """
+
+    Args:
+        x (np.ndarray):
+        sigma:
+        reverse: unused
+
+    Returns:
+        ```math
+        (0.5 / (np.sqrt(3.0) * sigma)) * (np.abs(x) < (np.sqrt(3.0) * sigma))
+        ```
+    """
     return (0.5 / (np.sqrt(3.0) * sigma)) * (np.abs(x) < (np.sqrt(3.0) * sigma))
 
 
-def Alpha(x, sigma, reverse=False):
+def Alpha(x: np.ndarray, sigma: float, reverse: bool = False) -> np.ndarray:
+    """
+
+    Args:
+        x:
+        sigma:
+        reverse: Reverse the direction of the kernel.
+
+    Returns:
+        ```math
+        (x >= 0) * 2. * (x / sigma ** 2) * np.exp(-x * np.sqrt(2.) / sigma)
+        ```
+    """
     if reverse:
         return (x <= 0) * -2. * (x / sigma ** 2) * np.exp(x * np.sqrt(2.) / sigma)
     else:
         return (x >= 0) * 2. * (x / sigma ** 2) * np.exp(-x * np.sqrt(2.) / sigma)
 
 
-def Exponential(x, sigma, reverse=False):
+def Exponential(x: np.ndarray, sigma: float, reverse: bool = False) -> np.ndarray:
+    """
+
+    Args:
+        x:
+        sigma:
+        reverse:
+
+    Returns:
+        ```math
+        (x >= 0) * (1. / sigma) * np.exp(-x / sigma)
+        ```
+    """
     if reverse:
         return (x <= 0) * (1. / sigma) * np.exp(x / sigma)
     else:

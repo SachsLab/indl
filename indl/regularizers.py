@@ -1,13 +1,29 @@
 import numpy as np
 import tensorflow as tf
+from typing import Iterable
 
 
 __all__ = ['KernelLengthRegularizer']
 
 
 class KernelLengthRegularizer(tf.keras.regularizers.Regularizer):
-    def __init__(self, kernel_size, window_scale=1e-2, window_func='poly', poly_exp=2,
-                 threshold=tf.keras.backend.epsilon()):
+    """
+    Regularize a kernel by its length. Added loss is a int mask of 1s where abs(weight) is above threshold,
+    and 0s otherwise, multiplied by a window. The window is typically shaped to penalize the presence of
+    non-zero weights further away from the middle of the kernel. Use this regularizer if you want to
+    try to find a minimal-length kernel. (after training, kernel can be shortened for faster inference).
+    """
+    def __init__(self, kernel_size: Iterable[int], window_scale: float = 1e-2, window_func: str = 'poly',
+                 poly_exp: int = 2, threshold: float = tf.keras.backend.epsilon()):
+        """
+
+        Args:
+            kernel_size: length(s) of kernel(s)
+            window_scale: scale factor to apply to window
+            window_func: 'hann', 'hamming', 'poly' (default)
+            poly_exp: exponent used when window_func=='poly'
+            threshold: weight threshold, below which weights will not be penalized.
+        """
         self.kernel_size = kernel_size
         self.window_scale = window_scale
         self.window_func = window_func
@@ -41,7 +57,7 @@ class KernelLengthRegularizer(tf.keras.regularizers.Regularizer):
         self.window = tf.linalg.matmul(*windows)
         self.window = self.window / tf.reduce_max(self.window)
 
-    def get_config(self):
+    def get_config(self) -> dict:
         return {'kernel_size': self.kernel_size,
                 'window_scale': self.window_scale,
                 'window_func': self.window_func,

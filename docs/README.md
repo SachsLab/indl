@@ -1,6 +1,6 @@
-# `indl`
+# Introduction
 
-`indl` (Intracranial Neurophys and Deep Learning) is a Python package providing some tools to assist with deep-learning analysis of neurophysiology data, with an emphasis on intracranial neurophysiology. It is intended to be a companion to the SachsLab tutorial found at https://github.com/SachsLab/IntracranialNeurophysDL . The SachsLab also uses this library in some of their research.
+`indl` (Intracranial Neurophys and Deep Learning) is a Python package providing some tools to assist with deep-learning analysis of neurophysiology data, with an emphasis on intracranial neurophysiology. It is intended to be a companion to the [SachsLab Tutorial on Intracranial Neurophysiology and Deep Learning](https://github.com/SachsLab/IntracranialNeurophysDL). The SachsLab also uses this library in some of their research.
 
 ## Install
 
@@ -45,11 +45,12 @@ The /docs/{top-level-section} folders contain a mix of .md and .ipynb documentat
 
 Run `mkdocs gh-deploy` to build the documentation, commit to the `gh-deploy` branch, and push to GitHub. This will make the documentation available at https://SachsLab.github.io/indl/
 
+[Here is a great cheat sheet](http://openkinome.org/kinoml/developers/api_docs/) for mkdocs and mkdocstrings syntax.
+
 #### Testing the documentation locally
 
-* `mkdocs build`
 * `mkdocs serve`
 
 ### Running the unit tests
 
-There aren't that many tests yet, I'm still building them out.
+There aren't that many tests yet; I'm still building them out.

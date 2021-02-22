@@ -10,22 +10,45 @@ def sigmoid(x, A=0, K=1, C=1, Q=1, B=1, v=1, x_offset=0):
     This is a generalized logistic function.
     The default arguments reduce this to a simple sigmoid:
         f(x) = 1 / (1 + np.exp(-x))
+    Args:
+        x (np.ndarray):
+        A (float):
+        K (float):
+        C (float):
+        Q (float):
+        B (float):
+        v (float):
+        x_offset:
+
+    Returns:
+        np.ndarray: A + (K - A) / ((C + Q * np.exp(-B*(x - x_offset)))**(1/v))
     """
     y = A + (K - A) / ((C + Q * np.exp(-B*(x - x_offset)))**(1/v))
     return y
 
 
-def minimum_jerk(x, a0=0, af=1, degree=1, duration=None):
-    """
+def minimum_jerk(x: np.ndarray, a0=0, af=1, degree=1, duration=None) -> np.ndarray:
+    r"""
     A 1-D trajectory that minimizes jerk (3rd time-derivative of position).
     A minimum jerk trajectory is considered "smooth" and to be a feature of natural limb movements.
     https://storage.googleapis.com/wzukusers/user-31382847/documents/5a7253343814f4Iv6Hnt/minimumjerk.pdf
 
     A minimum-jerk trajectory is defined by:
-        trajectory = a0 + (af - a0) * (10*(dx.^3) - 15*(dx.^4) + 6*(dx.^5));
+    ```math
+    trajectory = a0 + (af - a0) * (10(dx^3) - 15(dx^4) + 6(dx^5))
+    ```
     where a0 is the resting position, and af is the finishing position.
 
     duration is assumed to be the extent of x but it may be overidden.
+    Args:
+        x:
+        a0:
+        af:
+        degree:
+        duration (float): Total duration of x in seconds. If None (default), calculated duration from x.
+
+    Returns:
+        a0 + (af - a0) * (10*(dx.^3) - 15*(dx.^4) + 6*(dx.^5))
     """
     x = np.array(x)[:, None]
     assert(x.size == x.shape[0]), f"x must be 1D trajectory, found {x.shape}"

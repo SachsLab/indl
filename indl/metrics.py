@@ -1,10 +1,10 @@
-import matplotlib.pyplot as plt
+from typing import List
 
 
 __all__ = ['dprime', 'quickplot_history']
 
 
-def dprime(y_true, y_pred, pmarg=0.01, outputs=['dprime', 'bias', 'accuracy']):
+def dprime(y_true, y_pred, pmarg: float = 0.01, outputs: List[str] = ['dprime', 'bias', 'accuracy']) -> tuple:
     """
     Calculate D-Prime for binary data.
     70% for both classes is d=1.0488.
@@ -15,8 +15,8 @@ def dprime(y_true, y_pred, pmarg=0.01, outputs=['dprime', 'bias', 'accuracy']):
     This function is not designed to behave as a valid 'Tensorflow metric'.
 
     Args:
-        y_true:
-        y_pred:
+        y_true (array-like): True labels.
+        y_pred (array-like): Predicted labels.
         pmarg:
         outputs: list of outputs among 'dprime', 'bias', 'accuracy'
 
@@ -69,7 +69,13 @@ def dprime(y_true, y_pred, pmarg=0.01, outputs=['dprime', 'bias', 'accuracy']):
     return output
 
 
-def quickplot_history(history):
+def quickplot_history(history) -> None:
+    """
+    A little helper function to do a quick plot of model fit results.
+    Args:
+        history (tf.keras History):
+    """
+    import matplotlib.pyplot as plt
     if hasattr(history, 'history'):
         history = history.history
     hist_metrics = [_ for _ in history.keys() if not _.startswith('val_')]
