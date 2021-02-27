@@ -73,3 +73,7 @@ class KernelLengthRegularizer(tf.keras.regularizers.Regularizer):
         # regularization = tf.reduce_max(regularization, axis=[0, 1], keepdims=True)
         regularization = tf.reduce_sum(regularization)
         return regularization
+
+
+# TODO: MMA regularizer
+# https://github.com/wznpub/MMA_Regularization/blob/main/MMA.py
