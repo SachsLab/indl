@@ -1,0 +1,1642 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
+    
+    
+      
+        <title>Dsae - indl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cd566b2a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#beta-variational-autoencoders-to-disentangle-multi-channel-neural-timeseries-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="indl" class="md-header__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            indl
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dsae
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="indl" class="md-nav__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    indl
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/data/" class="md-nav__link">
+        data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/dists/" class="md-nav__link">
+        dists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/layers/" class="md-nav__link">
+        layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/rnn/" class="md-nav__link">
+        rnn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Model
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Model" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Model
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/model/beta_vae/" class="md-nav__link">
+        model.beta_vae
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/model/lfads/" class="md-nav__link">
+        lfads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          Utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/utils/fileio/" class="md-nav__link">
+        fileio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/utils/metrics/" class="md-nav__link">
+        metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/utils/regularizers/" class="md-nav__link">
+        regularizers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          DSAE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSAE" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSAE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Dsae
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Dsae
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#autoencoders-for-neural-data" class="md-nav__link">
+    Autoencoders for Neural Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disentangling-autoencoder" class="md-nav__link">
+    Disentangling Autoencoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Disentangling Autoencoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impossibility-and-identifiability" class="md-nav__link">
+    Impossibility and Identifiability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disentangling-sequential-vaes-in-practice" class="md-nav__link">
+    Disentangling-(sequential)-VAEs in practice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-improvements-to-beta-vae" class="md-nav__link">
+    Further improvements to \(\beta\)-VAE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started-with-dsaes-in-indl" class="md-nav__link">
+    Getting Started with DSAEs in indl
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameters" class="md-nav__link">
+    Hyperparameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-inputs" class="md-nav__link">
+    Prepare inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f-encoder" class="md-nav__link">
+    f-Encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="f-Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f-prior" class="md-nav__link">
+    f-Prior
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z-encoder" class="md-nav__link">
+    z-Encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="z-Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extra-details-dsae-full" class="md-nav__link">
+    Extra Details - DSAE Full
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extra-details-lfads" class="md-nav__link">
+    Extra Details - LFADS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-prior" class="md-nav__link">
+    Z Prior
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generator-decoder-part-1" class="md-nav__link">
+    Generator (Decoder part 1)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probabilistic-reconstructed-input-decoder-part-2" class="md-nav__link">
+    Probabilistic Reconstructed Input (Decoder part 2)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recurrent_layers/" class="md-nav__link">
+        Recurrent layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tfp_notes/" class="md-nav__link">
+        Tfp notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tfp_utils/" class="md-nav__link">
+        Tfp utils
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Miscellaneous
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/junk_model_inspect/" class="md-nav__link">
+        Junk model inspect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/kernels/" class="md-nav__link">
+        Kernels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/sigfuncs/" class="md-nav__link">
+        Sigfuncs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#autoencoders-for-neural-data" class="md-nav__link">
+    Autoencoders for Neural Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disentangling-autoencoder" class="md-nav__link">
+    Disentangling Autoencoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Disentangling Autoencoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impossibility-and-identifiability" class="md-nav__link">
+    Impossibility and Identifiability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disentangling-sequential-vaes-in-practice" class="md-nav__link">
+    Disentangling-(sequential)-VAEs in practice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-improvements-to-beta-vae" class="md-nav__link">
+    Further improvements to \(\beta\)-VAE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started-with-dsaes-in-indl" class="md-nav__link">
+    Getting Started with DSAEs in indl
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameters" class="md-nav__link">
+    Hyperparameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-inputs" class="md-nav__link">
+    Prepare inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f-encoder" class="md-nav__link">
+    f-Encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="f-Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f-prior" class="md-nav__link">
+    f-Prior
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z-encoder" class="md-nav__link">
+    z-Encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="z-Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extra-details-dsae-full" class="md-nav__link">
+    Extra Details - DSAE Full
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extra-details-lfads" class="md-nav__link">
+    Extra Details - LFADS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-prior" class="md-nav__link">
+    Z Prior
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generator-decoder-part-1" class="md-nav__link">
+    Generator (Decoder part 1)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probabilistic-reconstructed-input-decoder-part-2" class="md-nav__link">
+    Probabilistic Reconstructed Input (Decoder part 2)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/SachsLab/indl/edit/master/docs/DSAE/dsae.ipynb" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="beta-variational-autoencoders-to-disentangle-multi-channel-neural-timeseries-data"><span class="arithmatex">\(\beta\)</span> Variational Autoencoders to Disentangle Multi-channel Neural Timeseries  Data</h1>
+<p>In this notebook we first outline the motivation for applying autoencoders to neural timeseries, then we demonstrate how to use the <code>indl</code> library to implement variational sequential autoencoders to disentangle neural timeseries data, with extra attention spent on comparing different approaches to promote disentanglement.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="autoencoders-for-neural-data">Autoencoders for Neural Data</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Many more neurons modulate their activity during a set of behaviours than are strictly necessary for a minimal representation of those behaviours. (I'm using the term 'behaviour' very loosely here; it could equally apply to stimulus perception or movement.) Similarly, each neuron participates in many different behaviours, and it is sometimes difficult to predict how a neuron will modulate during a behaviour based on its modulation during other behaviours, or even other phases of the same behaviour; this is known as "mixed selectivity". These phenomena of redundancy and mixed selectivity necessitated a shift in neuroscience away from the "neuron doctrine" toward the "neural population doctrine" (<a href="https://doi.org/10.1016/j.conb.2019.02.002">Saxena and Cunningham, Current Opinion in Neurobiology, 2019</a>). Neurons are highly correlated -- as one would expect due to their physical connections -- and the description of the correlation structure can similarly describe the population information coding capacity (<a href="https://doi.org/10.1146/annurev-neuro-070815-013851">Kohn et al., Ann. Rev Neuro, 2016</a>). The unit of computation in the brain is not the single neuron but the ensemble of covarying neurons, and computation happens in a low-dimensional manifold within the neural population space (<a href="https://doi.org/10.1146/annurev-neuro-080317-061936">Ruff et al., Ann. Review of Neuroscience, 2018</a>). Dimensionality reduction techniques have become increasingly important tools in our understanding of brain function (<a href="https://arxiv.org/abs/2102.01807">Hurwitz et al., arXiv 2021</a>, <a href="https://www.nature.com/articles/nn.3776">Cunningham and Yu, Nature Neuroscience, 2014</a>), even motivating a recent <a href="https://neurallatents.github.io/">neural latents benchmark</a>.</p>
+<p>Generally, the main goal of dimensionality reduction is to reduce high dimensional data into a lower dimensional representation that is more tractable and more intuitive. If the low-dimensional representation of neural data is semantically meaningful then it can help provide insight into what contextual information and stimulus parameters are important for computation in the brain. For example, in a stimulus-driven task, the latent variables driving the observed spiking data might represent upstream encoding of task-relevant features, and might facilitate understanding of learning processes when these features are assigned new meaning experimentally. Another less-informal goal of dimensionality reduction is that low-dimensional representations should "make it easier to extract useful information when building classifiers or other predictors" (Bengio et al., 2013), which could lead to better performing and more generalizable brain-computer interfaces (BCIs). The autoencoder model architecture has been applied to the problem of finding latent representations of neural data (<a href="https://www.nature.com/articles/s41592-018-0109-9">Pandarinath et al., LFADS</a>) and denoising (<a href="https://doi.org/10.1101/2020.12.17.423196">Altan et al., “Joint Autoencoder”, bioRxiv 2020</a>).</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>I admit that the definition of variational autoencoders I provide in the following text is not very approachable. I really like <a href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">this description of VAEs by Joseph Rocca</a>. It has wonderful images, and it begins by orienting the reader from the perspective of dimensionality reduction like PCA, which is likely familiar to people who work with neural data. If you aren't already familiar with VAEs then please begin there. I chose the approach that I did because it will facilitate description of some of the more complicated models later.</p>
+</blockquote>
+<p>Dimensionality reduction is often implemented as the solution to a generative model. We assume that observed high-dimensional neural data <span class="arithmatex">\(x\)</span> -- recorded with many electrodes -- is the result of a decoder process <span class="arithmatex">\(d(z)\)</span> driven by unobservable lower-dimensional latent variables <span class="arithmatex">\(z\)</span>, sometimes called neural modes. If we treat the process as deterministic then we get <span class="arithmatex">\(x = d(z)\)</span>.</p>
+<p><img alt="bvae_1.png" src="bvae_1.png" /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If the deterministic model has sufficient capacity (i.e., <span class="arithmatex">\(d(z)\)</span> has many parameters) then it can severely overfit the data and simply memorize the transformation from any latent value -- such as a trial index -- to the observation associated with that latent value. When this happens, the latent variable has no meaning and offers no insight. To help make the latent variables meaningful, a variational autoencoder (VAE) represents the latent variables as a multivariate distribution from which we draw samples to get the inputs to the decoder process, and the VAE training regularizes the latent distributions to help fill the latent space and make its dimensions more meaningful.</p>
+<p><img alt="reg_irreg_latent_space.png" src="reg_irreg_latent_space.png" />
+<a href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">From "Understanding VAEs" by Joseph Rocca.</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We thus recast the decoder from deterministic to probabilistic. First, the latent representation <span class="arithmatex">\(z\)</span> is a sample from a prior distribution <span class="arithmatex">\(p(z)\)</span>. Second, the output of the decoder is also probabilistic, defined by <span class="arithmatex">\(p(x|z)\)</span>, from which a sample draw of x is likely. The model has the following structure:</p>
+<div class="arithmatex">\[
+p(x,z) = p(x|z)p(z)
+\]</div>
+<p>That is, the joint distribution of the observed and latents is the product of the 'observed conditioned on the latents' and the latents themselves.</p>
+<p><img alt="bvae_2.png" src="bvae_2.png" /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In practice, <span class="arithmatex">\(z\)</span> is usually sampled from an approximation <span class="arithmatex">\(q(z)\)</span>. <span class="arithmatex">\(q(z)\)</span> is regularized to resemble the prior <span class="arithmatex">\(p(z)\)</span> which we can define to be anything, but typically we use a multivariate Gaussian with zero-mean with no covariance (i.e., the off-diagonal elements of the covariance matrix are all 0). Note that this is, in a way, a redefinition of <span class="arithmatex">\(p(z)\)</span> compared to above. Originally <span class="arithmatex">\(p(z)\)</span> was taken to mean a prior on the true latents; now <span class="arithmatex">\(p(z)\)</span> is a prior that we use to regularization the latent space.</p>
+<p><img alt="bvae_3.png" src="bvae_3.png" /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall that we are interested in understanding the latent variables <span class="arithmatex">\(z\)</span> in our data. So far we've described how <span class="arithmatex">\(x\)</span> can come from the variational approximation of <span class="arithmatex">\(z\)</span>: <span class="arithmatex">\(q(z)\)</span>, but we still don't have a way to get <span class="arithmatex">\(q(z)\)</span>.</p>
+<p>We can infer <span class="arithmatex">\(z\)</span>'s distribution from the encoding process <span class="arithmatex">\(e(x)\)</span> to get <span class="arithmatex">\(p(z|x)\)</span>. These distributions can be linked with Bayes' theorem:</p>
+<div class="arithmatex">\[
+p( {z|x} ) = \frac{{p( {x|z} )p( z )}}{{p( x )}}\label{eqn:1}
+\]</div>
+<p>In practice, the output of the encoder <span class="arithmatex">\(e(x)\)</span> is the parameterization of the distribution. So in the case of a Gaussian this is its mean <span class="arithmatex">\(\mu\)</span> and standard deviation <span class="arithmatex">\(\sigma\)</span>.
+We approximate <span class="arithmatex">\(p(z|x)\)</span> with <span class="arithmatex">\(q(z|x)\)</span>.</p>
+<p><img alt="bvae_4.png" src="bvae_4.png" /></p>
+<p>We use <a href="https://arxiv.org/pdf/1601.00670.pdf">variational inference</a> to estimate the unknown distributions.</p>
+<p>$$
+\begin{align}
+&amp;\underset{e<em>,d</em>}{\mathrm{arg\,min}}(KL( {q(z|x)||p(z|x)})) \label{eqn:2} \
+=&amp;\underset{e<em>,d</em>}{\mathrm{arg\,max}}({E_{q(z|x)}}\log p(x|z) - KL({q(z|x)||p(z)}))\label{eqn:3}
+\end{align}
+$$
+That is, we find the parameterization of <span class="arithmatex">\(e(x)\)</span> and <span class="arithmatex">\(d(z)\)</span> that minimizes the KL-divergence between <span class="arithmatex">\(q(z|x)\)</span> and <span class="arithmatex">\(p(z|x)\)</span>. The derivation is beyond the scope of this document, but this is equivalent to finding the parameterization that maximizes the log-likelihood of <span class="arithmatex">\(p(x|z)\)</span> and minimizes the KL divergence between <span class="arithmatex">\(q(z|x)\)</span> and <span class="arithmatex">\(p(z)\)</span>. We use the negative of these two terms in the maximization problem, depicted as the pink double-ended arrows in the above figure, as our loss when training the model with gradient descent.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="disentangling-autoencoder">Disentangling Autoencoder</h2>
+<p>We can control how much the KL-divergence contributes to the loss by a scaling factor <span class="arithmatex">\(\beta\)</span>. And, when <span class="arithmatex">\(p(z)\)</span> is a Gaussian with mean 0, unit standard deviation, and no covariance, then we get</p>
+<p><span class="arithmatex">\(\underset{e*,d*}{\mathrm{arg\,max}}({E_{q(z|x)}}\log p(x|z) - \beta KL({q(z|x)||N(0,1)}))\label{eqn:4}\)</span></p>
+<p>The <span class="arithmatex">\(\beta\)</span> parameter can be modified via a schedule during training. Initially it is zero or near zero to allow the reconstruction loss to dominate and not end up in a pathological state where all inputs lead to <span class="arithmatex">\(N(0,1)\)</span>. Over epochs, <span class="arithmatex">\(\beta\)</span> is increased to regularize the latent space. This is known as a <span class="arithmatex">\(\beta\)</span>-VAE (<a href="https://openreview.net/forum?id=Sy2fzU9gl">Higgins et al., 2016</a>).</p>
+<p>When the prior has diagonal covariance and <span class="arithmatex">\(\beta\)</span> is allowed to grow large, the latent dimensions are forced to be uncorrelated. In practice, forcing uncorrelated latent dimensions can often lead to the latent dimensions representing interpretable features that we would consider to be independent attributes. For example, in pictures of faces, gender is independent of hair colour is independent of darkness of glasses. When this happens, the latent dimensions are said to be <strong>disentangled</strong>. Indeed, a <span class="arithmatex">\(\beta\)</span>-VAE is the most common and possibly the simplest form of a Disentangling Autoencoder.</p>
+<blockquote>
+<p>This concept of <em>disentangling</em> is distinct from <em>untangling</em> used by <a href="https://www.sciencedirect.com/science/article/pii/S0896627318300072">Russo et al., Neuron 2018</a>. The latter is specific to sequences, and has to do with the average derivative neural trajectories through latent space: if the trajectories that pass through a particular location in latent space have a consistent orientation then the average of their derivatives will have a large magnitude and be considered <em>untangled</em>. Conversely, if different trajectories traverse a common space with different orientations then the average derivative will be near zero, and this region is highly tangled. If a neural state is in untangled space then the path through that space is deterministic and robust to perturbations, as one might see in a neural trajectory from motor cortex executing a learned movement. Conversely, a neural state in a highly tangled space could be redirected easily by a small amount of noise, as one might see in a decision-making process when there is little evidence.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="impossibility-and-identifiability">Impossibility and Identifiability</h3>
+<p><span class="arithmatex">\(\beta\)</span>-VAEs and their extensions aim to disentangle the latent variables, but there is no guarantee that the inferred latent variables are the correct solution just because they are disentangled. Indeed, if the function from latent to observed variables is not linear then the problem is ill-posed, and one cannot recover the true independent latents from the observed variables alone.</p>
+<p>Two related lines of research describe how unsupervised learning of disentangled representations is fundamentally impossible unless there is a strong inductive bias (<a href="https://arxiv.org/abs/2007.14184">Locatello et al., 2020</a>; <a href="https://arxiv.org/abs/1811.12359">Locatello et al., 2019</a>), or the model is <em>identifiable</em> (<a href="https://arxiv.org/abs/1907.04809">Khemakhem et al., arXiv 2020</a>; <a href="https://paperswithcode.com/paper/variational-autoencoders-and-nonlinear-ica-a">pwc</a>). Identifiability, an idea from nonlinear ICA, can occur when using a latent prior that has a factorized distribution that is conditioned on additionally observed variables, such as a class label, time index, previous data points in a time series, or almost any further observation, <span class="arithmatex">\(u\)</span>. This family of models is called identifiable VIA (iVAE).</p>
+<div class="arithmatex">\[
+p(x,z|u)=p_{d}(x|z)p(z|u)
+\]</div>
+<p>They make a few assumptions:
+* the noise in <span class="arithmatex">\(x\)</span> is independent of <span class="arithmatex">\(z\)</span> or <span class="arithmatex">\(d\)</span>.
+* <span class="arithmatex">\(p(z|u)\)</span> is conditionally factorial, where each element of <span class="arithmatex">\(z\)</span> has a univariate (exponential family) distribution given conditioning variable <span class="arithmatex">\(u\)</span>. Conditioning is through an arbitrary function <span class="arithmatex">\(\lambda(u)\)</span>, such as a recurrent neural network.</p>
+<p>As we will see, all of the disentangling sequential autoencoder models we will encounter implement a variation of this idea.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="disentangling-sequential-vaes-in-practice">Disentangling-(sequential)-VAEs in practice</h3>
+<p>Whether or not they were explicitly informed by the above studies, every disentangling-VAE variant I've encountered that is designed for sequence data has implemented a solution that factorizes the latent distribution conditioned on additional variables. The most trivial additional variable is the timestep, which conditions a low-dimensional time-varying latent (which we call <span class="arithmatex">\(z_d\)</span>) to represent dynamic "content", while the more typical high-dimensional yet static latent (which we call <span class="arithmatex">\(z_s\)</span>) is left to represent the "style". For example in a speech autoencoder, z_d would represent the words and z_s would represent something identifiable about the speaker. We have identified several different disentangling-VAE architectures that have taken this approach:</p>
+<ul>
+<li><a href="https://github.com/snel-repo/lfads_tf1">LFADS</a> (<a href="https://www.biorxiv.org/content/10.1101/2021.01.13.426570v1">Keshtkaran, ..., Pandarinath, 2021</a>)</li>
+<li><a href="https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/disentangled_vae.py">DSAE</a> (<a href="https://arxiv.org/pdf/1803.02991.pdf">Li and Mandt, ICML 2018</a>) - "Full" model.</li>
+<li>DSAE - "Factorized' model</li>
+<li><a href="https://github.com/wnhsu/ScalableFHVAE">FHVAE</a> (<a href="https://arxiv.org/pdf/1804.03201.pdf">Hsu and Glass</a>).</li>
+<li><a href="https://groups.csail.mit.edu/sls/publications/2019/SameerKhurana_ICASSP-2019.pdf">FDMM</a>, drived from FHVAE, models state transition probabilities in the prior.</li>
+<li><a href="https://github.com/marineschimel/ilqr_vae">iLQR-VAE</a> (<a href="https://www.biorxiv.org/content/10.1101/2021.10.07.463540v1.full.pdf">Schimel, ..., Hennequin, 2021</a>)</li>
+</ul>
+<p>From these we identify a general abstraction of the disentangling-sequential-VAE (DSAE) architecture.</p>
+<p>TODO: Image of general architecture</p>
+<p>The below table provides the major differences between the models.</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">LFADS</th>
+<th align="left">DSAE full</th>
+<th align="left">DSAE factorized</th>
+<th align="left">FHVAE</th>
+<th align="left">FDMM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><span class="arithmatex">\(z_s\)</span></td>
+<td align="left">initial conditions</td>
+<td align="left">f</td>
+<td align="left">f</td>
+<td align="left">z2</td>
+<td align="left">y</td>
+</tr>
+<tr>
+<td align="left"><span class="arithmatex">\(z_d\)</span></td>
+<td align="left">controller input</td>
+<td align="left">z</td>
+<td align="left">z</td>
+<td align="left">z1</td>
+<td align="left">z</td>
+</tr>
+<tr>
+<td align="left"><span class="arithmatex">\(e_{z_s}\)</span></td>
+<td align="left"><span class="arithmatex">\(BiGRU(x)\)</span></td>
+<td align="left">BiLSTM(x)</td>
+<td align="left">??</td>
+<td align="left">LSTM-&gt;LSTM</td>
+<td align="left"><span class="arithmatex">\(BiLSTM(x)\)</span></td>
+</tr>
+<tr>
+<td align="left"><span class="arithmatex">\(e_{z_d}\)</span></td>
+<td align="left">A:<span class="arithmatex">\(BiGRU(x)\)</span>, B:<span class="arithmatex">\(GRU(A, z_d)\)</span></td>
+<td align="left">RNN(x, tile(z_d))</td>
+<td align="left"><span class="arithmatex">\(MLP(x_t)\)</span></td>
+<td align="left">LSTM((x, tile(z_d)))-&gt;LSTM</td>
+<td align="left">A: Backward RNN, B: "combiner"</td>
+</tr>
+<tr>
+<td align="left"><span class="arithmatex">\(p(z_s)\)</span></td>
+<td align="left"><span class="arithmatex">\(\mathcal{N}(0,\kappa I)\)</span></td>
+<td align="left"><span class="arithmatex">\(\mathcal{N}(\mu_z,\sigma_zI)\)</span></td>
+<td align="left">??</td>
+<td align="left"><span class="arithmatex">\(\mathcal{N}(\mu_2,0.5^2I)\)</span></td>
+<td align="left">??</td>
+</tr>
+<tr>
+<td align="left"><span class="arithmatex">\(p(z_d)\)</span></td>
+<td align="left">LearnableAutoRegressive1Prior</td>
+<td align="left">LSTM(0)</td>
+<td align="left">??</td>
+<td align="left"><span class="arithmatex">\(\mathcal{N}(0,I)\)</span></td>
+<td align="left">"gated transition"</td>
+</tr>
+<tr>
+<td align="left">decoder</td>
+<td align="left">Complex w/ GRU RNN</td>
+<td align="left">CNN?</td>
+<td align="left">CNN?</td>
+<td align="left">LSTM x2</td>
+<td align="left">Linear DNN</td>
+</tr>
+<tr>
+<td align="left">RNN input0</td>
+<td align="left"><span class="arithmatex">\(0 / z1\)</span></td>
+<td align="left">??</td>
+<td align="left">??</td>
+<td align="left">concat(z_stat, z_dyn)</td>
+<td align="left">??</td>
+</tr>
+<tr>
+<td align="left">RNN state0</td>
+<td align="left"><span class="arithmatex">\(z2\)</span></td>
+<td align="left">??</td>
+<td align="left">??</td>
+<td align="left">0</td>
+<td align="left">??</td>
+</tr>
+<tr>
+<td align="left">RNN output</td>
+<td align="left">-MLP-&gt; fac -MLP-&gt; rates</td>
+<td align="left">??</td>
+<td align="left">??</td>
+<td align="left">(x_mu, x_logvar)</td>
+<td align="left">??</td>
+</tr>
+<tr>
+<td align="left">Decoder loss</td>
+<td align="left">-log(p spike|Poisson(rates))</td>
+<td align="left">??</td>
+<td align="left">??</td>
+<td align="left">sparse sce with logits</td>
+<td align="left">??</td>
+</tr>
+<tr>
+<td align="left">Learning rate</td>
+<td align="left">1e-2 decay 0.95 every 6</td>
+<td align="left">??</td>
+<td align="left">??</td>
+<td align="left">??</td>
+<td align="left">??</td>
+</tr>
+</tbody>
+</table>
+<p>There are additional differences in implementation details between the models, any of which can be used in any of the models. These include the optimizer, learning rate, where to insert dropout and how much, etc.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="further-improvements-to-beta-vae">Further improvements to <span class="arithmatex">\(\beta\)</span>-VAE</h3>
+<p>Recent <span class="arithmatex">\(\beta\)</span>-VAE extensions add augmentations that separate the KL-divergence between the latents and the latent-prior into <code>I(x;z) + KL(q(z)||p(z))</code>, where <code>I</code> is mutual information among inputs (x) and latents (z), and they penalize the KL term to promote disentangling without penalizing <code>I</code> which would harm reconstruction.</p>
+<ul>
+<li><strong>FactorVAE</strong> <a href="https://paperswithcode.com/paper/disentangling-by-factorising">Kim and Mnih, 2018</a><ul>
+<li>No official repo for FactorVAE, but <a href="https://github.com/elda27/FactorVAE">here's one using TF2</a></li>
+</ul>
+</li>
+<li><strong><span class="arithmatex">\(\beta\)</span>-TCVAE</strong> <a href="https://paperswithcode.com/paper/isolating-sources-of-disentanglement-in">Chen et al., 2019</a>.<ul>
+<li>beta-TCVAE has an official repo using pytorch, but <a href="https://github.com/julian-carpenter/beta-TCVAE">here is one using TF2</a> that is for some reason not in the <em>Papers With Code</em> list and has some extras.</li>
+</ul>
+</li>
+<li>The <em>Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations</em> paper <a href="http://proceedings.mlr.press/v97/locatello19a.html">Locatello et al., 2019</a> examines these and other advances to VAEs, and has TF1 code for these augmentations and metrics.</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Also add one of their disentangling metrics.</li>
+<li>A repo comparing 5 different VAE losses using pytorch <a href="https://github.com/YannDubs/disentangling-vae">here</a>. Also has a really nice explanation of the different losses at the end of the README.</li>
+<li>Add SRU++ cell type</li>
+<li>Add a discriminator for real vs fake reconstructions when keeping dynamic latent constant but swapping static latent from another trial.<ul>
+<li><a href="https://arxiv.org/pdf/2007.00653.pdf">Swapping Autoencoder for Deep Image Manipulation by Park et al., 2020</a> with <a href="https://github.com/rosinality/swapping-autoencoder-pytorch">pytorch implementation</a>.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="getting-started-with-dsaes-in-indl">Getting Started with DSAEs in <code>indl</code></h2>
+<p>This <code>indl</code> library defines a series of model-builder functions. Each function takes <code>params</code>, a dictionary of hyperparameters, and <code>inputs</code> containing one or more Keras tensors, and each returns the model outputs and other intermediate variables that need to be tracked.</p>
+<p>The model-builder functions are mostly defined in <code>indl.model.beta_vae</code>, and that module makes extensive use of other <code>indl</code> modules. The functions are designed to be modular such that they can be used to build different VAE implementations when provided with the correct parameterization.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="hyperparameters">Hyperparameters</h2>
+<p>We separate our hyperparameters into non-tunable 'arguments' and tunable 'parameters'. This helps with the hyperparameter optimization framework. Both are defined at the top of <code>indl.model.beta_vae</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">indl.model.beta_vae</span> <span class="kn">import</span> <span class="n">generate_default_args</span><span class="p">,</span> <span class="n">generate_default_params</span>
+
+<span class="n">_params</span> <span class="o">=</span> <span class="n">generate_default_params</span><span class="p">()</span>
+<span class="n">_args</span> <span class="o">=</span> <span class="n">generate_default_args</span><span class="p">()</span>
+<span class="n">j_params</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">_params</span><span class="p">,</span> <span class="o">**</span><span class="n">_args</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">}</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="prepare-inputs">Prepare inputs</h2>
+<p>The first step is to prepare the inputs for entry into the encoder(s).</p>
+<p>This comprises several steps:</p>
+<ul>
+<li>dropout</li>
+<li>(optional) split off inputs to the f_encoder to prevent acausal modeling</li>
+<li>(optional) coordinated dropout</li>
+<li>(not implemented) CV mask</li>
+<li>(optional) Dense layer to read-in inputs to a common set of input factors.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<span class="kn">from</span> <span class="nn">indl.model.beta_vae</span> <span class="kn">import</span> <span class="n">prepare_inputs</span>
+
+<span class="n">n_times</span> <span class="o">=</span> <span class="mi">246</span>
+<span class="n">n_sensors</span> <span class="o">=</span> <span class="mi">36</span>
+
+<span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_times</span><span class="p">,</span> <span class="n">n_sensors</span><span class="p">))</span>
+<span class="n">f_enc_inputs</span><span class="p">,</span> <span class="n">z_enc_inputs</span><span class="p">,</span> <span class="n">cd_mask</span> <span class="o">=</span> <span class="n">prepare_inputs</span><span class="p">(</span><span class="n">j_params</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inputs: &quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inputs to f-encoder: &quot;</span><span class="p">,</span> <span class="n">f_enc_inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inputs to z-encoder: &quot;</span><span class="p">,</span> <span class="n">z_enc_inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;coordinated dropout mask: &quot;</span><span class="p">,</span> <span class="n">cd_mask</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>inputs:  Tensor(&#34;input_1:0&#34;, shape=(None, 246, 36), dtype=float32)
+inputs to f-encoder:  Tensor(&#34;coordinated_dropout/Identity:0&#34;, shape=(None, 246, 36), dtype=float32)
+inputs to z-encoder:  Tensor(&#34;concat:0&#34;, shape=(None, 246, 36), dtype=float32)
+coordinated dropout mask:  Tensor(&#34;coordinated_dropout/Identity_1:0&#34;, shape=(None, 246, 36), dtype=bool)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="f-encoder"><em>f</em>-Encoder</h2>
+<p>Transform full sequence of "features" (<code>inputs</code> or <code>ReadIn(inputs)</code>) through (1) RNN then (2) affine to yield parameters of latent posterior distribution:
+<span class="arithmatex">\(<span class="arithmatex">\(q(f | x_{1:T})\)</span>\)</span>
+This distribution is a multivariate normal, optionally with off-diagonal elements allowed.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.model.beta_vae</span> <span class="kn">import</span> <span class="n">create_f_encoder</span><span class="p">,</span> <span class="n">make_f_variational</span>
+
+<span class="n">enc_f</span> <span class="o">=</span> <span class="n">create_f_encoder</span><span class="p">(</span><span class="n">j_params</span><span class="p">,</span> <span class="n">f_enc_inputs</span><span class="p">)</span>
+<span class="n">q_f</span> <span class="o">=</span> <span class="n">make_f_variational</span><span class="p">(</span><span class="n">j_params</span><span class="p">,</span> <span class="n">enc_f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;encoded f latents: &quot;</span><span class="p">,</span> <span class="n">enc_f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;q(f) - latents as distributions: &quot;</span><span class="p">,</span> <span class="n">q_f</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>WARNING:tensorflow:From /home/chad/miniconda3/envs/indl/lib/python3.8/site-packages/tensorflow/python/ops/linalg/linear_operator_diag.py:159: calling LinearOperator.__init__ (from tensorflow.python.ops.linalg.linear_operator) with graph_parents is deprecated and will be removed in a future version.
+Instructions for updating:
+Do not pass `graph_parents`.  They will  no longer be used.
+encoded f latents:  Tensor(&#34;f_rnn_0/Identity:0&#34;, shape=(None, 256), dtype=float32)
+q(f) - latents as distributions:  tfp.distributions.MultivariateNormalDiag(&#34;distribution_lambda_MultivariateNormalDiag&#34;, event_shape=[10], dtype=float32)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="f-prior"><em>f</em>-Prior</h3>
+<p>Model loss will include the KL divergence between the q_f posterior and a prior. The prior is a learnable multivariate normal diagonal. The prior is initialized with a mean of 0 and a stddev of 0.1 but these are trainable by default. (In LFADS, only the mean is trainable).</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.model.beta_vae</span> <span class="kn">import</span> <span class="n">create_f_prior</span>
+
+<span class="n">f_prior</span> <span class="o">=</span> <span class="n">create_f_prior</span><span class="p">(</span><span class="n">j_params</span><span class="p">)</span>
+<span class="c1"># Use during training with:</span>
+<span class="c1"># f_kl = tfd.kl_divergence(q_f, f_prior)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prior on q(f): &quot;</span><span class="p">,</span> <span class="n">f_prior</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Prior on q(f):  tfp.distributions.MultivariateNormalDiag(&#34;MultivariateNormalDiag&#34;, batch_shape=[], event_shape=[10], dtype=float32)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="z-encoder"><em>z</em>-Encoder</h2>
+<p><span class="arithmatex">\(q(z_t | x_{1:T})\)</span></p>
+<p>I have also seen this called the "Dynamic Encoder", or in LFADS the "Controller Input" encoder.</p>
+<p>The <em>z</em>-Encoder varies quite a bit between the different Disentangling/<span class="arithmatex">\(\beta\)</span> Variational Autoencoder implementations. Indeed, in some formulations it isn't used at all, such as the LFADS model without inferred controller input. Where it is used, in general:</p>
+<ul>
+<li>The inputs are the original data sequences (<span class="arithmatex">\(x_t\)</span>).</li>
+<li>Unlike the <em>f</em>-encoder, here we output full sequences.</li>
+<li>The output sequences parameterize a multivariate normal distribution <strong>at each timestep</strong>, sometimes with constraints on the temporal evolution (e.g., RNN or AR(1)).</li>
+<li>The encoder itself has as its first layer<ul>
+<li>a RNN (LSTM, GRU), often bidirectional, or</li>
+<li>a simple MLP as in the DSAE Factorized model</li>
+</ul>
+</li>
+<li>If the first layer is an RNN then there is usually a second layer forward-only RNN.</li>
+</ul>
+<h3 id="extra-details-dsae-full">Extra Details - DSAE Full</h3>
+<ul>
+<li>The inputs are concatenated with a tiled sample from <span class="arithmatex">\(q(f)\)</span>.</li>
+<li>We've added a parameter to choose if <span class="arithmatex">\(q(f)\)</span> is concatenated on the inputs into the first or second RNN, though there isn't a precedent for concatenating on the second.</li>
+</ul>
+<h3 id="extra-details-lfads">Extra Details - LFADS</h3>
+<ul>
+<li>Like its f-Encoder, the RNN cells are a GRU with clipping.</li>
+<li>The secondary RNN input is the output from the primary RNN concatenated with the <strong>decoder RNN's previous step + transformed through the factor Dense layer</strong>.</li>
+</ul>
+<p>Because the LFADS secondary RNN is so complicated, it is integrated into the decoder RNN itself in a "complex cell". The complex cell includes the z2 cell, makes the z2 outputs variational in <span class="arithmatex">\(q(z_t)\)</span>, samples <span class="arithmatex">\(q(z_t)\)</span> for the inputs to the generative RNN cell, passes the output of the generative RNN step through a Dense to-factors layer, and finally uses that output as one of the inputs to the z2 cell. If <code>params['gen_cell_type']</code> is <code>"Complex"</code>, then we assume that LFADS is being used and we skip the second RNN in <code>create_z_encoder</code>, and we skip making the latents variational in <code>make_z_variational</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.model.beta_vae</span> <span class="kn">import</span> <span class="n">create_z_encoder</span><span class="p">,</span> <span class="n">make_z_variational</span>
+
+<span class="c1"># Note: For f_sample, you can pass in q_f dist itself, or pass q_f.sample(N_SAMPLES) or even q_f.mean()</span>
+<span class="c1">#  The former will use the default `convert_to_tensor_fn` which uses params[&#39;q_f_samples&#39;].</span>
+<span class="n">enc_z</span> <span class="o">=</span> <span class="n">create_z_encoder</span><span class="p">(</span><span class="n">j_params</span><span class="p">,</span> <span class="n">z_enc_inputs</span><span class="p">,</span> <span class="n">f_sample</span><span class="o">=</span><span class="n">q_f</span><span class="p">)</span>
+<span class="n">q_z</span> <span class="o">=</span> <span class="n">make_z_variational</span><span class="p">(</span><span class="n">j_params</span><span class="p">,</span> <span class="n">enc_z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;encoded z: &quot;</span><span class="p">,</span> <span class="n">enc_z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;q(z|x_t): &quot;</span><span class="p">,</span> <span class="n">q_z</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>encoded z:  Tensor(&#34;Reshape_5:0&#34;, shape=(None, 246, 16), dtype=float32)
+q(z|x_t):  tfp.distributions.MultivariateNormalDiag(&#34;distribution_lambda_1_MultivariateNormalDiag&#34;, event_shape=[4], dtype=float32)
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="z-prior">Z Prior</h3>
+<p>Model loss will include the KL divergence between the q_z posterior and a prior.</p>
+<p>There are several versions of the Z prior.</p>
+<ul>
+<li>DSAE Full: An LSTM with a low-ish hidden size. It is used to generate an output sequence with length equal to q_z timesteps dim. The output sequence is then used to parameterize a MVNDiag distribution of equal dimensionality to q_z. (Implementation note: LSTM is initialized with zero-state and zero-input for sample 0, but subsequent samples are drawn from the previous step's <strong>dist</strong>.)</li>
+<li>DSAE Factorized: I'm not sure, maybe the same as above?</li>
+<li>LFADS: Two options. First seems unused: MVNDiag with zero-mean and trainable var. Second: Learnable AR1 process.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">indl.model.beta_vae</span> <span class="kn">import</span> <span class="n">create_z_prior</span>
+<span class="c1"># TODO!</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="generator-decoder-part-1">Generator (Decoder part 1)</h2>
+<p><span class="arithmatex">\(p(x_t | z_t, f)\)</span></p>
+<p>The generator takes in the encoded latents contributing to the inputs and/or initial state, and outputs full sequences.</p>
+<p>The generator layer is typically an RNN, though in some applications (e.g. video) it can be a CNN.</p>
+<p>The encoded latents comprise a single-timestep latent vector (<em>f</em>) and optionally a low-dimensional sequence (<span class="arithmatex">\(z_t\)</span>). Note that these latents are distributions, and therefore must be sampled from to get the initial state and/or the inputs to the generative RNN.</p>
+<p>The q_f sample and the q_z sample may be combined in different ways to become the generator inputs.</p>
+<ul>
+<li>In LFADS, the generator is in the "ComplexCell", which also includes the z2 cell and the . Therein, the q_f sample is used as the generator's initial state and the q_z sample is used as the inputs.</li>
+<li>In DVAE, the q_z sample is used as an input to the generator RNN. The q_f sample can either be used as the initial condition to the generator, or it can be tiled and concated with q_z.</li>
+</ul>
+<p>The generative RNN outputs a sequence. The next step after the sequence is typically a Dense layer to transform into "factors". Because the LFADS ComplexCell includes this step, as is required so that the factors can be fed-back to the z2_encoder step-by-step, we also include the Dense layer in our generator for easier interoperability.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">factors</span> <span class="o">=</span> <span class="n">create_generator</span><span class="p">(</span><span class="n">f_sample</span><span class="p">,</span> <span class="n">z_sample</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="probabilistic-reconstructed-input-decoder-part-2">Probabilistic Reconstructed Input (Decoder part 2)</h2>
+<p>The factors are passed through a Dense layer and the outputs are the same dimensionality as the inputs, but instead of reconstructing the inputs, they parameterize a distribution representing the inputs. This distribution can be Gaussian or Poisson, with the latter being more appropriate for (binned) spike counts.</p>
+</div>
+</div>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../API/utils/regularizers/" class="md-footer__link md-footer__link--prev" aria-label="Previous: regularizers" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              regularizers
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../recurrent_layers/" class="md-footer__link md-footer__link--next" aria-label="Next: Recurrent layers" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Recurrent layers
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2898 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
+    
+    
+      
+        <title>lfads - indl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.cd566b2a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lfads" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="indl" class="md-header__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            indl
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              lfads
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="indl" class="md-nav__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    indl
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/" class="md-nav__link">
+        data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dists/" class="md-nav__link">
+        dists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../layers/" class="md-nav__link">
+        layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rnn/" class="md-nav__link">
+        rnn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Model
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Model" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Model
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../beta_vae/" class="md-nav__link">
+        model.beta_vae
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          lfads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        lfads
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.lfads" class="md-nav__link">
+    indl.model.lfads
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.lfads.create_generator_lfads" class="md-nav__link">
+    create_generator_lfads()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex" class="md-nav__link">
+    complex
+  </a>
+  
+    <nav class="md-nav" aria-label="complex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell" class="md-nav__link">
+    ComplexCell
+  </a>
+  
+    <nav class="md-nav" aria-label="ComplexCell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell.output_size" class="md-nav__link">
+    output_size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell.state_size" class="md-nav__link">
+    state_size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell.call" class="md-nav__link">
+    call()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell.get_config" class="md-nav__link">
+    get_config()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists" class="md-nav__link">
+    dists
+  </a>
+  
+    <nav class="md-nav" aria-label="dists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.DiagonalGaussianFromExisting" class="md-nav__link">
+    DiagonalGaussianFromExisting
+  </a>
+  
+    <nav class="md-nav" aria-label="DiagonalGaussianFromExisting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.DiagonalGaussianFromExisting.logp" class="md-nav__link">
+    logp()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.Gaussian" class="md-nav__link">
+    Gaussian
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.KLCost_GaussianGaussianProcessSampled" class="md-nav__link">
+    KLCost_GaussianGaussianProcessSampled
+  </a>
+  
+    <nav class="md-nav" aria-label="KLCost_GaussianGaussianProcessSampled">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.KLCost_GaussianGaussianProcessSampled.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.LearnableAutoRegressive1Prior" class="md-nav__link">
+    LearnableAutoRegressive1Prior
+  </a>
+  
+    <nav class="md-nav" aria-label="LearnableAutoRegressive1Prior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.LearnableAutoRegressive1Prior.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.LearnableAutoRegressive1Prior.logp_t" class="md-nav__link">
+    logp_t()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.LearnableDiagonalGaussian" class="md-nav__link">
+    LearnableDiagonalGaussian
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.diag_gaussian_log_likelihood" class="md-nav__link">
+    diag_gaussian_log_likelihood()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.gaussian_pos_log_likelihood" class="md-nav__link">
+    gaussian_pos_log_likelihood()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          Utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/fileio/" class="md-nav__link">
+        fileio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/metrics/" class="md-nav__link">
+        metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/regularizers/" class="md-nav__link">
+        regularizers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          DSAE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSAE" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSAE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSAE/dsae/" class="md-nav__link">
+        Dsae
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSAE/recurrent_layers/" class="md-nav__link">
+        Recurrent layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSAE/tfp_notes/" class="md-nav__link">
+        Tfp notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSAE/tfp_utils/" class="md-nav__link">
+        Tfp utils
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Miscellaneous
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/junk_model_inspect/" class="md-nav__link">
+        Junk model inspect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/kernels/" class="md-nav__link">
+        Kernels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/sigfuncs/" class="md-nav__link">
+        Sigfuncs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.lfads" class="md-nav__link">
+    indl.model.lfads
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.lfads.create_generator_lfads" class="md-nav__link">
+    create_generator_lfads()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex" class="md-nav__link">
+    complex
+  </a>
+  
+    <nav class="md-nav" aria-label="complex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell" class="md-nav__link">
+    ComplexCell
+  </a>
+  
+    <nav class="md-nav" aria-label="ComplexCell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell.output_size" class="md-nav__link">
+    output_size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell.state_size" class="md-nav__link">
+    state_size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell.call" class="md-nav__link">
+    call()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.complex.ComplexCell.get_config" class="md-nav__link">
+    get_config()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists" class="md-nav__link">
+    dists
+  </a>
+  
+    <nav class="md-nav" aria-label="dists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.DiagonalGaussianFromExisting" class="md-nav__link">
+    DiagonalGaussianFromExisting
+  </a>
+  
+    <nav class="md-nav" aria-label="DiagonalGaussianFromExisting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.DiagonalGaussianFromExisting.logp" class="md-nav__link">
+    logp()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.Gaussian" class="md-nav__link">
+    Gaussian
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.KLCost_GaussianGaussianProcessSampled" class="md-nav__link">
+    KLCost_GaussianGaussianProcessSampled
+  </a>
+  
+    <nav class="md-nav" aria-label="KLCost_GaussianGaussianProcessSampled">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.KLCost_GaussianGaussianProcessSampled.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.LearnableAutoRegressive1Prior" class="md-nav__link">
+    LearnableAutoRegressive1Prior
+  </a>
+  
+    <nav class="md-nav" aria-label="LearnableAutoRegressive1Prior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.LearnableAutoRegressive1Prior.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.LearnableAutoRegressive1Prior.logp_t" class="md-nav__link">
+    logp_t()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.LearnableDiagonalGaussian" class="md-nav__link">
+    LearnableDiagonalGaussian
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.diag_gaussian_log_likelihood" class="md-nav__link">
+    diag_gaussian_log_likelihood()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.model.lfads.dists.gaussian_pos_log_likelihood" class="md-nav__link">
+    gaussian_pos_log_likelihood()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/SachsLab/indl/edit/master/docs/API/model/lfads.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="lfads">lfads</h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="indl.model.lfads"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.lfads.create_generator_lfads" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_generator_lfads</span><span class="p">(</span><span class="n">params</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>units_gen,
+units_con,
+factors_dim,
+co_dim,
+ext_input_dim,
+inject_ext_input_to_gen,</p>
+
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/__init__.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_generator_lfads</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    units_gen,</span>
+<span class="sd">    units_con,</span>
+<span class="sd">    factors_dim,</span>
+<span class="sd">    co_dim,</span>
+<span class="sd">    ext_input_dim,</span>
+<span class="sd">    inject_ext_input_to_gen,</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">indl.model.lfads.complex</span> <span class="kn">import</span> <span class="n">ComplexCell</span>
+
+    <span class="c1"># TODO: Sample/Mean from $q(f)$. This will replace the first element in generator init_states</span>
+    <span class="c1">#  TODO: need a custom function for sample-during-train-mean-during-test. See nn.dropout for inspiration.</span>
+    <span class="c1"># TODO: Sample from $q(z_t)$, and optionally concat with ext_input, to build generator inputs.</span>
+
+    <span class="c1"># TODO: continue generator from lfads-cd/lfadslite.py start at 495</span>
+    <span class="n">custom_cell</span> <span class="o">=</span> <span class="n">ComplexCell</span><span class="p">(</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;gen_dim&#39;</span><span class="p">],</span>  <span class="c1"># Units in generator GRU</span>
+        <span class="n">con_hidden_state_dim</span><span class="p">,</span>  <span class="c1"># Units in controller GRU</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;factors_dim&#39;</span><span class="p">],</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;co_dim&#39;</span><span class="p">],</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;ext_input_dim&#39;</span><span class="p">],</span>
+        <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">generator</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">RNN</span><span class="p">(</span><span class="n">custom_cell</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                         <span class="c1"># recurrent_regularizer=tf.keras.regularizers.l2(l=gen_l2_reg),</span>
+                         <span class="n">name</span><span class="o">=</span><span class="s1">&#39;gen_rnn&#39;</span><span class="p">)</span>
+    <span class="n">init_states</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">(</span><span class="n">gen_input</span><span class="p">)</span>
+
+    <span class="n">gen_output</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">gen_input</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">init_states</span><span class="p">)</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="n">gen_output</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">factors</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="indl.model.lfads.complex" class="doc doc-heading">
+        <code>complex</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="indl.model.lfads.complex.ComplexCell" class="doc doc-heading">
+        <code>
+ComplexCell            (<span title="tensorflow.python.keras.layers.recurrent.AbstractRNNCell">AbstractRNNCell</span>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/complex.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ComplexCell</span><span class="p">(</span><span class="n">tfkl</span><span class="o">.</span><span class="n">AbstractRNNCell</span><span class="p">):</span>
+    <span class="n">_BIAS_VARIABLE_NAME</span> <span class="o">=</span> <span class="s2">&quot;bias&quot;</span>
+    <span class="n">_WEIGHTS_VARIABLE_NAME</span> <span class="o">=</span> <span class="s2">&quot;kernel&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Cell class for the LFADS Generative GRU + Controller Input</span>
+
+<span class="sd">    This cell uses two GRUClipCells: One for the Generator and one for the Controller.</span>
+<span class="sd">    The Controller  - This is equivalent to the &quot;z2&quot; RNN layer in the other disentangling AE formulations.  </span>
+<span class="sd">                    - Optional -- only used if z2_units (LFADS: con_dim) &gt; 0</span>
+<span class="sd">                    - inputs: the concatenation of (a) the encoded controller inputs and (b) the generator cell&#39;s state</span>
+<span class="sd">                      from the previous iteration transformed through the factor dense layer.</span>
+<span class="sd">                      (on the zeroth step, b starts with f-encoded latents)</span>
+<span class="sd">                      The encoded controller inputs are themselves the output of an RNN with dim size z1_units,</span>
+<span class="sd">                      or &#39;ci_enc_dim&#39; in LFADS</span>
+<span class="sd">                    - initial state: in LFADS -- a **learnable Variable** of zeros.</span>
+<span class="sd">    The Generator   - inputs: the output of the Controller cell and optionally &#39;external&#39; inputs.</span>
+<span class="sd">                    - initial state: in LFADS -- a sample of a posterior distribution that is parameterized</span>
+<span class="sd">                      by an encoder.</span>
+
+<span class="sd">    The two cells share the same initialization parameters</span>
+<span class="sd">    (activations, initializers, bias, dropout, regularizer, etc.) except for the number of units.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        units_gen: Positive integer, number of units in generator RNN cell.</span>
+<span class="sd">        z2_units: Positive integer, number of units in controller RNN cell. (units_con in LFADS)</span>
+<span class="sd">        factors_dim: Number of units in Dense layer for factors output.</span>
+<span class="sd">            This layer would normally be external to the RNN. However, in LFADS, the factors dense layer</span>
+<span class="sd">            is also used to transform the t-1 generator cell state which becomes part of the _inputs_</span>
+<span class="sd">            to the controller cell.</span>
+<span class="sd">        z_latent_size: Dimensionality of variational posterior from controller output --&gt; inputs to controller RNN (LFADS: co_dim)</span>
+<span class="sd">        ext_input_dim: Size of external input. The cell input will be split into encoded_z and ext_input depending</span>
+<span class="sd">            on this value. Can be 0.</span>
+<span class="sd">        inject_ext_input_to_gen: Only makes sense if ext_input_dim is &gt; 0, and `False` is not implemented.</span>
+<span class="sd">        activation: Activation function to use.</span>
+<span class="sd">          Default: hyperbolic tangent (`tanh`).</span>
+<span class="sd">          If you pass None, no activation is applied (ie. &quot;linear&quot; activation: `a(x) = x`).</span>
+<span class="sd">        recurrent_activation: Activation function to use for the recurrent step.</span>
+<span class="sd">          Default: hard sigmoid (`hard_sigmoid`).</span>
+<span class="sd">          If you pass `None`, no activation is applied (ie. &quot;linear&quot; activation: `a(x) = x`).</span>
+<span class="sd">          Note: LFADS uses normal sigmoid.</span>
+<span class="sd">        use_bias: Boolean, whether the layer uses a bias vector.</span>
+<span class="sd">        kernel_initializer: Initializer for the `kernel` weights matrix,</span>
+<span class="sd">          used for the linear transformation of the inputs.</span>
+<span class="sd">          Default: lecun_normal</span>
+<span class="sd">          Vanilla tensorflow default is glorot_uniform.</span>
+<span class="sd">        recurrent_initializer: Initializer for the `recurrent_kernel` weights matrix,</span>
+<span class="sd">          used for the linear transformation of the recurrent state.</span>
+<span class="sd">          Default: orthogonal</span>
+<span class="sd">          LFADS uses lecun_normal</span>
+<span class="sd">        bias_initializer: Initializer for the bias vector.</span>
+<span class="sd">          Default: zeros</span>
+<span class="sd">          Note: LFADS uses ones for gate bias and zeros for candidate bias</span>
+<span class="sd">        kernel_regularizer: Regularizer function applied to the `kernel` weights matrix.</span>
+<span class="sd">          Default: None</span>
+<span class="sd">        recurrent_regularizer: Regularizer function applied to the `recurrent_kernel` weights matrix.</span>
+<span class="sd">          Default: &#39;l2&#39; at 0.01</span>
+<span class="sd">          Note: LFADS uses L2 regularization with per-cell scaling.</span>
+<span class="sd">          Default for generator is 2000., and for controller is 0. (sum(v*v)*scale*0.5) / numel</span>
+<span class="sd">        bias_regularizer: Regularizer function applied to the bias vector.</span>
+<span class="sd">          Default: None</span>
+<span class="sd">        kernel_constraint: Constraint function applied to the `kernel` weights matrix.</span>
+<span class="sd">          Default: None</span>
+<span class="sd">        recurrent_constraint: Constraint function applied to the `recurrent_kernel` weights matrix.</span>
+<span class="sd">          Default: None</span>
+<span class="sd">        bias_constraint: Constraint function applied to the bias vector.</span>
+<span class="sd">          Default: None</span>
+<span class="sd">        dropout: Float between 0 and 1.</span>
+<span class="sd">          Fraction of the units to drop for the linear transformation of the inputs.</span>
+<span class="sd">          Default: 0.05</span>
+<span class="sd">        recurrent_dropout: Float between 0 and 1.</span>
+<span class="sd">          Fraction of the units to drop for the linear transformation of the recurrent state.</span>
+<span class="sd">          Default: 0.0</span>
+<span class="sd">        implementation: Implementation mode, either 1 or 2.</span>
+<span class="sd">          Mode 1 will structure its operations as a larger number of</span>
+<span class="sd">          smaller dot products and additions, whereas mode 2 will</span>
+<span class="sd">          batch them into fewer, larger operations. These modes will</span>
+<span class="sd">          have different performance profiles on different hardware and</span>
+<span class="sd">          for different applications.</span>
+<span class="sd">          Note: This applies to the sub-cells.</span>
+<span class="sd">        reset_after: GRU convention (whether to apply reset gate after or</span>
+<span class="sd">          before matrix multiplication). False = &quot;before&quot; (default),</span>
+<span class="sd">          True = &quot;after&quot; (CuDNN compatible).</span>
+<span class="sd">        clip_value: Value at which to clip the GRU cell output.</span>
+<span class="sd">          Default: np.inf (no clipping)</span>
+
+<span class="sd">    Call arguments:</span>
+<span class="sd">        inputs: A 2D tensor, composed of the following (concatenated together).</span>
+<span class="sd">            - Encoded Z1 (LFADS: &quot;controller inputs&quot;, other frameworks: half way through dynamic or z-encoding).</span>
+<span class="sd">            - (Optional) External Input. Set size with `ext_input_dim`, can be 0.</span>
+<span class="sd">        states: List of state tensors corresponding to the previous timestep.</span>
+<span class="sd">            - gen_cell: Generator cell state, of size `units_gen`. Typically initialized from a sample of the f-latent</span>
+<span class="sd">            distribution q(f) (LFADS: &quot;encoded initial conditions&quot;; others: &quot;static&quot;).</span>
+<span class="sd">            - z2_cell: Z2 cell state of size `z2_units`. Initialized with Variable inited to zeros. (LFADS: controller input)</span>
+<span class="sd">            - z_latent x 3: Output only for tracking purposes and external KL loss. Not fed back to next iteration.</span>
+<span class="sd">                Controller output means, variances, and sampled output (same as means during *testing*)</span>
+<span class="sd">            - factors: The main output. Not fed back to next iteration.</span>
+<span class="sd">        training: Python boolean indicating whether the layer should behave in</span>
+<span class="sd">          training mode or in inference mode. Only relevant when `dropout` or</span>
+<span class="sd">          `recurrent_dropout` is used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">units_gen</span><span class="p">,</span>
+                 <span class="n">z2_units</span><span class="p">,</span>
+                 <span class="n">factors_dim</span><span class="p">,</span>
+                 <span class="n">z_latent_size</span><span class="p">,</span>
+                 <span class="n">ext_input_dim</span><span class="p">,</span>
+                 <span class="n">inject_ext_input_to_gen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span>
+                 <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                 <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span>
+                 <span class="n">dropout</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+                 <span class="n">clip_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">units_gen</span> <span class="o">=</span> <span class="n">units_gen</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span> <span class="o">=</span> <span class="n">z2_units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factors_dim</span> <span class="o">=</span> <span class="n">factors_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span> <span class="o">=</span> <span class="n">z_latent_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span> <span class="o">=</span> <span class="n">ext_input_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inject_ext_input_to_gen</span> <span class="o">=</span> <span class="n">inject_ext_input_to_gen</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">z2_units</span> <span class="o">+</span> <span class="n">units_gen</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">z_latent_size</span> <span class="o">+</span> <span class="n">factors_dim</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fac_lin</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">factors_dim</span><span class="p">,</span> <span class="n">use_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span>  <span class="c1"># stdev = 1 / np.sqrt(in_size)</span>
+                                  <span class="n">kernel_constraint</span><span class="o">=</span><span class="s1">&#39;unit_norm&#39;</span><span class="p">)</span>  <span class="c1"># w / sqrt(sum(w**2))</span>
+        <span class="c1"># Note, we use norm constraint whereas LFADS uses norm on init only.</span>
+        <span class="kn">from</span> <span class="nn">indl.rnn.gru_clip</span> <span class="kn">import</span> <span class="n">GRUClipCell</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">z2_cell</span> <span class="o">=</span> <span class="n">GRUClipCell</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span><span class="p">,</span>
+                                       <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">kernel_initializer</span><span class="p">,</span>
+                                       <span class="n">bias_initializer</span><span class="o">=</span><span class="n">bias_initializer</span><span class="p">,</span>
+                                       <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="n">recurrent_regularizer</span><span class="p">,</span>
+                                       <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
+                                       <span class="n">clip_value</span><span class="o">=</span><span class="n">clip_value</span><span class="p">,</span>
+                                       <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">z2_cell</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_lin</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span> <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logvar_lin</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span> <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen_cell</span> <span class="o">=</span> <span class="n">GRUClipCell</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units_gen</span><span class="p">,</span>
+                                    <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">kernel_initializer</span><span class="p">,</span>
+                                    <span class="n">bias_initializer</span><span class="o">=</span><span class="n">bias_initializer</span><span class="p">,</span>
+                                    <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="n">recurrent_regularizer</span><span class="p">,</span>
+                                    <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
+                                    <span class="n">clip_value</span><span class="o">=</span><span class="n">clip_value</span><span class="p">,</span>
+                                    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">state_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># [gen_s_new, z2_state, z_latent_mean, z_latent_logvar, q_z_sample, factors_new]</span>
+        <span class="n">state_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">gen_cell</span><span class="o">.</span><span class="n">state_size</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">state_sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z2_cell</span><span class="o">.</span><span class="n">state_size</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">state_sizes</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span><span class="p">,)</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">factors_dim</span><span class="p">,)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">output_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">units_gen</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">factors_dim</span>
+
+    <span class="nd">@tf_utils</span><span class="o">.</span><span class="n">shape_type_conversion</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+        <span class="n">input_dim</span> <span class="o">=</span> <span class="n">input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">z2_cell</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_dim</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">factors_dim</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen_cell</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">built</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_cell</span><span class="o">.</span><span class="n">built</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_cell</span><span class="o">.</span><span class="n">built</span>
+
+    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;units_gen&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">units_gen</span><span class="p">,</span>
+            <span class="s1">&#39;z2_units&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span><span class="p">,</span>
+            <span class="s1">&#39;factors_dim&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">factors_dim</span><span class="p">,</span>
+            <span class="s1">&#39;z_latent_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span><span class="p">,</span>
+            <span class="s1">&#39;ext_input_dim&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span><span class="p">,</span>
+            <span class="s1">&#39;inject_ext_input_to_gen&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">inject_ext_input_to_gen</span>
+        <span class="p">}</span>
+        <span class="n">base_config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+        <span class="n">gru_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_cell</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">base_config</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">gru_config</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+
+    <span class="k">def</span> <span class="nf">get_initial_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">make_K_tensors</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+        <span class="n">init_state</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">gen_cell</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">init_state</span> <span class="o">+=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">z2_cell</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)]</span>
+
+        <span class="kn">from</span> <span class="nn">tensorflow.python.keras.layers.recurrent</span> <span class="kn">import</span> <span class="n">_generate_zero_filled_state</span>
+        <span class="k">if</span> <span class="n">inputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">batch_size</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">init_state</span> <span class="o">+=</span> <span class="p">[</span><span class="n">_generate_zero_filled_state</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+        <span class="n">init_state</span> <span class="o">+=</span> <span class="p">[</span><span class="n">_generate_zero_filled_state</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">factors_dim</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="n">make_K_tensors</span><span class="p">:</span>
+            <span class="c1"># import tensorflow.keras.backend as K</span>
+            <span class="c1"># K.is_tensor(init_state[0])</span>
+            <span class="n">init_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">tfkl</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">init_state</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">init_state</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">training</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">training</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">learning_phase</span><span class="p">()</span>
+        <span class="c1"># if external inputs are used split the inputs</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">z1</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span><span class="p">]</span>
+            <span class="n">ext_inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[:,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span><span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">z1</span> <span class="o">=</span> <span class="n">inputs</span>
+            <span class="n">ext_inputs</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">gen_state</span><span class="p">,</span> <span class="n">z2_state</span> <span class="o">=</span> <span class="n">states</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># if controller is used</span>
+            <span class="c1"># input to the controller is (con_i and previous step&#39;s factors)</span>
+            <span class="n">prev_gen_dropped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">gen_state</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+            <span class="n">prev_fac</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fac_lin</span><span class="p">(</span><span class="n">prev_gen_dropped</span><span class="p">)</span>
+            <span class="n">z2_inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">z1</span><span class="p">,</span> <span class="n">prev_fac</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">z2_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">z2_inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+
+            <span class="c1"># controller GRU recursion, get new state</span>
+            <span class="n">z2_outputs</span><span class="p">,</span> <span class="n">z2_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_cell</span><span class="p">(</span><span class="n">z2_inputs</span><span class="p">,</span> <span class="n">z2_state</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+
+            <span class="c1"># calculate the inputs to the generator</span>
+            <span class="c1"># transformation to mean and logvar of the posterior</span>
+            <span class="c1"># TODO: use make_variational(params, z2_state)</span>
+            <span class="n">z_latent_mean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_lin</span><span class="p">(</span><span class="n">z2_state</span><span class="p">)</span>
+            <span class="n">z_latent_logvar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logvar_lin</span><span class="p">(</span><span class="n">z2_state</span><span class="p">)</span>
+            <span class="n">z_latent_dist</span> <span class="o">=</span> <span class="n">DiagonalGaussianFromExisting</span><span class="p">(</span><span class="n">z_latent_mean</span><span class="p">,</span> <span class="n">z_latent_logvar</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">training</span><span class="p">:</span>  <span class="c1"># TODO: (training or &quot;posterior_sample_and_average&quot;), whatever the latter is.</span>
+                <span class="n">q_z_sample</span> <span class="o">=</span> <span class="n">z_latent_dist</span><span class="o">.</span><span class="n">sample</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">q_z_sample</span> <span class="o">=</span> <span class="n">z_latent_dist</span><span class="o">.</span><span class="n">mean</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># pass zeros (0-dim) as inputs to generator</span>
+            <span class="n">q_z_sample</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">gen_state</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">])</span>
+            <span class="n">z2_state</span> <span class="o">=</span> <span class="n">z_latent_mean</span> <span class="o">=</span> <span class="n">z_latent_logvar</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">gen_state</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># generator&#39;s inputs</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">inject_ext_input_to_gen</span><span class="p">:</span>
+            <span class="c1"># passing external inputs along with controller output as generator&#39;s input</span>
+            <span class="n">gen_inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">q_z_sample</span><span class="p">,</span> <span class="n">ext_inputs</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inject_ext_input_to_gen</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Not Implemented!&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># using only controller output as generator&#39;s input</span>
+            <span class="n">gen_inputs</span> <span class="o">=</span> <span class="n">q_z_sample</span>
+
+        <span class="c1"># generator GRU recursion, get the new state</span>
+        <span class="n">gen_outputs</span><span class="p">,</span> <span class="n">gen_s_new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_cell</span><span class="p">(</span><span class="n">gen_inputs</span><span class="p">,</span> <span class="n">gen_state</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+
+        <span class="c1"># calculate the factors</span>
+        <span class="n">gen_s_new_dropped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">gen_s_new</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">factors_new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fac_lin</span><span class="p">(</span><span class="n">gen_s_new_dropped</span><span class="p">)</span>
+
+        <span class="c1"># Output the states and other values to make them available after RNN</span>
+        <span class="n">new_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">gen_s_new</span><span class="p">,</span> <span class="n">z2_state</span><span class="p">,</span> <span class="n">z_latent_mean</span><span class="p">,</span> <span class="n">z_latent_logvar</span><span class="p">,</span> <span class="n">q_z_sample</span><span class="p">,</span> <span class="n">factors_new</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">new_state</span><span class="p">,</span> <span class="n">new_state</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="indl.model.lfads.complex.ComplexCell.output_size" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">output_size</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Integer or TensorShape: size of outputs produced by this cell.</p>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="indl.model.lfads.complex.ComplexCell.state_size" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">state_size</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>size(s) of state(s) used by this cell.</p>
+<p>It can be represented by an Integer, a TensorShape or a tuple of Integers
+or TensorShapes.</p>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.model.lfads.complex.ComplexCell.call" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>The function that contains the logic for one RNN step calculation.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inputs</code></td>
+        <td></td>
+        <td><p>the input tensor, which is a slide from the overall RNN input by
+the time dimension (usually the second dimension).</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>states</code></td>
+        <td></td>
+        <td><p>the state tensor from previous step, which has the same shape
+as <code>(batch, state_size)</code>. In the case of timestep 0, it will be the
+initial state user specified, or zero filled tensor otherwise.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>A tuple of two tensors</code></td>
+      <td><ol>
+<li>output tensor for the current timestep, with size <code>output_size</code>.</li>
+<li>state tensor for next step, which has the shape of <code>state_size</code>.</li>
+</ol></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/complex.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">training</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">training</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">learning_phase</span><span class="p">()</span>
+    <span class="c1"># if external inputs are used split the inputs</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">z1</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span><span class="p">]</span>
+        <span class="n">ext_inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[:,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span><span class="p">:]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">z1</span> <span class="o">=</span> <span class="n">inputs</span>
+        <span class="n">ext_inputs</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">gen_state</span><span class="p">,</span> <span class="n">z2_state</span> <span class="o">=</span> <span class="n">states</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># if controller is used</span>
+        <span class="c1"># input to the controller is (con_i and previous step&#39;s factors)</span>
+        <span class="n">prev_gen_dropped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">gen_state</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">prev_fac</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fac_lin</span><span class="p">(</span><span class="n">prev_gen_dropped</span><span class="p">)</span>
+        <span class="n">z2_inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">z1</span><span class="p">,</span> <span class="n">prev_fac</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">z2_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">z2_inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+
+        <span class="c1"># controller GRU recursion, get new state</span>
+        <span class="n">z2_outputs</span><span class="p">,</span> <span class="n">z2_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_cell</span><span class="p">(</span><span class="n">z2_inputs</span><span class="p">,</span> <span class="n">z2_state</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+
+        <span class="c1"># calculate the inputs to the generator</span>
+        <span class="c1"># transformation to mean and logvar of the posterior</span>
+        <span class="c1"># TODO: use make_variational(params, z2_state)</span>
+        <span class="n">z_latent_mean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_lin</span><span class="p">(</span><span class="n">z2_state</span><span class="p">)</span>
+        <span class="n">z_latent_logvar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logvar_lin</span><span class="p">(</span><span class="n">z2_state</span><span class="p">)</span>
+        <span class="n">z_latent_dist</span> <span class="o">=</span> <span class="n">DiagonalGaussianFromExisting</span><span class="p">(</span><span class="n">z_latent_mean</span><span class="p">,</span> <span class="n">z_latent_logvar</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">training</span><span class="p">:</span>  <span class="c1"># TODO: (training or &quot;posterior_sample_and_average&quot;), whatever the latter is.</span>
+            <span class="n">q_z_sample</span> <span class="o">=</span> <span class="n">z_latent_dist</span><span class="o">.</span><span class="n">sample</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">q_z_sample</span> <span class="o">=</span> <span class="n">z_latent_dist</span><span class="o">.</span><span class="n">mean</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># pass zeros (0-dim) as inputs to generator</span>
+        <span class="n">q_z_sample</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">gen_state</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">z2_state</span> <span class="o">=</span> <span class="n">z_latent_mean</span> <span class="o">=</span> <span class="n">z_latent_logvar</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">gen_state</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># generator&#39;s inputs</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">inject_ext_input_to_gen</span><span class="p">:</span>
+        <span class="c1"># passing external inputs along with controller output as generator&#39;s input</span>
+        <span class="n">gen_inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">q_z_sample</span><span class="p">,</span> <span class="n">ext_inputs</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inject_ext_input_to_gen</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Not Implemented!&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># using only controller output as generator&#39;s input</span>
+        <span class="n">gen_inputs</span> <span class="o">=</span> <span class="n">q_z_sample</span>
+
+    <span class="c1"># generator GRU recursion, get the new state</span>
+    <span class="n">gen_outputs</span><span class="p">,</span> <span class="n">gen_s_new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_cell</span><span class="p">(</span><span class="n">gen_inputs</span><span class="p">,</span> <span class="n">gen_state</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+
+    <span class="c1"># calculate the factors</span>
+    <span class="n">gen_s_new_dropped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">gen_s_new</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+    <span class="n">factors_new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fac_lin</span><span class="p">(</span><span class="n">gen_s_new_dropped</span><span class="p">)</span>
+
+    <span class="c1"># Output the states and other values to make them available after RNN</span>
+    <span class="n">new_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">gen_s_new</span><span class="p">,</span> <span class="n">z2_state</span><span class="p">,</span> <span class="n">z_latent_mean</span><span class="p">,</span> <span class="n">z_latent_logvar</span><span class="p">,</span> <span class="n">q_z_sample</span><span class="p">,</span> <span class="n">factors_new</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">new_state</span><span class="p">,</span> <span class="n">new_state</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.model.lfads.complex.ComplexCell.get_config" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <code>Network</code> (one layer of abstraction above).</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Python dictionary.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/complex.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;units_gen&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">units_gen</span><span class="p">,</span>
+        <span class="s1">&#39;z2_units&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2_units</span><span class="p">,</span>
+        <span class="s1">&#39;factors_dim&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">factors_dim</span><span class="p">,</span>
+        <span class="s1">&#39;z_latent_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">z_latent_size</span><span class="p">,</span>
+        <span class="s1">&#39;ext_input_dim&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_input_dim</span><span class="p">,</span>
+        <span class="s1">&#39;inject_ext_input_to_gen&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">inject_ext_input_to_gen</span>
+    <span class="p">}</span>
+    <span class="n">base_config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+    <span class="n">gru_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_cell</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">base_config</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">gru_config</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="indl.model.lfads.dists" class="doc doc-heading">
+        <code>dists</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="indl.model.lfads.dists.DiagonalGaussianFromExisting" class="doc doc-heading">
+        <code>
+DiagonalGaussianFromExisting            (<a title="indl.model.lfads.dists.Gaussian" href="#indl.model.lfads.dists.Gaussian">Gaussian</a>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Diagonal Gaussian with different constant mean and variances in each
+dimension.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DiagonalGaussianFromExisting</span><span class="p">(</span><span class="n">Gaussian</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Diagonal Gaussian with different constant mean and variances in each</span>
+<span class="sd">    dimension.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean_bxn</span><span class="p">,</span> <span class="n">logvar_bxn</span><span class="p">,</span> <span class="n">var_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span> <span class="o">=</span> <span class="n">mean_bxn</span>
+        <span class="k">if</span> <span class="n">var_min</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">logvar_bxn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logvar_bxn</span><span class="p">)</span> <span class="o">+</span> <span class="n">var_min</span><span class="p">)</span>
+            <span class="c1"># logvar_bxn = tf.nn.relu(logvar_bxn) + tf.math.log(var_min)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span> <span class="o">=</span> <span class="n">logvar_bxn</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">noise_bxn</span> <span class="o">=</span> <span class="n">noise_bxn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">logvar_bxn</span><span class="p">))</span>
+        <span class="c1">#self.noise_bxn.set_shape([None, z_size])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_bxn</span> <span class="o">=</span> <span class="n">mean_bxn</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">logvar_bxn</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise_bxn</span>
+
+    <span class="k">def</span> <span class="nf">logp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the log-likelihood under the distribution.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">          z (optional): value to compute likelihood for, if None, use sample.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          The likelihood of z under the model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">z</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample</span>
+
+        <span class="c1"># This is needed to make sure that the gradients are simple.</span>
+        <span class="c1"># The value of the function shouldn&#39;t change.</span>
+        <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_bxn</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">gaussian_pos_log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">noise_bxn</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">diag_gaussian_log_likelihood</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.model.lfads.dists.DiagonalGaussianFromExisting.logp" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">logp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Compute the log-likelihood under the distribution.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>z</code></td>
+        <td><code>optional</code></td>
+        <td><p>value to compute likelihood for, if None, use sample.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>The likelihood of z under the model.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">logp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the log-likelihood under the distribution.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      z (optional): value to compute likelihood for, if None, use sample.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      The likelihood of z under the model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample</span>
+
+    <span class="c1"># This is needed to make sure that the gradients are simple.</span>
+    <span class="c1"># The value of the function shouldn&#39;t change.</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_bxn</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">gaussian_pos_log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">noise_bxn</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">diag_gaussian_log_likelihood</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="indl.model.lfads.dists.Gaussian" class="doc doc-heading">
+        <code>
+Gaussian        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Base class for Gaussian distribution classes.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Gaussian</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for Gaussian distribution classes.&quot;&quot;&quot;</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">logvar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">noise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logvar</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># return self.mean + tf.exp(0.5 * self.logvar) * self.noise</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_bxn</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="indl.model.lfads.dists.KLCost_GaussianGaussianProcessSampled" class="doc doc-heading">
+        <code>
+KLCost_GaussianGaussianProcessSampled        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>log p(x|z) + KL(q||p) terms for Gaussian posterior and Gaussian process
+prior via sampling.</p>
+<p>The log p(x|z) term is the reconstruction error under the model.
+The KL term represents the penalty for passing information from the encoder
+to the decoder.
+To sample KL(q||p), we simply sample
+    ln q - ln p
+by drawing samples from q and averaging.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">KLCost_GaussianGaussianProcessSampled</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; log p(x|z) + KL(q||p) terms for Gaussian posterior and Gaussian process</span>
+<span class="sd">    prior via sampling.</span>
+
+<span class="sd">    The log p(x|z) term is the reconstruction error under the model.</span>
+<span class="sd">    The KL term represents the penalty for passing information from the encoder</span>
+<span class="sd">    to the decoder.</span>
+<span class="sd">    To sample KL(q||p), we simply sample</span>
+<span class="sd">        ln q - ln p</span>
+<span class="sd">    by drawing samples from q and averaging.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">post_zs</span><span class="p">,</span> <span class="n">prior_z_process</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a lower bound in three parts, normalized reconstruction</span>
+<span class="sd">        cost, normalized KL divergence cost, and their sum.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">          post_zs: posterior z ~ q(z|x)</span>
+<span class="sd">          prior_z_process: prior AR(1) process</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># assert len(post_zs) &gt; 1, &quot;GP is for time, need more than 1 time step.&quot;</span>
+        <span class="c1"># assert isinstance(prior_z_process, GaussianProcess), &quot;Must use GP.&quot;</span>
+
+        <span class="c1"># L = -KL + log p(x|z), to maximize bound on likelihood</span>
+        <span class="c1"># -L = KL - log p(x|z), to minimize bound on NLL</span>
+        <span class="c1"># so &#39;KL cost&#39; is postive KL divergence</span>
+
+        <span class="c1"># sample from the posterior for all time points and dimensions</span>
+        <span class="n">post_zs_sampled</span> <span class="o">=</span> <span class="n">post_zs</span><span class="o">.</span><span class="n">sample</span>
+        <span class="c1"># sum KL over time and dimension axis</span>
+        <span class="n">logq_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">=</span><span class="n">post_zs</span><span class="o">.</span><span class="n">logp</span><span class="p">(</span><span class="n">post_zs_sampled</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+        <span class="n">logp_bxu</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">num_steps</span> <span class="o">=</span> <span class="n">post_zs</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+            <span class="c1"># posterior is independent in time, prior is not</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">z_tm1_bxu</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">z_tm1_bxu</span> <span class="o">=</span> <span class="n">post_zs_sampled</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">logp_bxu</span> <span class="o">+=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">=</span><span class="n">prior_z_process</span><span class="o">.</span><span class="n">logp_t</span><span class="p">(</span>
+                <span class="n">post_zs_sampled</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">z_tm1_bxu</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">kl_b</span> <span class="o">=</span> <span class="n">logq_bxu</span> <span class="o">-</span> <span class="n">logp_bxu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kl_cost_b</span> <span class="o">=</span> <span class="n">kl_b</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.model.lfads.dists.KLCost_GaussianGaussianProcessSampled.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">post_zs</span><span class="p">,</span> <span class="n">prior_z_process</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a lower bound in three parts, normalized reconstruction
+cost, normalized KL divergence cost, and their sum.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>post_zs</code></td>
+        <td></td>
+        <td><p>posterior z ~ q(z|x)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>prior_z_process</code></td>
+        <td></td>
+        <td><p>prior AR(1) process</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">post_zs</span><span class="p">,</span> <span class="n">prior_z_process</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a lower bound in three parts, normalized reconstruction</span>
+<span class="sd">    cost, normalized KL divergence cost, and their sum.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      post_zs: posterior z ~ q(z|x)</span>
+<span class="sd">      prior_z_process: prior AR(1) process</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># assert len(post_zs) &gt; 1, &quot;GP is for time, need more than 1 time step.&quot;</span>
+    <span class="c1"># assert isinstance(prior_z_process, GaussianProcess), &quot;Must use GP.&quot;</span>
+
+    <span class="c1"># L = -KL + log p(x|z), to maximize bound on likelihood</span>
+    <span class="c1"># -L = KL - log p(x|z), to minimize bound on NLL</span>
+    <span class="c1"># so &#39;KL cost&#39; is postive KL divergence</span>
+
+    <span class="c1"># sample from the posterior for all time points and dimensions</span>
+    <span class="n">post_zs_sampled</span> <span class="o">=</span> <span class="n">post_zs</span><span class="o">.</span><span class="n">sample</span>
+    <span class="c1"># sum KL over time and dimension axis</span>
+    <span class="n">logq_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">=</span><span class="n">post_zs</span><span class="o">.</span><span class="n">logp</span><span class="p">(</span><span class="n">post_zs_sampled</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+    <span class="n">logp_bxu</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">num_steps</span> <span class="o">=</span> <span class="n">post_zs</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+        <span class="c1"># posterior is independent in time, prior is not</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">z_tm1_bxu</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">z_tm1_bxu</span> <span class="o">=</span> <span class="n">post_zs_sampled</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">logp_bxu</span> <span class="o">+=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">=</span><span class="n">prior_z_process</span><span class="o">.</span><span class="n">logp_t</span><span class="p">(</span>
+            <span class="n">post_zs_sampled</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">z_tm1_bxu</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">kl_b</span> <span class="o">=</span> <span class="n">logq_bxu</span> <span class="o">-</span> <span class="n">logp_bxu</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">kl_cost_b</span> <span class="o">=</span> <span class="n">kl_b</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="indl.model.lfads.dists.LearnableAutoRegressive1Prior" class="doc doc-heading">
+        <code>
+LearnableAutoRegressive1Prior        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>AR(1) model where autocorrelation and process variance are learned
+parameters.  Assumed zero mean.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LearnableAutoRegressive1Prior</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    AR(1) model where autocorrelation and process variance are learned</span>
+<span class="sd">    parameters.  Assumed zero mean.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">z_size</span><span class="p">,</span>
+                 <span class="n">autocorrelation_taus</span><span class="p">,</span> <span class="n">noise_variances</span><span class="p">,</span>
+                 <span class="n">do_train_prior_ar_atau</span><span class="p">,</span> <span class="n">do_train_prior_ar_nvar</span><span class="p">,</span>
+                 <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a learnable autoregressive (1) process.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">          batch_size: The size of the batch, i.e. 0th dim in 2D tensor of samples.</span>
+<span class="sd">          z_size: The dimension of the distribution, i.e. 1st dim in 2D tensor.</span>
+<span class="sd">          autocorrelation_taus: The auto correlation time constant of the AR(1)</span>
+<span class="sd">          process.</span>
+<span class="sd">            A value of 0 is uncorrelated gaussian noise.</span>
+<span class="sd">          noise_variances: The variance of the additive noise, *not* the process</span>
+<span class="sd">            variance.</span>
+<span class="sd">          do_train_prior_ar_atau: Train or leave as constant, the autocorrelation?</span>
+<span class="sd">          do_train_prior_ar_nvar: Train or leave as constant, the noise variance?</span>
+<span class="sd">          num_steps: Number of steps to run the process.</span>
+<span class="sd">          name: The name to prefix to learned TF variables.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Note the use of the plural in all of these quantities.  This is intended</span>
+        <span class="c1"># to mark that even though a sample z_t from the posterior is thought of a</span>
+        <span class="c1"># single sample of a multidimensional gaussian, the prior is actually</span>
+        <span class="c1"># thought of as U AR(1) processes, where U is the dimension of the inferred</span>
+        <span class="c1"># input.</span>
+        <span class="n">size_bx1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">size__xu</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">z_size</span><span class="p">]</span>
+        <span class="c1"># process variance, the variance at time t over all instantiations of AR(1)</span>
+        <span class="c1"># with these parameters.</span>
+        <span class="n">log_evar_inits_1xu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">noise_variances</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logevars_1xu</span> <span class="o">=</span> <span class="n">logevars_1xu</span> <span class="o">=</span> \
+            <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">log_evar_inits_1xu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;/logevars&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+                        <span class="n">trainable</span><span class="o">=</span><span class="n">do_train_prior_ar_nvar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logevars_bxu</span> <span class="o">=</span> <span class="n">logevars_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">logevars_1xu</span><span class="p">,</span> <span class="n">size_bx1</span><span class="p">)</span>
+        <span class="n">logevars_bxu</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span><span class="n">size__xu</span><span class="p">)</span>  <span class="c1"># tile loses shape</span>
+
+        <span class="c1"># \tau, which is the autocorrelation time constant of the AR(1) process</span>
+        <span class="n">log_atau_inits_1xu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">autocorrelation_taus</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logataus_1xu</span> <span class="o">=</span> <span class="n">logataus_1xu</span> <span class="o">=</span> \
+            <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">log_atau_inits_1xu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;/logatau&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+                        <span class="n">trainable</span><span class="o">=</span><span class="n">do_train_prior_ar_atau</span><span class="p">)</span>
+
+        <span class="c1"># phi in x_t = \mu + phi x_tm1 + \eps</span>
+        <span class="c1"># phi = exp(-1/tau)</span>
+        <span class="c1"># phi = exp(-1/exp(logtau))</span>
+        <span class="c1"># phi = exp(-exp(-logtau))</span>
+        <span class="n">phis_1xu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">logataus_1xu</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phis_bxu</span> <span class="o">=</span> <span class="n">phis_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">phis_1xu</span><span class="p">,</span> <span class="n">size_bx1</span><span class="p">)</span>
+        <span class="n">phis_bxu</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span><span class="n">size__xu</span><span class="p">)</span>
+
+        <span class="c1"># process noise</span>
+        <span class="c1"># pvar = evar / (1- phi^2)</span>
+        <span class="c1"># logpvar = log ( exp(logevar) / (1 - phi^2) )</span>
+        <span class="c1"># logpvar = logevar - log(1-phi^2)</span>
+        <span class="c1"># logpvar = logevar - (log(1-phi) + log(1+phi))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logpvars_1xu</span> <span class="o">=</span> \
+            <span class="n">logevars_1xu</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">phis_1xu</span><span class="p">)</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">phis_1xu</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logpvars_bxu</span> <span class="o">=</span> <span class="n">logpvars_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logpvars_1xu</span><span class="p">,</span> <span class="n">size_bx1</span><span class="p">)</span>
+        <span class="n">logpvars_bxu</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span><span class="n">size__xu</span><span class="p">)</span>
+
+        <span class="c1"># process mean (zero but included in for completeness)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pmeans_bxu</span> <span class="o">=</span> <span class="n">pmeans_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">phis_bxu</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">logp_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z_t_bxu</span><span class="p">,</span> <span class="n">z_tm1_bxu</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the log-likelihood under the distribution for a given time t,</span>
+<span class="sd">        not the whole sequence.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">          z_t_bxu: sample to compute likelihood for at time t.</span>
+<span class="sd">          z_tm1_bxu (optional): sample condition probability of z_t upon.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          The likelihood of p_t under the model at time t. i.e.</span>
+<span class="sd">            p(z_t|z_tm1_bxu) = N(z_tm1_bxu * phis, eps^2)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">z_tm1_bxu</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logp_tgtm1_bxu</span> <span class="o">=</span> <span class="n">diag_gaussian_log_likelihood</span><span class="p">(</span><span class="n">z_t_bxu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pmeans_bxu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logpvars_bxu</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">means_t_bxu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pmeans_bxu</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">phis_bxu</span> <span class="o">*</span> <span class="n">z_tm1_bxu</span>
+            <span class="n">logp_tgtm1_bxu</span> <span class="o">=</span> <span class="n">diag_gaussian_log_likelihood</span><span class="p">(</span><span class="n">z_t_bxu</span><span class="p">,</span> <span class="n">means_t_bxu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logevars_bxu</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">logp_tgtm1_bxu</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.model.lfads.dists.LearnableAutoRegressive1Prior.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">z_size</span><span class="p">,</span> <span class="n">autocorrelation_taus</span><span class="p">,</span> <span class="n">noise_variances</span><span class="p">,</span> <span class="n">do_train_prior_ar_atau</span><span class="p">,</span> <span class="n">do_train_prior_ar_nvar</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a learnable autoregressive (1) process.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>batch_size</code></td>
+        <td></td>
+        <td><p>The size of the batch, i.e. 0th dim in 2D tensor of samples.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>z_size</code></td>
+        <td></td>
+        <td><p>The dimension of the distribution, i.e. 1st dim in 2D tensor.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>autocorrelation_taus</code></td>
+        <td></td>
+        <td><p>The auto correlation time constant of the AR(1)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>noise_variances</code></td>
+        <td></td>
+        <td><p>The variance of the additive noise, <em>not</em> the process
+variance.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>do_train_prior_ar_atau</code></td>
+        <td></td>
+        <td><p>Train or leave as constant, the autocorrelation?</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>do_train_prior_ar_nvar</code></td>
+        <td></td>
+        <td><p>Train or leave as constant, the noise variance?</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>num_steps</code></td>
+        <td></td>
+        <td><p>Number of steps to run the process.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td></td>
+        <td><p>The name to prefix to learned TF variables.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">z_size</span><span class="p">,</span>
+             <span class="n">autocorrelation_taus</span><span class="p">,</span> <span class="n">noise_variances</span><span class="p">,</span>
+             <span class="n">do_train_prior_ar_atau</span><span class="p">,</span> <span class="n">do_train_prior_ar_nvar</span><span class="p">,</span>
+             <span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a learnable autoregressive (1) process.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      batch_size: The size of the batch, i.e. 0th dim in 2D tensor of samples.</span>
+<span class="sd">      z_size: The dimension of the distribution, i.e. 1st dim in 2D tensor.</span>
+<span class="sd">      autocorrelation_taus: The auto correlation time constant of the AR(1)</span>
+<span class="sd">      process.</span>
+<span class="sd">        A value of 0 is uncorrelated gaussian noise.</span>
+<span class="sd">      noise_variances: The variance of the additive noise, *not* the process</span>
+<span class="sd">        variance.</span>
+<span class="sd">      do_train_prior_ar_atau: Train or leave as constant, the autocorrelation?</span>
+<span class="sd">      do_train_prior_ar_nvar: Train or leave as constant, the noise variance?</span>
+<span class="sd">      num_steps: Number of steps to run the process.</span>
+<span class="sd">      name: The name to prefix to learned TF variables.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Note the use of the plural in all of these quantities.  This is intended</span>
+    <span class="c1"># to mark that even though a sample z_t from the posterior is thought of a</span>
+    <span class="c1"># single sample of a multidimensional gaussian, the prior is actually</span>
+    <span class="c1"># thought of as U AR(1) processes, where U is the dimension of the inferred</span>
+    <span class="c1"># input.</span>
+    <span class="n">size_bx1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">size__xu</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">z_size</span><span class="p">]</span>
+    <span class="c1"># process variance, the variance at time t over all instantiations of AR(1)</span>
+    <span class="c1"># with these parameters.</span>
+    <span class="n">log_evar_inits_1xu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">noise_variances</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logevars_1xu</span> <span class="o">=</span> <span class="n">logevars_1xu</span> <span class="o">=</span> \
+        <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">log_evar_inits_1xu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;/logevars&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+                    <span class="n">trainable</span><span class="o">=</span><span class="n">do_train_prior_ar_nvar</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logevars_bxu</span> <span class="o">=</span> <span class="n">logevars_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">logevars_1xu</span><span class="p">,</span> <span class="n">size_bx1</span><span class="p">)</span>
+    <span class="n">logevars_bxu</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span><span class="n">size__xu</span><span class="p">)</span>  <span class="c1"># tile loses shape</span>
+
+    <span class="c1"># \tau, which is the autocorrelation time constant of the AR(1) process</span>
+    <span class="n">log_atau_inits_1xu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">autocorrelation_taus</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logataus_1xu</span> <span class="o">=</span> <span class="n">logataus_1xu</span> <span class="o">=</span> \
+        <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">log_atau_inits_1xu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;/logatau&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+                    <span class="n">trainable</span><span class="o">=</span><span class="n">do_train_prior_ar_atau</span><span class="p">)</span>
+
+    <span class="c1"># phi in x_t = \mu + phi x_tm1 + \eps</span>
+    <span class="c1"># phi = exp(-1/tau)</span>
+    <span class="c1"># phi = exp(-1/exp(logtau))</span>
+    <span class="c1"># phi = exp(-exp(-logtau))</span>
+    <span class="n">phis_1xu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">logataus_1xu</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">phis_bxu</span> <span class="o">=</span> <span class="n">phis_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">phis_1xu</span><span class="p">,</span> <span class="n">size_bx1</span><span class="p">)</span>
+    <span class="n">phis_bxu</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span><span class="n">size__xu</span><span class="p">)</span>
+
+    <span class="c1"># process noise</span>
+    <span class="c1"># pvar = evar / (1- phi^2)</span>
+    <span class="c1"># logpvar = log ( exp(logevar) / (1 - phi^2) )</span>
+    <span class="c1"># logpvar = logevar - log(1-phi^2)</span>
+    <span class="c1"># logpvar = logevar - (log(1-phi) + log(1+phi))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logpvars_1xu</span> <span class="o">=</span> \
+        <span class="n">logevars_1xu</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">phis_1xu</span><span class="p">)</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">phis_1xu</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logpvars_bxu</span> <span class="o">=</span> <span class="n">logpvars_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logpvars_1xu</span><span class="p">,</span> <span class="n">size_bx1</span><span class="p">)</span>
+    <span class="n">logpvars_bxu</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span><span class="n">size__xu</span><span class="p">)</span>
+
+    <span class="c1"># process mean (zero but included in for completeness)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pmeans_bxu</span> <span class="o">=</span> <span class="n">pmeans_bxu</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">phis_bxu</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.model.lfads.dists.LearnableAutoRegressive1Prior.logp_t" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">logp_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z_t_bxu</span><span class="p">,</span> <span class="n">z_tm1_bxu</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Compute the log-likelihood under the distribution for a given time t,
+not the whole sequence.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>z_t_bxu</code></td>
+        <td></td>
+        <td><p>sample to compute likelihood for at time t.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>z_tm1_bxu</code></td>
+        <td><code>optional</code></td>
+        <td><p>sample condition probability of z_t upon.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>The likelihood of p_t under the model at time t. i.e.
+  p(z_t|z_tm1_bxu) = N(z_tm1_bxu * phis, eps^2)</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">logp_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z_t_bxu</span><span class="p">,</span> <span class="n">z_tm1_bxu</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the log-likelihood under the distribution for a given time t,</span>
+<span class="sd">    not the whole sequence.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      z_t_bxu: sample to compute likelihood for at time t.</span>
+<span class="sd">      z_tm1_bxu (optional): sample condition probability of z_t upon.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      The likelihood of p_t under the model at time t. i.e.</span>
+<span class="sd">        p(z_t|z_tm1_bxu) = N(z_tm1_bxu * phis, eps^2)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">z_tm1_bxu</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logp_tgtm1_bxu</span> <span class="o">=</span> <span class="n">diag_gaussian_log_likelihood</span><span class="p">(</span><span class="n">z_t_bxu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pmeans_bxu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logpvars_bxu</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">means_t_bxu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pmeans_bxu</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">phis_bxu</span> <span class="o">*</span> <span class="n">z_tm1_bxu</span>
+        <span class="n">logp_tgtm1_bxu</span> <span class="o">=</span> <span class="n">diag_gaussian_log_likelihood</span><span class="p">(</span><span class="n">z_t_bxu</span><span class="p">,</span> <span class="n">means_t_bxu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logevars_bxu</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">logp_tgtm1_bxu</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="indl.model.lfads.dists.LearnableDiagonalGaussian" class="doc doc-heading">
+        <code>
+LearnableDiagonalGaussian            (<a title="indl.model.lfads.dists.Gaussian" href="#indl.model.lfads.dists.Gaussian">Gaussian</a>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Diagonal Gaussian with different means and variances in each
+dimension. Means and variances are optionally trainable.
+For LFADS ics prior, trainable_mean=True, trainable_var=False (both default).
+For LFADS cos prior (if not using AR1), trainable_mean=False, trainable_var=True</p>
+
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LearnableDiagonalGaussian</span><span class="p">(</span><span class="n">Gaussian</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Diagonal Gaussian with different means and variances in each</span>
+<span class="sd">    dimension. Means and variances are optionally trainable.</span>
+<span class="sd">    For LFADS ics prior, trainable_mean=True, trainable_var=False (both default).</span>
+<span class="sd">    For LFADS cos prior (if not using AR1), trainable_mean=False, trainable_var=True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">z_size</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">trainable_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trainable_var</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="c1"># MRK&#39;s fix, letting the mean of the prior to be trainable</span>
+        <span class="n">mean_init</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">num_steps</span> <span class="o">=</span> <span class="n">z_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">num_dim</span> <span class="o">=</span> <span class="n">z_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">z_mean_1xn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;/mean&quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_dim</span><span class="p">],</span>
+                                               <span class="n">initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">constant_initializer</span><span class="p">(</span><span class="n">mean_init</span><span class="p">),</span>
+                                               <span class="n">trainable</span><span class="o">=</span><span class="n">trainable_mean</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">z_mean_1xn</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span><span class="o">.</span><span class="n">set_shape</span><span class="p">([</span><span class="kc">None</span><span class="p">]</span> <span class="o">+</span> <span class="n">z_size</span><span class="p">)</span>
+
+        <span class="c1"># MRK, make Var trainable (for Controller prior)</span>
+        <span class="n">var_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+        <span class="n">z_logvar_1xn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;/logvar&quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_dim</span><span class="p">],</span>
+                                                 <span class="n">initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">constant_initializer</span><span class="p">(</span><span class="n">var_init</span><span class="p">),</span>
+                                                 <span class="n">trainable</span><span class="o">=</span><span class="n">trainable_var</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">z_logvar_1xn</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span><span class="o">.</span><span class="n">set_shape</span><span class="p">([</span><span class="kc">None</span><span class="p">]</span> <span class="o">+</span> <span class="n">z_size</span><span class="p">)</span>
+        <span class="c1"># remove time axis if 1 (used for ICs)</span>
+        <span class="k">if</span> <span class="n">num_steps</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean_bxn</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">noise_bxn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logvar_bxn</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="indl.model.lfads.dists.diag_gaussian_log_likelihood" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">diag_gaussian_log_likelihood</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">logvar</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Log-likelihood under a Gaussian distribution with diagonal covariance.
+  Returns the log-likelihood for each dimension.  One should sum the
+  results for the log-likelihood under the full multidimensional model.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>z</code></td>
+        <td></td>
+        <td><p>The value to compute the log-likelihood.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>mu</code></td>
+        <td></td>
+        <td><p>The mean of the Gaussian</p></td>
+        <td><code>0.0</code></td>
+      </tr>
+      <tr>
+        <td><code>logvar</code></td>
+        <td></td>
+        <td><p>The log variance of the Gaussian.</p></td>
+        <td><code>0.0</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>The log-likelihood under the Gaussian model.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">diag_gaussian_log_likelihood</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">logvar</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Log-likelihood under a Gaussian distribution with diagonal covariance.</span>
+<span class="sd">      Returns the log-likelihood for each dimension.  One should sum the</span>
+<span class="sd">      results for the log-likelihood under the full multidimensional model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      z: The value to compute the log-likelihood.</span>
+<span class="sd">      mu: The mean of the Gaussian</span>
+<span class="sd">      logvar: The log variance of the Gaussian.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      The log-likelihood under the Gaussian model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">logvar</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> \
+                   <span class="n">tf</span><span class="o">.</span><span class="n">square</span><span class="p">((</span><span class="n">z</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">logvar</span><span class="p">)))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="indl.model.lfads.dists.gaussian_pos_log_likelihood" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">gaussian_pos_log_likelihood</span><span class="p">(</span><span class="n">unused_mean</span><span class="p">,</span> <span class="n">logvar</span><span class="p">,</span> <span class="n">noise</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Gaussian log-likelihood function for a posterior in VAE</p>
+<p>Note: This function is specialized for a posterior distribution, that has the
+form of z = mean + sigma * noise.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>unused_mean</code></td>
+        <td></td>
+        <td><p>ignore</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>logvar</code></td>
+        <td></td>
+        <td><p>The log variance of the distribution</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>noise</code></td>
+        <td></td>
+        <td><p>The noise used in the sampling of the posterior.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>The log-likelihood under the Gaussian model.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/lfads/dists.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">gaussian_pos_log_likelihood</span><span class="p">(</span><span class="n">unused_mean</span><span class="p">,</span> <span class="n">logvar</span><span class="p">,</span> <span class="n">noise</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gaussian log-likelihood function for a posterior in VAE</span>
+
+<span class="sd">    Note: This function is specialized for a posterior distribution, that has the</span>
+<span class="sd">    form of z = mean + sigma * noise.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        unused_mean: ignore</span>
+<span class="sd">        logvar: The log variance of the distribution</span>
+<span class="sd">        noise: The noise used in the sampling of the posterior.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The log-likelihood under the Gaussian model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># ln N(z; mean, sigma) = - ln(sigma) - 0.5 ln 2pi - noise^2 / 2</span>
+    <span class="k">return</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">logvar</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">noise</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../beta_vae/" class="md-footer__link md-footer__link--prev" aria-label="Previous: model.beta_vae" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              model.beta_vae
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../utils/fileio/" class="md-footer__link md-footer__link--next" aria-label="Next: fileio" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              fileio
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1514a9a0.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

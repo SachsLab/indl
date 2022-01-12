@@ -1,0 +1,1337 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
+    
+    
+      
+        <title>Tfp notes - indl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cd566b2a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#notes-on-using-tensorflow-probability-in-bvae" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="indl" class="md-header__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            indl
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tfp notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="indl" class="md-nav__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    indl
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/data/" class="md-nav__link">
+        data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/dists/" class="md-nav__link">
+        dists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/layers/" class="md-nav__link">
+        layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/rnn/" class="md-nav__link">
+        rnn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Model
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Model" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Model
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/model/beta_vae/" class="md-nav__link">
+        model.beta_vae
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/model/lfads/" class="md-nav__link">
+        lfads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          Utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/utils/fileio/" class="md-nav__link">
+        fileio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/utils/metrics/" class="md-nav__link">
+        metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/utils/regularizers/" class="md-nav__link">
+        regularizers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          DSAE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSAE" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSAE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsae/" class="md-nav__link">
+        Dsae
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recurrent_layers/" class="md-nav__link">
+        Recurrent layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Tfp notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Tfp notes
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-note-about-tfp-distribution-shapes" class="md-nav__link">
+    A Note About TFP Distribution Shapes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-the-latent-prior" class="md-nav__link">
+    Define the latent prior
+  </a>
+  
+    <nav class="md-nav" aria-label="Define the latent prior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prior-off-diagonal-covariance" class="md-nav__link">
+    Prior - Off-diagonal covariance?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prior-fixed-or-learnable" class="md-nav__link">
+    Prior - Fixed or Learnable?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoder" class="md-nav__link">
+    Encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#off-diagonal-covariance-in-latent" class="md-nav__link">
+    Off-diagonal covariance in latent?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixture-of-distributions-or-single-distributions" class="md-nav__link">
+    Mixture of distributions or single distributions?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-transform-on-covariance" class="md-nav__link">
+    Additional transform on covariance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#number-of-samples-from-distributions" class="md-nav__link">
+    Number of samples from distributions?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kl-divergence" class="md-nav__link">
+    KL Divergence
+  </a>
+  
+    <nav class="md-nav" aria-label="KL Divergence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weighting-by-number-of-samples" class="md-nav__link">
+    Weighting by number of samples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kl-annealing" class="md-nav__link">
+    KL annealing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decoder" class="md-nav__link">
+    Decoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Decoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#which-distribution" class="md-nav__link">
+    Which distribution?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    Model
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tfp_utils/" class="md-nav__link">
+        Tfp utils
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Miscellaneous
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/junk_model_inspect/" class="md-nav__link">
+        Junk model inspect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/kernels/" class="md-nav__link">
+        Kernels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/sigfuncs/" class="md-nav__link">
+        Sigfuncs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-note-about-tfp-distribution-shapes" class="md-nav__link">
+    A Note About TFP Distribution Shapes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-the-latent-prior" class="md-nav__link">
+    Define the latent prior
+  </a>
+  
+    <nav class="md-nav" aria-label="Define the latent prior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prior-off-diagonal-covariance" class="md-nav__link">
+    Prior - Off-diagonal covariance?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prior-fixed-or-learnable" class="md-nav__link">
+    Prior - Fixed or Learnable?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoder" class="md-nav__link">
+    Encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#off-diagonal-covariance-in-latent" class="md-nav__link">
+    Off-diagonal covariance in latent?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixture-of-distributions-or-single-distributions" class="md-nav__link">
+    Mixture of distributions or single distributions?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-transform-on-covariance" class="md-nav__link">
+    Additional transform on covariance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#number-of-samples-from-distributions" class="md-nav__link">
+    Number of samples from distributions?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kl-divergence" class="md-nav__link">
+    KL Divergence
+  </a>
+  
+    <nav class="md-nav" aria-label="KL Divergence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weighting-by-number-of-samples" class="md-nav__link">
+    Weighting by number of samples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kl-annealing" class="md-nav__link">
+    KL annealing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decoder" class="md-nav__link">
+    Decoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Decoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#which-distribution" class="md-nav__link">
+    Which distribution?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    Model
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/SachsLab/indl/edit/master/docs/DSAE/tfp_notes.ipynb" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="notes-on-using-tensorflow-probability-in-bvae">Notes on using tensorflow-probability in bVAE</h1>
+<p>These notes are a little bit outdated now. I need to review.</p>
+<p>Tensorflow-probability (tfp) provides a few tools that simplify writing a VAE.</p>
+<ul>
+<li>In the VAE using vanilla tensorflow, the input to our decoder uses a a trick that mimics drawing a sample from a distribution parameterized by our latent vector. With tfp, we can make our latent vector an actual distribution. No trick needed!</li>
+<li>tfp provides the ability to apply KL-regularization directly on our latent distributions.</li>
+<li>We can make the reconstructed signal a distribution, and the reconstruction loss is the negative log-likelihood of the input given the reconstruction distribution.</li>
+</ul>
+<h3 id="resources">Resources</h3>
+<p><a href="https://www.tensorflow.org/probability">TF Probability homepage</a> (within link to <a href="https://blog.tensorflow.org/2019/03/variational-autoencoders-with.html">VAE blog post</a>).</p>
+<p><a href="https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/disentangled_vae.py">TF Probability example of disentangled VAE</a> from <a href="https://arxiv.org/pdf/1803.02991.pdf">Li and Mandt, ICML 2018</a>.</p>
+<h4 id="a-note-about-tfp-distribution-shapes">A Note About TFP Distribution Shapes</h4>
+<ul>
+<li>Event shape describes the shape of a single draw from the distribution; it may be dependent across dimensions. For scalar distributions, the event shape is <code>[]</code>. For a bivariate, it is <code>[2]</code>, and for a 5-dimensional MultivariateNormal, the event shape is <code>[5]</code>.</li>
+<li>Batch shape describes independent, not identically distributed draws, aka a "batch" of distributions.</li>
+<li>Sample shape describes independent, identically distributed draws of batches from the distribution family.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="define-the-latent-prior">Define the latent prior</h3>
+<p>What distribution do we assume the latent variables should follow? In the case of variational autoencoders we typically assume that the latents are (a) Guassian, (b) have mean=0, and (c) have diagonal covariance. The following demonstrates multiple ways to create such a distribution, with fixed parameters.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="prior-off-diagonal-covariance">Prior - Off-diagonal covariance?</h4>
+<p>I guess that depends on if the latent posterior variables should be regularized against having off-diagonals. If the goal is for the latents to describe an orthonormal space, at least as much as possible without sacrificing model quality, then the prior should not have any off-diagonal covariances. Indeed, I have never seen a prior that was not set to be diagonal. If the posterior is not allowed off-diagonals then definitely do not put off-diagonals in the prior.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="prior-fixed-or-learnable">Prior - Fixed or Learnable?</h4>
+<p>Do we want to enforce these static priors? Or do we want to allow the priors to update as the model trains? The answer depends primarily on if we think that we have a good prior. There is a small discussion about this in the <a href="https://blog.tensorflow.org/2019/03/regression-with-probabilistic-layers-in.html">tfp regression tutorial</a> in Case 3:</p>
+<blockquote>
+<p>Note that in this example we are training both P(w) (<em>prior</em>) and Q(w) (<em>posterior</em>). This training corresponds to using Empirical Bayes or Type-II Maximum Likelihood. We used this method so that we wouldn’t need to specify the location of the prior for the slope and intercept parameters, which can be tough to get right if we do not have prior knowledge about the problem. Moreover, if you set the priors very far from their true values, then the posterior may be unduly affected by this choice. A caveat of using Type-II Maximum Likelihood is that you lose some of the regularization benefits over the weights. If you wanted to do a proper Bayesian treatment of uncertainty (if you had some prior knowledge, or a more sophisticated prior), you could use a non-trainable prior (see Appendix B).</p>
+</blockquote>
+<p>The prior is fixed in many of the TFP introductory examples. This is because the intro examples meet conditions under which it doesn't matter if the prior is trainable. <a href="https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/vae.py#L55-L86">See here</a> for more info.</p>
+<hr />
+<p>The next cell, in the last example, implements a learnable multivariate normal distribution.</p>
+<p><a href="https://www.tensorflow.org/probability/api_docs/python/tfp/util/TransformedVariable"><code>tfp.util.TransformedVariable</code></a>: Variable tracking object which applies function upon convert_to_tensor</p>
+<p><a href="https://www.tensorflow.org/probability/api_docs/python/tfp/bijectors/FillScaleTriL"><code>tfp.bijectors.FillScaleTriL</code></a>: Transforms unconstrained vectors to TriL matrices with positive diagonal.</p>
+<p>I have also seen this implemented as a <a href="https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/disentangled_vae.py#L185-L315">custom class</a>.</p>
+<p>Or <a href="https://colab.research.google.com/github/tensorflow/probability/blob/master/tensorflow_probability/examples/jupyter_notebooks/Probabilistic_Layers_Regression.ipynb#scrollTo=aAQhyK9Y_lm1&amp;line=4&amp;uniqifier=1">as a callable that returns another callable</a> to be passed to <code>tfpl.DenseVariational</code>'s <code>make_prior_fn</code> argument.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="encoder">Encoder</h3>
+<p>The input is transformed into some lower dimensional latent variable. In this case we use a <code>Bidirectional(LSTM)</code>. This may not be the right layer for you. We use it here because it is similar to what is used in the disentangled_vae example in the tfp source code.</p>
+<p>Then the latent variables are used to parameterize a distribution. It's arguable whether the distribution is part of the encoder, the decoder, or something in between, but we will put it in the encoder.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="off-diagonal-covariance-in-latent">Off-diagonal covariance in latent?</h4>
+<p>In the <a href="https://github.com/tensorflow/probability/tree/master/tensorflow_probability/examples">tfp example VAE scripts</a>, all the latents were <code>MultivariateNormalDiag</code>, i.e. no off-diagonal covariances. However, in the <a href="https://blog.tensorflow.org/2019/03/variational-autoencoders-with.html">VAE with TFP blog post</a>, the encoded latents used <code>MultivariateNormalTriL</code>, and thus were allowed off-diagonals (though the prior did not). Allowing off-diagonals also increases the number of the parameters in the model which might increase the number of samples of data needed.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="mixture-of-distributions-or-single-distributions">Mixture of distributions or single distributions?</h4>
+<p>While this applies to different distribution families as well, we are using Normal distributions. Each independent latent can be modeled as a single Normal or a mixture of Normals. When using a mixture, analytic KL divergence won't work, and more data is required to fit the additional parameters.</p>
+<p>I have never used mixture of Gaussians, but the below snippet is a demonstration of how that might work:</p>
+<div class="highlight"><pre><span></span><code><span class="n">tfd</span><span class="o">.</span><span class="n">MixtureSameFamily</span><span class="p">(</span>
+      <span class="n">components_distribution</span><span class="o">=</span><span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span>
+          <span class="n">loc</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">mixture_components</span><span class="p">,</span> <span class="n">latent_size</span><span class="p">),</span>
+          <span class="n">scale_diag</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softplus</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">mixture_components</span><span class="p">,</span> <span class="n">latent_size</span><span class="p">))),</span>
+      <span class="n">mixture_distribution</span><span class="o">=</span><span class="n">tfd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">Variable</span><span class="p">(</span><span class="n">mixture_components</span><span class="p">)),</span>
+      <span class="n">name</span><span class="o">=</span><span class="s2">&quot;prior&quot;</span><span class="p">)</span>
+
+<span class="n">tfp</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MixtureNormal</span><span class="p">(</span><span class="n">num_components</span><span class="p">,</span> <span class="n">event_shape</span><span class="o">=</span><span class="p">(</span><span class="n">LATENT_DIM</span><span class="p">,))</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="additional-transform-on-covariance">Additional transform on covariance</h4>
+<p>For the Normal distributions, the initialized value for the mean (<code>loc</code>) is typically centered on <code>0.0</code>, and the value for the std (<code>scale</code>) is typically centered on <code>1.0</code>. When these values are changing with training (from previous layer or <code>tf.Variable</code> in the case of a trainable prior), care should be taken so that the learnable variables are centered around their expected initial values and are of similar magnitude. I believe the training machinery works better under these conditions.</p>
+<p>For the <code>loc</code> there is nothing to do because it is already centred at 0 and there are no requirements for it to be positive.</p>
+<p>For the <code>scale</code>, we want the loss to update values that are by default centered on 0, but when the distribution is sampled, the stddev is centered around 1. Also, we have to be careful that the stddev doesn't go negative. Scale can be transformed to meet the requirements by adding a bias to the scale and transforming it through <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)#Softplus">Softplus</a>. Thus, the inputs to the distribution's scale argument are around 0 (at least initially), then shifted by <code>np.log(np.exp(1) - 1)</code> (<code>=softplus_inverse(1.0) ~ 0.55</code>), then softplus transformed, and finally shifted by 1e-5 (to force &gt; 0) to yield the value that will parameterize the dist stddev.</p>
+<div class="highlight"><pre><span></span><code><span class="n">_loc</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">LATENT_DIM</span><span class="p">)(</span><span class="n">_features</span><span class="p">)</span>
+<span class="n">_scale_diag</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">LATENT_DIM</span><span class="p">)(</span><span class="n">_features</span><span class="p">)</span>
+<span class="n">_scale_diag</span> <span class="o">=</span> <span class="n">_scale_diag</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">_scale_diag</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">softplus</span><span class="p">(</span><span class="n">_scale_diag</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-5</span>
+<span class="n">_static_sample</span> <span class="o">=</span> <span class="n">tfpl</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span>
+    <span class="n">make_distribution_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">Independent</span><span class="p">(</span>
+        <span class="n">tfd</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="p">),</span>
+<span class="p">)([</span><span class="n">_loc</span><span class="p">,</span> <span class="n">_scale_diag</span><span class="p">])</span>
+</code></pre></div>
+<p>In the case of a <strong>trainable prior</strong>, we can initialize the <code>tf.TransformedVariable</code> for the scale to be around 1 and use a bijector <code>tf.nn.softplus(_ + np.log(np.exp(1) - 1)) + 1e-5</code> before sampling. It's a little confusing that the TransformedVariable should be initialized to its transformed value, and the stored variable value (i.e., the one subject to training) is inverse transforming the initialization value through the bijector. See the <code>make_mvn_prior</code> function definition for an example.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="number-of-samples-from-distributions">Number of samples from distributions?</h4>
+<p>For any given pass through the model, the distributions can be sampled multiples times. For example, on the output distribution, we can get N_SAMPLES different reconstructions, but then we must calculate the error for each sample (e.g., using 'mse') and take the average error, or we can calculate the probability for each sample and take the average probability: <code>tf.reduce_logsumexp(elbo) - tf.math.log(n_samples)</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">_static_sample</span> <span class="o">=</span> <span class="n">tfpl</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span>
+    <span class="n">make_distribution_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">Independent</span><span class="p">(</span><span class="n">tfd</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span>
+    <span class="n">convert_to_tensor_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">N_SAMPLES</span><span class="p">)</span>
+<span class="p">)([</span><span class="n">_loc</span><span class="p">,</span> <span class="n">_scale_diag</span><span class="p">])</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="kl-divergence">KL Divergence</h4>
+<p>The latent posterior distribution is regularized to resemble the prior distribution by penalizing the KL divergence between the posterior and the prior. There are several ways to do this.</p>
+<ol>
+<li>Add the latent distribution to the model outputs then use loss functions for each output to penalize KL divergence from the prior. While the reconstructions's loss function will remain <code>-recon_dist.log_prob(expected_recon)</code>, the latent dist can use<ol>
+<li>Analytic KL: <code>lambda _, latent_dist: tfd.kl_divergence(latent_dist, prior)</code></li>
+<li>Quantitative KL: Need a func that accepts (true_x, latent_dist), samples latent_dist to get latent_sample, and returns <code>latent_dist.log_prob(latent_sample) - prior.log_prob(latent_sample)</code>.</li>
+</ol>
+</li>
+<li>Add KL regularizer directly to latent distribution (my preferred approach):
+    <div class="highlight"><pre><span></span><code><span class="n">posterior</span> <span class="o">=</span> <span class="n">tfpl</span><span class="o">.</span><span class="n">SomeLayer</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
+                           <span class="n">activity_regularizer</span><span class="o">=</span><span class="n">tfpl</span><span class="o">.</span><span class="n">KLDivergenceRegularizer</span><span class="p">(</span>
+                               <span class="n">prior</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">KL_WEIGHT</span><span class="p">)</span>
+                          <span class="p">)</span>
+</code></pre></div></li>
+<li>Using <a href="https://www.tensorflow.org/probability/api_docs/python/tfp/layers/KLDivergenceAddLoss"><code>tfpl.KLDivergenceAddLoss(prior)</code></a>.<ul>
+<li>This currently does not work; <a href="https://github.com/tensorflow/probability/issues/865">see here</a>.</li>
+</ul>
+</li>
+<li>Add KL divergence loss manually<ul>
+<li><code>kl_loss = tfd.kl_divergence(latent, prior)</code></li>
+<li><code>model.add_loss(weight * kl_loss, axis=0)</code>  # Might be necessary to reduce_mean depending on shapes.</li>
+</ul>
+</li>
+<li>Calculate KL loss in custom training calculation.<ul>
+<li>See custom training in this notebook.</li>
+</ul>
+</li>
+</ol>
+<p>Analytic KL (or <code>kl_exact</code>) works only when the latent and prior dists are of the same type, and not for mixture models.</p>
+<p>In this notebook I demonstrate 1, 2, and 5. 1 has weight=0 so it isn't actually used, but nevertheless it is still convenient to have Keras print out its values during training. 5 is coded but the custom training loop is commented out. Ultimately, 2 is what is used to update the latent.</p>
+<h5 id="weighting-by-number-of-samples">Weighting by number of samples</h5>
+<p>If we allow the KL divergence loss to be weighted too heavily then the model will prioritize matching the prior more than solving the output objective. This is especially problematic when we do not have a learnable prior. I looked to available examples to see what the conventions were. But this left me more confused.</p>
+<ul>
+<li>In Regression blog post and <a href="https://colab.research.google.com/github/tensorflow/probability/blob/master/tensorflow_probability/examples/jupyter_notebooks/Probabilistic_Layers_Regression.ipynb">accompanying google colab</a>: <code>rv_y.variational_loss(y, kl_weight=np.array(batch_size, x.dtype) / x.shape[0])</code></li>
+<li>In vae blog post: <code>activity_regularizer=tfpl.KLDivergenceRegularizer(prior, weight=1.0))</code></li>
+<li>In vae example script:<ul>
+<li><code>weighted_elbo = tf.reduce_logsumexp(elbo) - tf.math.log(n_samples)</code></li>
+<li>But the above is not used. If it were: <code>loss = -tf.reduce_mean(weighted_elbo)</code></li>
+</ul>
+</li>
+<li>In <code>kernel_divergence_fn</code> kwarg for <code>tfpl.DenseFlipout</code> in <a href="https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/logistic_regression.py#L177-L190">logistic_regression example</a>: <code>kernel_divergence_fn=lambda q, p, _: tfd.kl_divergence(q, p) / tf.cast(num_samples, dtype=tf.float32)</code></li>
+<li>In API docs for <code>tfpl.KLDivergenceRegularizer</code> or <code>tfpl.KLDivergenceAddLoss</code>, example code sets <code>weight=num_train_samples</code>. Isn't this the opposite of the other examples?</li>
+<li>In disentangled vae example: Not done!</li>
+<li><a href="https://github.com/tensorflow/models/blob/master/research/lfads/lfads.py#L829-L830">In LFADS</a>: "normalized only by batch size, not by dimension or by time steps" - implicit in <code>tf.reduce_mean()</code>.</li>
+</ul>
+<p>In my confusion I <a href="https://groups.google.com/a/tensorflow.org/forum/#!topic/tfprobability/ZZKblgnDnUE">posted a question</a> to the TensorFlow Probability mailing list. Someone answered pointing me to other similar conversations. As best as I can understand, it seems that the <strong>conventional scaling to apply to the KL divergence term is (batch_size / number_of_samples)</strong>. Upon further inspection, I think that depends on which of the above methods of adding KL Divergence loss</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="kl-annealing">KL annealing</h5>
+<p>Sometimes units can become inactive and stay inactive if they become trapped in a local minimum when the KL distance is near 0. Therefore, it is often beneficial to drastically deprioritize the prior at training outset then gradually increase the KL weight as training progresses. This is well described in section 2.3 of the <a href="https://arxiv.org/abs/1602.02282">Ladder VAE paper</a>.</p>
+<p>We can alo make the beta term cyclical which provides other benefits <a href="https://arxiv.org/abs/1903.10145">as described here</a>.</p>
+<p>For this to work with the Keras training syntax, we need the weight to be a non-trainable variable that changes during a callback. You can find an example implementation <a href="https://gist.github.com/pnb/0b66a49e40f18b9c77f2ade7cc5b039">here</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="decoder">Decoder</h3>
+<h4 id="which-distribution">Which distribution?</h4>
+<p>The <strong>output</strong> distribution should, as much as possible, make sense for the type of data being generated. Some examples:</p>
+<ul>
+<li>binarized pixels -- independent bernoulli</li>
+<li>spike counts -- independent Poisson</li>
+<li>Any aggregate of many small-scale processes -- Normal (Gaussian)</li>
+</ul>
+<p>Biological signals <em>sometimes</em> follow Gaussian distributions. When they don't, it's usually a good idea to transform them so that they do, because many data science tools work best with Gaussian data.</p>
+<p>For similar reasons, it's quite common to scale the data so that they have a standard deviation of 1.0.</p>
+<p>What about covariances? This should be considered separately for every dataset. For the present data, the signals were created by mixing latents, so it is expected that signals with contributions from the same latents will covary, and therefore we should generate outputs with covariances. But in practice it doesn't matter here and it slows down training so we'll go with diagonal-only.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="model">Model</h3>
+<p>To the model's <code>outputs=</code> kwarg we pass a tuple of both the latent distribution and the output distribution. We do this for one reason only: to monitor the KL divergence loss during training. If you recall, the dataset Y was mapped to (zeros, x) tuple to give us 2 outputs. The compiled model has 2 <code>loss</code> functions: the first calculates the KL divergence of the latent from the prior, and the second calculates the -log-likelihood of the data on the output distribution. The first loss has a weight of 0.0 and is thus not used in updating the model variables. It is not needed because the KL-divergence for updating the model variables is calculated in the activity_regularizer for the prior distribution in the encoder model. Yet, Keras' <code>model.fit</code> will still print out the KL loss (here called "q_z_loss").</p>
+<p>If we didn't want to monitor the KL-loss, we could simplify things a little by removing the first output from the model, changing the dataset from outputting (zeros, x) to only output x, removing the first loss-fn from the <code>loss</code> kwarg in model.compile, and getting rid of the <code>loss_weights</code> kwarg.</p>
+</div>
+</div>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../recurrent_layers/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Recurrent layers" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Recurrent layers
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../tfp_utils/" class="md-footer__link md-footer__link--next" aria-label="Next: Tfp utils" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Tfp utils
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

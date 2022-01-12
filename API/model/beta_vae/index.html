@@ -1,0 +1,2489 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
+    
+    
+      
+        <title>model.beta_vae - indl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.cd566b2a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modelbeta_vae" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="indl" class="md-header__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            indl
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              model.beta_vae
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="indl" class="md-nav__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    indl
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/" class="md-nav__link">
+        data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dists/" class="md-nav__link">
+        dists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../layers/" class="md-nav__link">
+        layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rnn/" class="md-nav__link">
+        rnn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Model
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Model" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Model
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          model.beta_vae
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        model.beta_vae
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae" class="md-nav__link">
+    indl.model.beta_vae
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_decoder" class="md-nav__link">
+    create_decoder()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_encd" class="md-nav__link">
+    create_encd()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_encs" class="md-nav__link">
+    create_encs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_pzd" class="md-nav__link">
+    create_pzd()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_pzs" class="md-nav__link">
+    create_pzs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.generate_default_args" class="md-nav__link">
+    generate_default_args()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.generate_default_params" class="md-nav__link">
+    generate_default_params()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.make_encd_variational" class="md-nav__link">
+    make_encd_variational()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.make_encs_variational" class="md-nav__link">
+    make_encs_variational()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.prepare_inputs" class="md-nav__link">
+    prepare_inputs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.sample_pzd" class="md-nav__link">
+    sample_pzd()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lfads/" class="md-nav__link">
+        lfads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          Utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/fileio/" class="md-nav__link">
+        fileio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/metrics/" class="md-nav__link">
+        metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/regularizers/" class="md-nav__link">
+        regularizers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          DSAE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSAE" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSAE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSAE/dsae/" class="md-nav__link">
+        Dsae
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSAE/recurrent_layers/" class="md-nav__link">
+        Recurrent layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSAE/tfp_notes/" class="md-nav__link">
+        Tfp notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSAE/tfp_utils/" class="md-nav__link">
+        Tfp utils
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Miscellaneous
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/junk_model_inspect/" class="md-nav__link">
+        Junk model inspect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/kernels/" class="md-nav__link">
+        Kernels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/sigfuncs/" class="md-nav__link">
+        Sigfuncs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae" class="md-nav__link">
+    indl.model.beta_vae
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_decoder" class="md-nav__link">
+    create_decoder()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_encd" class="md-nav__link">
+    create_encd()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_encs" class="md-nav__link">
+    create_encs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_pzd" class="md-nav__link">
+    create_pzd()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.create_pzs" class="md-nav__link">
+    create_pzs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.generate_default_args" class="md-nav__link">
+    generate_default_args()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.generate_default_params" class="md-nav__link">
+    generate_default_params()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.make_encd_variational" class="md-nav__link">
+    make_encd_variational()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.make_encs_variational" class="md-nav__link">
+    make_encs_variational()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.prepare_inputs" class="md-nav__link">
+    prepare_inputs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.model.beta_vae.sample_pzd" class="md-nav__link">
+    sample_pzd()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/SachsLab/indl/edit/master/docs/API/model/beta_vae.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="modelbeta_vae">model.beta_vae</h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="indl.model.beta_vae"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.create_decoder" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_decoder</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">zs_sample</span><span class="p">,</span> <span class="n">enc_z</span><span class="p">,</span> <span class="n">ext_input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span> <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span> <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>dict</code></td>
+        <td><p>a dict with keys. Please check 'generate_default_args' and 'generate_default_params' for
+definitive descriptions of each key. Required keys:
+'dec_rnn_type' - The cell type of the generator RNN.
+'gru_clip_value' - only required if 'dec_rnn_type' is (Bidirectional)GRUClip
+'dec_rnn_units' - number of units in the generator
+'zs_to_dec' - "initial conditions" or "tile inputs"
+'dropout_rate'
+'n_factors'</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>zs_sample</code></td>
+        <td><code>Tensor</code></td>
+        <td><p>A sample from q(f)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>enc_z</code></td>
+        <td><code>Tensor</code></td>
+        <td><p>A sample from q(z_t)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ext_input</code></td>
+        <td></td>
+        <td><p>Not supported</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer</code></td>
+        <td><code>str</code></td>
+        <td><p>passed to RNN cell</p></td>
+        <td><code>&#39;lecun_normal&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer</code></td>
+        <td><code>str</code></td>
+        <td><p>passed to RNN cell</p></td>
+        <td><code>&#39;zeros&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>recurrent_regularizer</code></td>
+        <td><code>str</code></td>
+        <td><p>passed to RNN cell</p></td>
+        <td><code>&#39;l2&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Tuple[tensorflow.python.framework.ops.Tensor, tensorflow.python.framework.ops.Tensor]</code></td>
+      <td><p>gen_outputs, factors</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_decoder</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+                   <span class="n">zs_sample</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                   <span class="n">enc_z</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                   <span class="n">ext_input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">kernel_initializer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span>
+                   <span class="n">bias_initializer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                   <span class="n">recurrent_regularizer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;l2&#39;</span>
+                   <span class="p">)</span>\
+        <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        params: a dict with keys. Please check &#39;generate_default_args&#39; and &#39;generate_default_params&#39; for</span>
+<span class="sd">            definitive descriptions of each key. Required keys:</span>
+<span class="sd">            &#39;dec_rnn_type&#39; - The cell type of the generator RNN.</span>
+<span class="sd">            &#39;gru_clip_value&#39; - only required if &#39;dec_rnn_type&#39; is (Bidirectional)GRUClip</span>
+<span class="sd">            &#39;dec_rnn_units&#39; - number of units in the generator</span>
+<span class="sd">            &#39;zs_to_dec&#39; - &quot;initial conditions&quot; or &quot;tile inputs&quot;</span>
+<span class="sd">            &#39;dropout_rate&#39;</span>
+<span class="sd">            &#39;n_factors&#39;</span>
+<span class="sd">        zs_sample: A sample from q(f)</span>
+<span class="sd">        enc_z: A sample from q(z_t)</span>
+<span class="sd">        ext_input: Not supported</span>
+<span class="sd">        kernel_initializer: passed to RNN cell</span>
+<span class="sd">        bias_initializer: passed to RNN cell</span>
+<span class="sd">        recurrent_regularizer: passed to RNN cell</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        gen_outputs, factors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Generate sequences and run through Dense layer, return factors</span>
+
+    <span class="k">if</span> <span class="n">ext_input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sorry, ext_input not supported yet.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;complex&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Please use create_generator_complex for complex cell.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Other than LFADS, the other generator implementations are simply an RNN of the provided cell type.</span>
+    <span class="n">gen_is_rnn</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Bidirectional&#39;</span><span class="p">)</span> \
+                 <span class="ow">or</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="s1">&#39;SimpleRNN&#39;</span><span class="p">,</span> <span class="s1">&#39;GRUClip&#39;</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">gen_is_rnn</span><span class="p">,</span> <span class="s2">&quot;dec_rnn_type must be a RNN cell type, &quot;</span> \
+                       <span class="s2">&quot;possibly prefixed by &#39;Bidirectional&#39;.&quot;</span>
+
+    <span class="n">rnn_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">kernel_initializer</span><span class="p">,</span>
+        <span class="n">bias_initializer</span><span class="o">=</span><span class="n">bias_initializer</span><span class="p">,</span>
+        <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="n">recurrent_regularizer</span><span class="p">,</span>
+        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># Dropout on inputs not needed.</span>
+        <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">):</span>
+        <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">GRU</span>
+    <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">):</span>
+        <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">LSTM</span>
+    <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;SimpleRNN&#39;</span><span class="p">):</span>
+        <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">SimpleRNN</span>
+    <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;GRUClip&#39;</span><span class="p">):</span>
+        <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">GRUClip</span>
+        <span class="n">rnn_kwargs</span><span class="p">[</span><span class="s1">&#39;clip_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;gru_clip_value&#39;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Bidirectional&#39;</span><span class="p">):</span>
+        <span class="n">rnn</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">rnn_layer_cls</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_units&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">rnn_kwargs</span><span class="p">),</span>
+                                 <span class="n">merge_mode</span><span class="o">=</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gen_rnn&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">rnn</span> <span class="o">=</span> <span class="n">rnn_layer_cls</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_units&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">rnn_kwargs</span><span class="p">)</span>
+
+    <span class="c1">#  The initial conditions are either a sample of q(z) or zeros. The inputs are either a sample of q(f),</span>
+    <span class="c1">#  or a concatenation of a sample of q(f) and a tiling of a sample of q(z) (when initial conditions are zeros).</span>
+    <span class="c1">#  Which input-formulation is used is in params[&#39;zs_to_dec&#39;]</span>
+
+    <span class="c1"># Collapse samples + batch dims  -- required by LSTM</span>
+    <span class="c1"># First for zs_sample</span>
+    <span class="n">sb_shape_f</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">zs_sample</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># keep a record of the (samples,) batch shape.</span>
+    <span class="n">new_f_d1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_prod</span><span class="p">(</span><span class="n">sb_shape_f</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="n">new_f_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">new_f_d1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">zs_sample</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">zs_sample</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">zs_sample</span><span class="p">,</span> <span class="n">new_f_shape</span><span class="p">)</span>
+    <span class="c1"># --&gt; zs_sample shape now (samples*batch, zs_size)</span>
+    <span class="c1"># Next for enc_z (which is a sample for non-LFADS)</span>
+    <span class="n">sb_shape_z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">enc_z</span><span class="p">)[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># keep a record of the (samples,) batch shape.</span>
+    <span class="n">new_z_d1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_prod</span><span class="p">(</span><span class="n">sb_shape_z</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="n">new_z_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">new_z_d1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">enc_z</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">enc_z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">enc_z</span><span class="p">,</span> <span class="n">new_z_shape</span><span class="p">)</span>
+    <span class="c1"># --&gt; enc_z shape now (samples*batch, timestamps, zd_size)</span>
+
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;zs_to_dec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;init&#39;</span><span class="p">):</span>
+        <span class="n">_init_state</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_units&#39;</span><span class="p">])(</span><span class="n">zs_sample</span><span class="p">)</span>
+        <span class="n">_gen_input</span> <span class="o">=</span> <span class="n">enc_z</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># params[&#39;zs_to_dec&#39;].lower().startswith(&#39;tile&#39;)</span>
+        <span class="n">_init_state</span> <span class="o">=</span> <span class="n">rnn</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>  <span class="c1"># This was trainable in LFADS!</span>
+        <span class="c1"># Tile zs_sample over the timestamps dimension.</span>
+        <span class="n">dyn_steps</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">enc_z</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">_f</span> <span class="o">=</span> <span class="n">zs_sample</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">dyn_steps</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">_gen_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">enc_z</span><span class="p">,</span> <span class="n">_f</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">gen_outputs</span> <span class="o">=</span> <span class="n">rnn</span><span class="p">(</span><span class="n">_gen_input</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">_init_state</span><span class="p">)</span>
+    <span class="c1"># Restore samples dim with sb_shape</span>
+    <span class="n">restore_samples_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">sb_shape_z</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">gen_outputs</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">gen_outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">gen_outputs</span><span class="p">,</span> <span class="n">restore_samples_shape</span><span class="p">)</span>
+    <span class="n">gen_dropped</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dropout_rate&#39;</span><span class="p">])(</span><span class="n">gen_outputs</span><span class="p">)</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;n_factors&#39;</span><span class="p">])(</span><span class="n">gen_dropped</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">gen_outputs</span><span class="p">,</span> <span class="n">factors</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.create_encd" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_encd</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">zs_sample</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">f_inputs_pre_z1</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span> <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span> <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Run the input through the Dynamic Encoder (aka LFADS' controller input encoder).
+Different formulations in the literature:
+DSAE static: z not used
+DSAE dynamic full:
+    - params['encd_rnn_type'] indicates Bidirectional RNN of some cell type
+    - params['encd_rnn2_units'] &gt; 0
+    - zs_sample is a tensor, possibly with a leading 'samples' dimension.
+DSAE dynamic factorized:
+    - params['encd_rnn_type'] can be None or something nonsense.
+    - params['encd_rnn2_units'] = 0
+    - zs_sample = None
+LFADS (simple z1 only because f1-joining and z2 encoding happens in its ComplexCell):
+    - params['encd_rnn_type'] = 'BidirectionalGRU' (any will do)
+    - params['dec_rnn_type'] != 'Complex'
+    - params['encd_rnn2_units'] = 0  # TODO: I want to reuse encd_rnn2_units to parameterize LFADS' complex cell's internal GRU.
+    - zs_sample = None</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>dict</code></td>
+        <td><ul>
+<li>'encd_rnn_type': Type of RNN. '' or 'Bidirectional' + one of ['GRU', 'LSTM', 'SimpleRNN', 'GRUClip']
+    (just like create_f_encoder's 'encs_rnn_type' param), OR something else to not use an RNN and just use
+    a flat Dense layer. Do not use 'Bidirectional' prefix for causal modeling.</li>
+<li>'gru_clip_value': Required if encd_rnn_type endswith GRUClip</li>
+<li>'encd_rnn1_units': Number of units in the first-level z encoder layer.</li>
+<li>'zd_lag': simulate a delay in the z1 outputs.</li>
+<li>'encd_rnn2_units': Number of units in the second-level z encoder layer. Can be 0 to skip.
+    z2, if used, is always a feedforward SimpleRNN.</li>
+</ul></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>inputs</code></td>
+        <td><code>Tensor</code></td>
+        <td><p>input data, probably one of the outputs from <code>prepare_inputs</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>zs_sample</code></td>
+        <td><code>Optional[int]</code></td>
+        <td><p>Sample from q_f. Only required if using DSAE-Full.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>f_inputs_pre_z1</code></td>
+        <td><code>bool</code></td>
+        <td><p>True if the zs_sample (if provided) joins as inputs to z1, otherwise it joins as inputs to z2.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer</code></td>
+        <td><code>str</code></td>
+        <td><p>See tfkl RNN docs</p></td>
+        <td><code>&#39;lecun_normal&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer</code></td>
+        <td><code>str</code></td>
+        <td><p>See tfkl RNN docs</p></td>
+        <td><code>&#39;zeros&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>recurrent_regularizer</code></td>
+        <td><code>str</code></td>
+        <td><p>See tfkl RNN docs</p></td>
+        <td><code>&#39;l2&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Tensor</code></td>
+      <td><p>A Tensor (or placeholder) with shape (samples (optional), batch_size, timesteps, units),
+where units refers to encd_rnn2_units if encd_rnn2_units &gt; 0, else encd_rnn1_units.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_encd</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                <span class="n">zs_sample</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">f_inputs_pre_z1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="n">kernel_initializer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span>
+                <span class="n">bias_initializer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                <span class="n">recurrent_regularizer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;l2&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run the input through the Dynamic Encoder (aka LFADS&#39; controller input encoder).</span>
+<span class="sd">    Different formulations in the literature:</span>
+<span class="sd">    DSAE static: z not used</span>
+<span class="sd">    DSAE dynamic full:</span>
+<span class="sd">        - params[&#39;encd_rnn_type&#39;] indicates Bidirectional RNN of some cell type</span>
+<span class="sd">        - params[&#39;encd_rnn2_units&#39;] &gt; 0</span>
+<span class="sd">        - zs_sample is a tensor, possibly with a leading &#39;samples&#39; dimension.</span>
+<span class="sd">    DSAE dynamic factorized:</span>
+<span class="sd">        - params[&#39;encd_rnn_type&#39;] can be None or something nonsense.</span>
+<span class="sd">        - params[&#39;encd_rnn2_units&#39;] = 0</span>
+<span class="sd">        - zs_sample = None</span>
+<span class="sd">    LFADS (simple z1 only because f1-joining and z2 encoding happens in its ComplexCell):</span>
+<span class="sd">        - params[&#39;encd_rnn_type&#39;] = &#39;BidirectionalGRU&#39; (any will do)</span>
+<span class="sd">        - params[&#39;dec_rnn_type&#39;] != &#39;Complex&#39;</span>
+<span class="sd">        - params[&#39;encd_rnn2_units&#39;] = 0  # TODO: I want to reuse encd_rnn2_units to parameterize LFADS&#39; complex cell&#39;s internal GRU.</span>
+<span class="sd">        - zs_sample = None</span>
+<span class="sd">    Args:</span>
+<span class="sd">        params:</span>
+<span class="sd">            - &#39;encd_rnn_type&#39;: Type of RNN. &#39;&#39; or &#39;Bidirectional&#39; + one of [&#39;GRU&#39;, &#39;LSTM&#39;, &#39;SimpleRNN&#39;, &#39;GRUClip&#39;]</span>
+<span class="sd">                (just like create_f_encoder&#39;s &#39;encs_rnn_type&#39; param), OR something else to not use an RNN and just use</span>
+<span class="sd">                a flat Dense layer. Do not use &#39;Bidirectional&#39; prefix for causal modeling.</span>
+<span class="sd">            - &#39;gru_clip_value&#39;: Required if encd_rnn_type endswith GRUClip</span>
+<span class="sd">            - &#39;encd_rnn1_units&#39;: Number of units in the first-level z encoder layer.</span>
+<span class="sd">            - &#39;zd_lag&#39;: simulate a delay in the z1 outputs.</span>
+<span class="sd">            - &#39;encd_rnn2_units&#39;: Number of units in the second-level z encoder layer. Can be 0 to skip.</span>
+<span class="sd">                z2, if used, is always a feedforward SimpleRNN.</span>
+<span class="sd">        inputs: input data, probably one of the outputs from `prepare_inputs`.</span>
+<span class="sd">        zs_sample: Sample from q_f. Only required if using DSAE-Full.</span>
+<span class="sd">        f_inputs_pre_z1: True if the zs_sample (if provided) joins as inputs to z1, otherwise it joins as inputs to z2.</span>
+<span class="sd">        kernel_initializer: See tfkl RNN docs</span>
+<span class="sd">        bias_initializer: See tfkl RNN docs</span>
+<span class="sd">        recurrent_regularizer: See tfkl RNN docs</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A Tensor (or placeholder) with shape (samples (optional), batch_size, timesteps, units),</span>
+<span class="sd">        where units refers to encd_rnn2_units if encd_rnn2_units &gt; 0, else encd_rnn1_units.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">zs_sample</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># If zs_sample is a dist we need to transform it to a tensor.</span>
+        <span class="c1"># Expand along time dimension by broadcast-add to zeros.</span>
+        <span class="n">n_times</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">zs_sample</span> <span class="o">=</span> <span class="n">zs_sample</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n_times</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># Add optional f_input that we tile and concatenate onto _inputs.</span>
+    <span class="k">if</span> <span class="n">zs_sample</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">f_inputs_pre_z1</span><span class="p">:</span>
+        <span class="c1"># Highly unlikely, but just in case inputs has samples dimension(s) then we can accommodate those here</span>
+        <span class="n">broadcast_shape_f</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">)[:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">zs_sample</span> <span class="o">=</span> <span class="n">zs_sample</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">broadcast_shape_f</span><span class="p">)</span>
+
+        <span class="c1"># Expand inputs along sample dimension(s).</span>
+        <span class="n">broadcast_shape_inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">zs_sample</span><span class="p">)[:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">broadcast_shape_inputs</span><span class="p">)</span>
+
+        <span class="c1"># Concatenate inputs with zs_sample</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">inputs</span><span class="p">,</span> <span class="n">zs_sample</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (optional-samples, batch, timesteps, feat_dim+latent_static)</span>
+
+    <span class="n">z1_is_rnn</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Bidirectional&#39;</span><span class="p">)</span> \
+        <span class="ow">or</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="s1">&#39;SimpleRNN&#39;</span><span class="p">,</span> <span class="s1">&#39;GRUClip&#39;</span><span class="p">])</span>
+    <span class="n">has_z2</span> <span class="o">=</span> <span class="s1">&#39;encd_rnn2_units&#39;</span> <span class="ow">in</span> <span class="n">params</span> <span class="ow">and</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn2_units&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">z1_is_rnn</span> <span class="ow">or</span> <span class="n">has_z2</span><span class="p">:</span>
+        <span class="n">rnn_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">kernel_initializer</span><span class="p">,</span>
+            <span class="n">bias_initializer</span><span class="o">=</span><span class="n">bias_initializer</span><span class="p">,</span>
+            <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="n">recurrent_regularizer</span><span class="p">,</span>
+            <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># Dropout on inputs not needed.</span>
+            <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">):</span>
+            <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">GRU</span>
+        <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">):</span>
+            <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">LSTM</span>
+        <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;SimpleRNN&#39;</span><span class="p">):</span>
+            <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">SimpleRNN</span>
+        <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;GRUClip&#39;</span><span class="p">):</span>
+            <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">GRUClip</span>
+            <span class="n">rnn_kwargs</span><span class="p">[</span><span class="s1">&#39;clip_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;gru_clip_value&#39;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">z1_is_rnn</span><span class="p">:</span>
+        <span class="c1"># Collapse samples + batch dims  -- required by LSTM</span>
+        <span class="n">sb_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">)[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># keep a record of the (samples,) batch shape.</span>
+        <span class="c1"># new_shape = tf.concat(([-1], tf.shape(inputs)[-2:]), axis=0)  # Can&#39;t remember why I couldn&#39;t use -1 here.</span>
+        <span class="n">new_d1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_prod</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">)[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+        <span class="n">new_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">new_d1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]),</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">new_shape</span><span class="p">)</span>
+        <span class="c1"># inputs shape now (samples*batch, T, feat+lat_stat)</span>
+
+        <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Bidirectional&#39;</span><span class="p">):</span>
+            <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">rnn_layer_cls</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn1_units&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">rnn_kwargs</span><span class="p">),</span>
+                                        <span class="n">merge_mode</span><span class="o">=</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;z_rnn_1&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">rnn_layer_cls</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn1_units&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">rnn_kwargs</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+
+        <span class="c1"># Restore leading samples, batch dims.</span>
+        <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">sb_shape</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Not RNN, just MLP</span>
+        <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn1_units&#39;</span><span class="p">])(</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_lag&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Bidirectional&#39;</span><span class="p">):</span>
+            <span class="c1"># Shift _fwd back, dropping the latest samples, fill front with zeros</span>
+            <span class="c1"># Shift _bwd forward, dropping the earliest samples, fill tail with zeros.</span>
+            <span class="c1"># _fwd = [0,0,0,...,old_fwd[-lag:]]; _bwd = [old_bwd[lag:], ..., 0, 0, 0]</span>
+            <span class="n">_fwd</span><span class="p">,</span> <span class="n">_bwd</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">_fwd</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">_fwd</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_lag&#39;</span><span class="p">],</span> <span class="p">:]),</span>
+                              <span class="n">_fwd</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_lag&#39;</span><span class="p">],</span> <span class="p">:]],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">_bwd</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">_bwd</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_lag&#39;</span><span class="p">]:,</span> <span class="p">:],</span>
+                              <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">_bwd</span><span class="p">[:,</span> <span class="o">-</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_lag&#39;</span><span class="p">]:,</span> <span class="p">:])],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">_fwd</span><span class="p">,</span> <span class="n">_bwd</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_lag&#39;</span><span class="p">],</span> <span class="p">:]),</span>
+                                <span class="n">_enc_z</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_lag&#39;</span><span class="p">],</span> <span class="p">:]],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Bidirectional&#39;</span><span class="p">):</span>
+        <span class="c1"># Recombine forward and backward to get merge_mode=&quot;sum&quot;</span>
+        <span class="n">_fwd</span><span class="p">,</span> <span class="n">_bwd</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">_fwd</span> <span class="o">+</span> <span class="n">_bwd</span>
+
+    <span class="n">not_lfads</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;dec_rnn_type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Complex&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">not_lfads</span> <span class="ow">and</span> <span class="n">has_z2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">zs_sample</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">f_inputs_pre_z1</span><span class="p">:</span>
+            <span class="c1"># Highly unlikely, but just in case _enc_z has samples dimension(s) then we can accommodate those here</span>
+            <span class="n">broadcast_shape_f</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">)[:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">zs_sample</span> <span class="o">=</span> <span class="n">zs_sample</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">broadcast_shape_f</span><span class="p">)</span>
+
+            <span class="c1"># Expand _enc_z along sample dimension(s).</span>
+            <span class="n">broadcast_shape_zenc</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">zs_sample</span><span class="p">)[:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">_enc_z</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">broadcast_shape_zenc</span><span class="p">)</span>
+
+            <span class="c1"># Concatenate _enc_z with zs_sample</span>
+            <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">_enc_z</span><span class="p">,</span> <span class="n">zs_sample</span><span class="p">],</span>
+                               <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (optional-samples, batch, timesteps, feat_dim+latent_static)</span>
+
+        <span class="c1"># TODO: LFADS does an additional dropout before input to z2</span>
+
+        <span class="c1"># Collapse samples + batch dims  -- required by RNNs</span>
+        <span class="n">sb_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">)[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># keep a record of the (samples,) batch shape.</span>
+        <span class="c1"># new_shape = tf.concat(([-1], tf.shape(_enc_z)[-2:]), axis=0)  # Can&#39;t remember why I couldn&#39;t use -1 here.</span>
+        <span class="n">new_d1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_prod</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">)[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+        <span class="n">new_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">new_d1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">,</span> <span class="n">new_shape</span><span class="p">)</span>
+        <span class="c1"># _enc_z shape now (samples*batch, T, encd_rnn1_units+lat_stat)</span>
+
+        <span class="c1"># z2 vanilla RNN used in DSAE Full. LFADS&#39; z2 used elsewhere.</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">rnn_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;clip_value&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;encd_rnn2_units&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">rnn_kwargs</span><span class="p">)(</span><span class="n">_enc_z</span><span class="p">)</span>
+
+        <span class="c1"># Restore leading samples, batch dims.</span>
+        <span class="n">_enc_z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">sb_shape</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">_enc_z</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">_enc_z</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.create_encs" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_encs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span> <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span> <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The static arm of the encoder, aka in LFADS as the "initial condition encoder".</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>dict</code></td>
+        <td><p>required keys are 'encs_rnn_units' (int or iterable of ints), 'encs_rnn_type' (str), 'gru_clip_value'</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>inputs</code></td>
+        <td><code>Tensor</code></td>
+        <td><p>a tensor with dimensions (batch_size, timesteps, input_dim)
+batch_size and timesteps may be <code>None</code> for placeholder tensors (i.e., created by tf.keras.Input)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer</code></td>
+        <td></td>
+        <td><p>see TF's RNN docs</p></td>
+        <td><code>&#39;lecun_normal&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer</code></td>
+        <td></td>
+        <td><p>see TF's RNN docs</p></td>
+        <td><code>&#39;zeros&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>recurrent_regularizer</code></td>
+        <td></td>
+        <td><p>see TF's RNN docs</p></td>
+        <td><code>&#39;l2&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Tensor</code></td>
+      <td><p>statically encoded x (not variational)</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_encs</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;lecun_normal&#39;</span><span class="p">,</span>
+                <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The static arm of the encoder, aka in LFADS as the &quot;initial condition encoder&quot;.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        params: required keys are &#39;encs_rnn_units&#39; (int or iterable of ints), &#39;encs_rnn_type&#39; (str), &#39;gru_clip_value&#39;</span>
+<span class="sd">        inputs: a tensor with dimensions (batch_size, timesteps, input_dim)</span>
+<span class="sd">            batch_size and timesteps may be `None` for placeholder tensors (i.e., created by tf.keras.Input)</span>
+<span class="sd">        kernel_initializer: see TF&#39;s RNN docs</span>
+<span class="sd">        bias_initializer: see TF&#39;s RNN docs</span>
+<span class="sd">        recurrent_regularizer: see TF&#39;s RNN docs</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        statically encoded x (not variational)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_encoded_s</span> <span class="o">=</span> <span class="n">inputs</span>
+
+    <span class="n">encs_rnn_units</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encs_rnn_units&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">encs_rnn_units</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="n">encs_rnn_units</span> <span class="o">=</span> <span class="p">[</span><span class="n">encs_rnn_units</span><span class="p">]</span>
+
+    <span class="n">rnn_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">kernel_initializer</span><span class="p">,</span>
+        <span class="n">bias_initializer</span><span class="o">=</span><span class="n">bias_initializer</span><span class="p">,</span>
+        <span class="n">recurrent_regularizer</span><span class="o">=</span><span class="n">recurrent_regularizer</span><span class="p">,</span>
+        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># Dropout on inputs not needed.</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encs_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;GRU&#39;</span><span class="p">):</span>
+        <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">GRU</span>
+    <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encs_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;LSTM&#39;</span><span class="p">):</span>
+        <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">LSTM</span>
+    <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encs_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;SimpleRNN&#39;</span><span class="p">):</span>
+        <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">SimpleRNN</span>
+    <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encs_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;GRUClip&#39;</span><span class="p">):</span>
+        <span class="n">rnn_layer_cls</span> <span class="o">=</span> <span class="n">GRUClip</span>
+        <span class="n">rnn_kwargs</span><span class="p">[</span><span class="s1">&#39;clip_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;gru_clip_value&#39;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="n">rnn_units</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">encs_rnn_units</span><span class="p">):</span>
+        <span class="n">rnn_kwargs</span><span class="p">[</span><span class="s1">&#39;return_sequences&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ix</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">encs_rnn_units</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encs_rnn_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Bidirectional&#39;</span><span class="p">):</span>
+            <span class="n">_encoded_s</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">rnn_layer_cls</span><span class="p">(</span><span class="n">rnn_units</span><span class="p">,</span> <span class="o">**</span><span class="n">rnn_kwargs</span><span class="p">),</span>
+                                            <span class="n">merge_mode</span><span class="o">=</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span>
+                                            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;rnn_s_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ix</span><span class="p">))(</span><span class="n">_encoded_s</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_encoded_s</span> <span class="o">=</span> <span class="n">rnn_layer_cls</span><span class="p">(</span><span class="n">rnn_units</span><span class="p">,</span> <span class="o">**</span><span class="n">rnn_kwargs</span><span class="p">)(</span><span class="n">_encoded_s</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_encoded_s</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.create_pzd" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_pzd</span><span class="p">(</span><span class="n">params</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The z_prior is a sequence of multivariate diagonal normal distributions. The parameters of the distribution at
+each timestep are a function of (a sample drawn from) the distribution in the previous timestep.</p>
+<p>For DSAE, the process that governs the evolution of parameters over time is a RNN. For each trial, it is
+initialized to zeros and the first step is a zero-input. Subsequent inputs will be samples from the previous
+step. The RNN parameters are learnable. See process_dist.RNNMVNGenerator</p>
+<p>For LFADS, the process that governs the evolution of parameters over time is AR1. Each dimension is an
+independent process. The processes variances and the processes autocorrelation time constants (taus) are
+both trainable parameters. See process_dist.AR1ProcessMVNGenerator</p>
+<p>We also have process_dist.TiledMVNGenerator where a single distribution is shared over all timesteps.</p>
+<p>TODO: tfp also has Autoregressive and GaussianProcess distributions which can be parameterized with trainable
+ variables and are maybe worth investigating here.</p>
+<p>The purpose of the prior is for KL-divergence loss, and I didn't have much luck using KL-divergence
+as a regularizer or model loss, so we will be calculating the KL-divergence during the manual train_step.
+It is therefore unnecessary to return a tensor-like here. Instead, we return an instance of a class, and that
+instance must have a .get_dist() method that we call explicitly during train_step to get a distribution,
+then the distribution will be used to calculate KL divergence.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>dict</code></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>-</code></td>
+        <td><code>&#39;pzd_process&#39;</code></td>
+        <td><p>Which process to use for the sequence-of-MVN priors on z. Valid values:
+'AR1' - uses <code>AR1ProcessMVNGenerator</code>
+{rnn cell type} - including GRUClip, GRU, LSTM, RNN (not case-sensitive), uses <code>RNNMVNGenerator</code>
+'none' - uses <code>TiledMVNGenerator</code></p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>IProcessMVNGenerator</code></td>
+      <td><p>an MVNGenerator.</p>
+<p>Get a sample and dist from the generator with
+<code>sample, dist = generator.get_dist(timestamps, samples=N_SAMPS, batch_size=BATCH_SIZE)</code>
+In most cases, when calculating KL and the returned dist is of the same type as the latent distribution,
+then the analytic KL can be calculated and only the dist event_shape matters, so samples and batch_size
+can be set to 1.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_pzd</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IProcessMVNGenerator</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The z_prior is a sequence of multivariate diagonal normal distributions. The parameters of the distribution at</span>
+<span class="sd">    each timestep are a function of (a sample drawn from) the distribution in the previous timestep.</span>
+
+<span class="sd">    For DSAE, the process that governs the evolution of parameters over time is a RNN. For each trial, it is</span>
+<span class="sd">    initialized to zeros and the first step is a zero-input. Subsequent inputs will be samples from the previous</span>
+<span class="sd">    step. The RNN parameters are learnable. See process_dist.RNNMVNGenerator</span>
+
+<span class="sd">    For LFADS, the process that governs the evolution of parameters over time is AR1. Each dimension is an</span>
+<span class="sd">    independent process. The processes variances and the processes autocorrelation time constants (taus) are</span>
+<span class="sd">    both trainable parameters. See process_dist.AR1ProcessMVNGenerator</span>
+
+<span class="sd">    We also have process_dist.TiledMVNGenerator where a single distribution is shared over all timesteps.</span>
+
+<span class="sd">    TODO: tfp also has Autoregressive and GaussianProcess distributions which can be parameterized with trainable</span>
+<span class="sd">     variables and are maybe worth investigating here.</span>
+
+<span class="sd">    The purpose of the prior is for KL-divergence loss, and I didn&#39;t have much luck using KL-divergence</span>
+<span class="sd">    as a regularizer or model loss, so we will be calculating the KL-divergence during the manual train_step.</span>
+<span class="sd">    It is therefore unnecessary to return a tensor-like here. Instead, we return an instance of a class, and that</span>
+<span class="sd">    instance must have a .get_dist() method that we call explicitly during train_step to get a distribution,</span>
+<span class="sd">    then the distribution will be used to calculate KL divergence.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        params:</span>
+<span class="sd">        - &#39;pzd_process&#39;: Which process to use for the sequence-of-MVN priors on z. Valid values:</span>
+<span class="sd">            &#39;AR1&#39; - uses `AR1ProcessMVNGenerator`</span>
+<span class="sd">            {rnn cell type} - including GRUClip, GRU, LSTM, RNN (not case-sensitive), uses `RNNMVNGenerator`</span>
+<span class="sd">            &#39;none&#39; - uses `TiledMVNGenerator`</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        an MVNGenerator.</span>
+
+<span class="sd">        Get a sample and dist from the generator with</span>
+<span class="sd">        `sample, dist = generator.get_dist(timestamps, samples=N_SAMPS, batch_size=BATCH_SIZE)`</span>
+<span class="sd">        In most cases, when calculating KL and the returned dist is of the same type as the latent distribution,</span>
+<span class="sd">        then the analytic KL can be calculated and only the dist event_shape matters, so samples and batch_size</span>
+<span class="sd">        can be set to 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_process&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;AR1&#39;</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">indl.dists.sequential</span> <span class="kn">import</span> <span class="n">AR1ProcessMVNGenerator</span>
+        <span class="n">init_taus</span> <span class="o">=</span> <span class="p">[</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_tau&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_size&#39;</span><span class="p">])]</span>
+        <span class="n">init_std</span> <span class="o">=</span> <span class="p">[</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_init_std&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_size&#39;</span><span class="p">])]</span>
+        <span class="n">gen</span> <span class="o">=</span> <span class="n">AR1ProcessMVNGenerator</span><span class="p">(</span><span class="n">init_taus</span><span class="p">,</span> <span class="n">init_std</span><span class="o">=</span><span class="n">init_std</span><span class="p">,</span>
+                                     <span class="n">trainable_mean</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_train_mean&#39;</span><span class="p">],</span>
+                                     <span class="n">trainable_tau</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_train_tau&#39;</span><span class="p">],</span>
+                                     <span class="n">trainable_var</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_train_var&#39;</span><span class="p">],</span>
+                                     <span class="n">offdiag</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_offdiag&#39;</span><span class="p">])</span>
+
+    <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_process&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;RNN&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTM&#39;</span><span class="p">,</span> <span class="s1">&#39;GRU&#39;</span><span class="p">,</span> <span class="s1">&#39;GRUClip&#39;</span><span class="p">]:</span>
+        <span class="kn">from</span> <span class="nn">indl.dists.sequential</span> <span class="kn">import</span> <span class="n">RNNMVNGenerator</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        units: int, out_dim: int, cell_type: str, shift_std: float = 0.1, offdiag: bool = False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gen</span> <span class="o">=</span> <span class="n">RNNMVNGenerator</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_units&#39;</span><span class="p">],</span> <span class="n">out_dim</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_size&#39;</span><span class="p">],</span>
+                              <span class="n">cell_type</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_process&#39;</span><span class="p">],</span>
+                              <span class="n">shift_std</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_init_std&#39;</span><span class="p">],</span>
+                              <span class="n">offdiag</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_offdiag&#39;</span><span class="p">])</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">indl.dists.sequential</span> <span class="kn">import</span> <span class="n">TiledMVNGenerator</span>
+        <span class="n">gen</span> <span class="o">=</span> <span class="n">TiledMVNGenerator</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_units&#39;</span><span class="p">],</span> <span class="n">init_std</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_init_std&#39;</span><span class="p">],</span>
+                                <span class="n">trainable_mean</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_train_mean&#39;</span><span class="p">],</span>
+                                <span class="n">trainable_var</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_train_var&#39;</span><span class="p">],</span>
+                                <span class="n">offdiag</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzd_offdiag&#39;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">gen</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.create_pzs" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_pzs</span><span class="p">(</span><span class="n">params</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Make a prior with optionally trainable mean and variance.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>dict</code></td>
+        <td><ul>
+<li>'pzs_kappa' -- must be 0.</li>
+<li>'zs_size'</li>
+<li>'qzs_init_std'</li>
+<li>'pzs_train_mean'</li>
+<li>'pzs_train_var'</li>
+<li>'pzs_off_diag'</li>
+</ul></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Union[tensorflow_probability.python.distributions.mvn_diag.MultivariateNormalDiag, tensorflow_probability.python.distributions.mvn_tril.MultivariateNormalTriL]</code></td>
+      <td><p>Either tfd.MultivariateNormalTril if params['pzs_off_diag'] else tfd.MultivariateNormalDiag</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_pzs</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">,</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalTriL</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a prior with optionally trainable mean and variance.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        params:</span>
+<span class="sd">            - &#39;pzs_kappa&#39; -- must be 0.</span>
+<span class="sd">            - &#39;zs_size&#39;</span>
+<span class="sd">            - &#39;qzs_init_std&#39;</span>
+<span class="sd">            - &#39;pzs_train_mean&#39;</span>
+<span class="sd">            - &#39;pzs_train_var&#39;</span>
+<span class="sd">            - &#39;pzs_off_diag&#39;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Either tfd.MultivariateNormalTril if params[&#39;pzs_off_diag&#39;] else tfd.MultivariateNormalDiag</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzs_kappa&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+    <span class="n">pzs</span> <span class="o">=</span> <span class="n">make_mvn_prior</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;zs_size&#39;</span><span class="p">],</span>
+                         <span class="n">init_std</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;qzs_init_std&#39;</span><span class="p">],</span>
+                         <span class="n">trainable_mean</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzs_train_mean&#39;</span><span class="p">],</span>
+                         <span class="n">trainable_var</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzs_train_var&#39;</span><span class="p">],</span>
+                         <span class="n">offdiag</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;pzs_off_diag&#39;</span><span class="p">])</span>
+    <span class="c1"># Old way:</span>
+    <span class="c1"># prior_factory = lambda: tfd.MultivariateNormalDiag(loc=0, scale_diag=params[&#39;pzs_kappa&#39;])</span>
+    <span class="c1"># prior_factory = LearnableMultivariateNormalDiag(params[&#39;zs_size&#39;])</span>
+    <span class="c1"># prior_factory.build(input_shape=(0,))</span>
+    <span class="k">return</span> <span class="n">pzs</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.generate_default_args" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">generate_default_args</span><span class="p">()</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Returns: non-tunable parameters in a TestArgs object
+Access args with obj.arg_name or .<strong>dict</strong>['arg_name']</p>
+
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_default_args</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Returns: non-tunable parameters in a TestArgs object</span>
+<span class="sd">    Access args with obj.arg_name or .__dict__[&#39;arg_name&#39;]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># non tunable parameters</span>
+    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;TestArgs&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,),</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">random_seed</span><span class="o">=</span><span class="mi">1337</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+        <span class="n">n_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">resample_X</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>                          <span class="c1"># spike count bin size</span>
+
+        <span class="n">q_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                            <span class="c1"># At some points this gets folded into the batch dim so it has to</span>
+                                                <span class="c1">#  be the same for q_f and q_z.</span>
+        <span class="c1"># Encoder - Static</span>
+        <span class="n">encs_rnn_type</span><span class="o">=</span><span class="s2">&quot;BidirectionalGRUClip&quot;</span><span class="p">,</span>   <span class="c1"># Encoder RNN cell type: (&#39;Bidirectional&#39; or &#39;&#39;)</span>
+                                                <span class="c1"># + (&#39;GRU&#39;, &#39;LSTM&#39;, &#39;SimpleRNN&#39;, &#39;GRUClip&#39;)</span>
+        <span class="n">encs_input_samps</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                     <span class="c1"># Set to &gt; 0 to restrict f_encoder to only see this many samples</span>
+                                                <span class="c1">#  This is one of several settings required to prevent acausal modeling.</span>
+        <span class="n">qzs_off_diag</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                     <span class="c1"># If latent dist may have non-zero off diagonals</span>
+        <span class="c1"># Static Latent Dist</span>
+        <span class="n">qzs_init_std</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                       <span class="c1"># (LFADS: ic_prior_var)</span>
+        <span class="c1"># Static Latent Prior</span>
+        <span class="n">pzs_off_diag</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                     <span class="c1"># If latent prior may have non-zero off diagonals</span>
+        <span class="n">pzs_kappa</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>                          <span class="c1"># In LFADS this is a tuned hyperparameter, ~0.1</span>
+        <span class="n">pzs_train_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                    <span class="c1"># True in LFADS</span>
+        <span class="n">pzs_train_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                     <span class="c1"># False in LFADS</span>
+
+        <span class="c1"># Encoder - Dynamic</span>
+        <span class="n">encd_rnn_type</span><span class="o">=</span><span class="s2">&quot;BidirectionalGRUClip&quot;</span><span class="p">,</span>   <span class="c1"># Encoder RNN cell type</span>
+                                                <span class="c1">#  To prevent acausal modeling on the controller input, do not use Bidir</span>
+        <span class="n">zd_lag</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                               <span class="c1"># Time lag on the z-encoder output.</span>
+                                                <span class="c1">#  Same as LFADS&#39; `controller_input_lag`</span>
+        <span class="c1"># Dynamic Latent Dist</span>
+        <span class="n">qzd_init_std</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                       <span class="c1"># std shift when z-latent is 0,</span>
+                                                <span class="c1"># and initial prior variance for RNN and tiled gaussian priors</span>
+        <span class="n">qzd_off_diag</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="c1"># Dynamic Latent Prior</span>
+        <span class="n">pzd_process</span><span class="o">=</span><span class="s2">&quot;AR1&quot;</span><span class="p">,</span>                      <span class="c1"># AR1 or a RNN cell type, or anything else &#39;none&#39; for</span>
+                                                <span class="c1"># simple tiled gaussian.</span>
+        <span class="n">pzd_train_mean</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                   <span class="c1">#</span>
+        <span class="n">pzd_train_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                     <span class="c1"># Also used for train_nvar</span>
+        <span class="n">pzd_init_std</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                       <span class="c1"># Also used for inittau</span>
+        <span class="n">pzd_offdiag</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                      <span class="c1">#</span>
+        <span class="n">pzd_units</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>                            <span class="c1"># Number of units for RNN MVN prior (RNNMVNGenerator)</span>
+        <span class="n">pzd_tau</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>                           <span class="c1"># Initial autocorrelation for AR(1) priors (AR1ProcessMVNGenerator)</span>
+        <span class="n">pzd_train_tau</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                     <span class="c1">#</span>
+
+        <span class="c1"># Decoder</span>
+        <span class="n">dec_rnn_type</span><span class="o">=</span><span class="s2">&quot;GRUClip&quot;</span><span class="p">,</span>                 <span class="c1"># Decoder generative RNN cell type. &quot;Complex&quot; is for LFADS.</span>
+        <span class="n">zs_to_dec</span><span class="o">=</span><span class="s2">&quot;initial conditions&quot;</span><span class="p">,</span>         <span class="c1"># How static latent is used in the decoder.</span>
+                                                <span class="c1">#  &quot;initial conditions&quot; or &quot;tile inputs&quot;</span>
+
+        <span class="c1"># Output</span>
+        <span class="n">output_dist</span><span class="o">=</span><span class="s2">&quot;Poisson&quot;</span><span class="p">,</span>                  <span class="c1"># Poisson or anything else for MVNDiag</span>
+    <span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.generate_default_params" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">generate_default_params</span><span class="p">()</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Returns: tunable parameters in dictionary</p>
+
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_default_params</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Returns: tunable parameters in dictionary</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># tunable parameters</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;dropout_rate&quot;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">,</span>               <span class="c1"># (1e-2)</span>
+        <span class="s2">&quot;coordinated_dropout_rate&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>    <span class="c1">#</span>
+        <span class="s2">&quot;input_factors&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>                 <span class="c1"># Extra Dense layer applied to inputs. Good for multi-session. (not impl.)</span>
+        <span class="s2">&quot;gru_clip_value&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>              <span class="c1"># Max value recurrent cell can take before being clipped (5.0)</span>
+        <span class="s2">&quot;gen_l2_reg&quot;</span><span class="p">:</span> <span class="mf">1e-4</span><span class="p">,</span>  <span class="c1"># (1e-4)</span>
+        <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">2e-3</span><span class="p">,</span>  <span class="c1"># (2e-3)</span>
+        <span class="c1"># &quot;max_grad_norm&quot;: 200.0</span>
+
+        <span class="c1"># Encoder - Static</span>
+        <span class="s2">&quot;encs_rnn_units&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">128</span><span class="p">],</span>            <span class="c1"># Number of units in static encoder RNN.</span>
+                                            <span class="c1">#  Increase list length to add more RNN layers. (128)</span>
+                                            <span class="c1">#  Same as LFADS&#39; `ic_enc_dim`</span>
+        <span class="s2">&quot;zs_size&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>                      <span class="c1"># Size of static latent vector zs (10)</span>
+                                            <span class="c1">#  Same as LFADS&#39; `ic_dim`</span>
+
+        <span class="c1"># Encoder - Dynamic</span>
+        <span class="s2">&quot;encd_rnn1_units&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>              <span class="c1"># Number of units in dynamic encoder first RNN.</span>
+                                            <span class="c1">#  Same as LFADS `ci_enc_dim`</span>
+        <span class="s2">&quot;encd_rnn2_units&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>              <span class="c1"># Number of units in dynamic encoder second RNN (DHSAE Full or LFADS con).</span>
+                                            <span class="c1">#  Same as LFADS `con_dim`</span>
+        <span class="s2">&quot;zd_size&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>                       <span class="c1"># Dimensionality of q_zt posterior.</span>
+                                            <span class="c1">#  Same as LFADS&#39; `co_dim`</span>
+
+        <span class="c1"># Decoder</span>
+        <span class="s2">&quot;dec_rnn_units&quot;</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>               <span class="c1"># Number of RNN cells in decoder RNN (256)</span>
+                                            <span class="c1">#  Same as LFADS `gen_dim`</span>
+        <span class="s2">&quot;n_factors&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>                    <span class="c1"># Number of latent factors (24)</span>
+                                            <span class="c1">#  Same as LFADS&#39; `factors_dim`</span>
+    <span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.make_encd_variational" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">make_encd_variational</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">enc_z</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Take the encoded latent sequence z (output of z1 and optionally z2)
+and convert it to a distribution.</p>
+<p>This isn't necessary for LFADS models because z isn't in its final encoded
+form until inside the Complex cell, so it's up to the complex cell to
+handle the formation of the distribution.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>dict</code></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>enc_z</code></td>
+        <td><code>Tensor</code></td>
+        <td><p>input Tensor</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>q_z</code></td>
+      <td><p>A tfd.Distribution.
+- q_z.sample() will not return a prepended samples dim if params['q_samples'] == 1, else it will.
+- q_z.sample(N) will always return a prepended samples dim (shape N), even if N == 1.
+If you need to reshape so the timesteps dim isn't considered in the "batch_shape" but is in the
+"event_shape", then you can use tfd.Independent(q_z, reinterpreted_batch_ndims=1).</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_encd_variational</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">enc_z</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span>
+                          <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">,</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalTriL</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Take the encoded latent sequence z (output of z1 and optionally z2)</span>
+<span class="sd">    and convert it to a distribution.</span>
+
+<span class="sd">    This isn&#39;t necessary for LFADS models because z isn&#39;t in its final encoded</span>
+<span class="sd">    form until inside the Complex cell, so it&#39;s up to the complex cell to</span>
+<span class="sd">    handle the formation of the distribution.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        params:</span>
+<span class="sd">        - &#39;zd_size&#39;</span>
+<span class="sd">        - &#39;qzd_off_diag&#39;</span>
+<span class="sd">        - &#39;qzd_init_std&#39;</span>
+<span class="sd">        - &#39;q_samples&#39;</span>
+<span class="sd">        enc_z: input Tensor</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        q_z: A tfd.Distribution.</span>
+<span class="sd">        - q_z.sample() will not return a prepended samples dim if params[&#39;q_samples&#39;] == 1, else it will.</span>
+<span class="sd">        - q_z.sample(N) will always return a prepended samples dim (shape N), even if N == 1.</span>
+<span class="sd">        If you need to reshape so the timesteps dim isn&#39;t considered in the &quot;batch_shape&quot; but is in the</span>
+<span class="sd">        &quot;event_shape&quot;, then you can use tfd.Independent(q_z, reinterpreted_batch_ndims=1).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">indl.dists</span> <span class="kn">import</span> <span class="n">make_variational</span>
+
+    <span class="k">if</span> <span class="s1">&#39;dec_rnn_type&#39;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dec_rnn_type&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;Complex&quot;</span><span class="p">,</span> <span class="s2">&quot;Skip this step. LFADS complex cell handles this intrinsically.&quot;</span>
+
+    <span class="c1"># Get a multivariate normal diag over each timestep.</span>
+    <span class="n">q_z</span> <span class="o">=</span> <span class="n">make_variational</span><span class="p">(</span><span class="n">enc_z</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;zd_size&#39;</span><span class="p">],</span>
+                           <span class="n">init_std</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;qzd_init_std&#39;</span><span class="p">],</span>
+                           <span class="n">offdiag</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;qzd_off_diag&#39;</span><span class="p">],</span>
+                           <span class="n">samps</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;q_samples&#39;</span><span class="p">],</span>
+                           <span class="n">loc_name</span><span class="o">=</span><span class="s2">&quot;z_loc&quot;</span><span class="p">,</span> <span class="n">scale_name</span><span class="o">=</span><span class="s2">&quot;z_scale&quot;</span><span class="p">,</span>
+                           <span class="n">use_mvn_diag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">q_z</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.make_encs_variational" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">make_encs_variational</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">encoded_s</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Make the output of the Static Encoder (encs) variational.
+Adds a dropout layer and passes through indl.model.tfp.make_variational with the correct parameters.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>dict</code></td>
+        <td><ul>
+<li>'dropout_rate'</li>
+<li>'zs_size'</li>
+<li>'qzs_off_diag'</li>
+<li>'qzs_init_std'</li>
+<li>'q_samples'</li>
+</ul></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>encoded_s</code></td>
+        <td><code>Tensor</code></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Union[tensorflow_probability.python.distributions.mvn_diag.MultivariateNormalDiag, tensorflow_probability.python.distributions.mvn_tril.MultivariateNormalTriL]</code></td>
+      <td><p>q(zs|x)</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_encs_variational</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">encoded_s</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> \
+        <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">,</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalTriL</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make the output of the Static Encoder (encs) variational.</span>
+<span class="sd">    Adds a dropout layer and passes through indl.model.tfp.make_variational with the correct parameters.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        params:</span>
+<span class="sd">            - &#39;dropout_rate&#39;</span>
+<span class="sd">            - &#39;zs_size&#39;</span>
+<span class="sd">            - &#39;qzs_off_diag&#39;</span>
+<span class="sd">            - &#39;qzs_init_std&#39;</span>
+<span class="sd">            - &#39;q_samples&#39;</span>
+<span class="sd">        encoded_s:</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        q(zs|x)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">indl.dists</span> <span class="kn">import</span> <span class="n">make_variational</span>
+
+    <span class="n">encoded_s</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dropout_rate&#39;</span><span class="p">])(</span><span class="n">encoded_s</span><span class="p">)</span>
+
+    <span class="n">qzs</span> <span class="o">=</span> <span class="n">make_variational</span><span class="p">(</span><span class="n">encoded_s</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;zs_size&#39;</span><span class="p">],</span>
+                           <span class="n">init_std</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;qzs_init_std&#39;</span><span class="p">],</span>
+                           <span class="n">offdiag</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;qzs_off_diag&#39;</span><span class="p">],</span>
+                           <span class="n">samps</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;q_samples&#39;</span><span class="p">],</span>
+                           <span class="n">loc_name</span><span class="o">=</span><span class="s2">&quot;f_loc&quot;</span><span class="p">,</span> <span class="n">scale_name</span><span class="o">=</span><span class="s2">&quot;f_scale&quot;</span><span class="p">,</span>
+                           <span class="n">use_mvn_diag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">qzs</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.prepare_inputs" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">prepare_inputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">_inputs</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Prepare the data for entry into the encoder(s).
+This comprises several steps:</p>
+<ul>
+<li>dropout</li>
+<li>(optional) split off inputs to the f_encoder to prevent acausal modeling</li>
+<li>(optional) coordinated dropout</li>
+<li>(not implemented) CV mask</li>
+<li>(optional) Dense layer to read-in inputs to a common set of input factors.</li>
+</ul>
+<p>To keep the model flexible to inputs of varying timesteps, this model fragment does
+not check the size of the timestep dimension. Please make sure that params['encs_input_samps'] is
+less than the smallest number of timesteps in your inputs.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>dict</code></td>
+        <td><p>has the following keys
+- 'dropout_rate'
+- 'encs_input_samps' - set to &gt; 0 to split off f_encoder inputs to prevent acausal modeling.
+- 'coordinated_dropout_rate'
+- 'input_factors'</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>_inputs</code></td>
+        <td><code>Tensor</code></td>
+        <td><p>With dimensions (batch, timesteps, features)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>f_enc_inputs</code></td>
+      <td><p>to be used as inputs to a subsequent f_encoder.
+    If params['encs_input_samps'] &gt; 0 then this will simply be the leading slice off inputs unmasked,
+    else this will be full length and masked. (In both cases it will be optionally run through Dense layer).
+z_enc_inputs: to be used as inputs to a subsequent z_encoder
+cd_kept_mask: with dtype tf.bool, to be used during decoding for "coordinated dropout"</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">prepare_inputs</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">_inputs</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Prepare the data for entry into the encoder(s).</span>
+<span class="sd">    This comprises several steps:</span>
+
+<span class="sd">    * dropout</span>
+<span class="sd">    * (optional) split off inputs to the f_encoder to prevent acausal modeling</span>
+<span class="sd">    * (optional) coordinated dropout</span>
+<span class="sd">    * (not implemented) CV mask</span>
+<span class="sd">    * (optional) Dense layer to read-in inputs to a common set of input factors.</span>
+
+<span class="sd">    To keep the model flexible to inputs of varying timesteps, this model fragment does</span>
+<span class="sd">    not check the size of the timestep dimension. Please make sure that params[&#39;encs_input_samps&#39;] is</span>
+<span class="sd">    less than the smallest number of timesteps in your inputs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        params: has the following keys</span>
+<span class="sd">            - &#39;dropout_rate&#39;</span>
+<span class="sd">            - &#39;encs_input_samps&#39; - set to &gt; 0 to split off f_encoder inputs to prevent acausal modeling.</span>
+<span class="sd">            - &#39;coordinated_dropout_rate&#39;</span>
+<span class="sd">            - &#39;input_factors&#39;</span>
+<span class="sd">        _inputs: With dimensions (batch, timesteps, features)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        f_enc_inputs: to be used as inputs to a subsequent f_encoder.</span>
+<span class="sd">            If params[&#39;encs_input_samps&#39;] &gt; 0 then this will simply be the leading slice off inputs unmasked,</span>
+<span class="sd">            else this will be full length and masked. (In both cases it will be optionally run through Dense layer).</span>
+<span class="sd">        z_enc_inputs: to be used as inputs to a subsequent z_encoder</span>
+<span class="sd">        cd_kept_mask: with dtype tf.bool, to be used during decoding for &quot;coordinated dropout&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_inputs</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dropout_rate&#39;</span><span class="p">])(</span><span class="n">_inputs</span><span class="p">)</span>
+
+    <span class="c1"># The f-encoder takes the entire sequence and outputs a single-timestamp vector,</span>
+    <span class="c1"># this vector is used as the decoder&#39;s initial condition. This has the potential</span>
+    <span class="c1"># to create acausal modeling because the decoder will have knowledge of the entire</span>
+    <span class="c1"># sequence from its first timestep.</span>
+    <span class="c1"># We can optionally split the input to _f_enc_inputs and remaining _inputs</span>
+    <span class="c1"># RNN will only see _f_enc_inputs to help prevent acausal modeling.</span>
+    <span class="n">_f_enc_inputs</span> <span class="o">=</span> <span class="n">_inputs</span><span class="p">[:,</span> <span class="p">:</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;encs_input_samps&#39;</span><span class="p">],</span> <span class="p">:]</span>
+    <span class="n">_inputs</span> <span class="o">=</span> <span class="n">_inputs</span><span class="p">[:,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encs_input_samps&#39;</span><span class="p">]:,</span> <span class="p">:]</span>
+
+    <span class="c1"># Coordinated dropout on _inputs only.</span>
+    <span class="c1"># Why not _f_enc_inputs? Is it because it is likely too short to matter?</span>
+    <span class="n">_masked_inputs</span><span class="p">,</span> <span class="n">cd_kept_mask</span> <span class="o">=</span> <span class="n">CoordinatedDropout</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;coordinated_dropout_rate&#39;</span><span class="p">])(</span><span class="n">_inputs</span><span class="p">)</span>
+    <span class="c1"># cd_kept_mask is part of the return so it can be used during decoding.</span>
+
+    <span class="c1"># The z-encoder inputs will always be full length.</span>
+    <span class="n">_z_enc_inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">_f_enc_inputs</span><span class="p">,</span> <span class="n">_masked_inputs</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;encs_input_samps&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># With no encs_input_samps specification, the f_enc inputs are the full input.</span>
+        <span class="c1">#  Note this has coordinated dropout, whereas it wouldn&#39;t if encs_input_samps was specified.</span>
+        <span class="n">_f_enc_inputs</span> <span class="o">=</span> <span class="n">_masked_inputs</span>
+
+    <span class="c1"># Note: Skipping over LFADS&#39; CV Mask for now.</span>
+
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;input_factors&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">_f_enc_inputs</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;input_factors&#39;</span><span class="p">])(</span><span class="n">_f_enc_inputs</span><span class="p">)</span>
+        <span class="n">_z_enc_inputs</span> <span class="o">=</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;input_factors&#39;</span><span class="p">])(</span><span class="n">_z_enc_inputs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_f_enc_inputs</span><span class="p">,</span> <span class="n">_z_enc_inputs</span><span class="p">,</span> <span class="n">cd_kept_mask</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="indl.model.beta_vae.sample_pzd" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">sample_pzd</span><span class="p">(</span><span class="n">pzd</span><span class="p">,</span> <span class="n">timesteps</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Samples from z_prior <code>timesteps</code> times.</p>
+<p>z_prior is a multivariate normal diagonal distribution for each timestep.
+We collect each timestep-dist's params (loc and scale), then use them to create
+the return value: a single MVN diag dist that has a dimension for timesteps.</p>
+<p>The cell returns a full dist for each timestep so that we can 'sample' it.
+If our sample size is 1, and our cell is an RNN cell, then this is roughly equivalent
+to doing a generative RNN (init state = zeros, return_sequences=True) then passing
+those values through a pair of Dense layers to parameterize a single MVNDiag.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>gen</code></td>
+        <td></td>
+        <td><p>an instance of a concrete class that inherits from <code>indl.dists.sequential.IProcessMVNGenerator</code>,
+such as <code>AR1ProcessMVNGenerator</code>, <code>RNNMVNGenerator</code> or <code>TiledMVNGenerator</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>timesteps</code></td>
+        <td><code>int</code></td>
+        <td><p>Number of timesteps to sample for each sequence.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>dict</code></td>
+        <td><ul>
+<li>q_samples</li>
+<li>batch_size</li>
+</ul></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>fixed</code></td>
+        <td></td>
+        <td><p>Boolean for whether or not to share the same random
+sample across all sequences in batch.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Tuple[tensorflow.python.framework.ops.Tensor, tensorflow_probability.python.distributions.independent.Independent]</code></td>
+      <td><p>A tuple of a sample from a distribution and the distribution itself.
+The tensor is of shape (samples, batch_size, timesteps, zd_size).
+The distribution is a tfd.Independent wrapping a multivariate normal diagonal.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/model/beta_vae.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sample_pzd</span><span class="p">(</span><span class="n">pzd</span><span class="p">:</span> <span class="n">IProcessMVNGenerator</span><span class="p">,</span> <span class="n">timesteps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>\
+        <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tfd</span><span class="o">.</span><span class="n">Independent</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Samples from z_prior `timesteps` times.</span>
+
+<span class="sd">    z_prior is a multivariate normal diagonal distribution for each timestep.</span>
+<span class="sd">    We collect each timestep-dist&#39;s params (loc and scale), then use them to create</span>
+<span class="sd">    the return value: a single MVN diag dist that has a dimension for timesteps.</span>
+
+<span class="sd">    The cell returns a full dist for each timestep so that we can &#39;sample&#39; it.</span>
+<span class="sd">    If our sample size is 1, and our cell is an RNN cell, then this is roughly equivalent</span>
+<span class="sd">    to doing a generative RNN (init state = zeros, return_sequences=True) then passing</span>
+<span class="sd">    those values through a pair of Dense layers to parameterize a single MVNDiag.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        gen: an instance of a concrete class that inherits from `indl.dists.sequential.IProcessMVNGenerator`,</span>
+<span class="sd">            such as `AR1ProcessMVNGenerator`, `RNNMVNGenerator` or `TiledMVNGenerator`.</span>
+<span class="sd">        timesteps: Number of timesteps to sample for each sequence.</span>
+<span class="sd">        params:</span>
+<span class="sd">            - q_samples</span>
+<span class="sd">            - batch_size</span>
+<span class="sd">        fixed: Boolean for whether or not to share the same random</span>
+<span class="sd">            sample across all sequences in batch.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A tuple of a sample from a distribution and the distribution itself.</span>
+<span class="sd">        The tensor is of shape (samples, batch_size, timesteps, zd_size).</span>
+<span class="sd">        The distribution is a tfd.Independent wrapping a multivariate normal diagonal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">pzd</span><span class="o">.</span><span class="n">get_dist</span><span class="p">(</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;q_samples&#39;</span><span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;batch_size&#39;</span><span class="p">],</span> <span class="n">fixed</span><span class="o">=</span><span class="n">fixed</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../utils/" class="md-footer__link md-footer__link--prev" aria-label="Previous: utils" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              utils
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../lfads/" class="md-footer__link md-footer__link--next" aria-label="Next: lfads" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              lfads
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1514a9a0.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

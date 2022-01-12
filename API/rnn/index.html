@@ -1,0 +1,1856 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
+    
+    
+      
+        <title>rnn - indl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cd566b2a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rnn" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="indl" class="md-header__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            indl
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              rnn
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="indl" class="md-nav__button md-logo" aria-label="indl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    indl
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SachsLab/indl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dists/" class="md-nav__link">
+        dists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../layers/" class="md-nav__link">
+        layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          rnn
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        rnn
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indl.rnn" class="md-nav__link">
+    indl.rnn
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.rnn.generative" class="md-nav__link">
+    generative
+  </a>
+  
+    <nav class="md-nav" aria-label="generative">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN" class="md-nav__link">
+    GenerativeRNN
+  </a>
+  
+    <nav class="md-nav" aria-label="GenerativeRNN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN.output_shape" class="md-nav__link">
+    output_shape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN.build" class="md-nav__link">
+    build()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN.compute_output_shape" class="md-nav__link">
+    compute_output_shape()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN.get_config" class="md-nav__link">
+    get_config()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.rnn.gru_clip" class="md-nav__link">
+    gru_clip
+  </a>
+  
+    <nav class="md-nav" aria-label="gru_clip">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.gru_clip.GRUClipCell" class="md-nav__link">
+    GRUClipCell
+  </a>
+  
+    <nav class="md-nav" aria-label="GRUClipCell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.gru_clip.GRUClipCell.build" class="md-nav__link">
+    build()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.gru_clip.GRUClipCell.call" class="md-nav__link">
+    call()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Model
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Model" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Model
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model/beta_vae/" class="md-nav__link">
+        model.beta_vae
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model/lfads/" class="md-nav__link">
+        lfads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          Utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/fileio/" class="md-nav__link">
+        fileio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/metrics/" class="md-nav__link">
+        metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/regularizers/" class="md-nav__link">
+        regularizers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          DSAE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSAE" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSAE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSAE/dsae/" class="md-nav__link">
+        Dsae
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSAE/recurrent_layers/" class="md-nav__link">
+        Recurrent layers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSAE/tfp_notes/" class="md-nav__link">
+        Tfp notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSAE/tfp_utils/" class="md-nav__link">
+        Tfp utils
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Miscellaneous
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/junk_model_inspect/" class="md-nav__link">
+        Junk model inspect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/kernels/" class="md-nav__link">
+        Kernels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Miscellaneous/sigfuncs/" class="md-nav__link">
+        Sigfuncs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indl.rnn" class="md-nav__link">
+    indl.rnn
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.rnn.generative" class="md-nav__link">
+    generative
+  </a>
+  
+    <nav class="md-nav" aria-label="generative">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN" class="md-nav__link">
+    GenerativeRNN
+  </a>
+  
+    <nav class="md-nav" aria-label="GenerativeRNN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN.output_shape" class="md-nav__link">
+    output_shape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN.build" class="md-nav__link">
+    build()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN.compute_output_shape" class="md-nav__link">
+    compute_output_shape()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.generative.GenerativeRNN.get_config" class="md-nav__link">
+    get_config()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indl.rnn.gru_clip" class="md-nav__link">
+    gru_clip
+  </a>
+  
+    <nav class="md-nav" aria-label="gru_clip">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.gru_clip.GRUClipCell" class="md-nav__link">
+    GRUClipCell
+  </a>
+  
+    <nav class="md-nav" aria-label="GRUClipCell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.gru_clip.GRUClipCell.build" class="md-nav__link">
+    build()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indl.rnn.gru_clip.GRUClipCell.call" class="md-nav__link">
+    call()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/SachsLab/indl/edit/master/docs/API/rnn.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="rnn">rnn</h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="indl.rnn"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="indl.rnn.generative" class="doc doc-heading">
+        <code>generative</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="indl.rnn.generative.GenerativeRNN" class="doc doc-heading">
+        <code>
+GenerativeRNN            (<span title="tensorflow.python.keras.layers.recurrent.RNN">RNN</span>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Generative RNN
+This is a wrapper around the normal RNN layer, except that it does not require
+an input. If an input is given, a time dimension will be added if not provided,
+and if the provided time dimension has length less than <code>timesteps</code>, it will be
+tile-padded with the last sample (or with zeros if <code>tile_input=False</code>).
+If an input is not given, zeros input will be assumed; in that case the batch
+size may come from initial_state if provided. If neither the input nor the
+initial_state is provided then the batch size cannot be known, but the output
+would always be zeros anyway so this RNN is quite useless.
+If mask is provided, it is used to choose the last input sample from which the
+remaining input is tile-padded (or zero-padded). The output will not be masked.
+-Warning: mask has not been thoroughly tested.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>cell</code></td>
+        <td></td>
+        <td><p>recurrent cell instance instance. See tfkl.RNN for description.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>timesteps</code></td>
+        <td></td>
+        <td><p>integer number of timesteps to generate.</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>Args</code></td>
+        <td></td>
+        <td><p>cell:
+timesteps:
+tile_input:
+**kwargs:</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/rnn/generative.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">GenerativeRNN</span><span class="p">(</span><span class="n">tfkl</span><span class="o">.</span><span class="n">RNN</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generative RNN</span>
+<span class="sd">    This is a wrapper around the normal RNN layer, except that it does not require</span>
+<span class="sd">    an input. If an input is given, a time dimension will be added if not provided,</span>
+<span class="sd">    and if the provided time dimension has length less than `timesteps`, it will be</span>
+<span class="sd">    tile-padded with the last sample (or with zeros if `tile_input=False`).</span>
+<span class="sd">    If an input is not given, zeros input will be assumed; in that case the batch</span>
+<span class="sd">    size may come from initial_state if provided. If neither the input nor the</span>
+<span class="sd">    initial_state is provided then the batch size cannot be known, but the output</span>
+<span class="sd">    would always be zeros anyway so this RNN is quite useless.</span>
+<span class="sd">    If mask is provided, it is used to choose the last input sample from which the</span>
+<span class="sd">    remaining input is tile-padded (or zero-padded). The output will not be masked.</span>
+<span class="sd">    -Warning: mask has not been thoroughly tested.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        cell: recurrent cell instance instance. See tfkl.RNN for description.</span>
+<span class="sd">        timesteps: integer number of timesteps to generate.</span>
+<span class="sd">        See tfkl.RNN for other kwargs.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            cell:</span>
+<span class="sd">            timesteps:</span>
+<span class="sd">            tile_input:</span>
+<span class="sd">            **kwargs:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">cell</span><span class="p">,</span>
+                 <span class="n">timesteps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">tile_input</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># If True, it will tile the last input, else it will pad with zeros</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span> <span class="o">=</span> <span class="n">timesteps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tile_input</span> <span class="o">=</span> <span class="n">tile_input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_input_has_time_dim</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_batch_dims</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;batch_dims&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_spec</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_with_input</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">_fixup_input_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">input_shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># We will make a fake input with feature length = 1</span>
+            <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">input_shape</span> <span class="o">=</span> <span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Check for a time dimension</span>
+        <span class="n">time_ax_ix</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span> <span class="k">else</span> <span class="o">-</span><span class="mi">2</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">input_shape</span><span class="p">[</span><span class="n">time_ax_ix</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># No time dimension provided. Add one.</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span><span class="p">:</span>
+                <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">,)</span> <span class="o">+</span> <span class="n">input_shape</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">input_shape</span> <span class="o">=</span> <span class="n">input_shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># Pretend that the time dimension has self.timesteps so that</span>
+        <span class="c1"># the output gets calculated correctly.</span>
+        <span class="k">if</span> <span class="n">input_shape</span><span class="p">[</span><span class="n">time_ax_ix</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span><span class="p">:</span>
+                <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">,)</span> <span class="o">+</span> <span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">input_shape</span> <span class="o">=</span> <span class="n">input_shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">input_shape</span>
+
+    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;timesteps&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span>
+        <span class="k">return</span> <span class="n">config</span>
+
+    <span class="k">def</span> <span class="nf">build_with_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">bd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_batch_dims</span>
+        <span class="c1"># self._input_spec = [tf.nest.map_structure(</span>
+        <span class="c1">#     lambda x: tfkl.InputSpec(shape=[None] * bd + x.shape[bd:], dtype=x.dtype), inputs)]</span>
+        <span class="n">dummy_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">bd</span> <span class="o">+</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">bd</span><span class="p">:],</span> <span class="n">t</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span> <span class="n">inputs</span><span class="p">)</span>
+        <span class="n">dummy_output</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">dummy_input</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_spec</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">tfkl</span><span class="o">.</span><span class="n">InputSpec</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">bd</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">bd</span><span class="p">:],</span>
+                                                                           <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span> <span class="n">dummy_output</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_with_input</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">output_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_spec</span>
+
+    <span class="nd">@output_spec</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">output_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_spec</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">output_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_spec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;build_with_input has not been called; output shape is not defined&#39;</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_spec</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">output_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_spec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;build_with_input has not been called; output dtype is not defined&#39;</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_spec</span><span class="p">)</span>
+
+    <span class="c1"># @tf_utils.shape_type_conversion</span>
+    <span class="k">def</span> <span class="nf">compute_output_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">input_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fixup_input_shape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_spec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">compute_output_shape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+        <span class="n">batch_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)[</span><span class="mi">0</span><span class="p">][:</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_dims</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">batch_shape</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_dims</span><span class="p">:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_shape</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">input_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fixup_input_shape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constants</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">inputs</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="n">constants</span> <span class="o">=</span> <span class="n">_standardize_args</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span>
+                                                             <span class="n">initial_state</span><span class="p">,</span>
+                                                             <span class="n">constants</span><span class="p">,</span>
+                                                             <span class="bp">self</span><span class="o">.</span><span class="n">_num_constants</span><span class="p">)</span>
+        <span class="c1"># We allow different shapes of input, even None. It doesn&#39;t really matter</span>
+        <span class="c1"># because ultimately the input will be ignored except for the first step.</span>
+        <span class="c1"># Nevertheless, we expand the input to have a timesteps dimension. This</span>
+        <span class="c1"># is done simply for parent class calculations of output size, etc.</span>
+
+        <span class="c1"># Allow None as an input. We will create an array of zeros of appropriate shape.</span>
+        <span class="k">if</span> <span class="n">inputs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">initial_state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># If LSTM then state might be a list.</span>
+                <span class="n">_state</span> <span class="o">=</span> <span class="n">initial_state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">initial_state</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">initial_state</span>
+                <span class="n">batch_size</span> <span class="o">=</span> <span class="n">_state</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">inputs</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">_state</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">][</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+                <span class="c1"># inputs = 0 * _state[..., 0][..., tf.newaxis]  # Assume dim=1 input</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Neither inputs nor initial_state provided. This likely only happens</span>
+                <span class="c1"># when building/testing the layer.</span>
+                <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span> <span class="k">else</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="c1"># Allow 2D input, here reshape to 3D input</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">int_shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span><span class="p">:</span>
+                <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+
+        <span class="n">time_ax_ix</span><span class="p">,</span> <span class="n">batch_ax_ix</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span> <span class="k">else</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">input_shape</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">int_shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">input_timesteps</span> <span class="o">=</span> <span class="n">input_shape</span><span class="p">[</span><span class="n">time_ax_ix</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">K</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="o">~</span><span class="n">mask</span><span class="p">):</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># We assume mask has a time dimension and require it is same size as input</span>
+            <span class="c1"># (It doesn&#39;t make sense to use mask otherwise).</span>
+            <span class="n">mask_shape</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">int_shape</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+            <span class="c1"># If the mask only has 1 item in the batch dim then tile it</span>
+            <span class="k">if</span> <span class="n">mask_shape</span><span class="p">[</span><span class="n">batch_ax_ix</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">input_shape</span><span class="p">[</span><span class="n">batch_ax_ix</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span><span class="p">:</span>
+                    <span class="n">bcast_or</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">[</span><span class="n">batch_ax_ix</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">bcast_or</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">input_shape</span><span class="p">[</span><span class="n">batch_ax_ix</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">bcast_or</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mask_shape</span><span class="p">[</span><span class="n">time_ax_ix</span><span class="p">]</span> <span class="o">==</span> <span class="n">input_timesteps</span><span class="p">:</span>
+                <span class="c1"># Prepare slice parameters</span>
+                <span class="c1"># For head (kept)</span>
+                <span class="n">h_sl_begin</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_shape</span><span class="p">]</span>
+                <span class="n">h_sl_sz</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_shape</span><span class="p">]</span>
+                <span class="n">h_sl_sz</span><span class="p">[</span><span class="n">batch_ax_ix</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="c1"># For tail (replaced)</span>
+                <span class="n">t_sl_begin</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_shape</span><span class="p">]</span>
+                <span class="n">t_sl_sz</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_shape</span><span class="p">]</span>
+                <span class="n">t_sl_sz</span><span class="p">[</span><span class="n">batch_ax_ix</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="c1"># Collect input replacements in list</span>
+                <span class="n">new_inputs</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">batch_ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">input_shape</span><span class="p">[</span><span class="n">batch_ax_ix</span><span class="p">]):</span>
+                    <span class="n">samp_mask</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">batch_ix</span><span class="p">,</span> <span class="p">:]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span> <span class="k">else</span> <span class="n">mask</span><span class="p">[</span><span class="n">batch_ix</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">K</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="o">~</span><span class="n">samp_mask</span><span class="p">):</span>
+                        <span class="n">h_sl_begin</span><span class="p">[</span><span class="n">batch_ax_ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">batch_ix</span>
+                        <span class="n">t_sl_begin</span><span class="p">[</span><span class="n">batch_ax_ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">batch_ix</span>
+                        <span class="n">first_bad</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">samp_mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+                        <span class="n">h_sl_sz</span><span class="p">[</span><span class="n">time_ax_ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_bad</span>  <span class="c1"># sz is 1-based</span>
+                        <span class="n">t_sl_begin</span><span class="p">[</span><span class="n">time_ax_ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_bad</span>
+                        <span class="n">head</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">h_sl_begin</span><span class="p">,</span> <span class="n">h_sl_sz</span><span class="p">)</span>
+                        <span class="n">tail</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">t_sl_begin</span><span class="p">,</span> <span class="n">t_sl_sz</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tile_input</span><span class="p">:</span>
+                            <span class="n">tile_samp</span> <span class="o">=</span> <span class="n">head</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span> <span class="k">else</span> <span class="n">head</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">tile_samp</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+                        <span class="n">new_row</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">head</span><span class="p">,</span> <span class="n">tile_samp</span> <span class="o">*</span> <span class="n">K</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">tail</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="n">time_ax_ix</span><span class="p">)</span>
+                        <span class="n">new_inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_row</span><span class="p">)</span>
+                <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">new_inputs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">batch_ax_ix</span><span class="p">)</span>
+
+        <span class="c1"># Fill/trim input time dimension to be self.timesteps</span>
+        <span class="k">if</span> <span class="n">input_timesteps</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">:</span>
+            <span class="c1"># Trim excess, if any</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span> <span class="k">else</span> <span class="n">inputs</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="k">elif</span> <span class="n">input_timesteps</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span><span class="p">:</span>
+            <span class="c1"># Take the last timestep as our starting point for the padding data</span>
+            <span class="n">pad_sample</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span> <span class="k">else</span> <span class="n">inputs</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tile_input</span><span class="p">:</span>
+                <span class="c1"># zero out padding data if we aren&#39;t tiling</span>
+                <span class="n">pad_sample</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">pad_sample</span><span class="p">)</span>
+                <span class="c1"># pad_sample = 0 * pad_sample</span>
+            <span class="c1"># Add the time axis back to our pad_sample</span>
+            <span class="n">pad_sample</span> <span class="o">=</span> <span class="n">pad_sample</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_major</span> <span class="k">else</span> <span class="n">pad_sample</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="c1"># How many more timestamps do we need?</span>
+            <span class="n">pad_timestamps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span> <span class="o">-</span> <span class="n">K</span><span class="o">.</span><span class="n">int_shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">)[</span><span class="n">time_ax_ix</span><span class="p">]</span>
+            <span class="c1"># Tile pad_data using broadcast-add. Does this same line work for time_major and not?</span>
+            <span class="n">pad_data</span> <span class="o">=</span> <span class="n">pad_sample</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">pad_timestamps</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">inputs</span><span class="p">,</span> <span class="n">pad_data</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">time_ax_ix</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_with_input</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_with_input</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">constants</span><span class="o">=</span><span class="n">constants</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+                                <span class="n">constants</span><span class="o">=</span><span class="n">constants</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="indl.rnn.generative.GenerativeRNN.output_shape" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">output_shape</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Retrieves the output shape(s) of a layer.</p>
+<p>Only applicable if the layer has one output,
+or if all outputs have the same shape.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Output shape, as an integer shape tuple
+(or list of shape tuples, one tuple per output tensor).</p></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>AttributeError</code></td>
+        <td><p>if the layer has no defined output shape.</p></td>
+      </tr>
+      <tr>
+        <td><code>RuntimeError</code></td>
+        <td><p>if called in Eager mode.</p></td>
+      </tr>
+  </tbody>
+</table>    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.rnn.generative.GenerativeRNN.build" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Creates the variables of the layer (optional, for subclass implementers).</p>
+<p>This is a method that implementers of subclasses of <code>Layer</code> or <code>Model</code>
+can override if they need a state-creation step in-between
+layer instantiation and layer call.</p>
+<p>This is typically used to create the weights of <code>Layer</code> subclasses.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>input_shape</code></td>
+        <td></td>
+        <td><p>Instance of <code>TensorShape</code>, or list of instances of
+<code>TensorShape</code> if the layer expects a list of inputs
+(one instance per input).</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/rnn/generative.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">input_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fixup_input_shape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.rnn.generative.GenerativeRNN.compute_output_shape" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">compute_output_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Computes the output shape of the layer.</p>
+<p>If the layer has not been built, this method will call <code>build</code> on the
+layer. This assumes that the layer will later be used with inputs that
+match the input shape provided here.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>input_shape</code></td>
+        <td></td>
+        <td><p>Shape tuple (tuple of integers)
+or list of shape tuples (one per output tensor of the layer).
+Shape tuples can include None for free dimensions,
+instead of an integer.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>An input shape tuple.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/rnn/generative.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_output_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">input_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fixup_input_shape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_spec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">compute_output_shape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+    <span class="n">batch_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)[</span><span class="mi">0</span><span class="p">][:</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_dims</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">batch_shape</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_dims</span><span class="p">:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_shape</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.rnn.generative.GenerativeRNN.get_config" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <code>Network</code> (one layer of abstraction above).</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Python dictionary.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/rnn/generative.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;timesteps&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timesteps</span>
+    <span class="k">return</span> <span class="n">config</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="indl.rnn.gru_clip" class="doc doc-heading">
+        <code>gru_clip</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="indl.rnn.gru_clip.GRUClipCell" class="doc doc-heading">
+        <code>
+GRUClipCell            (<span title="tensorflow.python.keras.layers.recurrent_v2.GRUCell">GRUCell</span>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>indl/rnn/gru_clip.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">GRUClipCell</span><span class="p">(</span><span class="n">tfkl</span><span class="o">.</span><span class="n">GRUCell</span><span class="p">):</span>
+    <span class="c1"># A couple differences between tfkl GRUCell and LFADS CustomGRU</span>
+    <span class="c1"># * different variable names (this:LFADS)</span>
+    <span class="c1">#    - z:u; r:r; h:candidate</span>
+    <span class="c1"># * stacking order. tfkl stacks z,r,h all in one : LFADS stacks r,u in &#39;_gate&#39; and c in &#39;_candidate&#39;</span>
+    <span class="c1"># * tfkl recurrent_activation is param and defaults to hard_sigmoid : LFADS is always sigmoid</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">clip_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">init_gate_bias_ones</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GRUClipCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clip_value</span> <span class="o">=</span> <span class="n">clip_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_gate_bias_ones</span> <span class="o">=</span> <span class="n">init_gate_bias_ones</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GRUClipCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+        <span class="c1"># * tfkl initializes all bias as zeros by default : LFADS inits gate&#39;s to ones and candidate&#39;s to zeros</span>
+        <span class="c1"># * tfkl has separate input_bias and recurrent_bias : LFADS has recurrent_bias only</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_gate_bias_ones</span><span class="p">:</span>
+            <span class="n">init_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_after</span><span class="p">:</span>
+                <span class="n">init_weights</span><span class="p">[</span><span class="mi">2</span><span class="p">][:</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># separate biases for input and recurrent. We only modify recurrent.</span>
+                <span class="n">init_weights</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">init_weights</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_clip_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clip_value</span><span class="p">)</span>
+        <span class="n">new_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="k">if</span> <span class="n">nest</span><span class="o">.</span><span class="n">is_sequence</span><span class="p">(</span><span class="n">states</span><span class="p">)</span> <span class="k">else</span> <span class="n">h</span>
+        <span class="k">return</span> <span class="n">h</span><span class="p">,</span> <span class="n">new_state</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.rnn.gru_clip.GRUClipCell.build" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Creates the variables of the layer (optional, for subclass implementers).</p>
+<p>This is a method that implementers of subclasses of <code>Layer</code> or <code>Model</code>
+can override if they need a state-creation step in-between
+layer instantiation and layer call.</p>
+<p>This is typically used to create the weights of <code>Layer</code> subclasses.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>input_shape</code></td>
+        <td></td>
+        <td><p>Instance of <code>TensorShape</code>, or list of instances of
+<code>TensorShape</code> if the layer expects a list of inputs
+(one instance per input).</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/rnn/gru_clip.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">GRUClipCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+    <span class="c1"># * tfkl initializes all bias as zeros by default : LFADS inits gate&#39;s to ones and candidate&#39;s to zeros</span>
+    <span class="c1"># * tfkl has separate input_bias and recurrent_bias : LFADS has recurrent_bias only</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_gate_bias_ones</span><span class="p">:</span>
+        <span class="n">init_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_after</span><span class="p">:</span>
+            <span class="n">init_weights</span><span class="p">[</span><span class="mi">2</span><span class="p">][:</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># separate biases for input and recurrent. We only modify recurrent.</span>
+            <span class="n">init_weights</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">init_weights</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="indl.rnn.gru_clip.GRUClipCell.call" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>This is where the layer's logic lives.</p>
+<p>Note here that <code>call()</code> method in <code>tf.keras</code> is little bit different
+from <code>keras</code> API. In <code>keras</code> API, you can pass support masking for
+layers as additional arguments. Whereas <code>tf.keras</code> has <code>compute_mask()</code>
+method to support masking.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inputs</code></td>
+        <td></td>
+        <td><p>Input tensor, or list/tuple of input tensors.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>**kwargs</code></td>
+        <td></td>
+        <td><p>Additional keyword arguments. Currently unused.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>A tensor or list/tuple of tensors.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>indl/rnn/gru_clip.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_clip_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clip_value</span><span class="p">)</span>
+    <span class="n">new_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="k">if</span> <span class="n">nest</span><span class="o">.</span><span class="n">is_sequence</span><span class="p">(</span><span class="n">states</span><span class="p">)</span> <span class="k">else</span> <span class="n">h</span>
+    <span class="k">return</span> <span class="n">h</span><span class="p">,</span> <span class="n">new_state</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../misc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: misc" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              misc
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../utils/" class="md-footer__link md-footer__link--next" aria-label="Next: utils" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              utils
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
