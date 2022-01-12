@@ -5,7 +5,7 @@ from tensorflow.python.util import nest
 from tensorflow.python.keras.layers.recurrent import _standardize_args
 import tensorflow.keras.layers as tfkl
 import tensorflow_probability as tfp
-from indl.model.recurrent import GenerativeRNN
+from indl.model.generative import GenerativeRNN
 tfd = tfp.distributions
 tfpl = tfp.layers
 tfb = tfp.bijectors

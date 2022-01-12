@@ -1,2 +1,0 @@
-# regularizers
-::: indl.regularizers

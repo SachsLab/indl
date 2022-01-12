@@ -117,11 +117,11 @@ _dynamic_sample = tfpl.IndependentNormal(LATENT_SIZE_DYNAMIC)(_dynamic_dist_para
 # likelihood = tfd.Indepdendent(distribution=tfd.Normal(loc=_y, scale=1.), reinterpreted_batch_ndims=3, name="decoded")
 
 # Get Priors
-from indl.model.tfp import LearnableMultivariateNormalDiag, LearnableMultivariateNormalDiagCell
+from indl.model.tfp import LearnableMultivariateNormalDiag, LearnableMultivariateNormalCell
 # Static ... ?
 static_prior = LearnableMultivariateNormalDiag(LATENT_SIZE_STATIC)()
 # Dynamic
-dynamic_prior = LearnableMultivariateNormalDiagCell(LATENT_SIZE_DYNAMIC, HIDDEN_SIZE)
+dynamic_prior = LearnableMultivariateNormalCell(LATENT_SIZE_DYNAMIC, HIDDEN_SIZE)
 dp_sample, dp_state = dynamic_prior.zero_state([NUM_SAMPLES, BATCH_SIZE])
 locs = []
 scale_diags = []

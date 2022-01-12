@@ -6,7 +6,7 @@ from absl import flags
 import sprites_dataset
 
 tfd = tfp.distributions
-from indl.model.tfp import LearnableMultivariateNormalDiag, LearnableMultivariateNormalDiagCell
+from indl.model.tfp import LearnableMultivariateNormalDiag, LearnableMultivariateNormalCell
 
 
 # Specify priors
@@ -24,7 +24,7 @@ MAX_STEPS = 10000
 
 
 static_prior = LearnableMultivariateNormalDiag(LATENT_SIZE_STATIC)
-dynamic_prior = LearnableMultivariateNormalDiagCell(HIDDEN_SIZE, LATENT_SIZE_DYNAMIC)
+dynamic_prior = LearnableMultivariateNormalCell(HIDDEN_SIZE, LATENT_SIZE_DYNAMIC)
 
 
 class Decoder(tf.keras.Model):
@@ -455,7 +455,7 @@ class DisentangledSequentialVAE(tf.keras.Model):
         self.channels = channels
         self.latent_posterior = latent_posterior
         self.static_prior = LearnableMultivariateNormalDiag(latent_size_static)
-        self.dynamic_prior = LearnableMultivariateNormalDiagCell(
+        self.dynamic_prior = LearnableMultivariateNormalCell(
             latent_size_dynamic, hidden_size)
         self.decoder = Decoder(hidden_size, channels)
         self.compressor = Compressor(hidden_size)
